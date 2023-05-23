@@ -1,0 +1,150 @@
+---
+sidebar: sidebar 
+permalink: hu_windows_2019.html 
+keywords: windows, enterprise 
+summary: Utilizzo di Windows Server 2019 con ONTAP 
+---
+= Utilizzo di Windows Server 2019 con ONTAP
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== Avvio del sistema operativo
+
+Sono disponibili due opzioni per l'avvio del sistema operativo: Mediante l'avvio locale o L'avvio SAN. Per l'avvio locale, installare il sistema operativo sul disco rigido locale (SSD, SATA, RAID e così via). Per l'avvio SAN, vedere le istruzioni riportate di seguito.
+
+
+
+=== Avvio SAN
+
+Se si sceglie di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare lo strumento matrice di interoperabilità NetApp per verificare che il sistema operativo, l'HBA, il firmware dell'HBA, il BIOS di avvio dell'HBA e la versione di ONTAP siano supportati.
+
+. Mappare il LUN di avvio SAN sull'host.
+. Verificare che siano disponibili più percorsi. Tenere presente che i percorsi multipli saranno disponibili solo dopo che il sistema operativo host sarà attivo e in esecuzione sui percorsi.
+. Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN. Per informazioni su come attivare il BIOS HBA, consultare la documentazione specifica del vendor.
+. Riavviare l'host per verificare che l'avvio sia stato eseguito correttamente.
+
+
+
+NOTE: È possibile utilizzare le impostazioni di configurazione fornite in questo documento per configurare i client cloud connessi a. link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] e. link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX per ONTAP"^].
+
+
+
+== Installazione degli hotfix di Windows
+
+Si consiglia di utilizzare *l'ultimo aggiornamento cumulativo* da installare sul server.
+
+
+NOTE: Accedere alla link:https://www.catalog.update.microsoft.com/Search.aspx?q=Update+Windows+Server+2019["Catalogo di aggiornamenti Microsoft 2019"^] Sito Web per ottenere e installare gli hotfix Windows necessari per la versione di Windows in uso.
+
+. Scaricare gli hotfix dal sito del supporto Microsoft.
+
+
+
+NOTE: Alcune hotfix non sono disponibili per il download diretto. In questi casi, è necessario richiedere una data correzione rapida al personale di supporto Microsoft.
+
+. Seguire le istruzioni fornite da Microsoft per installare gli hotfix.
+
+
+
+TIP: Molti hotfix richiedono un riavvio dell'host Windows, ma è possibile scegliere di attendere il riavvio dell'host fino a quando _dopo_ non si installano o si aggiornano le utility host.
+
+
+
+== Installazione delle utilità host unificate di Windows
+
+Le utilità host unificate di Windows (WUHU) sono un insieme di programmi software con documentazione che consente di collegare computer host a dischi virtuali (LUN) su UNA SAN NetApp. Si consiglia di scaricare e installare il kit di utilità più recente. Per informazioni e istruzioni sulla configurazione DI WUHU, fare riferimento a. link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71.html["Documentazione DI WUHU 7.1"].
+
+
+
+== Multipathing
+
+È necessario installare il software MPIO e impostare il multipathing se l'host Windows dispone di più percorsi per il sistema di storage. Senza il software MPIO, il sistema operativo potrebbe vedere ciascun percorso come un disco separato, con conseguente danneggiamento dei dati. Il software MPIO presenta un singolo disco al sistema operativo per tutti i percorsi e un modulo specifico del dispositivo (DSM) gestisce il failover del percorso.
+
+Su un sistema Windows, i due componenti principali di qualsiasi soluzione MPIO sono DSM e MPIO di Windows. MPIO non è supportato per Windows XP o Windows Vista in esecuzione su una macchina virtuale Hyper-V.
+
+
+NOTE: Quando si seleziona il supporto MPIO, le Utilità host unificate di Windows abilitano la funzione MPIO inclusa in Windows Server 2019.
+
+
+
+== Configurazione SAN
+
+
+
+=== Configurazione non ASA
+
+Per la configurazione non ASA, devono essere presenti due gruppi di percorsi con priorità diverse.
+
+I percorsi con priorità più elevate sono Active/Optimized, ovvero vengono serviti dal controller in cui si trova l'aggregato.
+
+I percorsi con priorità inferiori sono attivi ma non ottimizzati perché vengono serviti da un controller diverso.
+
+
+NOTE: I percorsi non ottimizzati vengono utilizzati solo quando non sono disponibili percorsi ottimizzati.
+
+.Esempio
+Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati.
+
+image::nonasa.png[nonasa]
+
+
+
+=== Configurazione di tutti gli array SAN
+
+Per la configurazione di tutti gli array SAN (ASA), deve essere presente un gruppo di percorsi con priorità singole. Tutti i percorsi sono attivi/ottimizzati, ovvero vengono serviti dal controller e l'i/o viene inviato su tutti i percorsi attivi.
+
+image::asa.png[ASA]
+
+
+NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
+
+
+
+== Impostazioni consigliate
+
+Nei sistemi che utilizzano FC, sono necessari i seguenti valori di timeout per gli HBA FC Emulex e QLogic quando si seleziona MPIO.
+
+Per HBA Fibre Channel Emulex:
+
+[cols="2*"]
+|===
+| Tipo di proprietà | Valore della proprietà 
+
+
+| LinkTimeOut | 1 
+
+
+| NodeTimeOut | 10 
+|===
+Per gli HBA Fibre Channel QLogic:
+
+[cols="2*"]
+|===
+| Tipo di proprietà | Valore della proprietà 
+
+
+| LinkDownTimeOut | 1 
+
+
+| PortDownRetryCount | 10 
+|===
+
+NOTE: Windows Unified host Utility imposta questi valori. Per informazioni dettagliate sulle impostazioni consigliate, fare riferimento a. link:https://library.netapp.com/ecmdocs/ECMLP2789202/html/index.html["Guida all'installazione delle utility host di Windows 7.1"^].
+
+
+
+== Limitazioni note
+
+Non esistono problemi noti per Windows Server 2019.

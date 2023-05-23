@@ -1,0 +1,289 @@
+---
+sidebar: sidebar 
+permalink: nvme_ol_77.html 
+keywords: nvme, linux, oracle, 7.7 
+summary: Descrive come configurare NVMe/FC per Oracle Linux 7.7 con ONTAP 
+---
+= Configurazione host NVMe/FC per Oracle Linux 7.7 con ONTAP
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== Supportabilità
+
+NVMe/FC è supportato su ONTAP 9.6 o versioni successive per le seguenti versioni di Oracle Linux
+
+* OL 7.7
++
+L'host OL 7.7 può eseguire traffico NVMe e SCSI attraverso le stesse porte dell'adattatore Initiator Fibre Channel. Vedere link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] Per un elenco di controller e adattatori FC supportati.
+
++
+Per l'elenco più aggiornato delle configurazioni supportate, vedere link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^].
+
+
+
+
+NOTE: È possibile utilizzare le impostazioni di configurazione fornite in questo documento per configurare i client cloud connessi a. link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] e. link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX per ONTAP"^].
+
+
+
+== Limitazioni note
+
+* Gli script NVMe/FC di connessione automatica nativi non sono disponibili nel pacchetto nvme-cli. È possibile utilizzare gli script di connessione automatica esterni forniti dal vendor HBA.
+* Per impostazione predefinita, il bilanciamento del carico round-robin non è attivato. Per abilitare questa funzionalità, è necessario scrivere una regola udev. Nella sezione relativa all'abilitazione di NVMe/FC su OL 7.7 sono descritte le procedure.
+
+
+
+
+== Attivazione di NVMe su OL 7.7
+
+. Assicurarsi che sia installato il kernel predefinito di Oracle Linux 7.7.
+. Riavviare l'host e verificare che si avvii nel kernel OL 7.7 specificato.
++
+[listing]
+----
+# uname -r
+4.14.35-1902.9.2.el7uek
+----
+. Upgrade al pacchetto nvme-cli-1.8.1-3.el7.
++
+[listing]
+----
+# rpm -qa|grep nvme-cli
+nvme-cli-1.8.1-3.el7.x86_64
+----
+. Aggiungere la stringa seguente come regola udev separata in `/lib/udev/rules.d/71-nvme-iopolicy-netapp-ONTAP.rules`. Ciò consente il bilanciamento del carico round-robin per il multipath NVMe.
++
+[listing]
+----
+# Enable round-robin for NetApp ONTAP
+ACTION==”add”, SUBSYSTEM==”nvme-subsystem”, ATTR{model}==”NetApp ONTAP Controller”, ATTR{iopolicy}=”round-robin
+----
+. Sull'host OL 7.7, controllare la stringa NQN host all'indirizzo `/etc/nvme/hostnqn` E verificare che corrisponda alla stringa NQN host per il sottosistema corrispondente sull'array ONTAP.
++
+[listing]
+----
+# cat /etc/nvme/hostnqn
+nqn.2014-08.org.nvmexpress:uuid:75953f3b-77fe-4e03-bf3c-09d5a156fbcd
+----
++
+[listing]
+----
+*> vserver nvme subsystem host show -vserver vs_nvme_10
+Vserver Subsystem Host NQN
+------- --------- -------------------------------------- -----------
+ol_157_nvme_ss_10_0
+nqn.2014-08.org.nvmexpress:uuid:75953f3b-77fe-4e03-bf3c-09d5a156fbcd
+----
+
+
+
+NOTE: Se le stringhe NQN host non corrispondono, utilizzare il comando vserver modify per aggiornare la stringa NQN host sul sottosistema di array ONTAP corrispondente in modo che corrisponda alla stringa NQN host da `/etc/nvme/hostnqn` sull'host.
+
+. Riavviare l'host.
+
+
+
+
+== Configurazione di Broadcom FC Adapter per NVMe/FC
+
+. Verificare di utilizzare l'adattatore supportato. Per l'elenco più aggiornato degli adattatori supportati, consultare link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^].
++
+[listing]
+----
+# cat /sys/class/scsi_host/host*/modelname
+LPe32002-M2
+LPe32002-M2
+----
++
+[listing]
+----
+# cat /sys/class/scsi_host/host*/modeldesc
+Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
+Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
+----
+. Copiare e installare il pacchetto di script di connessione automatica Broadcom outbox.
++
+[listing]
+----
+# rpm -ivh nvmefc-connect-12.4.65.0-1.noarch.rpm
+----
+. Riavviare l'host.
+. Verificare di utilizzare il firmware Broadcom lpfc consigliato, il driver inbox nativo e le versioni dei pacchetti outbox con connessione automatica. Per un elenco delle versioni supportate, vedere link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^].
++
+[listing]
+----
+# cat /sys/class/scsi_host/host*/fwrev
+12.4.243.17, sil-4.2.c
+12.4.243.17, sil-4.2.c
+
+# cat /sys/module/lpfc/version
+0:12.0.0.10
+
+# rpm -qa | grep nvmefc
+nvmefc-connect-12.4.65.0-1.noarch
+----
+. Verificare che lpfc_ENABLE_fc4_TYPE sia impostato su 3.
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
+3
+----
+. Verificare che le porte dell'iniziatore siano attive e in esecuzione.
++
+[listing]
+----
+# cat /sys/class/fc_host/host*/port_name
+0x10000090fae0ec61
+0x10000090fae0ec62
+----
++
+[listing]
+----
+# cat /sys/class/fc_host/host*/port_state
+Online
+Online
+----
+. Verificare che le porte NVMe/FC Initiator siano attivate, in esecuzione e in grado di visualizzare le LIF di destinazione.
++
+[listing]
+----
+# cat /sys/class/scsi_host/host*/nvme_info
+NVME Initiator Enabled
+XRI Dist lpfc0 Total 6144 NVME 2947 SCSI 2977 ELS 250
+NVME LPORT lpfc0 WWPN x10000090fae0ec61 WWNN x20000090fae0ec61 DID x012000 ONLINE
+NVME RPORT WWPN x202d00a098c80f09 WWNN x202c00a098c80f09 DID x010201 TARGET DISCSRVC ONLINE
+NVME RPORT WWPN x203100a098c80f09 WWNN x202c00a098c80f09 DID x010601 TARGET DISCSRVC ONLINE
+NVME Statistics
+…
+----
+
+
+
+
+== Convalida di NVMe/FC
+
+. Verificare le seguenti impostazioni NVMe/FC.
++
+[listing]
+----
+# cat /sys/module/nvme_core/parameters/multipath
+Y
+
+# cat /sys/class/nvme-subsystem/nvme-subsys*/model
+NetApp ONTAP Controller
+NetApp ONTAP Controller
+
+# cat /sys/class/nvme-subsystem/nvme-subsys*/iopolicy
+round-robin
+round-robin
+----
+. Verificare che gli spazi dei nomi siano stati creati.
++
+[listing]
+----
+# nvme list
+Node SN Model Namespace Usage Format FW Rev
+---------------- -------------------- -----------------------
+/dev/nvme0n1 80BADBKnB/JvAAAAAAAC NetApp ONTAP Controller 1 53.69 GB / 53.69 GB 4 KiB + 0 B FFFFFFFF
+----
+. Verificare lo stato dei percorsi ANA.
++
+[listing]
+----
+# nvme list-subsys/dev/nvme0n1
+Nvme-subsysf0 – NQN=nqn.1992-08.com.netapp:sn.341541339b9511e8a9b500a098c80f09:subsystem.ol_157_nvme_ss_10_0
+\
++- nvme0 fc traddr=nn-0x202c00a098c80f09:pn-0x202d00a098c80f09 host_traddr=nn-0x20000090fae0ec61:pn-0x10000090fae0ec61 live optimized
++- nvme1 fc traddr=nn-0x207300a098dfdd91:pn-0x207600a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 live inaccessible
++- nvme2 fc traddr=nn-0x207300a098dfdd91:pn-0x207500a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 live optimized
++- nvme3 fc traddr=nn-0x207300a098dfdd91:pn-0x207700a098dfdd91 host traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 live inaccessible
+----
+. Verificare il plug-in NetApp per i dispositivi ONTAP.
++
+[listing]
+----
+# nvme netapp ontapdevices -o column
+Device   Vserver  Namespace Path             NSID   UUID   Size
+-------  -------- -------------------------  ------ ----- -----
+/dev/nvme0n1   vs_nvme_10       /vol/rhel_141_vol_10_0/ol_157_ns_10_0    1        55baf453-f629-4a18-9364-b6aee3f50dad   53.69GB
+
+# nvme netapp ontapdevices -o json
+{
+   "ONTAPdevices" : [
+   {
+        Device" : "/dev/nvme0n1",
+        "Vserver" : "vs_nvme_10",
+        "Namespace_Path" : "/vol/rhel_141_vol_10_0/ol_157_ns_10_0",
+         "NSID" : 1,
+         "UUID" : "55baf453-f629-4a18-9364-b6aee3f50dad",
+         "Size" : "53.69GB",
+         "LBA_Data_Size" : 4096,
+         "Namespace_Size" : 13107200
+    }
+]
+----
+
+
+
+
+== Abilitazione della dimensione i/o di 1 MB per Broadcom NVMe/FC
+
+Il `lpfc_sg_seg_cnt` Il parametro deve essere impostato su 256 per consentire all'host di emettere 1 MB di i/O.
+
+.Fasi
+. Impostare `lpfc_sg_seg_cnt` parametro a 256.
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_sg_seg_cnt=256
+----
+. Eseguire un `dracut -f` e riavviare l'host.
+. Verificare che `lpfc_sg_seg_cnt` è 256.
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+256
+----
+
+
+
+
+== LPFC verbose Logging
+
+.Fasi
+. Impostare `lpfc_log_verbose` Impostazione del driver su uno dei seguenti valori per registrare gli eventi NVMe/FC.
++
+[listing]
+----
+#define LOG_NVME 0x00100000 /* NVME general events. */
+#define LOG_NVME_DISC 0x00200000 /* NVME Discovery/Connect events. */
+#define LOG_NVME_ABTS 0x00400000 /* NVME ABTS events. */
+#define LOG_NVME_IOERR 0x00800000 /* NVME IO Error events. */
+----
+. Dopo aver impostato i valori, eseguire `dracut-f` comandare e riavviare l'host.
+. Verificare le impostazioni.
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_log_verbose=0xf00083
+
+# cat /sys/module/lpfc/parameters/lpfc_log_verbose
+15728771
+----
+

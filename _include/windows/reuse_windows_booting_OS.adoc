@@ -1,0 +1,5 @@
+= 
+:allow-uri-read: 
+
+
+Sono disponibili due opzioni per l'avvio del sistema operativo: Mediante l'avvio locale o L'avvio SAN. Per l'avvio locale, installare il sistema operativo sul disco rigido locale (SSD, SATA, RAID e così via). Per l'avvio SAN, vedere le istruzioni riportate di seguito.

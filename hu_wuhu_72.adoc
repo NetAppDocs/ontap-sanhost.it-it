@@ -1,0 +1,531 @@
+---
+sidebar: sidebar 
+permalink: hu_wuhu_72.html 
+keywords: wuhu, 7.2, host utilities, SAN, windows, unified 
+summary: 'Le utility host unificate di Windows includono un programma di installazione che imposta i parametri HBA e di registro di Windows richiesti in modo che l"host Windows gestisca correttamente i comportamenti del sistema di storage per le piattaforme NetApp ONTAP ed e-Series.' 
+---
+= Windows Unified host Utilities 7.2
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+
+
+== Informazioni sulle utility host di Windows
+
+Le utility host unificate di Windows includono un programma di installazione che imposta i parametri HBA e di registro di Windows richiesti in modo che l'host Windows gestisca correttamente i comportamenti del sistema di storage per le piattaforme NetApp ONTAP ed e-Series.
+
+Quando si installa il software delle utility host, il programma di installazione imposta i parametri HBA e del Registro di sistema di Windows richiesti.
+
+I seguenti programmi e file vengono installati sul computer host di Windows. La directory predefinita è `C:\Program Files\NetApp\Windows Host Utilities`.
+
+|===
+| Programma | Scopo 
+
+
+| `emulexhba.reg` | Programma per la risoluzione dei problemi; eseguire questo programma solo se richiesto dal personale di supporto tecnico. 
+
+
+| `\NetAppQCLI\fcconfig.exe` | Utilizzato dal programma di installazione per impostare i parametri HBA. 
+
+
+| `\NetAppQCLI\fcconfig.ini` | Utilizzato dal programma di installazione per impostare i parametri HBA. 
+
+
+| `\NetAppQCLI\*.*` | Utilizzato dal programma di installazione per impostare i parametri QLogic FC HBA. 
+
+
+| `san_version.exe` | Visualizza la versione delle utility host e degli HBA FC. 
+|===
+
+
+== Configurazioni supportate dalle utility host
+
+Le utility host supportano diverse configurazioni host, protocolli e opzioni di multipathing di Windows. Per ulteriori informazioni, consultare https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità NetApp"^].
+
+
+
+== Verificare la configurazione del sistema host e storage
+
+Prima di installare le utility host, è necessario verificare che la versione delle utility host supporti la configurazione del sistema host e storage in modo che il software venga installato correttamente.
+
+.Fasi
+. Verificare la configurazione supportata in http://mysupport.netapp.com/matrix["Tool di matrice di interoperabilità NetApp"^].
+. Controllare le correzioni rapide richieste per il rispettivo host in link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["Documentazione Windows per host SAN"].
++
+
+NOTE: link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html["Utilizzo di Windows Server 2022 con ONTAP"] fornisce istruzioni su link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html#installing-windows-hotfixes["Installazione degli hotfix di Windows"] Per Windows Server 2022. Fare riferimento ai documenti Windows nella categoria configurazioni host per trovare le informazioni relative alla correzione rapida per le versioni precedenti del server Windows.
+
+. Aggiungere la licenza iSCSI, FCP o NVMe-of e avviare il servizio di destinazione.
++
+I protocolli FC e iSCSI non richiedono licenze sui sistemi storage e-Series che utilizzano Gestione storage SANtricity.
+
+. Verificare il cablaggio.
++
+Vedere https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanconf/home.html?cp=14_7["Guida ALLA configurazione SAN"^] Per la versione di ONTAP o il https://mysupport.netapp.com/ecm/ecm_get_file/ECMLP2773533["Guida al cablaggio hardware e-Series"^] per informazioni dettagliate sul cablaggio e sulla configurazione.
+
+
+
+
+
+== Configurare gli HBA e gli switch FC
+
+Installare e configurare uno o più HBA (host bus adapter) FC supportati per le connessioni FC al sistema storage.
+
+Il programma di installazione delle utility host di Windows imposta le impostazioni HBA FC richieste.
+
+
+CAUTION: Non modificare manualmente le impostazioni dell'HBA.
+
+.Fasi
+. Installare uno o più HBA FC supportati seguendo le istruzioni fornite dal fornitore dell'HBA.
+. Ottenere i driver HBA supportati e le utility di gestione e installarli in base alle istruzioni fornite dal fornitore HBA.
+. Collegare gli HBA agli switch FC o direttamente al sistema storage.
+. Creare zone sullo switch FC in base alla documentazione dello switch FC.
+. Per ONTAP, impostare lo switch in base al numero WWPN. Assicurarsi di utilizzare il WWPN delle interfacce logiche (LIF) e non il WWPN delle porte fisiche dei controller di storage. Per ulteriori informazioni, vedere https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanconf/home.html?cp=14_7["Guida ALLA configurazione SAN"^].
+
+
+
+
+== Installare le utility host
+
+Il programma di installazione installa il pacchetto di utility host e imposta il registro di sistema di Windows e le impostazioni HBA.
+
+È necessario specificare se includere il supporto multipathing quando si installa il pacchetto software Windows Unified host Utilities. Il programma di installazione richiede le seguenti opzioni. È inoltre possibile eseguire un'installazione silenziosa (non assistita) dal prompt dei comandi di Windows.
+
+.Supporto multipathing
+* Scegliere `MPIO` Se si dispone di più percorsi dall'host o dalla macchina virtuale di Windows al sistema di storage.
+* Scegliere `no MPIO` solo se si utilizza un singolo percorso per il sistema storage.
+
+
+La selezione di MPIO non è disponibile per i sistemi Windows XP e Windows Vista; i/o multipath non è supportato su questi sistemi operativi guest. Per i guest Hyper-V, i dischi raw (pass-through) non vengono visualizzati nel sistema operativo guest se si sceglie il supporto multipathing. È possibile utilizzare dischi raw o MPIO, ma non entrambi nel sistema operativo guest.
+
+[role="tabbed-block"]
+====
+.Installare le utility host in modo interattivo
+--
+Per installare il pacchetto software delle utility host in modo interattivo, è necessario eseguire il programma di installazione delle utility host e seguire le istruzioni.
+
+.Fasi
+. Scaricare il file eseguibile da https://mysupport.netapp.com/site/["Sito di supporto NetApp"^].
+. Passare alla directory in cui è stato scaricato il file eseguibile.
+. Eseguire `netapp_windows_host_utilities_7.2_x64` archiviare e seguire le istruzioni visualizzate sullo schermo.
+. Riavviare l'host Windows quando richiesto.
+
+
+--
+.Installare le utility host da una riga di comando
+--
+È possibile eseguire un'installazione silenziosa (non presidiata) delle utility host immettendo i comandi appropriati al prompt dei comandi di Windows. Il pacchetto di installazione delle utility host deve trovarsi in un percorso accessibile dall'host Windows.
+
+Seguire le istruzioni per l'installazione interattiva delle utility host per ottenere il pacchetto di installazione. Il sistema si riavvia automaticamente al termine dell'installazione.
+
+.Fasi
+. Digitare il seguente comando al prompt dei comandi di Windows:
++
+`msiexec /i installer.msi /quiet MULTIPATHING= {0 | 1} [INSTALLDIR=inst_path]`
+
++
+** `installer` è il nome di `.msi` File per l'architettura della CPU.
+** MULTIPATHING specifica se è installato il supporto MPIO. I valori consentiti sono "0" per no e "1" per sì.
+** `inst_path` è il percorso in cui sono installati i file delle utility host. Il percorso predefinito è `C:\Program Files\NetApp\Windows Host Utilities\`.
+
+
+
+
+
+NOTE: Per visualizzare le opzioni standard di Microsoft Installer (MSI) per la registrazione e altre funzioni, immettere `msiexec /help` Al prompt dei comandi di Windows. Ad esempio, il `msiexec /i install.msi /quiet /l*v <install.log> LOGVERBOSE=1` visualizza le informazioni di registrazione.
+
+--
+====
+
+
+== Aggiornare le utility host
+
+Il nuovo pacchetto di installazione delle utility host deve trovarsi in un percorso accessibile dall'host Windows. Seguire le istruzioni per l'installazione interattiva delle utility host per aggiornare il pacchetto di installazione.
+
+[role="tabbed-block"]
+====
+.Aggiornare le utility host in modo interattivo
+--
+Per aggiornare il pacchetto software delle utility host in modo interattivo, è necessario eseguire il programma di installazione delle utility host e seguire le istruzioni.
+
+.Fasi
+. Passare alla directory in cui è stato scaricato il file eseguibile.
+. Eseguire il file eseguibile e seguire le istruzioni visualizzate.
+. Riavviare l'host Windows quando richiesto.
+. Al termine del riavvio, controllare la versione dell'utility host:
++
+.. Aprire *pannello di controllo*.
+.. Accedere a *programmi e funzionalità* e controllare la versione dell'utility host.
+
+
+
+
+--
+.Aggiornare le utility host da una riga di comando
+--
+È possibile eseguire un aggiornamento silenzioso (non assistito) delle nuove utility host immettendo i comandi appropriati al prompt dei comandi di Windows.
+
+Il nuovo pacchetto di installazione delle utility host deve trovarsi in un percorso accessibile dall'host Windows. Seguire le istruzioni per l'installazione interattiva delle utility host per aggiornare il pacchetto di installazione.
+
+.Fasi
+. Digitare il seguente comando al prompt dei comandi di Windows:
++
+`msiexec /i installer.msi /quiet MULTIPATHING= {0 | 1} [INSTALLDIR=inst_path]`
+
++
+** `installer` è il nome di `.msi` File per l'architettura della CPU.
+** MULTIPATHING specifica se è installato il supporto MPIO. I valori consentiti sono "0" per no e "1" per sì.
+** `inst_path` è il percorso in cui sono installati i file delle utility host. Il percorso predefinito è `C:\Program Files\NetApp\Windows Host Utilities\`.
+
+
+
+
+
+NOTE: Per visualizzare le opzioni standard di Microsoft Installer (MSI) per la registrazione e altre funzioni, immettere `msiexec /help` Al prompt dei comandi di Windows. Ad esempio, il `msiexec /i install.msi /quiet /l*v <install.log> LOGVERBOSE=1` visualizza le informazioni di registrazione.
+
+Il sistema si riavvia automaticamente al termine dell'installazione.
+
+--
+====
+
+
+== Riparare e rimuovere le utilità host di Windows
+
+È possibile utilizzare l'opzione *Repair* del programma di installazione delle utility host per aggiornare le impostazioni HBA e del registro di Windows. È possibile rimuovere completamente le utility host, sia interattivamente che dalla riga di comando di Windows.
+
+[role="tabbed-block"]
+====
+.Riparare o rimuovere le utility host di Windows in modo interattivo
+--
+L'opzione *Ripara* aggiorna il registro di sistema di Windows e gli HBA FC con le impostazioni richieste. È inoltre possibile rimuovere completamente le utility host.
+
+.Fasi
+. Aprire Windows *programmi e funzionalità* (Windows Server 2012 R2, Windows Server 2016, Windows Server 2019 e Windows 2022).
+. Selezionare *NetApp Windows Unified host Utilities*.
+. Selezionare *Cambia*.
+. Selezionare *Repair* (Riparazione) o *Remove* (Rimuovi), in base alle necessità.
+. Seguire le istruzioni visualizzate.
+
+
+--
+.Riparare o rimuovere le utilità host di Windows dalla riga di comando
+--
+L'opzione *Ripara* aggiorna il registro di sistema di Windows e gli HBA FC con le impostazioni richieste. È inoltre possibile rimuovere completamente le utility host da una riga di comando di Windows.
+
+.Fasi
+. Immettere il seguente comando nella riga di comando di Windows per riparare le utilità host di Windows:
++
+`msiexec /f installer.msi [/quiet]`
+
++
+** `/f` ripara l'installazione.
+** `installer.msi` È il nome del programma di installazione di Windows host Utilities sul sistema.
+** `/quiet` elimina tutti i feedback e riavvia automaticamente il sistema senza chiedere conferma al completamento del comando.
+
+
+
+
+--
+====
+
+
+== Panoramica delle impostazioni utilizzate dalle utility host
+
+Le utility host richiedono alcune impostazioni del Registro di sistema e dei parametri per verificare che l'host Windows gestisca correttamente il comportamento del sistema di storage.
+
+Le utility host di Windows impostano i parametri che influiscono sul modo in cui l'host Windows risponde a un ritardo o a una perdita di dati. I valori specifici sono stati selezionati per verificare che l'host Windows gestisca correttamente gli eventi, come il failover di un controller nel sistema di storage al relativo controller partner.
+
+Non tutti i valori si applicano al DSM per lo storage manager SANtricity; tuttavia, qualsiasi sovrapposizione dei valori impostati dalle utility host e quelli impostati dal DSM per lo storage manager SANtricity non causa conflitti.
+
+Gli HBA FC, NVMe/FC e iSCSI dispongono inoltre di parametri che è necessario impostare per garantire le migliori performance e gestire con successo gli eventi del sistema storage.
+
+Il programma di installazione fornito con Windows Unified host Utilities imposta i parametri Windows, FC e NVMe/FC HBA sui valori supportati.
+
+È necessario impostare manualmente i parametri HBA iSCSI.
+
+Il programma di installazione imposta valori diversi a seconda che si specifichi il supporto MPIO (Multipath i/o) quando si esegue il programma di installazione.
+
+Non modificare questi valori a meno che il supporto tecnico non lo abbia consigliato.
+
+
+
+== Valori del Registro di sistema impostati da Windows Unified host Utilities
+
+Il programma di installazione di Windows Unified host Utilities imposta automaticamente i valori del Registro di sistema in base alle scelte effettuate durante l'installazione. È necessario conoscere questi valori del Registro di sistema e la versione del sistema operativo.
+
+I seguenti valori vengono impostati dal programma di installazione di Windows Unified host Utilities. Tutti i valori sono decimali, salvo diversa indicazione.
+
+
+NOTE: HKLM è l'abbreviazione di `HKEY_LOCAL_MACHINE`.
+
+[cols="20,20,30"]
+|===
+| Chiave di registro | Valore | Quando impostato 
+
+
+| HKLM/SISTEMA/CurrentControlSet/servizi/parametri/DsmMaximumRetryTimeDuringStateTransition | 120 | Quando viene specificato il supporto MPIO e il server in uso è Windows Server 2012 R2, Windows Server 2016 e Windows 2019 o Windows Server 2022 
+
+
+| HKLM/SYSTEM/CurrentControlSet/Services/msdsm/Parameters/DsmMaximumStateTransitionTime | 120 | Quando viene specificato il supporto MPIO e il server in uso è Windows Server 2012 R2, Windows Server 2016, Windows 2019 o Windows Server 2022 
+
+
+| HKLM/SISTEMA/CurrentControlSet/servizi/parametri/DsmSupportedDeviceList | "NETAPP LUN", "NETAPP LUN C- Mode" "NVMe NetApp ONTAO con" | Quando viene specificato il supporto MPIO 
+
+
+| HKLM {SYSTEM} CurrentControlSet Control iSCSI_driver_GUID INSTANCE_ID Parameters IPSecConfigTimeout | 60 | Sempre 
+
+
+| HKLM/SYSTEM/CurrentControlSet/Control/Class {iSCSI_driver_GUID} INSTANCE_ID Parameters/LinkDownTime | 10 | Sempre 
+
+
+| HKLM/SYSTEM/CurrentControlSet/Services/ClusDisk/Parameters/ManageDisksOnSystemBuses | 1 | Sempre 
+
+
+| HKLM {SYSTEM} CurrentControlSet Control iSCSI_driver_GUID INSTANCE_ID Parameters MaxRequestHoldTime | 120 | Quando non è selezionato alcun supporto MPIO 
+
+
+| HKLM {SYSTEM} CurrentControlSet Control iSCSI_driver_GUID INSTANCE_ID Parameters MaxRequestHoldTime | 30 | Sempre 
+
+
+| HKLM/SYSTEM/CurrentControlSet/Control/MPDEV/MPIOSupportedDeviceList | "NETAPP LUN", "NETAPP LUN C- Mode", "NVMe NetApp ONTAO con" | Quando viene specificato il supporto MPIO 
+
+
+| HKLM/SISTEMA/CurrentControlSet/servizi/mpio/parametri/PathRecoveryInterval | 30 | Quando il server è Windows Server 2012 R2, Windows Server 2016, Windows Server 2019 o Windows Server 2022 
+
+
+| HKLM/SISTEMA/CurrentControlSet/servizi/mpio/parametri/PathVerifyEnabled | 1 | Quando viene specificato il supporto MPIO 
+
+
+| HKLM/SISTEMA/CurrentControlSet/servizi/parametri/PathVerifyEnabled | 1 | Quando viene specificato il supporto MPIO e il server in uso è Windows Server 2012 R2, Windows Server 2016, Windows Server 2019 o Windows Server 2022 
+
+
+| HKLM/SISTEMA/CurrentControlSet/servizi/vnetapp/parametri/PathVerifyEnabled | 0 | Quando viene specificato il supporto MPIO 
+
+
+| HKLM/SISTEMA/CurrentControlSet/servizi/mpio/parametri/PDORemovePeriod | 130 | Quando viene specificato il supporto MPIO 
+
+
+| HKLM/SYSTEM/CurrentControlSet/Services/msdsm/Parameters/PDORemovePeriod | 130 | Quando viene specificato il supporto MPIO e il server è Windows Server 2012 R2, Windows Server 2016 , Windows Server 2019 o Windows Server 2022 
+
+
+| HKLM/SYSTEM/CurrentControlSet/Services/vnetapp/Parameters/PDORemovePeriod | 130 | Quando viene specificato il supporto MPIO, tranne se viene rilevato il DSM Data ONTAP 
+
+
+| HKLM/SYSTEM/CurrentControlSet/Services/mpio/Parameters/RetryCount | 6 | Quando viene specificato il supporto MPIO 
+
+
+| HKLM/SYSTEM/CurrentControlSet/Services/msm/Parameters/RetryCount | 6 | Quando viene specificato il supporto MPIO e il server in uso è Windows Server 2012 R2, Windows Server 2016, Windows Server 2019 o Windows Server 2022 
+
+
+| HKLM/SYSTEM/CurrentControlSet/Services/mpio/Parameters/RetryInterval | 1 | Quando viene specificato il supporto MPIO 
+
+
+| HKLM/SYSTEM/CurrentControlSet/Services/mssm/Parameters/RetryInterval | 1 | Quando viene specificato il supporto MPIO e il server in uso è Windows Server 2012 R2, Windows Server 2016, Windows Server 2019 o Windows Server 2022 
+
+
+| HKLM/SYSTEM/CurrentControlSet/Services/vnetapp/Parameters/RetryInterval | 1 | Quando viene specificato il supporto MPIO 
+
+
+| HKLM/SISTEMA/CurrentControlSet/servizi/disco/TimeOutValue | 120 | Quando non è selezionato alcun supporto MPIO 
+
+
+| HKLM/SYSTEM/CurrentControlSet/Services/mpio/Parameters/UseCustomPathRecoveryInterval | 1 | Quando viene specificato il supporto MPIO e il server in uso è Windows Server 2012 R2, Windows Server 2016, Windows Server 2019 o Windows Server 2022 
+|===
+.Informazioni correlate
+Consultare i documenti Microsoft per informazioni dettagliate sui parametri del Registro di sistema.
+
+
+
+== Parametri NVMe
+
+I seguenti parametri del driver NVMe Emulex vengono aggiornati durante l'installazione DI WUHU 7.2:
+
+* EnableNVMe = 1
+* NVMEMode = 0
+* LimTransferSize=1
+
+
+
+
+== Valori FC HBA impostati da Windows host Utilities
+
+Nei sistemi che utilizzano FC, il programma di installazione delle utility host imposta i valori di timeout richiesti per gli HBA FC Emulex e QLogic.
+
+Per gli HBA FC Emulex, il programma di installazione imposta i seguenti parametri:
+
+[role="tabbed-block"]
+====
+.Quando si seleziona MPIO
+--
+|===
+| Tipo di proprietà | Valore della proprietà 
+
+
+| LinkTimeOut | 1 
+
+
+| NodeTimeOut | 10 
+|===
+--
+.Quando MPIO non è selezionato
+--
+|===
+| Tipo di proprietà | Valore della proprietà 
+
+
+| LinkTimeOut | 30 
+
+
+| NodeTimeOut | 120 
+|===
+--
+====
+Per gli HBA FC QLogic, il programma di installazione imposta i seguenti parametri:
+
+[role="tabbed-block"]
+====
+.Quando si seleziona MPIO
+--
+|===
+| Tipo di proprietà | Valore della proprietà 
+
+
+| LinkDownTimeOut | 1 
+
+
+| PortDownRetryCount | 10 
+|===
+--
+.Quando MPIO non è selezionato
+--
+|===
+| Tipo di proprietà | Valore della proprietà 
+
+
+| LinkDownTimeOut | 30 
+
+
+| PortDownRetryCount | 120 
+|===
+--
+====
+
+NOTE: I nomi dei parametri possono variare leggermente a seconda del programma. Ad esempio, nel programma QLogic QConvergeConsole, il parametro viene visualizzato come `Link Down Timeout`. Le utility host `fcconfig.ini` file visualizza questo parametro come uno dei due `LinkDownTimeOut` oppure `MpioLinkDownTimeOut`, A seconda che sia specificato o meno MPIO. Tuttavia, tutti questi nomi fanno riferimento allo stesso parametro HBA.
+
+.Informazioni correlate
+Fare riferimento al sito Emulex o QLogic per ulteriori informazioni sui parametri di timeout.
+
+
+
+== Risoluzione dei problemi
+
+È possibile utilizzare le tecniche generali di risoluzione dei problemi per le utilità host di Windows. Consultare le ultime note di rilascio per individuare problemi noti e soluzioni.
+
+
+
+=== Diverse aree per identificare i possibili problemi di interoperabilità
+
+* Per identificare potenziali problemi di interoperabilità, è necessario confermare che le utility host supportano la combinazione di software del sistema operativo host, hardware host, software ONTAP e hardware del sistema storage.
+* Controllare http://mysupport.netapp.com/matrix["Tool di matrice di interoperabilità NetApp"^].
+* Verificare di disporre della configurazione iSCSI corretta.
+* Se i LUN iSCSI non sono disponibili dopo un riavvio, verificare che la destinazione sia elencata come persistente nella scheda *Persistent Targets* della GUI di Microsoft iSCSI Initiator.
+* Se le applicazioni che utilizzano i LUN visualizzano errori all'avvio, è necessario verificare che le applicazioni siano configurate in modo da dipendere dal servizio iSCSI.
+* Per i percorsi FC verso i controller di storage che eseguono ONTAP, è necessario verificare che gli switch FC siano dotati di zone utilizzando le WWPN delle LIF di destinazione, non le WWPN delle porte fisiche sul nodo.
+* È necessario rivedere link:hu_wuhu_71_rn.html["Note di rilascio"] Per le utility host di Windows per verificare la presenza di problemi noti. Le Note di rilascio includono un elenco di problemi e limitazioni noti.
+* Per la versione di ONTAP in uso, consultare le informazioni relative alla risoluzione dei problemi contenute nella Guida all'amministrazione SAN.
+* È necessario eseguire una ricerca https://mysupport.netapp.com/site/bugs-online/product["NetApp Bugs Online"^] per i problemi rilevati di recente.
++
+** Nel campo Bug Type (tipo di bug) sotto Advanced Search (Ricerca avanzata), selezionare *iSCSI - Windows*, quindi *Go*. Ripetere la ricerca per tipo di bug *FCP -Windows*.
+
+
+* È necessario raccogliere informazioni sul sistema.
+* Annotare eventuali messaggi di errore visualizzati sulla console del sistema di storage o dell'host.
+* Raccogliere i file di log dell'host e del sistema di storage.
+* Annotare i sintomi del problema e le eventuali modifiche apportate all'host o al sistema di storage prima che si verificasse il problema.
+* Se non riesci a risolvere il problema, contatta il supporto tecnico di NetApp per ricevere assistenza.
+
+
+
+
+=== Comprendere le modifiche apportate dalle utility host alle impostazioni del driver FC HBA
+
+Durante l'installazione dei driver HBA Emulex o QLogic richiesti su un sistema FC, vengono controllati diversi parametri e in alcuni casi modificati.
+
+Le utility host impostano i valori per i seguenti parametri:
+
+* LinkTimeOut: Definisce il tempo di attesa della porta host in secondi prima di riprendere le operazioni di i/o dopo che un collegamento fisico è stato inattivo.
+* NodeTimeOut - definisce il periodo di tempo in secondi prima che la porta host riconosca che la connessione al dispositivo di destinazione non è attiva.
+
+
+Durante la risoluzione dei problemi relativi all'HBA, verificare che i valori di queste impostazioni siano corretti. I valori corretti dipendono da due fattori:
+
+* Il vendor HBA
+* Se si utilizza MPIO
+
+
+È possibile correggere le impostazioni HBA eseguendo l'opzione *Repair* (Ripristina) del programma di installazione delle utilità host di Windows.
+
+[role="tabbed-block"]
+====
+.Verificare le impostazioni del driver HBA Emulex sui sistemi FC
+--
+Se si dispone di un sistema FC, verificare le impostazioni del driver HBA Emulex. Queste impostazioni devono esistere per ciascuna porta dell'HBA.
+
+.Fasi
+. Aprire Gestione OnCommand.
+. Selezionare l'HBA appropriato dall'elenco e selezionare la scheda *driver Parameters* (parametri driver).
++
+Vengono visualizzati i parametri del driver.
+
+. Se si utilizza il software MPIO, verificare di disporre delle seguenti impostazioni del driver:
++
+** LinkTimeOut - 1
+** NodeTimeOut - 10
+
+
+. Se non si utilizza il software MPIO, verificare di disporre delle seguenti impostazioni del driver:
++
+** LinkTimeOut - 30
+** NodeTimeOut - 120
+
+
+
+
+--
+.Verificare le impostazioni del driver QLogic HBA sui sistemi FC
+--
+Sui sistemi FC, verificare le impostazioni del driver QLogic HBA. Queste impostazioni devono esistere per ciascuna porta dell'HBA.
+
+.Fasi
+. Aprire QConvergeConsole, quindi selezionare *Connect* sulla barra degli strumenti.
++
+Viene visualizzata la finestra di dialogo *connessione all'host*.
+
+. Selezionare l'host appropriato dall'elenco, quindi selezionare *Connect*.
++
+Nel riquadro HBA FC viene visualizzato un elenco di HBA.
+
+. Selezionare la porta HBA appropriata dall'elenco, quindi selezionare la scheda *Impostazioni*.
+. Selezionare *Advanced HBA Port Settings* (Impostazioni avanzate porta HBA) dalla sezione *Select Settings* (Seleziona impostazioni).
+. Se si utilizza il software MPIO, verificare di disporre delle seguenti impostazioni del driver:
++
+** Timeout di collegamento inattivo (linkdwnto) - 1
+** Numero tentativi porta giù (portdwnrc) - 10
+
+
+. Se non si utilizza il software MPIO, verificare di disporre delle seguenti impostazioni del driver:
++
+** Timeout di collegamento inattivo (linkdwnto) - 30
+** Numero tentativi porta giù (portdwnrc) - 120
+
+
+
+
+--
+====

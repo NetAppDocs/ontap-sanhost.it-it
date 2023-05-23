@@ -1,0 +1,16 @@
+= 
+:allow-uri-read: 
+
+
+.Fasi
+. Mappare il LUN di avvio SAN sull'host.
+. Verificare che siano disponibili più percorsi.
++
+Tenere presente che i percorsi multipli saranno disponibili solo dopo che il sistema operativo host sarà attivo e in esecuzione sui percorsi.
+
+. Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN.
++
+Per informazioni su come attivare il BIOS HBA, consultare la documentazione specifica del vendor.
+
+. Riavviare l'host per verificare che l'avvio sia stato eseguito correttamente.
+

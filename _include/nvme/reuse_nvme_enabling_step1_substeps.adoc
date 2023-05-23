@@ -1,0 +1,26 @@
+= 
+:allow-uri-read: 
+
+
+. Eseguire il backup di `/etc/nvme/host*` file.
+. Se si dispone di una modifica manuale `udev` regola, rimuovilo:
++
+[listing]
+----
+/lib/udev/rules.d/71-nvme-iopolicy-netapp-ONTAP.rules
+----
+. Eseguire l'aggiornamento.
+. Al termine dell'aggiornamento, eseguire il seguente comando:
++
+[listing]
+----
+yum remove nvme-cli
+----
+. Ripristinare i file host in `/etc/nvme/`.
++
+[listing]
+----
+yum install nvmecli
+----
+. Copiare l'originale `/etc/nvme/host*` dal backup ai file host effettivi in `/etc/nvme/`.
+

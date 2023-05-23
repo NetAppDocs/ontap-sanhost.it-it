@@ -1,0 +1,23 @@
+= 
+:allow-uri-read: 
+
+
+Il `lpfc_sg_seg_cnt` Il parametro deve essere impostato su 256 per consentire all'host di emettere 1 MB di i/O.
+
+.Fasi
+. Impostare `lpfc_sg_seg_cnt` parametro a 256.
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_sg_seg_cnt=256
+----
+. Eseguire un `dracut -f` e riavviare l'host.
+. Verificare che `lpfc_sg_seg_cnt` è 256.
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+256
+----
+

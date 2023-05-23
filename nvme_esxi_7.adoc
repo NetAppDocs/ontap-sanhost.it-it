@@ -1,0 +1,287 @@
+---
+sidebar: sidebar 
+permalink: nvme_esxi_7.html 
+keywords: nvme, esxi, ontap, nvme/fc, hypervisor 
+summary: Descrive come configurare NVMe-of per ESXi 7.x con ONTAP 
+---
+= Configurazione host NVMe-of per ESXi 7.x con ONTAP
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== Supportabilità
+
+* A partire da ONTAP 9.7, è stato aggiunto il supporto NVMe su Fibre Channel (NVMe/FC) per le release di VMware vSphere.
+* A partire da 7.0U3c, la funzionalità NVMe/TCP è supportata per l'hypervisor ESXi.
+* A partire da ONTAP 9.10.1, la funzione NVMe/TCP è supportata per ONTAP.
+
+
+
+
+== Caratteristiche
+
+* L'host ESXi Initiator può eseguire il traffico NVMe/FC e FCP attraverso le stesse porte dell'adattatore. Vedere link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] Per un elenco di controller e adattatori FC supportati. Vedere link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^] per l'elenco più aggiornato delle configurazioni e delle versioni supportate.
+* A partire da ONTAP 9.9.1 P3, la funzione NVMe/FC è supportata per ESXi 7.0 update 3.
+* Per ESXi 7.0 e versioni successive, HPP (plugin ad alte prestazioni) è il plug-in predefinito per i dispositivi NVMe.
+
+
+
+
+== Limitazioni note
+
+Le seguenti configurazioni non sono supportate:
+
+* Mappatura RDM
+* VVol
+
+
+
+
+== Abilitare NVMe/FC
+
+. Controllare la stringa NQN dell'host ESXi e verificare che corrisponda alla stringa NQN dell'host per il sottosistema corrispondente sull'array ONTAP:
++
+[listing]
+----
+# esxcli nvme  info get
+Host NQN: nqn.2014-08.com.vmware:nvme:nvme-esx
+
+# vserver nvme subsystem host show -vserver vserver_nvme
+  Vserver Subsystem             Host NQN
+  ------- ------------------- ----------------------------------------
+  vserver_nvme ss_vserver_nvme nqn.2014-08.com.vmware:nvme:nvme-esx
+----
+
+
+
+
+=== Configurare Broadcom/Emulex
+
+. Verificare che la configurazione sia supportata con il driver/firmware richiesto facendo riferimento a. link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^].
+. Impostare il parametro lpfc driver `lpfc_enable_fc4_type=3` Per abilitare il supporto NVMe/FC in `lpfc` e riavviare l'host.
+
+
+
+NOTE: A partire da vSphere 7.0 update 3 `brcmnvmefc` il driver non è più disponibile. Pertanto, il `lpfc` Il driver ora include la funzionalità NVMe over Fibre Channel (NVMe/FC) fornita in precedenza con `brcmnvmefc` driver.
+
+
+NOTE: Il `lpfc_enable_fc4_type=3` Il parametro è impostato per impostazione predefinita per gli adattatori della serie LPe35000. Eseguire il seguente comando per impostarlo manualmente per gli adattatori serie LPe32000 e LPe31000.
+
+[listing]
+----
+# esxcli system module parameters set -m lpfc -p lpfc_enable_fc4_type=3
+
+#esxcli system module parameters list  -m lpfc | grep lpfc_enable_fc4_type
+lpfc_enable_fc4_type              int     3      Defines what FC4 types are supported
+
+#esxcli storage core adapter list
+HBA Name  Driver   Link State  UID                                   Capabilities         Description
+--------  -------  ----------  ------------------------------------  -------------------  -----------
+vmhba1    lpfc     link-up     fc.200000109b95456f:100000109b95456f  Second Level Lun ID  (0000:86:00.0) Emulex Corporation Emulex LPe36000 Fibre Channel Adapter    FC HBA
+vmhba2    lpfc     link-up     fc.200000109b954570:100000109b954570  Second Level Lun ID  (0000:86:00.1) Emulex Corporation Emulex LPe36000 Fibre Channel Adapter    FC HBA
+vmhba64   lpfc     link-up     fc.200000109b95456f:100000109b95456f                       (0000:86:00.0) Emulex Corporation Emulex LPe36000 Fibre Channel Adapter   NVMe HBA
+vmhba65   lpfc     link-up     fc.200000109b954570:100000109b954570                       (0000:86:00.1) Emulex Corporation Emulex LPe36000 Fibre Channel Adapter   NVMe HBA
+----
+
+
+=== Configurare Marvell/QLogic
+
+.Fasi
+. Verificare se la configurazione è supportata con il driver/firmware richiesto facendo riferimento a. link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^].
+. Impostare `qlnativefc` parametro driver `ql2xnvmesupport=1` Per abilitare il supporto NVMe/FC in `qlnativefc` e riavviare l'host.
++
+`# esxcfg-module -s 'ql2xnvmesupport=1' qlnativefc`
+
++
+
+NOTE: Il `qlnativefc` Il parametro driver è impostato per impostazione predefinita per gli adattatori della serie QLE 277x. Per impostarlo manualmente per gli adattatori della serie QLE 277x, è necessario eseguire il seguente comando.
+
++
+[listing]
+----
+esxcfg-module -l | grep qlnativefc
+qlnativefc               4    1912
+----
+. Verificare che nvme sia attivato sulla scheda di rete:
++
+[listing]
+----
+  #esxcli storage core adapter list
+HBA Name  Driver      Link State  UID                                   Capabilities         Description
+--------  ----------  ----------  ------------------------------------  -------------------  -----------
+ vmhba3    qlnativefc  link-up     fc.20000024ff1817ae:21000024ff1817ae  Second Level Lun ID  (0000:5e:00.0) QLogic Corp QLE2742 Dual Port 32Gb Fibre Channel to PCIe Adapter    FC Adapter
+vmhba4    qlnativefc  link-up     fc.20000024ff1817af:21000024ff1817af  Second Level Lun ID  (0000:5e:00.1) QLogic Corp QLE2742 Dual Port 32Gb Fibre Channel to PCIe Adapter FC Adapter
+vmhba64   qlnativefc  link-up     fc.20000024ff1817ae:21000024ff1817ae                       (0000:5e:00.0) QLogic Corp QLE2742 Dual Port 32Gb Fibre Channel to PCIe Adapter  NVMe FC Adapter
+vmhba65   qlnativefc  link-up     fc.20000024ff1817af:21000024ff1817af                       (0000:5e:00.1) QLogic Corp QLE2742 Dual Port 32Gb Fibre Channel to PCIe Adapter  NVMe FC Adapter
+----
+
+
+
+
+== Validare NVMe/FC
+
+. Verificare che l'adattatore NVMe/FC sia presente nell'host ESXi:
++
+[listing]
+----
+# esxcli nvme adapter list
+
+Adapter  Adapter Qualified Name           Transport Type  Driver      Associated Devices
+-------  -------------------------------  --------------  ----------  ------------------
+vmhba64  aqn:qlnativefc:21000024ff1817ae  FC              qlnativefc
+vmhba65  aqn:qlnativefc:21000024ff1817af  FC              qlnativefc
+vmhba66  aqn:lpfc:100000109b579d9c 	      FC              lpfc
+vmhba67  aqn:lpfc:100000109b579d9d 	      FC              lpfc
+
+----
+. Verificare che gli spazi dei nomi NVMe/FC siano stati creati correttamente:
++
+Gli UUID nell'esempio seguente rappresentano i dispositivi dello spazio dei nomi NVMe/FC.
+
++
+[listing]
+----
+# esxcfg-mpath -b
+uuid.5084e29a6bb24fbca5ba076eda8ecd7e : NVMe Fibre Channel Disk (uuid.5084e29a6bb24fbca5ba076eda8ecd7e)
+   vmhba65:C0:T0:L1 LUN:1 state:active fc Adapter: WWNN: 20:00:34:80:0d:6d:72:69 WWPN: 21:00:34:80:0d:6d:72:69  Target: WWNN: 20:17:00:a0:98:df:e3:d1 WWPN: 20:2f:00:a0:98:df:e3:d1
+   vmhba65:C0:T1:L1 LUN:1 state:active fc Adapter: WWNN: 20:00:34:80:0d:6d:72:69 WWPN: 21:00:34:80:0d:6d:72:69  Target: WWNN: 20:17:00:a0:98:df:e3:d1 WWPN: 20:1a:00:a0:98:df:e3:d1
+   vmhba64:C0:T0:L1 LUN:1 state:active fc Adapter: WWNN: 20:00:34:80:0d:6d:72:68 WWPN: 21:00:34:80:0d:6d:72:68  Target: WWNN: 20:17:00:a0:98:df:e3:d1 WWPN: 20:18:00:a0:98:df:e3:d1
+   vmhba64:C0:T1:L1 LUN:1 state:active fc Adapter: WWNN: 20:00:34:80:0d:6d:72:68 WWPN: 21:00:34:80:0d:6d:72:68  Target: WWNN: 20:17:00:a0:98:df:e3:d1 WWPN: 20:19:00:a0:98:df:e3:d1
+----
++
+
+NOTE: In ONTAP 9.7, la dimensione predefinita del blocco per uno spazio dei nomi NVMe/FC è 4K. Questa dimensione predefinita non è compatibile con ESXi. Pertanto, quando si creano spazi dei nomi per ESXi, è necessario impostare la dimensione del blocco dello spazio dei nomi su 512b. È possibile eseguire questa operazione utilizzando `vserver nvme namespace create` comando.
+
++
+.Esempio
+`vserver nvme namespace create -vserver vs_1 -path /vol/nsvol/namespace1 -size 100g -ostype vmware -block-size 512B`
+
++
+Fare riferimento a. link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-cmpr%2FGUID-5CB10C70-AC11-41C0-8C16-B4D0DF916E9B.html["Pagine man dei comandi di ONTAP 9"^] per ulteriori dettagli.
+
+. Verificare lo stato dei singoli percorsi ANA dei rispettivi dispositivi dello spazio dei nomi NVMe/FC:
++
+[listing]
+----
+esxcli storage hpp path list -d uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+fc.200034800d6d7268:210034800d6d7268-fc.201700a098dfe3d1:201800a098dfe3d1-uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Runtime Name: vmhba64:C0:T0:L1
+   Device: uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Device Display Name: NVMe Fibre Channel Disk (uuid.5084e29a6bb24fbca5ba076eda8ecd7e)
+   Path State: active
+   Path Config: {TPG_id=0,TPG_state=AO,RTP_id=0,health=UP}
+
+fc.200034800d6d7269:210034800d6d7269-fc.201700a098dfe3d1:201a00a098dfe3d1-uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Runtime Name: vmhba65:C0:T1:L1
+   Device: uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Device Display Name: NVMe Fibre Channel Disk (uuid.5084e29a6bb24fbca5ba076eda8ecd7e)
+   Path State: active
+   Path Config: {TPG_id=0,TPG_state=AO,RTP_id=0,health=UP}
+
+fc.200034800d6d7269:210034800d6d7269-fc.201700a098dfe3d1:202f00a098dfe3d1-uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Runtime Name: vmhba65:C0:T0:L1
+   Device: uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Device Display Name: NVMe Fibre Channel Disk (uuid.5084e29a6bb24fbca5ba076eda8ecd7e)
+   Path State: active unoptimized
+   Path Config: {TPG_id=0,TPG_state=ANO,RTP_id=0,health=UP}
+
+fc.200034800d6d7268:210034800d6d7268-fc.201700a098dfe3d1:201900a098dfe3d1-uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Runtime Name: vmhba64:C0:T1:L1
+   Device: uuid.5084e29a6bb24fbca5ba076eda8ecd7e
+   Device Display Name: NVMe Fibre Channel Disk (uuid.5084e29a6bb24fbca5ba076eda8ecd7e)
+   Path State: active unoptimized
+   Path Config: {TPG_id=0,TPG_state=ANO,RTP_id=0,health=UP}
+----
+
+
+
+
+== Configurare NVMe/TCP
+
+A partire da 7.0U3c, i moduli NVMe/TCP richiesti verranno caricati per impostazione predefinita. Per la configurazione della rete e dell'adattatore NVMe/TCP, consultare la documentazione di VMware vSphere.
+
+
+
+== Validare NVMe/TCP
+
+.Fasi
+. Verificare lo stato dell'adattatore NVMe/TCP.
++
+[listing]
+----
+[root@R650-8-45:~] esxcli nvme adapter list
+Adapter    Adapter Qualified Name
+--------- -------------------------------
+vmhba64    aqn:nvmetcp:34-80-0d-30-ca-e0-T
+vmhba65    aqn:nvmetc:34-80-13d-30-ca-e1-T
+list
+Transport Type   Driver   Associated Devices
+---------------  -------  ------------------
+TCP              nvmetcp    vmnzc2
+TCP              nvmetcp    vmnzc3
+----
+. Per elencare le connessioni NVMe/TCP, utilizzare il seguente comando:
++
+[listing]
+----
+[root@R650-8-45:~] esxcli nvme controller list
+Name
+-----------
+nqn.1992-08.com.netapp:sn.5e347cf68e0511ec9ec2d039ea13e6ed:subsystem.vs_name_tcp_ss#vmhba64#192.168.100.11:4420
+nqn.1992-08.com.netapp:sn.5e347cf68e0511ec9ec2d039ea13e6ed:subsystem.vs_name_tcp_ss#vmhba64#192.168.101.11:4420
+Controller Number  Adapter   Transport Type   IS Online
+----------------- ---------  ---------------  ---------
+1580              vmhba64    TCP              true
+1588              vmhba65    TCP              true
+
+----
+. Per elencare il numero di percorsi di uno spazio dei nomi NVMe, utilizzare il seguente comando:
++
+[listing]
+----
+[root@R650-8-45:~] esxcli storage hpp path list -d uuid.400bf333abf74ab8b96dc18ffadc3f99
+tcp.vmnic2:34:80:Od:30:ca:eo-tcp.unknown-uuid.400bf333abf74ab8b96dc18ffadc3f99
+   Runtime Name: vmhba64:C0:T0:L3
+   Device: uuid.400bf333abf74ab8b96dc18ffadc3f99
+   Device Display Name: NVMe TCP Disk (uuid.400bf333abf74ab8b96dc18ffadc3f99)
+   Path State: active unoptimized
+   Path config: {TPG_id=0,TPG_state=ANO,RTP_id=0,health=UP}
+
+tcp.vmnic3:34:80:Od:30:ca:el-tcp.unknown-uuid.400bf333abf74ab8b96dc18ffadc3f99
+   Runtime Name: vmhba65:C0:T1:L3
+   Device: uuid.400bf333abf74ab8b96dc18ffadc3f99
+   Device Display Name: NVMe TCP Disk (uuid.400bf333abf74ab8b96dc18ffadc3f99)
+   Path State: active
+   Path config: {TPG_id=0,TPG_state=AO,RTP_id=0,health=UP}
+----
+
+
+
+
+== Problema noto
+
+[cols="10,30,30"]
+|===
+| ID bug NetApp | Titolo | Soluzione alternativa 
+
+
+| link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1420654["1420654"^] | Nodo ONTAP non operativo quando il protocollo NVMe/FC viene utilizzato con ONTAP versione 9.9.1 | Controllare e correggere eventuali problemi di rete nel fabric host. Se questo non risolve il problema, eseguire l'aggiornamento a una patch che risolve il problema. 
+|===
+
+
+== Link correlati
+
+link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597-VMware vSphere con ONTAP"^]
+link:https://kb.vmware.com/s/article/2031038["Supporto di VMware vSphere 5.x, 6.x e 7.x con NetApp MetroCluster (2031038)"^]
+link:https://kb.vmware.com/s/article/83370["Supporto di VMware vSphere 6.x e 7.x con NetApp® SnapMirror® Business Continuity (SM-BC)"^]

@@ -1,0 +1,17 @@
+= 
+:allow-uri-read: 
+
+
+Per attivare FC/NVMe sull'host Windows Initiator, procedere come segue:
+
+.Fasi
+. Installare l'utility OneCommand Manager sull'host Windows.
+. Su ciascuna porta HBA Initiator, impostare i seguenti parametri del driver HBA:
++
+** EnableNVMe = 1
+** NVMEMode = 0
+** LimTransferSize=1
+
+
+. Riavviare l'host.
+

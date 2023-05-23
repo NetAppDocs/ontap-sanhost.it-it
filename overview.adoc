@@ -1,0 +1,30 @@
+---
+sidebar: sidebar 
+permalink: overview.html 
+keywords: ontap, san, host, rhel, red, hat, linux, sles, suse, esxi, nvme, oracle, linux, windows, enterprise, fc, fcp, isci, aix, powervm, vios, centos, citrix, hp-ux, solaris, veritas, cvo, cloud, volume, ontap, clients, configuration, FSx, instance, netapp 
+summary: Questo contenuto fornisce una guida specifica per la distribuzione su come configurare i client cloud connessi a Cloud Volumes ONTAP e Amazon FSX per host ONTAP e SAN connessi allo storage ONTAP on-premise. 
+---
+= Panoramica della configurazione degli host SAN
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+Questo contenuto fornisce Best practice specifiche per host e versione per configurare rapidamente gli host SAN connessi allo storage ONTAP.
+
+Gli host SAN e lo storage ONTAP possono risiedere on-premise, nel cloud o in entrambi.
+
+
+NOTE: In un ambiente cloud, gli host sono generalmente denominati client. Tutte le informazioni specifiche dell'host contenute in questo contenuto si applicano anche ai client cloud.
+
+Ad esempio, è possibile configurare lo storage ONTAP on-premise per connettersi a host SAN on-premise o a client cloud SAN. È anche possibile eseguire la configurazione link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] oppure link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX per ONTAP"^] Per connettersi a host SAN on-premise o a client cloud SAN.
+
+Una corretta configurazione è importante per ottenere le migliori performance e il successo del failover.

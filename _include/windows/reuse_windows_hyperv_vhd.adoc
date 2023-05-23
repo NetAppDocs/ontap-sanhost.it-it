@@ -1,0 +1,19 @@
+= 
+:allow-uri-read: 
+
+
+Se i limiti dei blocchi di dati di una partizione di disco non si allineano con i limiti dei blocchi della LUN sottostante, il sistema storage deve spesso completare due letture o scritture di blocchi per ogni lettura o scrittura di blocchi del sistema operativo. Le letture e le scritture di blocchi aggiuntive causate dal disallineamento potrebbero creare seri problemi di performance.
+
+Il disallineamento è causato dalla posizione del settore iniziale per ciascuna partizione definita dal record di boot master.
+
+
+NOTE: Le partizioni create da Windows Server 2016 devono essere allineate per impostazione predefinita.
+
+Utilizzare `Get-NaVirtualDiskAlignment` Cmdlet del toolkit PowerShell di ONTAP per verificare se le partizioni sono allineate con le LUN sottostanti. Se le partizioni non sono allineate correttamente, utilizzare `Repair-NaVirtualDiskAlignment` Cmdlet per creare un nuovo file VHD con l'allineamento corretto. Questo cmdlet copia tutte le partizioni nel nuovo file. Il file VHD originale non viene modificato o eliminato. La macchina virtuale deve essere spenta durante la copia dei dati.
+
+È possibile scaricare il toolkit PowerShell di ONTAP presso le community NetApp. È necessario decomprimere `DataONTAP.zip` nel percorso specificato dalla variabile di ambiente `%PSModulePath%` (oppure utilizzare il `Install.ps1` script per farlo per te). Una volta completata l'installazione, utilizzare `Show-NaHelp` cmdlet per ottenere assistenza per i cmdlet.
+
+PowerShell Toolkit supporta solo file VHD di dimensioni fisse con partizioni di tipo MBR. I VHD che utilizzano dischi dinamici Windows o partizioni GPT non sono supportati. Inoltre, PowerShell Toolkit richiede una partizione di dimensioni minime di 4 GB. Le partizioni più piccole non possono essere allineate correttamente.
+
+
+NOTE: Per le macchine virtuali Linux che utilizzano il boot loader GRUB su un VHD, è necessario aggiornare la configurazione di boot dopo aver eseguito PowerShell Toolkit.

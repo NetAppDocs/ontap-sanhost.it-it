@@ -1,0 +1,10 @@
+= 
+:allow-uri-read: 
+
+
+Con l'adattatore Broadcom per FC/NVMe in un ambiente Windows `+hostnqn+` È associato a ciascuna porta HBA (host Bus Adapter). Il `+hostnqn+` è formattato come segue.
+
+....
+nqn.2017-01.com.broadcom:ecd:nvmf:fc:100000109b1b9765
+nqn.2017-01.com.broadcom:ecd:nvmf:fc:100000109b1b9766
+....

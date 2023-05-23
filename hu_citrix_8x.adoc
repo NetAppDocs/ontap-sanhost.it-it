@@ -1,0 +1,248 @@
+---
+sidebar: sidebar 
+permalink: hu_citrix_8x.html 
+keywords: host utilities, citrix, hypervisor, 8.0, 8.1, 8.2, netapp, ontap, sanhost 
+summary: Descrive come utilizzare Citrix Hypervisor 8.x con ONTAP 
+---
+= Utilizzo dell'hypervisor Citrix con NetApp ONTAP
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== Introduzione
+
+Questo documento fornisce indicazioni sulle impostazioni di configurazione degli host SAN ONTAP per le release dei sistemi operativi Citrix Hypervisor serie 8 con protocolli FC, FCoE e iSCSI.
+
+
+
+== Avvio SAN
+
+.Di cosa hai bisogno
+Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] Per verificare che il sistema operativo, l'HBA, il firmware dell'HBA, il BIOS di avvio dell'HBA e la versione di ONTAP siano supportati.
+
+.Fasi
+. Mappare il LUN di avvio SAN sull'host.
+. Verificare che siano disponibili più percorsi.
++
+Tenere presente che i percorsi multipli saranno disponibili solo dopo che il sistema operativo host sarà attivo e in esecuzione sui percorsi.
+
+. Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN.
++
+Per informazioni su come attivare il BIOS HBA, consultare la documentazione specifica del vendor.
+
+. Riavviare l'host per verificare che l'avvio sia stato eseguito correttamente.
+
+
+
+
+== Multipathing
+
+Per Citrix Hypervisor (CH) 8.x il `/etc/multipath.conf` il file deve esistere, ma non è necessario apportare modifiche specifiche al file. CH 8.x viene compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente le LUN ONTAP. È possibile utilizzare `/sbin/mpathutil` Comando status per verificare le impostazioni dei LUN ONTAP. Le sezioni seguenti forniscono un output multipath di esempio per un LUN mappato a figure ASA.
+
+
+
+=== Configurazione di tutti gli array SAN (ASA)
+
+Per la configurazione di tutti gli array SAN (ASA) deve essere presente un gruppo di percorsi con priorità singole. Tutti i percorsi sono attivi/ottimizzati, il che significa che sono serviti dal controller e l'i/o viene inviato su tutti i percorsi attivi.
+
+.Esempio
+Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con quattro percorsi attivi/ottimizzati:
+
+....
+# mpathutil status
+3600a09803830344674244a357579386a dm-13 NETAPP  ,LUN C-Mode
+size=30G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
+policy='service-time 0' prio=50 status=active
+  |- 11:0:7:1    sdfi   130:64   active ready running
+  |- 11:0:9:1    sdiy  8:288     active ready running
+  |- 11:0:10:1  sdml 69:464   active ready running
+  |- 11:0:11:1  sdpt  131:304  active ready running
+....
+
+NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di 4 percorsi. Più di 8 percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
+
+
+
+=== Configurazione non ASA
+
+Per la configurazione non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero vengono serviti dal controller in cui si trova l'aggregato. I percorsi con priorità inferiori sono attivi ma non ottimizzati perché vengono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando non sono disponibili percorsi ottimizzati.
+
+.Esempio
+Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:
+
+....
+# mpathutil status
+3600a09803830344674244a357579386a dm-13 NETAPP  ,LUN C-Mode
+size=30G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+ |- 1:0:0:11   sde   8:64    active ready running
+`- 12:0:8:11  sdua  66:544  active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+   |- 1:0:9:11   sddo  71:96   active ready running
+   `- 12:0:26:11 sdyt  129:720 active ready running
+....
+
+NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di 4 percorsi. Più di 8 percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
+
+
+
+== Impostazioni consigliate
+
+Il sistema operativo Citrix Hypervisor 8.x è compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente le LUN ONTAP. Per Citrix Hypervisor 8.x, un zero obyte vuoto `/etc/multipath.conf` il file deve esistere, ma non è necessario apportare modifiche specifiche al file.
+
+Abilitare il servizio multipath host da *XenCenter Management Portal* e verificare che il servizio multipath sia attivato e in esecuzione.
+
+[listing]
+----
+# systemct1 status multipathd
+multipathd.service - Device-Mapper Multipath Device Controller
+  Loaded:  load (/usr/lib/systemd/system/multipathd.service; enabled; vendor preset: enabled)
+ Drop-In:  /etc/systemd/system/multipathd.service.d
+             slice.config
+  Active:  active (running) since Fri YYYY-MM-DD 00:00:26 IST; 1 month 9 days ago
+Main PID:  3789 (multipathd)
+  CGroup:  /control.slice/multipathd.service
+            3789  /sbin/multipathd
+----
+Non è necessario aggiungere contenuti a `/etc/multipath.conf` file, a meno che non si disponga di periferiche che non si desidera gestire con multipath o che non si dispongano di impostazioni che sovrascrivono le impostazioni predefinite. È possibile aggiungere la seguente sintassi al file multipath.conf per escludere i dispositivi indesiderati.
+
+[listing]
+----
+# cat /etc/multipath.conf
+blacklist {
+     wwid    <DevId>
+     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+     devnode "^hd[a-z]"
+     devnode "^cciss.*"
+}
+----
+
+NOTE: Sostituire *<DevID>* con la stringa WWID del dispositivo che si desidera escludere.
+
+.Esempio
+In questo esempio per Citrix Hypervisor 8.x, `sda` È il disco SCSI locale da aggiungere alla blacklist.
+
+. Eseguire il seguente comando per determinare l'ID WWID:
++
+[listing]
+----
+# lib/udev/scsi_id -gud /dev/sda
+3600a098038303458772450714535317a
+----
+. Aggiungere questo WWID alla lista nera in `/etc/multipath.conf`:
++
+[listing]
+----
+#cat /etc/multipath.conf
+blacklist {
+  wwid    3600a098038303458772450714535317a
+  devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9*]"
+  devnode "^hd[a-z]"
+  devnode "^cciss.*"
+}
+----
+
+
+Fare riferimento alla configurazione di runtime del parametro multipath utilizzando `$multipathd show config` comando. Controllare sempre la configurazione in esecuzione per individuare le impostazioni legacy che potrebbero prevalere sulle impostazioni predefinite, in particolare nella sezione delle impostazioni predefinite.
+
+La seguente tabella mostra i parametri critici *multipath* per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri vendor e uno qualsiasi di questi parametri viene ignorato, è necessario correggerli con le successive stanze in *multipath.conf* che si applicano specificamente alle LUN ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. Le seguenti impostazioni predefinite devono essere ignorate solo previa consultazione di NetApp e/o del vendor del sistema operativo e solo quando l'impatto è pienamente compreso.
+
+[cols="2*"]
+|===
+| Parametro | Impostazione 
+
+
+| `detect_prio` | sì 
+
+
+| `dev_loss_tmo` | "infinito" 
+
+
+| `failback` | immediato 
+
+
+| `fast_io_fail_tmo` | 5 
+
+
+| `features` | "3 queue_if_no_path pg_init_retries 50" 
+
+
+| `flush_on_last_del` | "sì" 
+
+
+| `hardware_handler` | "0" 
+
+
+| `path_checker` | "a" 
+
+
+| `path_grouping_policy` | "group_by_prio" 
+
+
+| `path_selector` | "tempo di servizio 0" 
+
+
+| `polling_interval` | 5 
+
+
+| `prio` | "ONTAP" 
+
+
+| `product` | LUN.* 
+
+
+| `retain_attached_hw_handler` | sì 
+
+
+| `rr_weight` | "uniforme" 
+
+
+| `user_friendly_names` | no 
+
+
+| `vendor` | NETAPP 
+|===
+.Esempio
+Nell'esempio seguente viene illustrato come correggere un valore predefinito sovrascritto. In questo caso, il file *multipath.conf* definisce i valori per *path_checker* e *detect_prio* non compatibili con le LUN ONTAP. Se non possono essere rimossi a causa di altri array SAN collegati all'host, questi parametri possono essere corretti specificamente per i LUN ONTAP con un dispositivo.
+
+[listing]
+----
+# cat /etc/multipath.conf
+defaults {
+  path_checker readsector0
+  detect_prio no
+}
+devices{
+        device{
+                vendor "NETAPP "
+                product "LUN.*"
+                path_checker tur
+                detect_prio yes
+        }
+}
+----
+
+NOTE: Citrix Hypervisor consiglia l'utilizzo dei tool Citrix VM per tutte le macchine virtuali guest basate su Linux e Windows per una configurazione supportata.
+
+
+
+== Problemi e limitazioni noti
+
+[cols="4*"]
+|===
+| ID bug NetApp | Titolo | Descrizione | ID Tracker Citrix 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1242343["1242343"^] | Interruzione del kernel su Citrix Hypervisor 8.0 con QLogic QLE2742 32 GB FC durante le operazioni di failover dello storage | Durante le operazioni di failover dello storage su kernel Citrix Hypervisor 8.0 (4.19.0+1) con HBA QLogic QLE2742 da 32 GB potrebbe verificarsi un'interruzione del kernel. Questo problema richiede il riavvio del sistema operativo e causa l'interruzione dell'applicazione. Se kdump è configurato, l'interruzione del kernel genera un file vmcore nella directory /var/crash/. È possibile utilizzare il file vmcore per comprendere la causa dell'errore. Dopo l'interruzione del kernel, è possibile ripristinare il sistema operativo riavviando il sistema operativo host e riavviando l'applicazione. | link:https://tracker.citrix.com/browse/NETAPP-98["NETAPP-98"^] 
+|===

@@ -1,0 +1,19 @@
+= 
+:allow-uri-read: 
+
+
+Non esiste una registrazione qla2xxx specifica simile per NVMe/FC a quella per `lpfc` driver. Pertanto, è possibile impostare il livello di registrazione generale di qla2xxx seguendo questa procedura:
+
+.Fasi
+. Aggiungere il `ql2xextended_error_logging=0x1e400000` al corrispondente `modprobe qla2xxx conf` file.
+. Ricreare il `initramfs` in esecuzione `dracut -f` e riavviare l'host.
+. Dopo il riavvio, verificare che la registrazione dettagliata sia stata applicata come segue:
++
+[listing]
+----
+# cat /etc/modprobe.d/qla2xxx.conf
+options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
+# cat /sys/module/qla2xxx/parameters/ql2xextended_error_logging
+507510784
+----
+
