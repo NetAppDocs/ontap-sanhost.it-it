@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="it">
   <head class="at-element-marker">
-  <title>Utilizzo di Windows Server 2016 con ONTAP</title>
+  <title>Configurazione host NVMe/FC per AIX con ONTAP</title>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
   <meta http-equiv="language" content="en">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="Utilizzo di Windows Server 2016 con ONTAP" />
+  <meta property="og:title" content="Configurazione host NVMe/FC per AIX con ONTAP" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://docs.netapp.com/it-it/ontap-sanhost/hu_windows_2016.html" />
-	<meta property="og:description" content="Utilizzo di Windows Server 2016 con ONTAP" />
+	<meta property="og:url" content="https://docs.netapp.com/it-it/ontap-sanhost/nvme_aix.html" />
+	<meta property="og:description" content="Come configurare NVMe/FC host per AIX con ONTAP" />
   <meta property="og:image" content="https://docs.netapp.com/it-it/ontap-sanhost/images/logo-tophat-social.png" />
   <meta property="og:image:alt" content="NetApp Logo" />
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
-  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Utilizzo di Windows Server 2016 con ONTAP">
-  <meta name="keywords" content=" windows, enterprise"><!-- Icons -->
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Come configurare NVMe/FC host per AIX con ONTAP">
+  <meta name="keywords" content=" nvme, linux, rhel, red hat, enterprise, aix, ontap"><!-- Icons -->
   <link rel="icon" href="/it-it/ontap-sanhost/images/favicon.ico" type="image/x-icon">
 
   <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
@@ -32,17 +32,17 @@
   <link rel="stylesheet" href="/it-it/ontap-sanhost/css/landing-page.css" type="text/css">
   <link rel="stylesheet" href="/it-it/ontap-sanhost/css/tabbed-blocks.css" type="text/css">
   <!-- Canonical url -->
-  <link rel="canonical" href="https://docs.netapp.com/it-it/ontap-sanhost/hu_windows_2016.html" />
-  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2016.html" />
-  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/ontap-sanhost/hu_windows_2016.html" />
-  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2016.html" />
-  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_windows_2016.html" />
-  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_windows_2016.html" />
-  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_windows_2016.html" />
-  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_windows_2016.html" />
-  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/ontap-sanhost/hu_windows_2016.html" />
-  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/ontap-sanhost/hu_windows_2016.html" />
-  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/ontap-sanhost/hu_windows_2016.html" />
+  <link rel="canonical" href="https://docs.netapp.com/it-it/ontap-sanhost/nvme_aix.html" />
+  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/ontap-sanhost/nvme_aix.html" />
+  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/ontap-sanhost/nvme_aix.html" />
+  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/ontap-sanhost/nvme_aix.html" />
+  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/ontap-sanhost/nvme_aix.html" />
+  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/ontap-sanhost/nvme_aix.html" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/ontap-sanhost/nvme_aix.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/ontap-sanhost/nvme_aix.html" />
+  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/ontap-sanhost/nvme_aix.html" />
+  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/ontap-sanhost/nvme_aix.html" />
+  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/ontap-sanhost/nvme_aix.html" />
   <link rel='stylesheet' href='/it-it/ontap-sanhost/css/na-feature.css' type='text/css'><!-- Top level site integrations --><script>
     function addAdobeLaunch(adobeId) {
       var head = document.getElementsByTagName('head')[0];
@@ -177,7 +177,7 @@
   
   <!-- Start Page Toolbar -->
   
-  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost.it-it/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/it-it/ontap-sanhost/hu_windows_2016.html&page-title=Utilizzo di Windows Server 2016 con ONTAP" class="page-nav-contribute-link" role="button"><img src="/it-it/ontap-sanhost/images/discuss-sm.svg" alt="" class="github-icon" />Richiedi modifiche alla documentazione</a><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/blob/main/hu_windows_2016.adoc" class="page-nav-contribute-link" role="button"><img src="/it-it/ontap-sanhost/images/edit-sm.svg" alt="" class="github-icon" />Modifica questa pagina</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/it-it/ontap-sanhost/images/article-sm.svg" alt="" class="github-icon" />Scopri come collaborare</a></div>
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost.it-it/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/it-it/ontap-sanhost/nvme_aix.html&page-title=Configurazione host NVMe/FC per AIX con ONTAP" class="page-nav-contribute-link" role="button"><img src="/it-it/ontap-sanhost/images/discuss-sm.svg" alt="" class="github-icon" />Richiedi modifiche alla documentazione</a><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/blob/main/nvme_aix.adoc" class="page-nav-contribute-link" role="button"><img src="/it-it/ontap-sanhost/images/edit-sm.svg" alt="" class="github-icon" />Modifica questa pagina</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/it-it/ontap-sanhost/images/article-sm.svg" alt="" class="github-icon" />Scopri come collaborare</a></div>
     <div class="page-nav-container">
       <nav class="page-nav-fixed">
         <div class="page-nav-title">IN QUESTA PAGINA</div>
@@ -297,23 +297,23 @@
       </div>
 
       <ul class="custom-dropdown-menu"><li>
-          <a href="https://docs.netapp.com/it-it/ontap-sanhost/hu_windows_2016.html" target="_self"><span translate="no" class="notranslate">Italiano</span></a>
+          <a href="https://docs.netapp.com/it-it/ontap-sanhost/nvme_aix.html" target="_self"><span translate="no" class="notranslate">Italiano</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2016.html" target="_self"><span translate="no" class="notranslate">English</span></a>
+          <a href="https://docs.netapp.com/us-en/ontap-sanhost/nvme_aix.html" target="_self"><span translate="no" class="notranslate">English</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_windows_2016.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
+          <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/nvme_aix.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_windows_2016.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
+          <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/nvme_aix.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_windows_2016.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+          <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/nvme_aix.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_windows_2016.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+          <a href="https://docs.netapp.com/zh-tw/ontap-sanhost/nvme_aix.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/de-de/ontap-sanhost/hu_windows_2016.html" target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+          <a href="https://docs.netapp.com/de-de/ontap-sanhost/nvme_aix.html" target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/es-es/ontap-sanhost/hu_windows_2016.html" target="_self"><span translate="no" class="notranslate">Español</span></a>
+          <a href="https://docs.netapp.com/es-es/ontap-sanhost/nvme_aix.html" target="_self"><span translate="no" class="notranslate">Español</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/fr-fr/ontap-sanhost/hu_windows_2016.html" target="_self"><span translate="no" class="notranslate">Français</span></a>
+          <a href="https://docs.netapp.com/fr-fr/ontap-sanhost/nvme_aix.html" target="_self"><span translate="no" class="notranslate">Français</span></a>
         </li></ul>
     </div>
     <!-- End Language Selector -->
@@ -524,6 +524,8 @@
             NVMe-of configurazioni host
           </a>
           
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
 
 
 
@@ -1607,8 +1609,6 @@
 
 
 
-    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
-  
 
 
 
@@ -1825,7 +1825,7 @@
       data-pdf-exists="true" 
       data-pdf-filename="AIX"
       data-li-level="2#" 
-      class=" "
+      class="  active "
     ><a class="na-navbar-padding" href="/it-it/ontap-sanhost/nvme_aix.html">
         AIX
       </a></li><li 
@@ -3066,7 +3066,7 @@
       data-pdf-exists="true" 
       data-pdf-filename="2016"
       data-li-level="3#" 
-      class="  active "
+      class=" "
     ><a class="na-navbar-padding" href="/it-it/ontap-sanhost/hu_windows_2016.html">
         2016
       </a></li><li 
@@ -3143,14 +3143,14 @@
     </div>
   </span>
 </div><div class="n-doc__component-detail-heading-wrap">
-  <h1 class="n-doc__component-detail-heading">Utilizzo di Windows Server 2016 con ONTAP</h1>
+  <h1 class="n-doc__component-detail-heading">Configurazione host NVMe/FC per AIX con ONTAP</h1>
 </div>
 
 
 <p class="page-details">
   
     
-    <time datetime="2023-05-23 13:02:12 +0000">05/23/2023</time>
+    <time datetime="2023-05-26 19:55:23 +0000">05/26/2023</time>
     
   
 
@@ -3163,41 +3163,73 @@
 <div id="toc" class="toc">
 <div id="toctitle">Sommario</div>
 <ul class="sectlevel1">
-<li><a href="#avvio-del-sistema-operativo">Avvio del sistema operativo</a></li>
-<li><a href="#installazione-degli-hotfix-di-windows">Installazione degli hotfix di Windows</a></li>
-<li><a href="#installazione-delle-utilità-host-unificate-di-windows">Installazione delle utilità host unificate di Windows</a></li>
-<li><a href="#multipathing">Multipathing</a></li>
-<li><a href="#configurazione-san">Configurazione SAN</a></li>
-<li><a href="#impostazioni-consigliate">Impostazioni consigliate</a></li>
 <li><a href="#limitazioni-note">Limitazioni note</a></li>
+<li><a href="#multipathing">Multipathing</a></li>
+<li><a href="#configurare-nvmefc">Configurare NVMe/FC</a></li>
+<li><a href="#validare-nvmefc">Validare NVMe/FC</a></li>
+<li><a href="#problemi-noti">Problemi noti</a></li>
+<li><a href="#risoluzione-dei-problemi">Risoluzione dei problemi</a></li>
 </ul>
 </div>
-<div class="sect1">
-<h2 id="avvio-del-sistema-operativo">Avvio del sistema operativo</h2>
+<div id="preamble">
 <div class="sectionbody">
-<div class="paragraph">
-<p>Sono disponibili due opzioni per l&#8217;avvio del sistema operativo: Mediante l&#8217;avvio locale o L&#8217;avvio SAN. Per l&#8217;avvio locale, installare il sistema operativo sul disco rigido locale (SSD, SATA, RAID e così via). Per l&#8217;avvio SAN, vedere le istruzioni riportate di seguito.</p>
+<div class="paragraph lead">
+<p>È possibile attivare NVMe/FC sugli host IBM AIX e VIOS/PowerVM utilizzando lo storage ONTAP come destinazione. Per ulteriori informazioni sulle configurazioni supportate, consultare <a href="https://mysupport.netapp.com/matrix/" target="_blank" rel="noopener">"Tool di matrice di interoperabilità NetApp"</a>.</p>
 </div>
-<div class="sect2">
-<h3 id="avvio-san">Avvio SAN</h3>
 <div class="paragraph">
-<p>Se si sceglie di utilizzare l&#8217;avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare lo strumento matrice di interoperabilità NetApp per verificare che il sistema operativo, l&#8217;HBA, il firmware dell&#8217;HBA, il BIOS di avvio dell&#8217;HBA e la versione di ONTAP siano supportati.</p>
+<p>Il seguente supporto è disponibile per la configurazione host NVMe/FC per un host AIX con ONTAP:</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>Mappare il LUN di avvio SAN sull&#8217;host.</p>
+<p>A partire da ONTAP 9.13.1, viene aggiunto il supporto NVMe su Fibre Channel (NVMe/FC) per le release IBM AIX 7.2 TL5 SP6, AIX 7.3 TL1 SP2 e VIOS 3.1.4.21 con supporto per l&#8217;avvio SAN per stack fisici e virtuali. Consultare la documentazione IBM per ulteriori informazioni sulla configurazione del supporto per l&#8217;avvio SAN.</p>
 </li>
 <li>
-<p>Verificare che siano disponibili più percorsi. Tenere presente che i percorsi multipli saranno disponibili solo dopo che il sistema operativo host sarà attivo e in esecuzione sui percorsi.</p>
+<p>NVMe/FC è supportato solo con i server IBM Power9 e Power10.</p>
 </li>
 <li>
-<p>Abilitare l&#8217;avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN. Per informazioni su come attivare il BIOS HBA, consultare la documentazione specifica del vendor.</p>
+<p>Per i dispositivi NVMe non è richiesto alcun modulo PCM (Path Control Module) separato, ad esempio il supporto HUK per AIX SCSI MPIO.</p>
 </li>
 <li>
-<p>Riavviare l&#8217;host per verificare che l&#8217;avvio sia stato eseguito correttamente.</p>
+<p>Il supporto della virtualizzazione con NetApp (VIOS/PowerVM) viene introdotto con VIOS 3.1.4.21. Questo è <em>solo</em> supportato tramite la modalità di virtualizzazione dello storage NPIV (N_PortID Virtualization) utilizzando il server Power10 IBM.</p>
 </li>
-</ol>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">Di cosa hai bisogno</div>
+<ul>
+<li>
+<p>Verificare di disporre di adattatori Emulex FC da 32 GB (EN1A, EN1B, EN1L, EN1M) o adattatori FC da 64 GB (EN1N, EN1P) con firmware dell&#8217;adattatore 12.4.257.30 e versioni successive.</p>
+</li>
+<li>
+<p>Se si dispone di una configurazione MetroCluster, si consiglia di modificare il tempo APD predefinito NVMe/FC di AIX (All Path Down) per supportare gli eventi di switchover non pianificati di MetroCluster, in modo da evitare che il sistema operativo AIX impongano un timeout i/o più breve. Per ulteriori informazioni e per le modifiche consigliate alle impostazioni predefinite, fare riferimento al report pubblico 1553249.</p>
+</li>
+<li>
+<p>Per impostazione predefinita, il valore ANATT per il sistema operativo host AIX è 30 secondi. IBM fornisce una correzione provvisoria (ifix) che consente di ottenere un valore massimo di 60 secondi; è necessario installare un ifix dal sito Web IBM per garantire che tutti i flussi di lavoro di ONTAP siano senza interruzioni.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="Nota">
+</td>
+<td class="content">
+Per il supporto NVMe/FC AIX, è necessario installare un ifix sulle versioni GA del sistema operativo AIX. Questo non è necessario per il sistema operativo VIOS/PowerVM.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>I dettagli ifix sono i seguenti:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Per AIX livello 72-TL5-SP6-2320, installare <code>IJ46710s6a.230509.epkg.Z</code> pacchetto.</p>
+</li>
+<li>
+<p>Per AIX livello 73-TL1-SP2-2320, installare <code>IJ46711s2a.230509.epkg.Z</code> pacchetto.</p>
+<div class="paragraph">
+<p>Per ulteriori informazioni sulla gestione degli ifix, consulta <a href="http://www-01.ibm.com/support/docview.wss?uid=isg3T1012104" target="_blank" rel="noopener">"Gestione delle correzioni interinali su AIX"</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3206,231 +3238,95 @@
 <img src="/us-en/ontap-sanhost/images/note.svg" alt="Nota">
 </td>
 <td class="content">
-È possibile utilizzare le impostazioni di configurazione fornite in questo documento per configurare i client cloud connessi a. <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html" target="_blank" rel="noopener">"Cloud Volumes ONTAP"</a> e. <a href="https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html" target="_blank" rel="noopener">"Amazon FSX per ONTAP"</a>.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="installazione-degli-hotfix-di-windows">Installazione degli hotfix di Windows</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Si consiglia di utilizzare <strong>l&#8217;ultimo aggiornamento cumulativo</strong> da installare sul server.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<img src="/us-en/ontap-sanhost/images/note.svg" alt="Nota">
-</td>
-<td class="content">
-Accedere alla <a href="https://www.catalog.update.microsoft.com/Search.aspx?q=Update+Windows+Server+2016" target="_blank" rel="noopener">"Catalogo di aggiornamenti Microsoft 2016"</a> Sito Web per ottenere e installare gli hotfix Windows necessari per la versione di Windows in uso.
-</td>
-</tr>
-</table>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Scaricare gli hotfix dal sito del supporto Microsoft.</p>
-</li>
-</ol>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<img src="/us-en/ontap-sanhost/images/note.svg" alt="Nota">
-</td>
-<td class="content">
-Alcune hotfix non sono disponibili per il download diretto. In questi casi, è necessario richiedere una data correzione rapida al personale di supporto Microsoft.
-</td>
-</tr>
-</table>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Seguire le istruzioni fornite da Microsoft per installare gli hotfix.</p>
-</li>
-</ol>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<img src="/us-en/ontap-sanhost/images/tip.svg" alt="Suggerimento">
-</td>
-<td class="content">
-Molti hotfix richiedono un riavvio dell&#8217;host Windows, ma è possibile scegliere di attendere il riavvio dell&#8217;host fino a quando <em>dopo</em> non si installano o si aggiornano le utility host.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="installazione-delle-utilità-host-unificate-di-windows">Installazione delle utilità host unificate di Windows</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Le utilità host unificate di Windows (WUHU) sono un insieme di programmi software con documentazione che consente di collegare computer host a dischi virtuali (LUN) su UNA SAN NetApp. Si consiglia di scaricare e installare il kit di utilità più recente. Per informazioni e istruzioni sulla configurazione DI WUHU, fare riferimento a. <a href="https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71.html">"Documentazione DI WUHU 7.1"</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="multipathing">Multipathing</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>È necessario installare il software MPIO e impostare il multipathing se l&#8217;host Windows dispone di più percorsi per il sistema di storage. Senza il software MPIO, il sistema operativo potrebbe vedere ciascun percorso come un disco separato, con conseguente danneggiamento dei dati. Il software MPIO presenta un singolo disco al sistema operativo per tutti i percorsi e un modulo specifico del dispositivo (DSM) gestisce il failover del percorso.</p>
-</div>
-<div class="paragraph">
-<p>Su un sistema Windows, i due componenti principali di qualsiasi soluzione MPIO sono DSM e MPIO di Windows. MPIO non è supportato per Windows XP o Windows Vista in esecuzione su una macchina virtuale Hyper-V.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<img src="/us-en/ontap-sanhost/images/note.svg" alt="Nota">
-</td>
-<td class="content">
-Quando si seleziona il supporto MPIO, le Utilità host unificate di Windows abilitano la funzione MPIO inclusa in Windows Server 2016.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="configurazione-san">Configurazione SAN</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="configurazione-non-asa">Configurazione non ASA</h3>
-<div class="paragraph">
-<p>Per la configurazione non ASA, devono essere presenti due gruppi di percorsi con priorità diverse.</p>
-</div>
-<div class="paragraph">
-<p>I percorsi con priorità più elevate sono Active/Optimized, ovvero vengono serviti dal controller in cui si trova l&#8217;aggregato.</p>
-</div>
-<div class="paragraph">
-<p>I percorsi con priorità inferiori sono attivi ma non ottimizzati perché vengono serviti da un controller diverso.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<img src="/us-en/ontap-sanhost/images/note.svg" alt="Nota">
-</td>
-<td class="content">
-I percorsi non ottimizzati vengono utilizzati solo quando non sono disponibili percorsi ottimizzati.
+È necessario installare gli ifix su una versione di AIX senza ifix precedentemente installati relativi a. <code>devices.pciex.pciexclass.010802.rte</code> sul sistema. Se questi ifix sono presenti, entreranno in conflitto con la nuova installazione.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<div class="title">Esempio</div>
-<p>Nell&#8217;esempio seguente viene visualizzato l&#8217;output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./media/nonasa.png" alt="nonasa">
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="configurazione-di-tutti-gli-array-san">Configurazione di tutti gli array SAN</h3>
-<div class="paragraph">
-<p>Per la configurazione di tutti gli array SAN (ASA), deve essere presente un gruppo di percorsi con priorità singole. Tutti i percorsi sono attivi/ottimizzati, ovvero vengono serviti dal controller e l&#8217;i/o viene inviato su tutti i percorsi attivi.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./media/asa.png" alt="ASA">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<img src="/us-en/ontap-sanhost/images/note.svg" alt="Nota">
-</td>
-<td class="content">
-Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="impostazioni-consigliate">Impostazioni consigliate</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Nei sistemi che utilizzano FC, sono necessari i seguenti valori di timeout per gli HBA FC Emulex e QLogic quando si seleziona MPIO.</p>
-</div>
-<div class="paragraph">
-<p>Per HBA Fibre Channel Emulex:</p>
+<p>La tabella seguente mostra gli HBA assegnati alla LPAR di AIX (partizione logica AIX) o allo stack fisico/nativo in una modalità non virtualizzata:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Tipo di proprietà</th>
-<th class="tableblock halign-left valign-top">Valore della proprietà</th>
+<th class="tableblock halign-left valign-top">Sistema operativo host</th>
+<th class="tableblock halign-left valign-top">Arco di alimentazione</th>
+<th class="tableblock halign-left valign-top">Versione Power FW</th>
+<th class="tableblock halign-left valign-top">Modalità</th>
+<th class="tableblock halign-left valign-top">Commenti</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">LinkTimeOut</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">AIX 7.2 TL5 SP6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Power9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FW 950 o versione successiva</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stack fisico</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ifix disponibile tramite TS012877410.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">NodeTimeOut</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Power10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FW 1010 o versione successiva</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stack fisico</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">È supportato l&#8217;avvio SAN. ifix disponibile tramite TS012877410.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">AIX 7.3 TL1 SP2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Power9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FW 950 o versione successiva</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stack fisico</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ifix disponibile tramite TS012877410.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Power10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FW 1010 o versione successiva</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stack fisico e virtuale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ifix disponibile tramite TS012877410.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>Per gli HBA Fibre Channel QLogic:</p>
+<p>La tabella seguente mostra gli HBA assegnati a VIOS con supporto abilitato NPIV in una modalità virtualizzata:</p>
+</div>
+</li>
+</ul>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Tipo di proprietà</th>
-<th class="tableblock halign-left valign-top">Valore della proprietà</th>
+<th class="tableblock halign-left valign-top">Sistema operativo host</th>
+<th class="tableblock halign-left valign-top">Arco di alimentazione</th>
+<th class="tableblock halign-left valign-top">Versione Power FW</th>
+<th class="tableblock halign-left valign-top">Modalità</th>
+<th class="tableblock halign-left valign-top">Commenti</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">LinkDownTimeOut</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PortDownRetryCount</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VIOS/PowerVM 3.1.4.21</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Power10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FW 1010 o versione successiva</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stack virtuale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Il supporto inizia da AIX 7.3 TL1 SP2 per VIOCc</p></td>
 </tr>
 </tbody>
 </table>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<img src="/us-en/ontap-sanhost/images/note.svg" alt="Nota">
-</td>
-<td class="content">
-Windows Unified host Utility imposta questi valori. Per informazioni dettagliate sulle impostazioni consigliate, fare riferimento a. <a href="https://library.netapp.com/ecmdocs/ECMLP2789202/html/index.html" target="_blank" rel="noopener">"Guida all&#8217;installazione delle utility host di Windows 7.1"</a>.
-</td>
-</tr>
-</table>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -3438,7 +3334,543 @@ Windows Unified host Utility imposta questi valori. Per informazioni dettagliate
 <h2 id="limitazioni-note">Limitazioni note</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Non esistono problemi noti per Windows Server 2016.</p>
+<p>La configurazione degli host NVMe/FC per AIX con ONTAP presenta le seguenti limitazioni note:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Gli HBA FC QLogic/Marvel 32G su un host AIX non supportano NVMe/FC.</p>
+</li>
+<li>
+<p>L&#8217;avvio SAN non è supportato per i dispositivi NVMe/FC che utilizzano il server IBM Power9.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="multipathing">Multipathing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>IBM MPIO (Multi Path i/o), utilizzato per il multipathing NVMe, viene fornito per impostazione predefinita quando si installa il sistema operativo AIX .</p>
+</div>
+<div class="paragraph">
+<p>È possibile verificare che il multipathing NVMe sia attivato per un host AIX utilizzando <code>lsmpio</code> comando:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>#[root@aix_server /]: lsmpio -l hdisk1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Esempio di output</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>name     path_id  status   path_status  parent  connection
+hdisk1  8         Enabled  Sel,Opt       nvme12  fcnvme0, 9
+hdisk1  9         Enabled  Sel,Non       nvme65  fcnvme1, 9
+hdisk1  10        Enabled  Sel,Opt       nvme37  fcnvme1, 9
+hdisk1  11        Enabled  Sel,Non       nvme60  fcnvme0, 9</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configurare-nvmefc">Configurare NVMe/FC</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>È possibile utilizzare la seguente procedura per configurare NVMe/FC per gli adattatori Broadcom/Emulex.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Fasi</div>
+<ol class="arabic">
+<li>
+<p>Verificare di utilizzare l&#8217;adattatore supportato. Per l&#8217;elenco più aggiornato degli adattatori supportati, consultare <a href="https://mysupport.netapp.com/matrix/" target="_blank" rel="noopener">"Tool di matrice di interoperabilità NetApp"</a>.</p>
+</li>
+<li>
+<p>Per impostazione predefinita, il supporto del protocollo NVMe/FC è attivato nella FC fisica; tuttavia, il supporto del protocollo NVMe/FC è disattivato in Virtual Fibre Channel (VFC) sul server i/o virtuale (VIOS). Recuperare un elenco degli adattatori in cui il supporto NVMe/FC è disattivato:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ lsmap -all -npiv</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Esempio di output</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Name          Physloc                            ClntID ClntName       ClntOS
+------------- ---------------------------------- ------ -------------- -------
+vfchost0      U9105.22A.785DB61-V2-C2                 4 s1022-iop-mcc- AIX
+Status:LOGGED_IN
+FC name:fcs4                    FC loc code:U78DA.ND0.WZS01UY-P0-C7-T0
+Ports logged in:3
+Flags:0xea&lt;LOGGED_IN,STRIP_MERGE,SCSI_CLIENT,NVME_CLIENT&gt;
+VFC client name:fcs0            VFC client DRC:U9105.22A.785DB61-V4-C2
+Name          Physloc                            ClntID ClntName       ClntOS
+------------- ---------------------------------- ------ -------------- -------
+vfchost1      U9105.22A.785DB61-V2-C3                 4
+Status:NOT_LOGGED_IN
+FC name:                        FC loc code:
+Ports logged in:0
+Flags:0x81&lt;NOT_MAPPED,NOT_CONNECTED&gt;
+VFC client name:                VFC client DRC:</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Abilitare il supporto per il protocollo NVMe/FC su un adattatore eseguendo <code>ioscli vfcctrl</code> Comando su VIOS:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$  vfcctrl -enable -protocol nvme -vadapter vfchost0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Esempio di output</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>The "nvme" protocol for "vfchost0" is enabled.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Verificare che il supporto sia stato attivato sulla scheda di rete:</p>
+<div class="listingblock">
+<div class="content">
+<pre># lsattr -El vfchost0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Esempio di output</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>alt_site_wwpn       WWPN to use - Only set after migration   False
+current_wwpn  0     WWPN to use - Only set after migration   False
+enable_nvme   yes   Enable or disable NVME protocol for NPIV True
+label               User defined label                       True
+limit_intr    false Limit NPIV Interrupt Sources             True
+map_port      fcs4  Physical FC Port                         False
+num_per_nvme  0     Number of NPIV NVME queues per range     True
+num_per_range 0     Number of NPIV SCSI queues per range     True</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Attiva il protocollo NVMe/FC per tutti gli adattatori correnti o selezionati:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Abilitare il protocollo NVMe/FC per tutti gli adattatori:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Modificare il <code>dflt_enabl_nvme</code> valore attributo di <code>viosnpiv0</code> pseudo dispositivo a. <code>yes</code>.</p>
+</li>
+<li>
+<p>Impostare <code>enable_nvme</code> valore attributo a. <code>yes</code> Per tutti i dispositivi host VFC.</p>
+<div class="listingblock">
+<div class="content">
+<pre># chdev -l viosnpiv0 -a dflt_enabl_nvme=yes</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># lsattr -El viosnpiv0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Esempio di output</strong></p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>bufs_per_cmd    10  NPIV Number of local bufs per cmd                    True
+dflt_enabl_nvme yes Default NVME Protocol setting for a new NPIV adapter True
+num_local_cmds  5   NPIV Number of local cmds per channel                True
+num_per_nvme    8   NPIV Number of NVME queues per range                 True
+num_per_range   8   NPIV Number of SCSI queues per range                 True
+secure_va_info  no  NPIV Secure Virtual Adapter Information              True</pre>
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Attivare il protocollo NVMe/FC per gli adattatori selezionati modificando il <code>enable_nvme</code> Valore dell&#8217;attributo del dispositivo host VFC su <code>yes</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Verificare che <code>FC-NVMe Protocol Device</code> è stato creato sul server:</p>
+<div class="listingblock">
+<div class="content">
+<pre># [root@aix_server /]: lsdev |grep fcnvme</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Output esacile</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>fcnvme0       Available 00-00-02    FC-NVMe Protocol Device
+fcnvme1       Available 00-01-02    FC-NVMe Protocol Device</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Registrare l&#8217;NQN host dal server:</p>
+<div class="listingblock">
+<div class="content">
+<pre># [root@aix_server /]: lsattr -El fcnvme0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Esempio di output</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>attach     switch                                                               How this adapter is connected  False
+autoconfig available                                                            Configuration State            True
+host_nqn   nqn.2014-08.org.nvmexpress:uuid:64e039bd-27d2-421c-858d-8a378dec31e8 Host NQN (NVMe Qualified Name) True</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[root@aix_server /]: lsattr -El fcnvme1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Esempio di output</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>attach     switch                                                               How this adapter is connected  False
+autoconfig available                                                            Configuration State            True
+host_nqn   nqn.2014-08.org.nvmexpress:uuid:64e039bd-27d2-421c-858d-8a378dec31e8 Host NQN (NVMe Qualified Name) True</pre>
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Visualizzare l&#8217;UUID della partizione:</p>
+<div class="listingblock">
+<div class="content">
+<pre>[root@aix_server /]: lsattr -El sys0 -a partition_uuid</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Esempio di output</strong></p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>partition_uuid 64e039bd-27d2-421c-858d-8a378dec31e8 Partition UUID False</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Controllare l&#8217;NQN host e verificare che corrisponda alla stringa NQN host per il sottosistema corrispondente sull&#8217;array ONTAP:</p>
+<div class="listingblock">
+<div class="content">
+<pre>::&gt; vserver nvme subsystem host show -vserver vs_s922-55-lpar2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Esempio di output</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Vserver         Subsystem                Host NQN
+------- --------- ----------------------------------------------------------
+vs_s922-55-lpar2 subsystem_s922-55-lpar2 nqn.2014-08.org.nvmexpress:uuid:64e039bd-27d2-421c-858d-8a378dec31e8</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Verificare che le porte dell&#8217;iniziatore siano attive e in esecuzione e che siano visualizzate le LIF di destinazione.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="validare-nvmefc">Validare NVMe/FC</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>È necessario verificare che gli spazi dei nomi ONTAP riflettano correttamente sull&#8217;host. Eseguire il seguente comando:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># [root@aix_server /]: lsdev -Cc disk |grep NVMe</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Esempio di output</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>hdisk1  Available 00-00-02 NVMe 4K Disk</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>È possibile controllare lo stato del multipathing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>#[root@aix_server /]: lsmpio -l hdisk1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Esempio di output</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>name     path_id  status   path_status  parent  connection
+hdisk1  8        Enabled  Sel,Opt      nvme12  fcnvme0, 9
+hdisk1  9        Enabled  Sel,Non      nvme65  fcnvme1, 9
+hdisk1  10       Enabled  Sel,Opt      nvme37  fcnvme1, 9
+hdisk1  11       Enabled  Sel,Non      nvme60  fcnvme0, 9</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="problemi-noti">Problemi noti</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>La configurazione degli host NVMe/FC per AIX con ONTAP presenta i seguenti problemi noti:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 42.8571%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">ID Burt</th>
+<th class="tableblock halign-left valign-top">Titolo</th>
+<th class="tableblock halign-left valign-top">Descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1553249</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AIX NVMe/FC - tempo APD predefinito da modificare per supportare gli eventi di switchover non pianificati MCC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Per impostazione predefinita, i sistemi operativi AIX utilizzano un valore di timeout APD (All Path Down) di 20 secondi per NVMe/FC.  Tuttavia, i flussi di lavoro di switchover automatici non pianificati (AUSO) e di switchover avviati da tiebreaker di ONTAP MetroCluster potrebbero richiedere un po' più di tempo della finestra di timeout APD, causando errori di i/O.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1546017</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AIX NVMe/FC ha un valore massimo di 60 secondi, invece di 120 secondi, come annunciato da ONTAP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ONTAP annuncia il timeout di transizione ANA (Asymmetric namespace access) nel controller Identify a 120 sec. Attualmente, con ifix, AIX legge il timeout di transizione ANA dal controller Identify, ma in effetti lo blocca a 60 sec se supera tale limite.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1541386</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AIX NVMe/FC raggiunge EIO dopo la scadenza ANATT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Per qualsiasi evento di failover dello storage (SFO), se la transizione ANA(Asymmetric namespace access) supera il limite di timeout di transizione ANA su un determinato percorso, l&#8217;host NVMe/FC AIX non riesce con un errore di i/o nonostante siano disponibili percorsi alternativi per lo spazio dei nomi.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1541380</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AIX NVMe/FC attende la scadenza di ANATT metà/completa prima di riprendere i/o dopo ANA AEN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IBM AIX NVMe/FC non supporta alcune notifiche asincrone pubblicate da ONTAP. Questa gestione ANA non ottimale comporterà performance non ottimali durante le operazioni SFO.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="risoluzione-dei-problemi">Risoluzione dei problemi</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Prima di eseguire la risoluzione dei problemi relativi a NVMe/FC, verificare che la configurazione in uso sia conforme alle specifiche IMT, quindi procedere con i passi successivi per eseguire il debug di eventuali problemi relativi all&#8217;host.</p>
+</div>
+<div class="sect2">
+<h3 id="attiva-la-registrazione-dettagliata">Attiva la registrazione dettagliata</h3>
+<div class="paragraph">
+<p>In caso di problemi di configurazione, la registrazione dettagliata può fornire informazioni essenziali per la risoluzione dei problemi.</p>
+</div>
+<div class="paragraph">
+<div class="title">Fasi</div>
+<p>La procedura per impostare la registrazione dettagliata per Qlogic (qla2xxx) è diversa dalla procedura per impostare LA registrazione DETTAGLIATA DI LPFC.</p>
+</div>
+<div class="exampleblock tabbed-block">
+<div class="content">
+<div class="openblock">
+<div class="title">LPFC</div>
+<div class="content">
+<div class="olist arabic">
+<div class="title">Fasi</div>
+<ol class="arabic">
+<li>
+<p>Impostare <code>lpfc_log_verbose</code> Impostazione del driver su uno dei seguenti valori per registrare gli eventi NVMe/FC.</p>
+<div class="listingblock">
+<div class="content">
+<pre>#define LOG_NVME 0x00100000 /* NVME general events. */
+#define LOG_NVME_DISC 0x00200000 /* NVME Discovery/Connect events. */
+#define LOG_NVME_ABTS 0x00400000 /* NVME ABTS events. */
+#define LOG_NVME_IOERR 0x00800000 /* NVME IO Error events. */</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Dopo aver impostato i valori, eseguire <code>dracut-f</code> comandare e riavviare l&#8217;host.</p>
+</li>
+<li>
+<p>Verificare le impostazioni.</p>
+<div class="listingblock">
+<div class="content">
+<pre># cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_log_verbose=0xf00083
+
+# cat /sys/module/lpfc/parameters/lpfc_log_verbose
+15728771</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="title">Qla2xxx</div>
+<div class="content">
+<div class="paragraph">
+<p>Non esiste una registrazione qla2xxx specifica simile per NVMe/FC a quella per <code>lpfc</code> driver. Pertanto, è possibile impostare il livello di registrazione generale di qla2xxx seguendo questa procedura:</p>
+</div>
+<div class="olist arabic">
+<div class="title">Fasi</div>
+<ol class="arabic">
+<li>
+<p>Aggiungere il <code>ql2xextended_error_logging=0x1e400000</code> al corrispondente <code>modprobe qla2xxx conf</code> file.</p>
+</li>
+<li>
+<p>Ricreare il <code>initramfs</code> in esecuzione <code>dracut -f</code> e riavviare l&#8217;host.</p>
+</li>
+<li>
+<p>Dopo il riavvio, verificare che la registrazione dettagliata sia stata applicata come segue:</p>
+<div class="listingblock">
+<div class="content">
+<pre># cat /etc/modprobe.d/qla2xxx.conf
+options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
+# cat /sys/module/qla2xxx/parameters/ql2xextended_error_logging
+507510784</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="errori-e-soluzioni-nvme-cli-comuni">Errori e soluzioni nvme-cli comuni</h3>
+<div class="paragraph">
+<p>Gli errori visualizzati da <code>nvme-cli</code> durante <code>nvme discover</code>, <code>nvme connect</code>, o. <code>nvme connect-all</code> le operazioni e le soluzioni alternative sono illustrate nella seguente tabella:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 22.2222%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Errori visualizzati da <code>nvme-cli</code></th>
+<th class="tableblock halign-left valign-top">Causa probabile</th>
+<th class="tableblock halign-left valign-top">Soluzione alternativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Failed to write to /dev/nvme-fabrics: Invalid argument</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sintassi errata</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verificare di utilizzare la sintassi corretta per <code>nvme discover</code>, <code>nvme connect</code>, e. <code>nvme connect-all</code> comandi.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Failed to write to /dev/nvme-fabrics: No such file or directory</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Questo può essere causato da diversi problemi, ad esempio, fornire argomenti errati ai comandi NVMe è una delle cause più comuni.</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Verificare di aver passato gli argomenti corretti (ad esempio, la stringa WWNN corretta, la stringa WWPN e molto altro) ai comandi.</p>
+</li>
+<li>
+<p>Se gli argomenti sono corretti, ma l&#8217;errore persiste, controllare se <code>/sys/class/scsi_host/host*/nvme_info</code> L&#8217;output del comando è corretto, l&#8217;iniziatore NVMe viene visualizzato come `Enabled`E le LIF di destinazione NVMe/FC sono visualizzate correttamente nelle sezioni Remote ports (Porte remote). Esempio:</p>
+<div class="listingblock">
+<div class="content">
+<pre># cat /sys/class/scsi_host/host*/nvme_info
+NVME Initiator Enabled
+NVME LPORT lpfc0 WWPN x10000090fae0ec9d WWNN x20000090fae0ec9d DID x012000 ONLINE
+NVME RPORT WWPN x200b00a098c80f09 WWNN x200a00a098c80f09 DID x010601 TARGET DISCSRVC ONLINE
+NVME Statistics
+LS: Xmt 0000000000000006 Cmpl 0000000000000006
+FCP: Rd 0000000000000071 Wr 0000000000000005 IO 0000000000000031
+Cmpl 00000000000000a6 Outstanding 0000000000000001
+NVME Initiator Enabled
+NVME LPORT lpfc1 WWPN x10000090fae0ec9e WWNN x20000090fae0ec9e DID x012400 ONLINE
+NVME RPORT WWPN x200900a098c80f09 WWNN x200800a098c80f09 DID x010301 TARGET DISCSRVC ONLINE
+NVME Statistics
+LS: Xmt 0000000000000006 Cmpl 0000000000000006
+FCP: Rd 0000000000000073 Wr 0000000000000005 IO 0000000000000031
+Cmpl 00000000000000a8 Outstanding 0000000000000001</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Se i LIF di destinazione non sono visualizzati come sopra nella <code>nvme_info</code> output del comando, controllare <code>/var/log/messages</code> e. <code>dmesg</code> Output di comando per eventuali guasti NVMe/FC sospetti e segnalazione o correzione di conseguenza.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>No discovery log entries to fetch</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Generalmente osservato quando <code>/etc/nvme/hostnqn</code> La stringa non è stata aggiunta al sottosistema corrispondente sull&#8217;array NetApp o non è corretta <code>hostnqn</code> la stringa è stata aggiunta al rispettivo sottosistema.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Verificare che l&#8217;esatto <code>/etc/nvme/hostnqn</code> La stringa viene aggiunta al sottosistema corrispondente sull&#8217;array NetApp (verificare utilizzando <code>vserver nvme subsystem host show</code> comando).</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Failed to write to /dev/nvme-fabrics: Operation already in progress</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Osservato quando le associazioni del controller o l&#8217;operazione specificata sono già state create o in fase di creazione. Ciò potrebbe avvenire nell&#8217;ambito degli script di connessione automatica installati in precedenza.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Nessuno. Provare a eseguire <code>nvme discover</code> comando di nuovo dopo un po' di tempo. Per <code>nvme connect</code> e. <code>connect-all</code>, eseguire <code>nvme list</code> per verificare che i dispositivi dello spazio dei nomi siano già stati creati e visualizzati sull&#8217;host.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="quando-contattare-il-supporto-tecnico">Quando contattare il supporto tecnico</h3>
+<div class="paragraph">
+<p>Se i problemi persistono, raccogliere i seguenti file e output dei comandi e contattare il supporto tecnico per ulteriori triage:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cat /sys/class/scsi_host/host*/nvme_info
+/var/log/messages
+dmesg
+nvme discover output as in:
+nvme discover --transport=fc --traddr=nn-0x200a00a098c80f09:pn-0x200b00a098c80f09 --host-traddr=nn-0x20000090fae0ec9d:pn-0x10000090fae0ec9d
+nvme list
+nvme list-subsys /dev/nvmeXnY</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
