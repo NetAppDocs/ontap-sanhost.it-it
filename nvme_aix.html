@@ -3150,7 +3150,7 @@
 <p class="page-details">
   
     
-    <time datetime="2023-05-26 19:55:23 +0000">05/26/2023</time>
+    <time datetime="2023-05-29 08:56:26 +0000">05/29/2023</time>
     
   
 
@@ -3174,7 +3174,7 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph lead">
-<p>È possibile attivare NVMe/FC sugli host IBM AIX e VIOS/PowerVM utilizzando lo storage ONTAP come destinazione. Per ulteriori informazioni sulle configurazioni supportate, consultare <a href="https://mysupport.netapp.com/matrix/" target="_blank" rel="noopener">"Tool di matrice di interoperabilità NetApp"</a>.</p>
+<p>È possibile abilitare NVMe su Fibre Channel (NVMe/FC) sugli host IBM AIX e VIOS/PowerVM utilizzando lo storage ONTAP come destinazione. Per ulteriori informazioni sulle configurazioni supportate, consultare <a href="https://mysupport.netapp.com/matrix/" target="_blank" rel="noopener">"Tool di matrice di interoperabilità NetApp"</a>.</p>
 </div>
 <div class="paragraph">
 <p>Il seguente supporto è disponibile per la configurazione host NVMe/FC per un host AIX con ONTAP:</p>
@@ -3182,13 +3182,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p>A partire da ONTAP 9.13.1, viene aggiunto il supporto NVMe su Fibre Channel (NVMe/FC) per le release IBM AIX 7.2 TL5 SP6, AIX 7.3 TL1 SP2 e VIOS 3.1.4.21 con supporto per l&#8217;avvio SAN per stack fisici e virtuali. Consultare la documentazione IBM per ulteriori informazioni sulla configurazione del supporto per l&#8217;avvio SAN.</p>
+<p>A partire da ONTAP 9.13.1, viene aggiunto il supporto NVMe/FC per le release IBM AIX 7.2 TL5 SP6, AIX 7.3 TL1 SP2 e VIOS 3.1.4.21 con supporto per l&#8217;avvio SAN per stack fisici e virtuali. Consultare la documentazione IBM per ulteriori informazioni sulla configurazione del supporto per l&#8217;avvio SAN.</p>
 </li>
 <li>
-<p>NVMe/FC è supportato solo con i server IBM Power9 e Power10.</p>
+<p>NVMe/FC è supportato dai server IBM Power9 e Power10.</p>
 </li>
 <li>
-<p>Per i dispositivi NVMe non è richiesto alcun modulo PCM (Path Control Module) separato, ad esempio il supporto HUK per AIX SCSI MPIO.</p>
+<p>Per i dispositivi NVMe non è richiesto alcun modulo PCM (Path Control Module) separato, ad esempio host Utilities per il supporto MPIO (Multipath i/o) SCSI AIX.</p>
 </li>
 <li>
 <p>Il supporto della virtualizzazione con NetApp (VIOS/PowerVM) viene introdotto con VIOS 3.1.4.21. Questo è <em>solo</em> supportato tramite la modalità di virtualizzazione dello storage NPIV (N_PortID Virtualization) utilizzando il server Power10 IBM.</p>
@@ -3205,7 +3205,7 @@
 <p>Se si dispone di una configurazione MetroCluster, si consiglia di modificare il tempo APD predefinito NVMe/FC di AIX (All Path Down) per supportare gli eventi di switchover non pianificati di MetroCluster, in modo da evitare che il sistema operativo AIX impongano un timeout i/o più breve. Per ulteriori informazioni e per le modifiche consigliate alle impostazioni predefinite, fare riferimento al report pubblico 1553249.</p>
 </li>
 <li>
-<p>Per impostazione predefinita, il valore ANATT per il sistema operativo host AIX è 30 secondi. IBM fornisce una correzione provvisoria (ifix) che consente di ottenere un valore massimo di 60 secondi; è necessario installare un ifix dal sito Web IBM per garantire che tutti i flussi di lavoro di ONTAP siano senza interruzioni.</p>
+<p>Per impostazione predefinita, il valore ANATT (Access Transition Timeout) dello spazio dei nomi asimmetrico per il sistema operativo host AIX è di 30 secondi. IBM fornisce una correzione provvisoria (ifix) che consente di ottenere un valore massimo di 60 secondi; è necessario installare un ifix dal sito Web IBM per garantire che tutti i flussi di lavoro di ONTAP siano senza interruzioni.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -3244,7 +3244,7 @@ Per il supporto NVMe/FC AIX, è necessario installare un ifix sulle versioni GA 
 </table>
 </div>
 <div class="paragraph">
-<p>La tabella seguente mostra gli HBA assegnati alla LPAR di AIX (partizione logica AIX) o allo stack fisico/nativo in una modalità non virtualizzata:</p>
+<p>La seguente tabella mostra gli HBA assegnati alla LPAR di AIX (AIX Logical Partition) o allo stack fisico:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -3321,7 +3321,7 @@ Per il supporto NVMe/FC AIX, è necessario installare un ifix sulle versioni GA 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Power10</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">FW 1010 o versione successiva</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Stack virtuale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Il supporto inizia da AIX 7.3 TL1 SP2 per VIOCc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Il supporto inizia da AIX 7.3 TL1 SP2 per VIOC</p></td>
 </tr>
 </tbody>
 </table>
@@ -3352,7 +3352,7 @@ Per il supporto NVMe/FC AIX, è necessario installare un ifix sulle versioni GA 
 <h2 id="multipathing">Multipathing</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>IBM MPIO (Multi Path i/o), utilizzato per il multipathing NVMe, viene fornito per impostazione predefinita quando si installa il sistema operativo AIX .</p>
+<p>IBM MPIO (Multi Path i/o), utilizzato per il multipathing NVMe, viene fornito per impostazione predefinita quando si installa il sistema operativo AIX.</p>
 </div>
 <div class="paragraph">
 <p>È possibile verificare che il multipathing NVMe sia attivato per un host AIX utilizzando <code>lsmpio</code> comando:</p>
@@ -3386,10 +3386,13 @@ hdisk1  11        Enabled  Sel,Non       nvme60  fcnvme0, 9</pre>
 <div class="title">Fasi</div>
 <ol class="arabic">
 <li>
-<p>Verificare di utilizzare l&#8217;adattatore supportato. Per l&#8217;elenco più aggiornato degli adattatori supportati, consultare <a href="https://mysupport.netapp.com/matrix/" target="_blank" rel="noopener">"Tool di matrice di interoperabilità NetApp"</a>.</p>
+<p>Verificare di utilizzare l&#8217;adattatore supportato. Per l&#8217;elenco aggiornato degli adattatori supportati, consultare <a href="https://mysupport.netapp.com/matrix/" target="_blank" rel="noopener">"Tool di matrice di interoperabilità NetApp"</a>.</p>
 </li>
 <li>
-<p>Per impostazione predefinita, il supporto del protocollo NVMe/FC è attivato nella FC fisica; tuttavia, il supporto del protocollo NVMe/FC è disattivato in Virtual Fibre Channel (VFC) sul server i/o virtuale (VIOS). Recuperare un elenco degli adattatori in cui il supporto NVMe/FC è disattivato:</p>
+<p>Per impostazione predefinita, il supporto del protocollo NVMe/FC è attivato nella FC fisica; tuttavia, il supporto del protocollo NVMe/FC è disattivato in Virtual Fibre Channel (VFC) sul server i/o virtuale (VIOS).</p>
+<div class="paragraph">
+<p>Recuperare un elenco di adattatori virtuali:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre>$ lsmap -all -npiv</pre>
@@ -3407,15 +3410,7 @@ Status:LOGGED_IN
 FC name:fcs4                    FC loc code:U78DA.ND0.WZS01UY-P0-C7-T0
 Ports logged in:3
 Flags:0xea&lt;LOGGED_IN,STRIP_MERGE,SCSI_CLIENT,NVME_CLIENT&gt;
-VFC client name:fcs0            VFC client DRC:U9105.22A.785DB61-V4-C2
-Name          Physloc                            ClntID ClntName       ClntOS
-------------- ---------------------------------- ------ -------------- -------
-vfchost1      U9105.22A.785DB61-V2-C3                 4
-Status:NOT_LOGGED_IN
-FC name:                        FC loc code:
-Ports logged in:0
-Flags:0x81&lt;NOT_MAPPED,NOT_CONNECTED&gt;
-VFC client name:                VFC client DRC:</pre>
+VFC client name:fcs0            VFC client DRC:U9105.22A.785DB61-V4-C2</pre>
 </div>
 </div>
 </li>
@@ -3557,26 +3552,6 @@ autoconfig available                                                            
 host_nqn   nqn.2014-08.org.nvmexpress:uuid:64e039bd-27d2-421c-858d-8a378dec31e8 Host NQN (NVMe Qualified Name) True</pre>
 </div>
 </div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Visualizzare l&#8217;UUID della partizione:</p>
-<div class="listingblock">
-<div class="content">
-<pre>[root@aix_server /]: lsattr -El sys0 -a partition_uuid</pre>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Esempio di output</strong></p>
-</div>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>partition_uuid 64e039bd-27d2-421c-858d-8a378dec31e8 Partition UUID False</pre>
-</div>
-</div>
 </li>
 <li>
 <p>Controllare l&#8217;NQN host e verificare che corrisponda alla stringa NQN host per il sottosistema corrispondente sull&#8217;array ONTAP:</p>
@@ -3667,7 +3642,7 @@ hdisk1  11       Enabled  Sel,Non      nvme60  fcnvme0, 9</pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1553249</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AIX NVMe/FC - tempo APD predefinito da modificare per supportare gli eventi di switchover non pianificati MCC</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Per impostazione predefinita, i sistemi operativi AIX utilizzano un valore di timeout APD (All Path Down) di 20 secondi per NVMe/FC.  Tuttavia, i flussi di lavoro di switchover automatici non pianificati (AUSO) e di switchover avviati da tiebreaker di ONTAP MetroCluster potrebbero richiedere un po' più di tempo della finestra di timeout APD, causando errori di i/O.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Per impostazione predefinita, i sistemi operativi AIX utilizzano un valore di timeout APD (All Path Down) di 20 sec per NVMe/FC.  Tuttavia, i flussi di lavoro di switchover automatici non pianificati (AUSO) e di switchover avviati da tiebreaker di ONTAP MetroCluster potrebbero richiedere un po' più di tempo della finestra di timeout APD, causando errori di i/O.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1546017</p></td>
@@ -3692,185 +3667,8 @@ hdisk1  11       Enabled  Sel,Non      nvme60  fcnvme0, 9</pre>
 <h2 id="risoluzione-dei-problemi">Risoluzione dei problemi</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Prima di eseguire la risoluzione dei problemi relativi a NVMe/FC, verificare che la configurazione in uso sia conforme alle specifiche IMT, quindi procedere con i passi successivi per eseguire il debug di eventuali problemi relativi all&#8217;host.</p>
-</div>
-<div class="sect2">
-<h3 id="attiva-la-registrazione-dettagliata">Attiva la registrazione dettagliata</h3>
-<div class="paragraph">
-<p>In caso di problemi di configurazione, la registrazione dettagliata può fornire informazioni essenziali per la risoluzione dei problemi.</p>
-</div>
-<div class="paragraph">
-<div class="title">Fasi</div>
-<p>La procedura per impostare la registrazione dettagliata per Qlogic (qla2xxx) è diversa dalla procedura per impostare LA registrazione DETTAGLIATA DI LPFC.</p>
-</div>
-<div class="exampleblock tabbed-block">
-<div class="content">
-<div class="openblock">
-<div class="title">LPFC</div>
-<div class="content">
-<div class="olist arabic">
-<div class="title">Fasi</div>
-<ol class="arabic">
-<li>
-<p>Impostare <code>lpfc_log_verbose</code> Impostazione del driver su uno dei seguenti valori per registrare gli eventi NVMe/FC.</p>
-<div class="listingblock">
-<div class="content">
-<pre>#define LOG_NVME 0x00100000 /* NVME general events. */
-#define LOG_NVME_DISC 0x00200000 /* NVME Discovery/Connect events. */
-#define LOG_NVME_ABTS 0x00400000 /* NVME ABTS events. */
-#define LOG_NVME_IOERR 0x00800000 /* NVME IO Error events. */</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Dopo aver impostato i valori, eseguire <code>dracut-f</code> comandare e riavviare l&#8217;host.</p>
-</li>
-<li>
-<p>Verificare le impostazioni.</p>
-<div class="listingblock">
-<div class="content">
-<pre># cat /etc/modprobe.d/lpfc.conf
-options lpfc lpfc_log_verbose=0xf00083
-
-# cat /sys/module/lpfc/parameters/lpfc_log_verbose
-15728771</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="openblock">
-<div class="title">Qla2xxx</div>
-<div class="content">
-<div class="paragraph">
-<p>Non esiste una registrazione qla2xxx specifica simile per NVMe/FC a quella per <code>lpfc</code> driver. Pertanto, è possibile impostare il livello di registrazione generale di qla2xxx seguendo questa procedura:</p>
-</div>
-<div class="olist arabic">
-<div class="title">Fasi</div>
-<ol class="arabic">
-<li>
-<p>Aggiungere il <code>ql2xextended_error_logging=0x1e400000</code> al corrispondente <code>modprobe qla2xxx conf</code> file.</p>
-</li>
-<li>
-<p>Ricreare il <code>initramfs</code> in esecuzione <code>dracut -f</code> e riavviare l&#8217;host.</p>
-</li>
-<li>
-<p>Dopo il riavvio, verificare che la registrazione dettagliata sia stata applicata come segue:</p>
-<div class="listingblock">
-<div class="content">
-<pre># cat /etc/modprobe.d/qla2xxx.conf
-options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
-# cat /sys/module/qla2xxx/parameters/ql2xextended_error_logging
-507510784</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="errori-e-soluzioni-nvme-cli-comuni">Errori e soluzioni nvme-cli comuni</h3>
-<div class="paragraph">
-<p>Gli errori visualizzati da <code>nvme-cli</code> durante <code>nvme discover</code>, <code>nvme connect</code>, o. <code>nvme connect-all</code> le operazioni e le soluzioni alternative sono illustrate nella seguente tabella:</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 22.2222%;">
-<col style="width: 22.2222%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Errori visualizzati da <code>nvme-cli</code></th>
-<th class="tableblock halign-left valign-top">Causa probabile</th>
-<th class="tableblock halign-left valign-top">Soluzione alternativa</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Failed to write to /dev/nvme-fabrics: Invalid argument</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sintassi errata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Verificare di utilizzare la sintassi corretta per <code>nvme discover</code>, <code>nvme connect</code>, e. <code>nvme connect-all</code> comandi.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Failed to write to /dev/nvme-fabrics: No such file or directory</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Questo può essere causato da diversi problemi, ad esempio, fornire argomenti errati ai comandi NVMe è una delle cause più comuni.</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>Verificare di aver passato gli argomenti corretti (ad esempio, la stringa WWNN corretta, la stringa WWPN e molto altro) ai comandi.</p>
-</li>
-<li>
-<p>Se gli argomenti sono corretti, ma l&#8217;errore persiste, controllare se <code>/sys/class/scsi_host/host*/nvme_info</code> L&#8217;output del comando è corretto, l&#8217;iniziatore NVMe viene visualizzato come `Enabled`E le LIF di destinazione NVMe/FC sono visualizzate correttamente nelle sezioni Remote ports (Porte remote). Esempio:</p>
-<div class="listingblock">
-<div class="content">
-<pre># cat /sys/class/scsi_host/host*/nvme_info
-NVME Initiator Enabled
-NVME LPORT lpfc0 WWPN x10000090fae0ec9d WWNN x20000090fae0ec9d DID x012000 ONLINE
-NVME RPORT WWPN x200b00a098c80f09 WWNN x200a00a098c80f09 DID x010601 TARGET DISCSRVC ONLINE
-NVME Statistics
-LS: Xmt 0000000000000006 Cmpl 0000000000000006
-FCP: Rd 0000000000000071 Wr 0000000000000005 IO 0000000000000031
-Cmpl 00000000000000a6 Outstanding 0000000000000001
-NVME Initiator Enabled
-NVME LPORT lpfc1 WWPN x10000090fae0ec9e WWNN x20000090fae0ec9e DID x012400 ONLINE
-NVME RPORT WWPN x200900a098c80f09 WWNN x200800a098c80f09 DID x010301 TARGET DISCSRVC ONLINE
-NVME Statistics
-LS: Xmt 0000000000000006 Cmpl 0000000000000006
-FCP: Rd 0000000000000073 Wr 0000000000000005 IO 0000000000000031
-Cmpl 00000000000000a8 Outstanding 0000000000000001</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Se i LIF di destinazione non sono visualizzati come sopra nella <code>nvme_info</code> output del comando, controllare <code>/var/log/messages</code> e. <code>dmesg</code> Output di comando per eventuali guasti NVMe/FC sospetti e segnalazione o correzione di conseguenza.</p>
-</li>
-</ul>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>No discovery log entries to fetch</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Generalmente osservato quando <code>/etc/nvme/hostnqn</code> La stringa non è stata aggiunta al sottosistema corrispondente sull&#8217;array NetApp o non è corretta <code>hostnqn</code> la stringa è stata aggiunta al rispettivo sottosistema.</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Verificare che l&#8217;esatto <code>/etc/nvme/hostnqn</code> La stringa viene aggiunta al sottosistema corrispondente sull&#8217;array NetApp (verificare utilizzando <code>vserver nvme subsystem host show</code> comando).</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Failed to write to /dev/nvme-fabrics: Operation already in progress</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Osservato quando le associazioni del controller o l&#8217;operazione specificata sono già state create o in fase di creazione. Ciò potrebbe avvenire nell&#8217;ambito degli script di connessione automatica installati in precedenza.</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Nessuno. Provare a eseguire <code>nvme discover</code> comando di nuovo dopo un po' di tempo. Per <code>nvme connect</code> e. <code>connect-all</code>, eseguire <code>nvme list</code> per verificare che i dispositivi dello spazio dei nomi siano già stati creati e visualizzati sull&#8217;host.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="quando-contattare-il-supporto-tecnico">Quando contattare il supporto tecnico</h3>
-<div class="paragraph">
-<p>Se i problemi persistono, raccogliere i seguenti file e output dei comandi e contattare il supporto tecnico per ulteriori triage:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>cat /sys/class/scsi_host/host*/nvme_info
-/var/log/messages
-dmesg
-nvme discover output as in:
-nvme discover --transport=fc --traddr=nn-0x200a00a098c80f09:pn-0x200b00a098c80f09 --host-traddr=nn-0x20000090fae0ec9d:pn-0x10000090fae0ec9d
-nvme list
-nvme list-subsys /dev/nvmeXnY</pre>
-</div>
-</div>
+<p>Prima di eseguire la risoluzione di eventuali errori NVMe/FC, verificare di eseguire una configurazione conforme alle specifiche IMT.<br>
+Se i problemi persistono, contatta il supporto tecnico per ulteriori triage.</p>
 </div>
 </div>
 </div>
