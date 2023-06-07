@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="it">
   <head class="at-element-marker">
-  <title>Utilizzo di CentOS 7.7 con NetApp ONTAP</title>
+  <title>Utilizzo di Red Hat Enterprise Linux 9.2 con NetApp ONTAP</title>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
   <meta http-equiv="language" content="en">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="Utilizzo di CentOS 7.7 con NetApp ONTAP" />
+  <meta property="og:title" content="Utilizzo di Red Hat Enterprise Linux 9.2 con NetApp ONTAP" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://docs.netapp.com/it-it/ontap-sanhost/hu_centos_77.html" />
-	<meta property="og:description" content="Descrive come utilizzare CentOS 7.7 con ONTAP" />
+	<meta property="og:url" content="https://docs.netapp.com/it-it/ontap-sanhost/hu_rhel_92.html" />
+	<meta property="og:description" content="Descrive come utilizzare Red Hat Enterprise Linux 9.2 con ONTAP" />
   <meta property="og:image" content="https://docs.netapp.com/it-it/ontap-sanhost/images/logo-tophat-social.png" />
   <meta property="og:image:alt" content="NetApp Logo" />
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
-  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Descrive come utilizzare CentOS 7.7 con ONTAP">
-  <meta name="keywords" content=" host utilities, centos, linux, 7.7, netapp, ontap, netapp"><!-- Icons -->
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Descrive come utilizzare Red Hat Enterprise Linux 9.2 con ONTAP">
+  <meta name="keywords" content=" host utilities, red hat, rhel, linux, 9.2, netapp, ontap, rhel"><!-- Icons -->
   <link rel="icon" href="/it-it/ontap-sanhost/images/favicon.ico" type="image/x-icon">
 
   <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
@@ -32,17 +32,17 @@
   <link rel="stylesheet" href="/it-it/ontap-sanhost/css/landing-page.css" type="text/css">
   <link rel="stylesheet" href="/it-it/ontap-sanhost/css/tabbed-blocks.css" type="text/css">
   <!-- Canonical url -->
-  <link rel="canonical" href="https://docs.netapp.com/it-it/ontap-sanhost/hu_centos_77.html" />
-  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/ontap-sanhost/hu_centos_77.html" />
-  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/ontap-sanhost/hu_centos_77.html" />
-  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/ontap-sanhost/hu_centos_77.html" />
-  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_centos_77.html" />
-  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_centos_77.html" />
-  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_centos_77.html" />
-  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_centos_77.html" />
-  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/ontap-sanhost/hu_centos_77.html" />
-  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/ontap-sanhost/hu_centos_77.html" />
-  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/ontap-sanhost/hu_centos_77.html" />
+  <link rel="canonical" href="https://docs.netapp.com/it-it/ontap-sanhost/hu_rhel_92.html" />
+  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/ontap-sanhost/hu_rhel_92.html" />
+  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/ontap-sanhost/hu_rhel_92.html" />
+  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/ontap-sanhost/hu_rhel_92.html" />
+  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_rhel_92.html" />
+  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_rhel_92.html" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_rhel_92.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_rhel_92.html" />
+  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/ontap-sanhost/hu_rhel_92.html" />
+  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/ontap-sanhost/hu_rhel_92.html" />
+  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/ontap-sanhost/hu_rhel_92.html" />
   <link rel='stylesheet' href='/it-it/ontap-sanhost/css/na-feature.css' type='text/css'><!-- Top level site integrations --><script>
     function addAdobeLaunch(adobeId) {
       var head = document.getElementsByTagName('head')[0];
@@ -177,7 +177,7 @@
   
   <!-- Start Page Toolbar -->
   
-  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost.it-it/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/it-it/ontap-sanhost/hu_centos_77.html&page-title=Utilizzo di CentOS 7.7 con NetApp ONTAP" class="page-nav-contribute-link" role="button"><img src="/it-it/ontap-sanhost/images/discuss-sm.svg" alt="" class="github-icon" />Richiedi modifiche alla documentazione</a><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/blob/main/hu_centos_77.adoc" class="page-nav-contribute-link" role="button"><img src="/it-it/ontap-sanhost/images/edit-sm.svg" alt="" class="github-icon" />Modifica questa pagina</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/it-it/ontap-sanhost/images/article-sm.svg" alt="" class="github-icon" />Scopri come collaborare</a></div>
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost.it-it/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/it-it/ontap-sanhost/hu_rhel_92.html&page-title=Utilizzo di Red Hat Enterprise Linux 9.2 con NetApp ONTAP" class="page-nav-contribute-link" role="button"><img src="/it-it/ontap-sanhost/images/discuss-sm.svg" alt="" class="github-icon" />Richiedi modifiche alla documentazione</a><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/blob/main/hu_rhel_92.adoc" class="page-nav-contribute-link" role="button"><img src="/it-it/ontap-sanhost/images/edit-sm.svg" alt="" class="github-icon" />Modifica questa pagina</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/it-it/ontap-sanhost/images/article-sm.svg" alt="" class="github-icon" />Scopri come collaborare</a></div>
     <div class="page-nav-container">
       <nav class="page-nav-fixed">
         <div class="page-nav-title">IN QUESTA PAGINA</div>
@@ -297,23 +297,23 @@
       </div>
 
       <ul class="custom-dropdown-menu"><li>
-          <a href="https://docs.netapp.com/it-it/ontap-sanhost/hu_centos_77.html" target="_self"><span translate="no" class="notranslate">Italiano</span></a>
+          <a href="https://docs.netapp.com/it-it/ontap-sanhost/hu_rhel_92.html" target="_self"><span translate="no" class="notranslate">Italiano</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/us-en/ontap-sanhost/hu_centos_77.html" target="_self"><span translate="no" class="notranslate">English</span></a>
+          <a href="https://docs.netapp.com/us-en/ontap-sanhost/hu_rhel_92.html" target="_self"><span translate="no" class="notranslate">English</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_centos_77.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
+          <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/hu_rhel_92.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_centos_77.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
+          <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/hu_rhel_92.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_centos_77.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+          <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/hu_rhel_92.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_centos_77.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+          <a href="https://docs.netapp.com/zh-tw/ontap-sanhost/hu_rhel_92.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/de-de/ontap-sanhost/hu_centos_77.html" target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+          <a href="https://docs.netapp.com/de-de/ontap-sanhost/hu_rhel_92.html" target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/es-es/ontap-sanhost/hu_centos_77.html" target="_self"><span translate="no" class="notranslate">Español</span></a>
+          <a href="https://docs.netapp.com/es-es/ontap-sanhost/hu_rhel_92.html" target="_self"><span translate="no" class="notranslate">Español</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/fr-fr/ontap-sanhost/hu_centos_77.html" target="_self"><span translate="no" class="notranslate">Français</span></a>
+          <a href="https://docs.netapp.com/fr-fr/ontap-sanhost/hu_rhel_92.html" target="_self"><span translate="no" class="notranslate">Français</span></a>
         </li></ul>
     </div>
     <!-- End Language Selector -->
@@ -962,8 +962,6 @@
 
 
 
-    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
-  
 
 
 
@@ -1311,6 +1309,8 @@
             RHEL 9
           </a>
           
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
 
 
 
@@ -2271,7 +2271,7 @@
       data-pdf-exists="true" 
       data-pdf-filename="7.7"
       data-li-level="4#" 
-      class="  active "
+      class=" "
     ><a class="na-navbar-padding" href="/it-it/ontap-sanhost/hu_centos_77.html">
         7.7
       </a></li><li 
@@ -2699,7 +2699,7 @@
       data-pdf-exists="true" 
       data-pdf-filename="9.2"
       data-li-level="4#" 
-      class=" "
+      class="  active "
     ><a class="na-navbar-padding" href="/it-it/ontap-sanhost/hu_rhel_92.html">
         9.2
       </a></li><li 
@@ -3179,7 +3179,7 @@
     </div>
   </span>
 </div><div class="n-doc__component-detail-heading-wrap">
-  <h1 class="n-doc__component-detail-heading">Utilizzo di CentOS 7.7 con NetApp ONTAP</h1>
+  <h1 class="n-doc__component-detail-heading">Utilizzo di Red Hat Enterprise Linux 9.2 con NetApp ONTAP</h1>
 </div>
 
 
@@ -3199,57 +3199,46 @@
 <div id="toc" class="toc">
 <div id="toctitle">Sommario</div>
 <ul class="sectlevel1">
-<li><a href="#installazione-di-linux-unified-host-utilities">Installazione di Linux Unified host Utilities</a></li>
-<li><a href="#toolkit-san">Toolkit SAN</a></li>
+<li><a href="#installare-le-utility-host-unificate-linux">Installare le utility host unificate Linux</a></li>
+<li><a href="#kit-di-strumenti-san">Kit di strumenti SAN</a></li>
 <li><a href="#avvio-san">Avvio SAN</a></li>
 <li><a href="#multipathing">Multipathing</a></li>
 <li><a href="#impostazioni-consigliate">Impostazioni consigliate</a></li>
-<li><a href="#problemi-e-limitazioni-noti">Problemi e limitazioni noti</a></li>
+<li><a href="#problemi-noti">Problemi noti</a></li>
 <li><a href="#note-di-rilascio">Note di rilascio</a></li>
 </ul>
 </div>
 <div class="sect1">
-<h2 id="installazione-di-linux-unified-host-utilities">Installazione di Linux Unified host Utilities</h2>
+<h2 id="installare-le-utility-host-unificate-linux">Installare le utility host unificate Linux</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Il pacchetto software NetApp Linux Unified host Utilities è disponibile su <a href="https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&amp;platform=Linux" target="_blank" rel="noopener">"Sito di supporto NetApp"</a> in un file .rpm a 32 bit e a 64 bit. Se non si conosce il file appropriato per la configurazione, utilizzare <a href="https://mysupport.netapp.com/matrix/#welcome" target="_blank" rel="noopener">"Tool di matrice di interoperabilità NetApp"</a> per verificare quale si desidera.</p>
+<p>Il pacchetto software NetApp Linux Unified host Utilities è disponibile su <a href="https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab" target="_blank" rel="noopener">"Sito di supporto NetApp"</a> in un file .rpm a 64 bit.</p>
 </div>
 <div class="paragraph">
-<p>L&#8217;installazione di Linux Unified host Utilities è fortemente consigliata, ma non obbligatoria. Le utility non modificano le impostazioni dell&#8217;host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.</p>
+<p>NetApp consiglia vivamente di installare le utility host unificate Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell&#8217;host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.</p>
 </div>
 <div class="paragraph">
 <div class="title">Di cosa hai bisogno</div>
-<p>Se si dispone di una versione di Linux Unified host Utilities attualmente installata, è necessario aggiornarla oppure rimuoverla e procedere come segue per installare la versione più recente.</p>
+<p>Se si dispone di una versione di Linux Unified host Utilities attualmente installata, eseguire l&#8217;aggiornamento o la rimozione, quindi attenersi alla procedura descritta di seguito per installare la versione più recente.</p>
 </div>
 <div class="olist arabic">
+<div class="title">Fasi</div>
 <ol class="arabic">
 <li>
-<p>Scaricare il pacchetto software di utilità host unificate Linux a 32 bit o 64 bit dal <a href="https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&amp;platform=Linux" target="_blank" rel="noopener">"Sito di supporto NetApp"</a> Al tuo host.</p>
+<p>Scaricare il pacchetto software 64-bit Linux Unified host Utilities dal <a href="https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab" target="_blank" rel="noopener">"Sito di supporto NetApp"</a> al tuo host.</p>
 </li>
 <li>
-<p>Utilizzare il seguente comando per installare il pacchetto software:</p>
+<p>Installare il pacchetto software:</p>
 <div class="paragraph">
 <p><code>rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_64</code></p>
 </div>
 </li>
 </ol>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<img src="/us-en/ontap-sanhost/images/note.svg" alt="Nota">
-</td>
-<td class="content">
-È possibile utilizzare le impostazioni di configurazione fornite in questo documento per configurare i client cloud connessi a. <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html" target="_blank" rel="noopener">"Cloud Volumes ONTAP"</a> e. <a href="https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html" target="_blank" rel="noopener">"Amazon FSX per ONTAP"</a>.
-</td>
-</tr>
-</table>
-</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="toolkit-san">Toolkit SAN</h2>
+<h2 id="kit-di-strumenti-san">Kit di strumenti SAN</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Il toolkit viene installato automaticamente quando si installa il pacchetto NetApp host Utilities. Questo kit fornisce <code>sanlun</code> Utility che consente di gestire LUN e HBA. Il <code>sanlun</code> Il comando restituisce le informazioni relative alle LUN mappate all&#8217;host, al multipathing e alle informazioni necessarie per creare gruppi di iniziatori.</p>
@@ -3284,7 +3273,7 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 <div class="sectionbody">
 <div class="paragraph">
 <div class="title">Di cosa hai bisogno</div>
-<p>Se si decide di utilizzare l&#8217;avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare <a href="https://mysupport.netapp.com/matrix/imt.jsp?components=89085;&amp;solution=1&amp;isHWU&amp;src=IMT" target="_blank" rel="noopener">"Tool di matrice di interoperabilità NetApp"</a> Per verificare che il sistema operativo, l&#8217;HBA, il firmware dell&#8217;HBA, il BIOS di avvio dell&#8217;HBA e la versione di ONTAP siano supportati.</p>
+<p>Se si decide di utilizzare l&#8217;avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare <a href="https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&amp;solution=236&amp;isHWU&amp;src=IMT" target="_blank" rel="noopener">"Tool di matrice di interoperabilità NetApp"</a> Per verificare che il sistema operativo, l&#8217;HBA, il firmware dell&#8217;HBA, il BIOS di avvio dell&#8217;HBA e la versione di ONTAP siano supportati.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Fasi</div>
@@ -3324,7 +3313,7 @@ Una volta attivato il sistema operativo host e eseguito sui percorsi, diventano 
 <h2 id="multipathing">Multipathing</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Per CentOS 7.7 il file /etc/multipath.conf deve esistere, ma non è necessario apportare modifiche specifiche al file. CentOS 7.7 viene compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente le LUN ONTAP.</p>
+<p>Per Red Hat Enterprise Linux (RHEL) 9.2 <code>/etc/multipath.conf</code> il file deve esistere, ma non è necessario apportare modifiche specifiche al file. RHEL 9.2 è compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente le LUN ONTAP.</p>
 </div>
 <div class="paragraph">
 <p>È possibile utilizzare <code>multipath -ll</code> Per verificare le impostazioni dei LUN ONTAP. Le sezioni seguenti forniscono un output multipath di esempio per un LUN mappato a figure ASA e non ASA.</p>
@@ -3344,10 +3333,10 @@ Una volta attivato il sistema operativo host e eseguito sui percorsi, diventano 
 3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
 size=80G  features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
 `-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:7:1    sdfi   130:64   active ready running
-  |- 11:0:9:1    sdiy  8:288     active ready running
-  |- 11:0:10:1  sdml 69:464   active ready running
-  |- 11:0:11:1  sdpt  131:304  active ready running</pre>
+  |- 11:0:7:1    sdfi  130:64   active ready running
+  |- 11:0:9:1    sdiy  8:288    active ready running
+  |- 11:0:10:1   sdml  69:464   active ready running
+  |- 11:0:11:1   sdpt  131:304  active ready running</pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -3376,13 +3365,13 @@ Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono e
 <div class="content">
 <pre># multipath -ll
 3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
-size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle’ hwhandler='1 alua' wp=rw
+size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
-| |- 11:0:1:0 sdj  8:144  active ready running
-| |- 11:0:2:0 sdr  65:16  active ready running
+| |- 11:0:1:0 sdj 8:144 active ready running
+| |- 11:0:2:0 sdr 65:16 active ready running
 `-+- policy='service-time 0' prio=10 status=enabled
-  |- 11:0:0:0 sdb  8:i6   active ready running
-  |- 12:0:0:0 sdz  65:144 active ready running</pre>
+|- 11:0:0:0 sdb 8:i6 active ready running
+|- 12:0:0:0 sdz 65:144 active ready running</pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -3404,8 +3393,10 @@ Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono e
 <h2 id="impostazioni-consigliate">Impostazioni consigliate</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Il sistema operativo CentOS 7.7 viene compilato per riconoscere le LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per la configurazione ASA e non ASA.<br>
-Il <code>multipath.conf</code> il file deve esistere per l&#8217;avvio del daemon multipath, ma è possibile creare un file vuoto a zero byte utilizzando il seguente comando:</p>
+<p>Il sistema operativo RHEL 9.2 viene compilato per riconoscere le LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per le configurazioni ASA e non ASA. È possibile ottimizzare ulteriormente le prestazioni per la configurazione host con le seguenti impostazioni consigliate.</p>
+</div>
+<div class="paragraph">
+<p>Il <code>multipath.conf</code> il file deve esistere per l&#8217;avvio del daemon multipath, ma è possibile creare un file vuoto a zero byte utilizzando il seguente comando:</p>
 </div>
 <div class="paragraph">
 <p><code>touch /etc/multipath.conf</code></p>
@@ -3509,7 +3500,7 @@ Il <code>multipath.conf</code> il file deve esistere per l&#8217;avvio del daemo
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">caratteristiche</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"3 queue_if_no_path pg_init_retries 50"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"2 pg_init_retries 50"</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">flush_on_last_del</p></td>
@@ -3567,21 +3558,21 @@ Il <code>multipath.conf</code> il file deve esistere per l&#8217;avvio del daemo
 </table>
 <div class="paragraph">
 <div class="title">Esempio</div>
-<p>Nell&#8217;esempio seguente viene illustrato come correggere un valore predefinito sovrascritto. In questo caso, il <code>multipath.conf</code> il file definisce i valori per <code>path_checker</code> e. <code>no_path_retry</code> Non compatibili con LUN ONTAP. Se non possono essere rimossi a causa di altri array SAN ancora collegati all&#8217;host, questi parametri possono essere corretti specificamente per i LUN ONTAP con un dispositivo.</p>
+<p>Nell&#8217;esempio seguente viene illustrato come correggere un valore predefinito sovrascritto. In questo caso, il <code>multipath.conf</code> il file definisce i valori per <code>path_checker</code> e. <code>no_path_retry</code> Non compatibili con LUN ONTAP. Se non possono essere rimossi perché altri array SAN sono ancora collegati all&#8217;host, questi parametri possono essere corretti specificamente per i LUN ONTAP con un dispositivo.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>defaults {
    path_checker      readsector0
-   no_path_retry      fail
+   no_path_retry     fail
 }
 
 devices {
    device {
       vendor         "NETAPP  "
       product         "LUN.*"
-      no_path_retry     queue
-      path_checker      tur
+      no_path_retry    queue
+      path_checker     tur
    }
 }</pre>
 </div>
@@ -3595,14 +3586,17 @@ devices {
 </div>
 </div>
 <div class="sect1">
-<h2 id="problemi-e-limitazioni-noti">Problemi e limitazioni noti</h2>
+<h2 id="problemi-noti">Problemi noti</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>La configurazione dell&#8217;host NVMe-of per RHEL 9.2 con release ONTAP presenta i seguenti problemi noti:</p>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
+<col style="width: 18.1818%;">
+<col style="width: 18.1818%;">
+<col style="width: 45.4545%;">
+<col style="width: 18.1819%;">
 </colgroup>
 <thead>
 <tr>
@@ -3614,10 +3608,16 @@ devices {
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1440718</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Se si dismappa o si mappa un LUN senza eseguire una nuova scansione SCSI, i dati sull&#8217;host potrebbero danneggiarsi.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Quando si imposta il parametro di configurazione multipath 'disable_changed_wids' su YES, l&#8217;accesso al path device viene disattivato in caso di modifica dell&#8217;ID WWID. Multipath disattiva l&#8217;accesso al dispositivo di percorso fino a quando l&#8217;ID WWID del percorso non viene ripristinato all&#8217;ID WWID del dispositivo multipath. Per ulteriori informazioni, vedere <a href="https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7" target="_blank" rel="noopener">"Knowledge base di NetApp: La corruzione del file system sul LUN iSCSI su Oracle Linux 7"</a>.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">N/A.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1508554</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La CLI delle NetApp Linux host Utilities richiede dipendenze aggiuntive dei pacchetti di librerie per supportare il rilevamento dell&#8217;adattatore HBA Emulex</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In RHEL 9.2, la CLI delle utility host SAN Linux di NetApp <code>sanlun fcp show adapter -v</code> Non riesce perché non è possibile trovare le dipendenze del pacchetto di libreria per supportare il rilevamento HBA.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Non applicabile</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1537359</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Un host RED Hat Linux 9.2 SAN avviato con Emulex HBA incontra task stallati che portano a un&#8217;interruzione del kernel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Durante un&#8217;operazione di giveback per il failover dello storage, un host RED Hat Linux 9.2 SAN avviato con un HBA (host bus adapeter) Emulex incontra task in stallo che portano a un&#8217;interruzione del kernel. L&#8217;interruzione del kernel causa il riavvio del sistema operativo e se <code>kdump</code> è configurato, genera <code>vmcore</code> file sotto <code>/var/crash/</code> directory. Il problema è in fase di verifica con <code>lpfc</code> ma non può essere riprodotto in modo coerente.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://bugzilla.redhat.com/show_bug.cgi?id=2173947" target="_blank" rel="noopener">"2173947"</a></p></td>
 </tr>
 </tbody>
 </table>

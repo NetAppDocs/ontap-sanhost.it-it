@@ -703,6 +703,8 @@
 
 
 
+
+
         </li>
       </ul>
     
@@ -1307,6 +1309,8 @@
             RHEL 9
           </a>
           
+
+
 
 
 
@@ -1987,6 +1991,13 @@
       </a>
       <ul style="display: none;">
         <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="9.2"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/it-it/ontap-sanhost/nvme_rhel_92.html">
+        9.2
+      </a></li><li 
       data-pdf-exists="true" 
       data-pdf-filename="9.1"
       data-li-level="4#" 
@@ -2686,6 +2697,13 @@
       <ul style="display: none;">
         <li 
       data-pdf-exists="true" 
+      data-pdf-filename="9.2"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/it-it/ontap-sanhost/hu_rhel_92.html">
+        9.2
+      </a></li><li 
+      data-pdf-exists="true" 
       data-pdf-filename="9.1"
       data-li-level="4#" 
       class=" "
@@ -3168,7 +3186,7 @@
 <p class="page-details">
   
     
-    <time datetime="2023-06-07 16:42:41 +0000">06/07/2023</time>
+    <time datetime="2023-06-07 19:40:17 +0000">06/07/2023</time>
     
   
 
@@ -3415,11 +3433,13 @@ Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono e
 <p>Il sistema operativo RHEL 6.10 viene compilato per riconoscere i LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per la configurazione ASA e non ASA.</p>
 </div>
 <div class="paragraph">
-<p>Il <code>multipath.conf</code> il file deve esistere per l&#8217;avvio del daemon multipath, ma è possibile creare un file vuoto a zero byte utilizzando il comando:<br>
-<code>touch /etc/multipath.conf</code></p>
+<p>Il <code>multipath.conf</code> il file deve esistere per l&#8217;avvio del daemon multipath, ma è possibile creare un file vuoto a zero byte utilizzando il seguente comando:</p>
 </div>
 <div class="paragraph">
-<p>La prima volta che si crea questo file, potrebbe essere necessario attivare e avviare i servizi multipath.</p>
+<p><code>touch /etc/multipath.conf</code></p>
+</div>
+<div class="paragraph">
+<p>La prima volta che si crea questo file, potrebbe essere necessario attivare e avviare i servizi multipath:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3427,16 +3447,14 @@ Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono e
 # systemctl start multipathd</pre>
 </div>
 </div>
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
 <p>Non è necessario aggiungere nulla direttamente a <code>multipath.conf</code> file, a meno che non si disponga di periferiche che non si desidera gestire con multipath o che non si dispongano di impostazioni che sovrascrivono le impostazioni predefinite.</p>
-</div>
-<div class="paragraph">
-<p>È possibile aggiungere la seguente sintassi a <code>multipath.conf</code> file per escludere i dispositivi indesiderati.</p>
-</div>
-<div class="paragraph">
-<p>Sostituire <code>&lt;DevId&gt;</code> Con la stringa WWID del dispositivo che si desidera escludere:</p>
-</div>
-<div class="literalblock">
+</li>
+<li>
+<p>Per escludere le periferiche indesiderate, aggiungere la seguente sintassi a <code>multipath.conf</code> file .</p>
+<div class="listingblock">
 <div class="content">
 <pre>blacklist {
         wwid &lt;DevId&gt;
@@ -3447,6 +3465,12 @@ Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono e
 </div>
 </div>
 <div class="paragraph">
+<p>Sostituire <code>&lt;DevId&gt;</code> con <code>WWID</code> stringa del dispositivo che si desidera escludere.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
 <div class="title">Esempio</div>
 <p>In questo esempio, <code>sda</code> È il disco SCSI locale da aggiungere alla blacklist.</p>
 </div>
@@ -3455,7 +3479,7 @@ Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono e
 <ol class="arabic">
 <li>
 <p>Eseguire il seguente comando per determinare l&#8217;ID WWID:</p>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
 <pre># /lib/udev/scsi_id -gud /dev/sda
 360030057024d0730239134810c0cb833</pre>
@@ -3463,8 +3487,8 @@ Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono e
 </div>
 </li>
 <li>
-<p>Aggiungere questo WWID alla lista nera in <code>/etc/multipath.conf</code>:</p>
-<div class="literalblock">
+<p>Aggiungere il <code>WWID</code> alla lista nera <code>/etc/multipath.conf</code>:</p>
+<div class="listingblock">
 <div class="content">
 <pre>blacklist {
      wwid   360030057024d0730239134810c0cb833
@@ -3478,10 +3502,10 @@ Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono e
 </ol>
 </div>
 <div class="paragraph">
-<p>Controllare sempre il <code>/etc/multipath.conf</code> file per le impostazioni legacy, in particolare nella sezione delle impostazioni predefinite, che potrebbero sovrascrivere le impostazioni predefinite.</p>
+<p>Controllare sempre il <code>/etc/multipath.conf</code> file per le impostazioni legacy, in particolare nella sezione delle impostazioni predefinite, che potrebbero prevalere sulle impostazioni predefinite.</p>
 </div>
 <div class="paragraph">
-<p>La seguente tabella mostra i dati critici <code>multipathd</code> Parametri per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri vendor e uno qualsiasi di questi parametri viene ignorato, sarà necessario correggerli nelle successive stanze di <code>multipath.conf</code> File che si applicano specificamente alle LUN ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. Questi valori predefiniti devono essere ignorati solo in consultazione con NetApp e/o il vendor del sistema operativo e solo quando l&#8217;impatto è pienamente compreso.</p>
+<p>La tabella seguente mostra la criticità <code>multipathd</code> Parametri per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri vendor e uno qualsiasi di questi parametri viene ignorato, sarà necessario correggerli nelle successive stanze di <code>multipath.conf</code> File che si applicano specificamente alle LUN ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. Questi valori predefiniti devono essere ignorati solo previa consultazione di NetApp e/o di un vendor del sistema operativo e solo quando l&#8217;impatto è pienamente compreso.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
