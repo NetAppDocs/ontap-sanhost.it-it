@@ -144,55 +144,62 @@ NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non de
 
 == Impostazioni consigliate
 
-Il sistema operativo CentOS 7.9 viene compilato per riconoscere le LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per la configurazione ASA e non ASA. Il `multipath.conf` il file deve esistere per l'avvio del daemon multipath, ma è possibile creare un file vuoto a zero byte utilizzando il comando:
+Il sistema operativo CentOS 7.9 viene compilato per riconoscere le LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per la configurazione ASA e non ASA.
+Il `multipath.conf` il file deve esistere per l'avvio del daemon multipath, ma è possibile creare un file vuoto a zero byte utilizzando il seguente comando:
+
 `touch /etc/multipath.conf`
 
-La prima volta che si crea questo file, potrebbe essere necessario attivare e avviare i servizi multipath.
+La prima volta che si crea questo file, potrebbe essere necessario attivare e avviare i servizi multipath:
 
 [listing]
 ----
 # systemctl enable multipathd
 # systemctl start multipathd
 ----
-Non è necessario aggiungere nulla direttamente a `multipath.conf` file, a meno che non si disponga di periferiche che non si desidera gestire con multipath o che non si dispongano di impostazioni che sovrascrivono le impostazioni predefinite.
-
-È possibile aggiungere la seguente sintassi a `multipath.conf` file per escludere i dispositivi indesiderati.
-
-Sostituire `<DevId>` Con la stringa WWID del dispositivo che si desidera escludere:
-
-....
+* Non è necessario aggiungere nulla direttamente a `multipath.conf` file, a meno che non si disponga di periferiche che non si desidera gestire con multipath o che non si dispongano di impostazioni che sovrascrivono le impostazioni predefinite.
+* Per escludere le periferiche indesiderate, aggiungere la seguente sintassi a `multipath.conf` file .
++
+[listing]
+----
 blacklist {
         wwid <DevId>
         devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
         devnode "^hd[a-z]"
         devnode "^cciss.*"
 }
-....
+----
++
+Sostituire `<DevId>` con `WWID` stringa del dispositivo che si desidera escludere.
+
+
+
 .Esempio
 In questo esempio, `sda` È il disco SCSI locale da aggiungere alla blacklist.
 
 .Fasi
 . Eseguire il seguente comando per determinare l'ID WWID:
 +
-....
+[listing]
+----
 # /lib/udev/scsi_id -gud /dev/sda
 360030057024d0730239134810c0cb833
-....
-. Aggiungere questo WWID alla lista nera in `/etc/multipath.conf`:
+----
+. Aggiungere il `WWID` alla lista nera `/etc/multipath.conf`:
 +
-....
+[listing]
+----
 blacklist {
      wwid   360030057024d0730239134810c0cb833
      devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
      devnode "^hd[a-z]"
      devnode "^cciss.*"
 }
-....
+----
 
 
-Controllare sempre il `/etc/multipath.conf` file per le impostazioni legacy, in particolare nella sezione delle impostazioni predefinite, che potrebbero sovrascrivere le impostazioni predefinite.
+Controllare sempre il `/etc/multipath.conf` file per le impostazioni legacy, in particolare nella sezione delle impostazioni predefinite, che potrebbero prevalere sulle impostazioni predefinite.
 
-La seguente tabella mostra i dati critici `multipathd` Parametri per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri vendor e uno qualsiasi di questi parametri viene ignorato, sarà necessario correggerli nelle successive stanze di `multipath.conf` File che si applicano specificamente alle LUN ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. Questi valori predefiniti devono essere ignorati solo in consultazione con NetApp e/o il vendor del sistema operativo e solo quando l'impatto è pienamente compreso.
+La tabella seguente mostra la criticità `multipathd` Parametri per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri vendor e uno qualsiasi di questi parametri viene ignorato, sarà necessario correggerli nelle successive stanze di `multipath.conf` File che si applicano specificamente alle LUN ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. Questi valori predefiniti devono essere ignorati solo previa consultazione di NetApp e/o di un vendor del sistema operativo e solo quando l'impatto è pienamente compreso.
 
 [cols="2*"]
 |===

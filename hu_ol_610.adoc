@@ -128,10 +128,11 @@ NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non de
 
 Il sistema operativo Oracle Linux 6.10 viene compilato per riconoscere le LUN ONTAP e impostare automaticamente correttamente tutti i parametri di configurazione.
 
-* Il `multipath.conf` il file deve esistere per l'avvio del daemon multipath, ma è possibile creare un file vuoto a zero byte utilizzando il seguente comando:
-`touch /etc/multipath.conf`.
-* La prima volta che si crea questo file, potrebbe essere necessario attivare e avviare i servizi multipath.
+Il `multipath.conf` il file deve esistere per l'avvio del daemon multipath, ma è possibile creare un file vuoto a zero byte utilizzando il seguente comando:
 
+`touch /etc/multipath.conf`.
+
+La prima volta che si crea questo file, potrebbe essere necessario attivare e avviare i servizi multipath.
 
 [listing]
 ----
@@ -139,21 +140,27 @@ Il sistema operativo Oracle Linux 6.10 viene compilato per riconoscere le LUN ON
 # /etc/init.d/multipathd start
 ----
 * Non è necessario aggiungere nulla direttamente a `multipath.conf` file a meno che non si disponga di periferiche che non si desidera gestire multipath o di impostazioni esistenti che sovrascrivono le impostazioni predefinite.
-* È possibile aggiungere la seguente sintassi a `multipath.conf` file per escludere i dispositivi indesiderati.
-* Sostituire l'<DevId> con la stringa WWID del dispositivo che si desidera escludere:
-
-
-....
+* È possibile aggiungere la seguente sintassi a `multipath.conf` file per escludere i dispositivi indesiderati:
++
+** Sostituire l'<DevId> con la stringa WWID del dispositivo che si desidera escludere:
++
+[listing]
+----
 blacklist {
         wwid <DevId>
         devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
         devnode "^hd[a-z]"
         devnode "^cciss.*"
 }
-....
+----
+
+
+
+
 .Esempio
 In questo esempio, `sda` È il disco SCSI locale da aggiungere alla blacklist.
 
+.Fasi
 . Eseguire il seguente comando per determinare l'ID WWID:
 +
 [listing]
@@ -161,21 +168,22 @@ In questo esempio, `sda` È il disco SCSI locale da aggiungere alla blacklist.
 # /lib/udev/scsi_id -gud /dev/sda
 360030057024d0730239134810c0cb833
 ----
-. Aggiungi questo WWID alla "blacklist" stanza in /etc/multipath.conf:
+. Aggiungi questo WWID alla "blacklist" stanza in `/etc/multipath.conf`:
 +
-....
+[listing]
+----
 blacklist {
      wwid   360030057024d0730239134810c0cb833
      devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
      devnode "^hd[a-z]"
      devnode "^cciss.*"
 }
-....
+----
 
 
 Controllare sempre il `/etc/multipath.conf` file per le impostazioni legacy, in particolare nella sezione delle impostazioni predefinite, che potrebbero prevalere sulle impostazioni predefinite.
 
-La seguente tabella mostra i dati critici `multipathd` Parametri per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri vendor e uno qualsiasi di questi parametri viene ignorato, è necessario correggerli nelle successive stanze di `multipath.conf` File che si applicano specificamente alle LUN ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. È necessario eseguire l'override di queste impostazioni predefinite solo previa consultazione di NetApp e/o del vendor del sistema operativo e solo quando l'impatto è pienamente compreso.
+La tabella seguente mostra la criticità `multipathd` Parametri per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri vendor e uno qualsiasi di questi parametri viene ignorato, è necessario correggerli nelle successive stanze di `multipath.conf` File che si applicano specificamente alle LUN ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. È necessario eseguire l'override di queste impostazioni predefinite solo previa consultazione di NetApp e/o del vendor del sistema operativo e solo quando l'impatto è pienamente compreso.
 
 [cols="2*"]
 |===
