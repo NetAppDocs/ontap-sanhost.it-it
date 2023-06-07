@@ -96,7 +96,7 @@ Per AIX, il modulo di controllo del percorso (PCM) è responsabile del controllo
 
 === Configurazione non ASA
 
-Per la configurazione non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero vengono serviti dal controller in cui si trova l'aggregato. I percorsi con priorità inferiori sono attivi ma non ottimizzati perché vengono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando non sono disponibili percorsi ottimizzati.
+Per le configurazioni non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero vengono serviti dal controller in cui si trova l'aggregato. I percorsi con priorità inferiori sono attivi ma non ottimizzati perché vengono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando non sono disponibili percorsi ottimizzati.
 
 .Esempio
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:
@@ -124,9 +124,9 @@ up      secondary  path3  fcs1    fc_aix_4        1
 ----
 
 
-=== Configurazione di tutti gli array SAN
+=== Tutte le configurazioni DEGLI array SAN
 
-In tutte le configurazioni array SAN (ASA), tutti i percorsi verso una determinata unità logica (LUN) sono attivi e ottimizzati. Ciò significa che l'i/o può essere servito contemporaneamente attraverso tutti i percorsi, consentendo in tal modo migliori performance.
+Nelle configurazioni ASA, tutti i percorsi verso una determinata LUN sono attivi e ottimizzati. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
 
 .Esempio
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP:

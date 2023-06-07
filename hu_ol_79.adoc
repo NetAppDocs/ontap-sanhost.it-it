@@ -75,7 +75,8 @@ Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla conf
 . Mappare il LUN di avvio SAN sull'host.
 . Verificare che siano disponibili più percorsi.
 +
-Tenere presente che i percorsi multipli saranno disponibili solo dopo che il sistema operativo host sarà attivo e in esecuzione sui percorsi.
+
+NOTE: Una volta attivato il sistema operativo host e eseguito sui percorsi, diventano disponibili più percorsi.
 
 . Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN.
 +
@@ -96,7 +97,7 @@ Per Oracle Linux (OL) 7.9 il file /etc/multipath.conf deve esistere, ma non è n
 
 === Configurazione non ASA
 
-Per la configurazione non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero vengono serviti dal controller in cui si trova l'aggregato. I percorsi con priorità inferiori sono attivi ma non ottimizzati perché vengono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando non sono disponibili percorsi ottimizzati.
+Per le configurazioni non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero vengono serviti dal controller in cui si trova l'aggregato. I percorsi con priorità inferiori sono attivi ma non ottimizzati perché vengono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando non sono disponibili percorsi ottimizzati.
 
 .Esempio
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:
@@ -115,13 +116,13 @@ size=40G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 
 ----
 
-NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di 4 percorsi. Più di 8 percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
+NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
 
 
 
-=== Configurazione di tutti gli array SAN
+=== Tutte le configurazioni DEGLI array SAN
 
-In tutte le configurazioni array SAN (ASA), tutti i percorsi verso una determinata unità logica (LUN) sono attivi e ottimizzati. Ciò significa che l'i/o può essere servito contemporaneamente attraverso tutti i percorsi, consentendo in tal modo migliori performance.
+Nelle configurazioni ASA, tutti i percorsi verso una determinata LUN sono attivi e ottimizzati. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
 
 .Esempio
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP:
@@ -139,7 +140,7 @@ size=10G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 
 ----
 
-NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di 4 percorsi. Più di 8 percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
+NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
 
 
 
@@ -159,7 +160,7 @@ Non è necessario aggiungere nulla direttamente a `multipath.conf` file, a meno 
 
 È possibile aggiungere la seguente sintassi a `multipath.conf` file per escludere i dispositivi indesiderati.
 
-Sostituire `<DevId>` Con la stringa WWID del dispositivo che si desidera escludere. Utilizzare il seguente comando per determinare l'ID WWID:
+Sostituire `<DevId>` Con la stringa WWID del dispositivo che si desidera escludere:
 
 ....
 blacklist {

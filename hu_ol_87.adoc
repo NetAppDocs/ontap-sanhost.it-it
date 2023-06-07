@@ -1,16 +1,16 @@
 ---
 sidebar: sidebar 
-permalink: hu_rhel_86.html 
-keywords: host utilities, red hat, rhel, linux, 8.6, netapp, ontap 
-summary: Descrive come utilizzare Red Hat Enterprise Linux 8.6 con ONTAP 
+permalink: hu_ol_87.html 
+keywords: host utilities, oracle, linux, 8.7, netapp, ontap 
+summary: Descrive come utilizzare Oracle Linux 8.7 con ONTAP 
 ---
-= Utilizzo di Red Hat Enterprise Linux 8.6 con NetApp ONTAP
+= Utilizzo di Oracle Linux 8.7 con NetApp ONTAP
 :toc: macro
 :hardbreaks:
-:toclevels: 1
+:toclevels: 1P
 :allow-uri-read: 
 :toc: 
-:toclevels: 1
+:toclevels: 1P
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -38,39 +38,36 @@ Se si dispone di una versione di Linux Unified host Utilities attualmente instal
 
 
 
-NOTE: È possibile utilizzare le impostazioni di configurazione fornite in questo documento per configurare i client cloud connessi a. link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] e. link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX per ONTAP"^].
-
-
 
 == Toolkit SAN
 
-Il toolkit viene installato automaticamente quando si installa il pacchetto NetApp host Utilities. Questo kit fornisce `sanlun` Utility che consente di gestire LUN e HBA. Il `sanlun` Il comando restituisce le informazioni relative alle LUN mappate all'host, al multipathing e alle informazioni necessarie per creare gruppi di iniziatori.
+Il toolkit viene installato automaticamente quando si installa il pacchetto NetApp host Utilities. Questo kit fornisce `sanlun` Utility che consente di gestire LUN e HBA (host bus adapter). Il `sanlun` Il comando restituisce le informazioni relative alle LUN mappate all'host, al multipathing e alle informazioni necessarie per creare gruppi di iniziatori.
 
-.Esempio
 Nell'esempio seguente, il `sanlun lun show` Il comando restituisce le informazioni sul LUN.
 
 [listing]
 ----
 # sanlun lun show all
 ----
-Output di esempio:
+*Esempio di output:*
 
 [listing]
 ----
 controller(7mode/E-Series)/            device     host               lun
 vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
 -------------------------------------------------------------------------
-data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDOT
+data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       80.0g  cDOT
+data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       80.0g  cDOT
+data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       80.0g  cDOT
+data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       80.0g  cDOT
+
 ----
 
 
 == Avvio SAN
 
 .Di cosa hai bisogno
-Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] Per verificare che il sistema operativo, l'HBA, il firmware dell'HBA, il BIOS di avvio dell'HBA e la versione di ONTAP siano supportati.
+Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare link:https://mysupport.netapp.com/matrix/imt.jsp?components=91863;&solution=1&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] Per verificare che il sistema operativo, l'HBA, il firmware dell'HBA, il BIOS di avvio dell'HBA e la versione di ONTAP siano supportati.
 
 .Fasi
 . Mappare il LUN di avvio SAN sull'host.
@@ -90,9 +87,11 @@ Per informazioni su come attivare il BIOS HBA, consultare la documentazione spec
 
 == Multipathing
 
-Per Red Hat Enterprise Linux (RHEL) 8.6 `/etc/multipath.conf` il file deve esistere, ma non è necessario apportare modifiche specifiche al file. RHEL 8.6 è compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente le LUN ONTAP.
+Per Oracle Linux (OL) 8.7 `/etc/multipath.conf` il file deve esistere. Non è necessario apportare modifiche specifiche al file perché OL 8.7 è compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente le LUN ONTAP.
 
-È possibile utilizzare `multipath -ll` Per verificare le impostazioni dei LUN ONTAP. Le sezioni seguenti forniscono un output multipath di esempio per un LUN mappato a figure ASA e non ASA.
+È possibile utilizzare `multipath -ll` Per verificare le impostazioni dei LUN ONTAP.
+
+Le sezioni seguenti forniscono un output multipath di esempio per un LUN mappato a tutte le configurazioni di array SAN (ASA) e non ASA.
 
 
 
@@ -108,14 +107,14 @@ Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP:
 # multipath -ll
 3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
 size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
-`-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:7:1    sdfi   130:64   active ready running
-  |- 11:0:9:1    sdiy  8:288     active ready running
-  |- 11:0:10:1  sdml 69:464   active ready running
-  |- 11:0:11:1  sdpt  131:304  active ready running
+|-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:6   sdbz 68:208  active ready running
+  |- 11:0:11:6  sddn 71:80   active ready running
+  |- 11:0:15:6  sdfb 129:208 active ready running
+  |- 12:0:1:6   sdgp 132:80  active ready running
 ----
 
-NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
+NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non dovrebbero essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
 
 
 
@@ -129,7 +128,7 @@ Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con 
 [listing]
 ----
 # multipath -ll
-3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+3600a0980383036347ffb4d59646c4436 dm-28 NETAPP,LUN C-Mode
 size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
 | |- 16:0:6:35 sdwb  69:624  active ready running
@@ -145,7 +144,7 @@ NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non de
 
 == Impostazioni consigliate
 
-Il sistema operativo RHEL 8.6 viene compilato per riconoscere i LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per la configurazione ASA e non ASA.
+Il sistema operativo Oracle Linux 8.7 viene compilato per riconoscere le LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per le configurazioni ASA e non ASA.
 
 Il `multipath.conf` il file deve esistere per l'avvio del daemon multipath, ma è possibile creare un file vuoto a zero byte utilizzando il comando:
 `touch /etc/multipath.conf`
@@ -205,7 +204,7 @@ La seguente tabella mostra i dati critici `multipathd` Parametri per i LUN ONTAP
 | detect_prio | sì 
 
 
-| dev_loss_tmo | "infinito" 
+| dev_loss_tmo | infinito 
 
 
 | failback | immediato 
@@ -214,31 +213,31 @@ La seguente tabella mostra i dati critici `multipathd` Parametri per i LUN ONTAP
 | fast_io_fail_tmo | 5 
 
 
-| caratteristiche | "2 pg_init_retries 50" 
+| caratteristiche | 2 tentativi pg_init_retries 50 
 
 
-| flush_on_last_del | "sì" 
+| flush_on_last_del | sì 
 
 
-| gestore_hardware | "0" 
+| gestore_hardware | 0 
 
 
 | no_path_retry | coda 
 
 
-| path_checker | "a" 
+| path_checker | ... 
 
 
-| policy_di_raggruppamento_percorsi | "group_by_prio" 
+| policy_di_raggruppamento_percorsi | group_by_prio 
 
 
-| path_selector | "tempo di servizio 0" 
+| path_selector | tempo di servizio 0 
 
 
 | intervallo_polling | 5 
 
 
-| prio | "ONTAP" 
+| prio | ONTAP 
 
 
 | prodotto | LUN.* 
@@ -247,7 +246,7 @@ La seguente tabella mostra i dati critici `multipathd` Parametri per i LUN ONTAP
 | retain_attached_hw_handler | sì 
 
 
-| peso_rr | "uniforme" 
+| peso_rr | uniforme 
 
 
 | user_friendly_names | no 
@@ -261,30 +260,32 @@ Nell'esempio seguente viene illustrato come correggere un valore predefinito sov
 [listing]
 ----
 defaults {
-   path_checker      readsector0
-   no_path_retry      fail
-}
-
+ path_checker readsector0
+ no_path_retry fail
+ }
 devices {
-   device {
-      vendor         "NETAPP  "
-      product         "LUN.*"
-      no_path_retry     queue
-      path_checker      tur
-   }
+ device {
+ vendor "NETAPP "
+ product "LUN.*"
+ no_path_retry queue
+ path_checker tur
+ }
 }
 ----
 
-
-=== Impostazioni KVM
-
-È possibile utilizzare le impostazioni consigliate anche per configurare la macchina virtuale basata su kernel (KVM). Non sono necessarie modifiche per configurare KVM poiché il LUN viene mappato all'hypervisor.
+NOTE: Per configurare Oracle Linux 8.7 RedHat Enterprise kernel (RHCK), utilizzare link:hu_rhel_87.html#recommended-settings["impostazioni consigliate"] Per Red Hat Enterprise Linux (RHEL) 8.7.
 
 
 
-== Problemi e limitazioni noti
+== Impostazioni KVM
 
-Non ci sono problemi noti per RHEL 8.6.
+È inoltre possibile utilizzare le impostazioni consigliate per configurare la macchina virtuale basata sul kernel (KVM). Non sono necessarie modifiche per configurare il KVM quando il LUN viene mappato all'hypervisor.
+
+
+
+== Problemi noti
+
+Non esistono problemi noti per Oracle Linux 8.7.
 
 
 
@@ -294,4 +295,4 @@ Non ci sono problemi noti per RHEL 8.6.
 
 === Mirroring ASM
 
-Il mirroring ASM (Automatic Storage Management) potrebbe richiedere modifiche alle impostazioni del multipath Linux per consentire ad ASM di riconoscere un problema e passare a un gruppo di guasti alternativo. La maggior parte delle configurazioni ASM su ONTAP utilizza la ridondanza esterna, il che significa che la protezione dei dati è fornita dall'array esterno e ASM non esegue il mirroring dei dati. Alcuni siti utilizzano ASM con ridondanza normale per fornire il mirroring bidirezionale, in genere su siti diversi. Vedere link:https://www.netapp.com/us/media/tr-3633.pdf["Database Oracle su ONTAP"^] per ulteriori informazioni.
+Il mirroring di Automatic Storage Management (ASM) potrebbe richiedere modifiche alle impostazioni del multipath Linux per consentire ad ASM di riconoscere un problema e passare a un gruppo di guasti alternativo. La maggior parte delle configurazioni ASM su ONTAP utilizza la ridondanza esterna, il che significa che la protezione dei dati è fornita dall'array esterno e ASM non esegue il mirroring dei dati. Alcuni siti utilizzano ASM con ridondanza normale per fornire il mirroring bidirezionale, in genere su siti diversi. Per ulteriori informazioni, consulta Oracle Databases su ONTAP.

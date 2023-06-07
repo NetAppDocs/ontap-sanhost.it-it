@@ -6,7 +6,8 @@
 . Mappare il LUN di avvio SAN sull'host.
 . Verificare che siano disponibili più percorsi.
 +
-Tenere presente che i percorsi multipli saranno disponibili solo dopo che il sistema operativo host sarà attivo e in esecuzione sui percorsi.
+
+NOTE: Una volta attivato il sistema operativo host e eseguito sui percorsi, diventano disponibili più percorsi.
 
 . Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN.
 +

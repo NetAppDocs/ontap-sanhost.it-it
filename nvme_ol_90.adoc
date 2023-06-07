@@ -103,7 +103,7 @@ vs_ol_nvme  nvme_ss_ol_1    nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0032-3310-8
 ----
 +
 
-NOTE: Se il `hostnqn` le stringhe non corrispondono, si consiglia di utilizzare il `vserver modify` per aggiornare `hostnqn` Stringa sul sottosistema di array ONTAP corrispondente a `hostnqn` stringa da `/etc/nvme/hostnqn` sull'host.
+NOTE: Se il `hostnqn` le stringhe non corrispondono, è possibile utilizzare `vserver modify` per aggiornare `hostnqn` Stringa sul sottosistema di array ONTAP corrispondente a `hostnqn` stringa da `/etc/nvme/hostnqn` sull'host.
 
 
 
@@ -111,7 +111,7 @@ NOTE: Se il `hostnqn` le stringhe non corrispondono, si consiglia di utilizzare 
 
 == Configurare NVMe/FC
 
-È possibile configurare NVME/FC per gli adattatori Broadcom/Emulex o Marvell/Qlogic.
+È possibile configurare NVMe/FC per gli adattatori Broadcom/Emulex o Marvell/Qlogic.
 
 [role="tabbed-block"]
 ====
@@ -147,7 +147,7 @@ LPe32002-M2
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 ----
-. Verificare di utilizzare il Broadcom consigliato `lpfc` firmware e driver della posta in arrivo. Per l'elenco più aggiornato delle versioni firmware e dei driver della scheda di rete supportati, consultare link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^]:
+. Verificare di utilizzare il Broadcom consigliato `lpfc` firmware e driver della posta in arrivo:
 +
 [listing]
 ----
@@ -158,6 +158,9 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 # cat /sys/module/lpfc/version
 0:12.8.0.11
 ----
++
+Per l'elenco più aggiornato delle versioni firmware e dei driver della scheda di rete supportati, consultare link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità NetApp"^].
+
 . Verificare che `lpfc_enable_fc4_type` è impostato su `3`:
 +
 [listing]
@@ -205,7 +208,7 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 .Adattatore FC Marvell/QLogic per NVMe/FC
 --
 .Fasi
-. Verificare che siano in esecuzione le versioni del firmware e del driver dell'adattatore supportate. Il driver nativo qla2xxx della posta in arrivo incluso nel kernel OL 9.0 GA ha le correzioni upstream più recenti, essenziali per il supporto di ONTAP:
+. Il driver nativo qla2xxx della posta in arrivo incluso nel kernel OL 9.0 GA presenta le ultime correzioni upstream essenziali per il supporto di ONTAP. Verificare che siano in esecuzione le versioni del firmware e del driver dell'adattatore supportate:
 +
 [listing]
 ----
@@ -224,6 +227,33 @@ QLE2742 FW:v9.08.02 DVR:v10.02.00.106-k
 
 --
 ====
+
+
+=== Abilita dimensione i/o 1 MB (opzionale)
+
+ONTAP riporta un MDTS (MAX Data Transfer Size) di 8 nei dati del controller di identificazione, il che significa che la dimensione massima della richiesta di i/o può essere fino a 1 MB. Tuttavia, per emettere richieste di i/o di dimensione 1 MB per un host Broadcom NVMe/FC, è necessario aumentare `lpfc` valore di `lpfc_sg_seg_cnt` parametro a 256 dal valore predefinito di 64.
+
+.Fasi
+. Impostare `lpfc_sg_seg_cnt` parametro a 256.
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_sg_seg_cnt=256
+----
+. Eseguire un `dracut -f` e riavviare l'host.
+. Verificare che `lpfc_sg_seg_cnt` è 256.
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+256
+----
+
+
+
+NOTE: Non applicabile agli host Qlogic NVMe/FC.
+
 
 
 == Configurare NVMe/TCP
@@ -326,31 +356,9 @@ nvme connect-all -t tcp -w host-traddr -a traddr -l 1800
 
 
 
-=== Abilitare le dimensioni i/o di 1 MB
-
-Il `lpfc_sg_seg_cnt` Il parametro deve essere impostato su 256 per consentire all'host di emettere 1 MB di i/O.
-
-.Fasi
-. Impostare `lpfc_sg_seg_cnt` parametro a 256.
-+
-[listing]
-----
-# cat /etc/modprobe.d/lpfc.conf
-options lpfc lpfc_sg_seg_cnt=256
-----
-. Eseguire un `dracut -f` e riavviare l'host.
-. Verificare che `lpfc_sg_seg_cnt` è 256.
-+
-[listing]
-----
-# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
-256
-----
-
-
-
-
 == Validare NVMe-of
+
+È possibile utilizzare la seguente procedura per convalidare NVMe-of.
 
 .Fasi
 . Verificare le seguenti impostazioni NVMe/FC sull'host OL 9.0:
@@ -480,6 +488,8 @@ NSID       UUID                                   Size
 
 == Problemi noti
 
+La configurazione dell'host NVMe-OF per Oracle Linux 9.0 con la release ONTAP presenta i seguenti problemi noti:
+
 [cols=""20"]
 |===
 | ID bug NetApp | Titolo | Descrizione | ID Bugzilla 
@@ -491,7 +501,7 @@ NSID       UUID                                   Size
 
 == Risoluzione dei problemi
 
-Prima di eseguire la risoluzione dei problemi relativi a NVMe/FC, verificare che la configurazione in uso sia conforme alle specifiche IMT, quindi procedere con i passi successivi per eseguire il debug di eventuali problemi relativi all'host.
+Prima di eseguire la risoluzione dei problemi relativi a NVMe-of, verificare che la configurazione in uso sia conforme alle specifiche IMT, quindi procedere con i passi successivi per eseguire il debug di eventuali problemi relativi all'host.
 
 
 

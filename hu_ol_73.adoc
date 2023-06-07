@@ -75,7 +75,8 @@ Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla conf
 . Mappare il LUN di avvio SAN sull'host.
 . Verificare che siano disponibili più percorsi.
 +
-Tenere presente che i percorsi multipli saranno disponibili solo dopo che il sistema operativo host sarà attivo e in esecuzione sui percorsi.
+
+NOTE: Una volta attivato il sistema operativo host e eseguito sui percorsi, diventano disponibili più percorsi.
 
 . Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN.
 +
@@ -108,7 +109,7 @@ size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 |- 12:0:0:0 sdz 65:144 active ready running
 ----
 
-NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di 4 percorsi. Più di 8 percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
+NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
 
 
 
@@ -128,7 +129,7 @@ Non è necessario aggiungere nulla direttamente a `multipath.conf` file, a meno 
 
 È possibile aggiungere la seguente sintassi a `multipath.conf` file per escludere i dispositivi indesiderati.
 
-Sostituire `<DevId>` Con la stringa WWID del dispositivo che si desidera escludere. Utilizzare il seguente comando per determinare l'ID WWID:
+Sostituire `<DevId>` Con la stringa WWID del dispositivo che si desidera escludere:
 
 ....
 blacklist {
@@ -254,4 +255,4 @@ Non esistono problemi noti per Oracle Linux 7.3.
 
 === Mirroring ASM
 
-Il mirroring ASM potrebbe richiedere modifiche alle impostazioni del multipath Linux per consentire ad ASM di riconoscere un problema e passare a un gruppo di guasti alternativo. La maggior parte delle configurazioni ASM su ONTAP utilizza la ridondanza esterna, il che significa che la protezione dei dati è fornita dall'array esterno e ASM non esegue il mirroring dei dati. Alcuni siti utilizzano ASM con ridondanza normale per fornire il mirroring bidirezionale, in genere su siti diversi. Vedere link:https://www.netapp.com/us/media/tr-3633.pdf["Database Oracle su ONTAP"^] per ulteriori informazioni.
+Il mirroring ASM (Automatic Storage Management) potrebbe richiedere modifiche alle impostazioni del multipath Linux per consentire ad ASM di riconoscere un problema e passare a un gruppo di guasti alternativo. La maggior parte delle configurazioni ASM su ONTAP utilizza la ridondanza esterna, il che significa che la protezione dei dati è fornita dall'array esterno e ASM non esegue il mirroring dei dati. Alcuni siti utilizzano ASM con ridondanza normale per fornire il mirroring bidirezionale, in genere su siti diversi. Vedere link:https://www.netapp.com/us/media/tr-3633.pdf["Database Oracle su ONTAP"^] per ulteriori informazioni.

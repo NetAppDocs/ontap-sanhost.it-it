@@ -75,7 +75,8 @@ Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla conf
 . Mappare il LUN di avvio SAN sull'host.
 . Verificare che siano disponibili più percorsi.
 +
-Tenere presente che i percorsi multipli saranno disponibili solo dopo che il sistema operativo host sarà attivo e in esecuzione sui percorsi.
+
+NOTE: Una volta attivato il sistema operativo host e eseguito sui percorsi, diventano disponibili più percorsi.
 
 . Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN.
 +
@@ -119,7 +120,7 @@ size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
   |- 0:0:19:37 sddu 71:192  active ready running
 ----
 
-NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di 4 percorsi. Più di 8 percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
+NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
 
 
 
@@ -127,18 +128,20 @@ NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non de
 
 Il sistema operativo Oracle Linux 6.9 viene compilato per riconoscere le LUN ONTAP e impostare automaticamente correttamente tutti i parametri di configurazione.
 
-Il file multipath.conf deve esistere per l'avvio del daemon multipath, ma è possibile creare un file vuoto a zero byte usando il comando:
-`touch /etc/multipath.conf`La prima volta che si crea questo file, potrebbe essere necessario attivare e avviare i servizi multipath.
+* Il `multipath.conf` il file deve esistere per l'avvio del daemon multipath, ma è possibile creare un file vuoto a zero byte utilizzando il seguente comando:
+`touch /etc/multipath.conf`.
+* La prima volta che si crea questo file, potrebbe essere necessario attivare e avviare i servizi multipath.
+
 
 [listing]
 ----
 # chkconfig multipathd on
 # /etc/init.d/multipathd start
 ----
-Non è necessario aggiungere nulla direttamente a multipath.conf, a meno che non si disponga di dispositivi che non si desidera siano gestiti da multipath o che non si dispongano di impostazioni che sovrascrivono le impostazioni predefinite. È possibile aggiungere la seguente sintassi al file multipath.conf per escludere i dispositivi indesiderati.
+* Non è necessario aggiungere nulla direttamente a `multipath.conf` file a meno che non si disponga di periferiche che non si desidera gestire multipath o di impostazioni esistenti che sovrascrivono le impostazioni predefinite.
+* È possibile aggiungere la seguente sintassi a `multipath.conf` file per escludere i dispositivi indesiderati.
+* Sostituire l'<DevId> con la stringa WWID del dispositivo che si desidera escludere:
 
-
-NOTE: Sostituire l'<DevId> con la stringa WWID del dispositivo che si desidera escludere. Utilizzare il seguente comando per determinare l'ID WWID:
 
 ....
 blacklist {
@@ -149,14 +152,15 @@ blacklist {
 }
 ....
 .Esempio
-In questo esempio, sda è il disco SCSI locale da aggiungere alla blacklist.
+In questo esempio, `sda` È il disco SCSI locale da aggiungere alla blacklist.
 
 . Eseguire il seguente comando per determinare l'ID WWID:
 +
-....
+[listing]
+----
 # /lib/udev/scsi_id -gud /dev/sda
 360030057024d0730239134810c0cb833
-....
+----
 . Aggiungi questo WWID alla "blacklist" stanza in /etc/multipath.conf:
 +
 ....
@@ -169,7 +173,9 @@ blacklist {
 ....
 
 
-Controllare sempre il `/etc/multipath.conf` file per le impostazioni legacy, in particolare nella sezione delle impostazioni predefinite, che potrebbero sovrascrivere le impostazioni predefinite. La tabella riportata di seguito mostra le informazioni critiche `multipathd` Parametri per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri vendor e uno qualsiasi di questi parametri viene ignorato, sarà necessario correggerli nelle successive fasi di `multipath.conf` Che si applicano specificamente alle LUN ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. Questi valori predefiniti devono essere ignorati solo in consultazione con NetApp e/o il vendor del sistema operativo e solo quando l'impatto è pienamente compreso.
+Controllare sempre il `/etc/multipath.conf` file per le impostazioni legacy, in particolare nella sezione delle impostazioni predefinite, che potrebbero prevalere sulle impostazioni predefinite.
+
+La seguente tabella mostra i dati critici `multipathd` Parametri per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri vendor e uno qualsiasi di questi parametri viene ignorato, è necessario correggerli nelle successive stanze di `multipath.conf` File che si applicano specificamente alle LUN ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. È necessario eseguire l'override di queste impostazioni predefinite solo previa consultazione di NetApp e/o del vendor del sistema operativo e solo quando l'impatto è pienamente compreso.
 
 [cols="2*"]
 |===
@@ -272,4 +278,4 @@ NOTE: Per i problemi noti di Oracle Linux (kernel compatibile con Red Hat), cons
 
 === Mirroring ASM
 
-Il mirroring ASM potrebbe richiedere modifiche alle impostazioni del multipath Linux per consentire ad ASM di riconoscere un problema e passare a un gruppo di guasti alternativo. La maggior parte delle configurazioni ASM su ONTAP utilizza la ridondanza esterna, il che significa che la protezione dei dati è fornita dall'array esterno e ASM non esegue il mirroring dei dati. Alcuni siti utilizzano ASM con ridondanza normale per fornire il mirroring bidirezionale, in genere su siti diversi. Vedere link:https://www.netapp.com/us/media/tr-3633.pdf["Database Oracle su ONTAP"^] per ulteriori informazioni.
+Il mirroring ASM (Automatic Storage Management) potrebbe richiedere modifiche alle impostazioni del multipath Linux per consentire ad ASM di riconoscere un problema e passare a un gruppo di guasti alternativo. La maggior parte delle configurazioni ASM su ONTAP utilizza la ridondanza esterna, il che significa che la protezione dei dati è fornita dall'array esterno e ASM non esegue il mirroring dei dati. Alcuni siti utilizzano ASM con ridondanza normale per fornire il mirroring bidirezionale, in genere su siti diversi. Vedere link:https://www.netapp.com/us/media/tr-3633.pdf["Database Oracle su ONTAP"^] per ulteriori informazioni.

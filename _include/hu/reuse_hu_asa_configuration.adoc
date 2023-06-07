@@ -1,12 +1,12 @@
-= Configurazione di tutti gli array SAN
+= Tutte le configurazioni DEGLI array SAN
 :allow-uri-read: 
 
 
 
 
-=== Configurazione di tutti gli array SAN
+=== Tutte le configurazioni DEGLI array SAN
 
-In tutte le configurazioni array SAN (ASA), tutti i percorsi verso una determinata unità logica (LUN) sono attivi e ottimizzati. Ciò significa che l'i/o può essere servito contemporaneamente attraverso tutti i percorsi, consentendo in tal modo migliori performance.
+Nelle configurazioni ASA, tutti i percorsi verso una determinata LUN sono attivi e ottimizzati. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
 
 .Esempio
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP:

@@ -24,14 +24,14 @@ summary: Descrive come utilizzare Oracle Linux 8.6 con ONTAP
 
 Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["Sito di supporto NetApp"^] in un file .rpm a 64 bit.
 
-L'installazione di Linux Unified host Utilities è fortemente consigliata, ma non obbligatoria. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
+NetApp consiglia vivamente di installare le utility host unificate Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
 
 .Di cosa hai bisogno
-Se si dispone di una versione di Linux Unified host Utilities attualmente installata, è necessario aggiornarla oppure rimuoverla e procedere come segue per installare la versione più recente.
+Se si dispone di una versione di Linux Unified host Utilities attualmente installata, eseguire l'aggiornamento o la rimozione, quindi attenersi alla procedura descritta di seguito per installare la versione più recente.
 
 .Fasi
 . Scaricare il pacchetto software 64-bit Linux Unified host Utilities dal https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["Sito di supporto NetApp"^] al tuo host.
-. Utilizzare il seguente comando per installare il pacchetto software:
+. Installare il pacchetto software:
 +
 `rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_64`
 
@@ -76,7 +76,8 @@ Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla conf
 . Mappare il LUN di avvio SAN sull'host.
 . Verificare che siano disponibili più percorsi.
 +
-Tenere presente che i percorsi multipli saranno disponibili solo dopo che il sistema operativo host sarà attivo e in esecuzione sui percorsi.
+
+NOTE: Una volta attivato il sistema operativo host e eseguito sui percorsi, diventano disponibili più percorsi.
 
 . Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN.
 +
@@ -99,7 +100,7 @@ Le sezioni seguenti forniscono un output multipath di esempio per un LUN mappato
 
 === Configurazione non ASA
 
-Per la configurazione non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero vengono serviti dal controller in cui si trova l'aggregato. I percorsi con priorità inferiori sono attivi ma non ottimizzati perché vengono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando non sono disponibili percorsi ottimizzati.
+Per le configurazioni non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero vengono serviti dal controller in cui si trova l'aggregato. I percorsi con priorità inferiori sono attivi ma non ottimizzati perché vengono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando non sono disponibili percorsi ottimizzati.
 
 .Esempio
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:
@@ -117,13 +118,13 @@ size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
 |- 15:0:1:35 sdbx 68:176 active ready running
 ----
 
-NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di 4 percorsi. Più di 8 percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
+NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
 
 
 
-=== Configurazione di tutti gli array SAN
+=== Tutte le configurazioni DEGLI array SAN
 
-In tutte le configurazioni array SAN (ASA), tutti i percorsi verso una determinata unità logica (LUN) sono attivi e ottimizzati. Ciò significa che l'i/o può essere servito contemporaneamente attraverso tutti i percorsi, consentendo in tal modo migliori performance.
+Nelle configurazioni ASA, tutti i percorsi verso una determinata LUN sono attivi e ottimizzati. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
 
 .Esempio
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP:
@@ -162,7 +163,7 @@ Non è necessario aggiungere nulla direttamente a `multipath.conf` file, a meno 
 
 È possibile aggiungere la seguente sintassi a `multipath.conf` file per escludere i dispositivi indesiderati.
 
-Sostituire `<DevId>` Con la stringa WWID del dispositivo che si desidera escludere. Utilizzare il seguente comando per determinare l'ID WWID:
+Sostituire `<DevId>` Con la stringa WWID del dispositivo che si desidera escludere:
 
 ....
 blacklist {

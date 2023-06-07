@@ -262,7 +262,7 @@ Device   Vserver  Namespace Path             NSID   UUID   Size
 
 == Abilita 1MB i/o Size per Broadcom NVMe/FC
 
-Il `lpfc_sg_seg_cnt` Il parametro deve essere impostato su 256 per consentire all'host di emettere 1 MB di i/O.
+ONTAP riporta un MDTS (MAX Data Transfer Size) di 8 nei dati del controller di identificazione, il che significa che la dimensione massima della richiesta di i/o può essere fino a 1 MB. Tuttavia, per emettere richieste di i/o di dimensione 1 MB per un host Broadcom NVMe/FC, è necessario aumentare `lpfc` valore di `lpfc_sg_seg_cnt` parametro a 256 dal valore predefinito di 64.
 
 .Fasi
 . Impostare `lpfc_sg_seg_cnt` parametro a 256.
@@ -281,6 +281,9 @@ options lpfc lpfc_sg_seg_cnt=256
 256
 ----
 
+
+
+NOTE: Non applicabile agli host Qlogic NVMe/FC.
 
 
 

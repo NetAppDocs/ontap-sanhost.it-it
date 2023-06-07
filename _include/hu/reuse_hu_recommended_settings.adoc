@@ -16,7 +16,7 @@ Non è necessario aggiungere nulla direttamente a `multipath.conf` file, a meno 
 
 È possibile aggiungere la seguente sintassi a `multipath.conf` file per escludere i dispositivi indesiderati.
 
-Sostituire `<DevId>` Con la stringa WWID del dispositivo che si desidera escludere. Utilizzare il seguente comando per determinare l'ID WWID:
+Sostituire `<DevId>` Con la stringa WWID del dispositivo che si desidera escludere:
 
 ....
 blacklist {
