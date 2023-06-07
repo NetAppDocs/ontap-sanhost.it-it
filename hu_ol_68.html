@@ -622,6 +622,8 @@
 
 
 
+
+
         </li>
       </ul>
     
@@ -1163,6 +1165,8 @@
             OL 8
           </a>
           
+
+
 
 
 
@@ -1887,6 +1891,13 @@
       <ul style="display: none;">
         <li 
       data-pdf-exists="true" 
+      data-pdf-filename="8.7"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/it-it/ontap-sanhost/nvme_ol_87.html">
+        8.7
+      </a></li><li 
+      data-pdf-exists="true" 
       data-pdf-filename="8.6"
       data-li-level="4#" 
       class=" "
@@ -2463,6 +2474,13 @@
       </a>
       <ul style="display: none;">
         <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.7"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/it-it/ontap-sanhost/hu_ol_87.html">
+        8.7
+      </a></li><li 
       data-pdf-exists="true" 
       data-pdf-filename="8.6"
       data-li-level="4#" 
@@ -3150,7 +3168,7 @@
 <p class="page-details">
   
     
-    <time datetime="2023-05-23 13:02:12 +0000">05/23/2023</time>
+    <time datetime="2023-06-07 16:42:41 +0000">06/07/2023</time>
     
   
 
@@ -3258,8 +3276,17 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 </li>
 <li>
 <p>Verificare che siano disponibili più percorsi.</p>
-<div class="paragraph">
-<p>Tenere presente che i percorsi multipli saranno disponibili solo dopo che il sistema operativo host sarà attivo e in esecuzione sui percorsi.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-sanhost/images/note.svg" alt="Nota">
+</td>
+<td class="content">
+Una volta attivato il sistema operativo host e eseguito sui percorsi, diventano disponibili più percorsi.
+</td>
+</tr>
+</table>
 </div>
 </li>
 <li>
@@ -3331,7 +3358,7 @@ size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 <img src="/us-en/ontap-sanhost/images/note.svg" alt="Nota">
 </td>
 <td class="content">
-Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di 4 percorsi. Più di 8 percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
+Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
 </td>
 </tr>
 </table>
@@ -3344,9 +3371,16 @@ Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono e
 <div class="paragraph">
 <p>Il sistema operativo Oracle Linux 6.8 viene compilato per riconoscere le LUN ONTAP e impostare automaticamente correttamente tutti i parametri di configurazione.</p>
 </div>
-<div class="paragraph">
-<p>Il file multipath.conf deve esistere per l&#8217;avvio del daemon multipath, ma è possibile creare un file vuoto a zero byte usando il comando:<br>
-`touch /etc/multipath.conf`La prima volta che si crea questo file, potrebbe essere necessario attivare e avviare i servizi multipath.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Il <code>multipath.conf</code> il file deve esistere per l&#8217;avvio del daemon multipath, ma è possibile creare un file vuoto a zero byte utilizzando il seguente comando:<br>
+<code>touch /etc/multipath.conf</code>.</p>
+</li>
+<li>
+<p>La prima volta che si crea questo file, potrebbe essere necessario attivare e avviare i servizi multipath.</p>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3354,20 +3388,18 @@ Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono e
 # /etc/init.d/multipathd start</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Non è necessario aggiungere nulla direttamente a multipath.conf, a meno che non si disponga di dispositivi che non si desidera siano gestiti da multipath o che non si dispongano di impostazioni che sovrascrivono le impostazioni predefinite. È possibile aggiungere la seguente sintassi al file multipath.conf per escludere i dispositivi indesiderati.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<img src="/us-en/ontap-sanhost/images/note.svg" alt="Nota">
-</td>
-<td class="content">
-Sostituire l'&lt;DevId&gt; con la stringa WWID del dispositivo che si desidera escludere. Utilizzare il seguente comando per determinare l&#8217;ID WWID:
-</td>
-</tr>
-</table>
+<div class="ulist">
+<ul>
+<li>
+<p>Non è necessario aggiungere nulla direttamente a <code>multipath.conf</code> file a meno che non si disponga di periferiche che non si desidera gestire multipath o di impostazioni esistenti che sovrascrivono le impostazioni predefinite.</p>
+</li>
+<li>
+<p>È possibile aggiungere la seguente sintassi a <code>multipath.conf</code> file per escludere i dispositivi indesiderati.</p>
+</li>
+<li>
+<p>Sostituire l'&lt;DevId&gt; con la stringa WWID del dispositivo che si desidera escludere:</p>
+</li>
+</ul>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -3381,13 +3413,13 @@ Sostituire l'&lt;DevId&gt; con la stringa WWID del dispositivo che si desidera e
 </div>
 <div class="paragraph">
 <div class="title">Esempio</div>
-<p>In questo esempio, sda è il disco SCSI locale da aggiungere alla blacklist.</p>
+<p>In questo esempio, <code>sda</code> È il disco SCSI locale da aggiungere alla blacklist.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
 <p>Eseguire il seguente comando per determinare l&#8217;ID WWID:</p>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
 <pre># /lib/udev/scsi_id -gud /dev/sda
 360030057024d0730239134810c0cb833</pre>
@@ -3410,7 +3442,10 @@ Sostituire l'&lt;DevId&gt; con la stringa WWID del dispositivo che si desidera e
 </ol>
 </div>
 <div class="paragraph">
-<p>Controllare sempre il <code>/etc/multipath.conf</code> file per le impostazioni legacy, in particolare nella sezione delle impostazioni predefinite, che potrebbero sovrascrivere le impostazioni predefinite. La tabella riportata di seguito mostra le informazioni critiche <code>multipathd</code> Parametri per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri vendor e uno qualsiasi di questi parametri viene ignorato, sarà necessario correggerli nelle successive fasi di <code>multipath.conf</code> Che si applicano specificamente alle LUN ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. Questi valori predefiniti devono essere ignorati solo in consultazione con NetApp e/o il vendor del sistema operativo e solo quando l&#8217;impatto è pienamente compreso.</p>
+<p>Controllare sempre il <code>/etc/multipath.conf</code> file per le impostazioni legacy, in particolare nella sezione delle impostazioni predefinite, che potrebbero prevalere sulle impostazioni predefinite.</p>
+</div>
+<div class="paragraph">
+<p>La seguente tabella mostra i dati critici <code>multipathd</code> Parametri per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri vendor e uno qualsiasi di questi parametri viene ignorato, è necessario correggerli nelle successive stanze di <code>multipath.conf</code> File che si applicano specificamente alle LUN ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. È necessario eseguire l&#8217;override di queste impostazioni predefinite solo previa consultazione di NetApp e/o del vendor del sistema operativo e solo quando l&#8217;impatto è pienamente compreso.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -3558,7 +3593,7 @@ Per i problemi noti di Oracle Linux (kernel compatibile con Red Hat), consultare
 <div class="sect2">
 <h3 id="mirroring-asm">Mirroring ASM</h3>
 <div class="paragraph">
-<p>Il mirroring ASM potrebbe richiedere modifiche alle impostazioni del multipath Linux per consentire ad ASM di riconoscere un problema e passare a un gruppo di guasti alternativo. La maggior parte delle configurazioni ASM su ONTAP utilizza la ridondanza esterna, il che significa che la protezione dei dati è fornita dall&#8217;array esterno e ASM non esegue il mirroring dei dati. Alcuni siti utilizzano ASM con ridondanza normale per fornire il mirroring bidirezionale, in genere su siti diversi. Vedere <a href="https://www.netapp.com/us/media/tr-3633.pdf" target="_blank" rel="noopener">"Database Oracle su ONTAP"</a> per ulteriori informazioni.</p>
+<p>Il mirroring ASM (Automatic Storage Management) potrebbe richiedere modifiche alle impostazioni del multipath Linux per consentire ad ASM di riconoscere un problema e passare a un gruppo di guasti alternativo. La maggior parte delle configurazioni ASM su ONTAP utilizza la ridondanza esterna, il che significa che la protezione dei dati è fornita dall&#8217;array esterno e ASM non esegue il mirroring dei dati. Alcuni siti utilizzano ASM con ridondanza normale per fornire il mirroring bidirezionale, in genere su siti diversi. Vedere <a href="https://www.netapp.com/us/media/tr-3633.pdf" target="_blank" rel="noopener">"Database Oracle su ONTAP"</a> per ulteriori informazioni.</p>
 </div>
 </div>
 </div>
