@@ -744,6 +744,8 @@
 
 
 
+
+
         </li>
       </ul>
     
@@ -1344,6 +1346,8 @@
             RHEL 8
           </a>
           
+
+
 
 
 
@@ -2032,6 +2036,13 @@
       </a>
       <ul style="display: none;">
         <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.8"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/it-it/ontap-sanhost/nvme_rhel_88.html">
+        8.8
+      </a></li><li 
       data-pdf-exists="true" 
       data-pdf-filename="8.7"
       data-li-level="4#" 
@@ -2745,6 +2756,13 @@
       <ul style="display: none;">
         <li 
       data-pdf-exists="true" 
+      data-pdf-filename="8.8"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/it-it/ontap-sanhost/hu_rhel_88.html">
+        8.8
+      </a></li><li 
+      data-pdf-exists="true" 
       data-pdf-filename="8.7"
       data-li-level="4#" 
       class=" "
@@ -3204,7 +3222,7 @@
 <p class="page-details">
   
     
-    <time datetime="2023-06-14 10:57:10 +0000">06/14/2023</time>
+    <time datetime="2023-06-14 17:49:00 +0000">06/14/2023</time>
     
   
 
@@ -3260,7 +3278,7 @@
 <h2 id="toolkit-san">Toolkit SAN</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Il kit di strumenti viene installato automaticamente quando si installa il pacchetto di utilità host NetApp. Questo kit fornisce <code>sanlun</code> Utility che consente di gestire LUN e HBA. Il <code>sanlun</code> Il comando restituisce le informazioni relative alle LUN mappate all&#8217;host, al multipathing e alle informazioni necessarie per creare gruppi di iniziatori.</p>
+<p>Il kit di strumenti viene installato automaticamente quando si installa il pacchetto di utilità host NetApp. Questo kit fornisce <code>sanlun</code> Utility che consente di gestire LUN e HBA (host bus adapter). Il <code>sanlun</code> Il comando restituisce le informazioni relative alle LUN mappate all&#8217;host, al multipathing e alle informazioni necessarie per creare gruppi di iniziatori.</p>
 </div>
 <div class="paragraph">
 <p>Nell&#8217;esempio seguente, il <code>sanlun lun show</code> Il comando restituisce le informazioni sul LUN.</p>
@@ -3337,7 +3355,7 @@ Una volta attivato il sistema operativo host e eseguito sui percorsi, diventano 
 <p>È possibile utilizzare <code>multipath -ll</code> Per verificare le impostazioni dei LUN ONTAP.</p>
 </div>
 <div class="paragraph">
-<p>Le sezioni seguenti forniscono un output multipath di esempio per un LUN mappato a figure ASA e non ASA.</p>
+<p>Le sezioni seguenti forniscono un output multipath di esempio per un LUN mappato a configurazioni ASA e non ASA.</p>
 </div>
 <div class="sect2">
 <h3 id="tutte-le-configurazioni-degli-array-san">Tutte le configurazioni DEGLI array SAN</h3>
@@ -3414,7 +3432,7 @@ Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono e
 <h2 id="impostazioni-consigliate">Impostazioni consigliate</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Il sistema operativo Oracle Linux 9.1 viene compilato per riconoscere le LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per la configurazione ASA e non ASA. È possibile ottimizzare ulteriormente le prestazioni per la configurazione host con le seguenti impostazioni consigliate.</p>
+<p>Il sistema operativo Oracle Linux 9.1 viene compilato per riconoscere le LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per le configurazioni ASA e non ASA. È possibile ottimizzare ulteriormente le prestazioni per la configurazione host con le seguenti impostazioni consigliate.</p>
 </div>
 <div class="paragraph">
 <p>Il <code>multipath.conf</code> il file deve esistere per l&#8217;avvio del daemon multipath, ma è possibile creare un file vuoto a zero byte utilizzando il seguente comando:</p>
@@ -3579,7 +3597,7 @@ Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono e
 </table>
 <div class="paragraph">
 <div class="title">Esempio</div>
-<p>Nell&#8217;esempio riportato di seguito viene illustrato come correggere un valore predefinito sovrascritto. In questo caso, il <code>multipath.conf</code> il file definisce i valori per <code>path_checker</code> e. <code>no_path_retry</code> Non compatibili con LUN ONTAP. Se non possono essere rimossi a causa di altri array SAN ancora collegati all&#8217;host, questi parametri possono essere corretti specificamente per i LUN ONTAP con un dispositivo.</p>
+<p>Nell&#8217;esempio riportato di seguito viene illustrato come correggere un valore predefinito sovrascritto. In questo caso, il <code>multipath.conf</code> il file definisce i valori per <code>path_checker</code> e. <code>no_path_retry</code> Non compatibili con LUN ONTAP. Se non possono essere rimossi perché altri array SAN sono ancora collegati all&#8217;host, questi parametri possono essere corretti specificamente per i LUN ONTAP con un dispositivo.</p>
 </div>
 <div class="listingblock">
 <div class="content">
