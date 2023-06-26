@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="it">
   <head class="at-element-marker">
-  <title>Configurazione host NVMe-of per Oracle Linux 8.7 con ONTAP</title>
+  <title>Configurazione host NVMe-of per Oracle Linux 9.2 con ONTAP</title>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
   <meta http-equiv="language" content="en">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="Configurazione host NVMe-of per Oracle Linux 8.7 con ONTAP" />
+  <meta property="og:title" content="Configurazione host NVMe-of per Oracle Linux 9.2 con ONTAP" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://docs.netapp.com/it-it/ontap-sanhost/nvme_ol_87.html" />
-	<meta property="og:description" content="" />
+	<meta property="og:url" content="https://docs.netapp.com/it-it/ontap-sanhost/nvme_ol_92.html" />
+	<meta property="og:description" content="Configurazione host NVMe-of per Oracle Linux 9.2 con ONTAP" />
   <meta property="og:image" content="https://docs.netapp.com/it-it/ontap-sanhost/images/logo-tophat-social.png" />
   <meta property="og:image:alt" content="NetApp Logo" />
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
-  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="">
-  <meta name="keywords" content=" "><!-- Icons -->
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Configurazione host NVMe-of per Oracle Linux 9.2 con ONTAP">
+  <meta name="keywords" content=" nvme, oracle linux, 9.2, host configuration"><!-- Icons -->
   <link rel="icon" href="/it-it/ontap-sanhost/images/favicon.ico" type="image/x-icon">
 
   <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
@@ -32,17 +32,17 @@
   <link rel="stylesheet" href="/it-it/ontap-sanhost/css/landing-page.css" type="text/css">
   <link rel="stylesheet" href="/it-it/ontap-sanhost/css/tabbed-blocks.css" type="text/css">
   <!-- Canonical url -->
-  <link rel="canonical" href="https://docs.netapp.com/it-it/ontap-sanhost/nvme_ol_87.html" />
-  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/ontap-sanhost/nvme_ol_87.html" />
-  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/ontap-sanhost/nvme_ol_87.html" />
-  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/ontap-sanhost/nvme_ol_87.html" />
-  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/ontap-sanhost/nvme_ol_87.html" />
-  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/ontap-sanhost/nvme_ol_87.html" />
-  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/ontap-sanhost/nvme_ol_87.html" />
-  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/ontap-sanhost/nvme_ol_87.html" />
-  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/ontap-sanhost/nvme_ol_87.html" />
-  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/ontap-sanhost/nvme_ol_87.html" />
-  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/ontap-sanhost/nvme_ol_87.html" />
+  <link rel="canonical" href="https://docs.netapp.com/it-it/ontap-sanhost/nvme_ol_92.html" />
+  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/ontap-sanhost/nvme_ol_92.html" />
+  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/ontap-sanhost/nvme_ol_92.html" />
+  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/ontap-sanhost/nvme_ol_92.html" />
+  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/ontap-sanhost/nvme_ol_92.html" />
+  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/ontap-sanhost/nvme_ol_92.html" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/ontap-sanhost/nvme_ol_92.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/ontap-sanhost/nvme_ol_92.html" />
+  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/ontap-sanhost/nvme_ol_92.html" />
+  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/ontap-sanhost/nvme_ol_92.html" />
+  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/ontap-sanhost/nvme_ol_92.html" />
   <link rel='stylesheet' href='/it-it/ontap-sanhost/css/na-feature.css' type='text/css'><!-- Top level site integrations --><script>
     function addAdobeLaunch(adobeId) {
       var head = document.getElementsByTagName('head')[0];
@@ -177,7 +177,7 @@
   
   <!-- Start Page Toolbar -->
   
-  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost.it-it/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/it-it/ontap-sanhost/nvme_ol_87.html&page-title=Configurazione host NVMe-of per Oracle Linux 8.7 con ONTAP" class="page-nav-contribute-link" role="button"><img src="/it-it/ontap-sanhost/images/discuss-sm.svg" alt="" class="github-icon" />Richiedi modifiche alla documentazione</a><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/blob/main/nvme_ol_87.adoc" class="page-nav-contribute-link" role="button"><img src="/it-it/ontap-sanhost/images/edit-sm.svg" alt="" class="github-icon" />Modifica questa pagina</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/it-it/ontap-sanhost/images/article-sm.svg" alt="" class="github-icon" />Scopri come collaborare</a></div>
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost.it-it/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/it-it/ontap-sanhost/nvme_ol_92.html&page-title=Configurazione host NVMe-of per Oracle Linux 9.2 con ONTAP" class="page-nav-contribute-link" role="button"><img src="/it-it/ontap-sanhost/images/discuss-sm.svg" alt="" class="github-icon" />Richiedi modifiche alla documentazione</a><a target="_blank" href="https://github.com/NetAppDocs/ontap-sanhost/blob/main/nvme_ol_92.adoc" class="page-nav-contribute-link" role="button"><img src="/it-it/ontap-sanhost/images/edit-sm.svg" alt="" class="github-icon" />Modifica questa pagina</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/it-it/ontap-sanhost/images/article-sm.svg" alt="" class="github-icon" />Scopri come collaborare</a></div>
     <div class="page-nav-container">
       <nav class="page-nav-fixed">
         <div class="page-nav-title">IN QUESTA PAGINA</div>
@@ -297,23 +297,23 @@
       </div>
 
       <ul class="custom-dropdown-menu"><li>
-          <a href="https://docs.netapp.com/it-it/ontap-sanhost/nvme_ol_87.html" target="_self"><span translate="no" class="notranslate">Italiano</span></a>
+          <a href="https://docs.netapp.com/it-it/ontap-sanhost/nvme_ol_92.html" target="_self"><span translate="no" class="notranslate">Italiano</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/us-en/ontap-sanhost/nvme_ol_87.html" target="_self"><span translate="no" class="notranslate">English</span></a>
+          <a href="https://docs.netapp.com/us-en/ontap-sanhost/nvme_ol_92.html" target="_self"><span translate="no" class="notranslate">English</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/nvme_ol_87.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
+          <a href="https://docs.netapp.com/ja-jp/ontap-sanhost/nvme_ol_92.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/nvme_ol_87.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
+          <a href="https://docs.netapp.com/ko-kr/ontap-sanhost/nvme_ol_92.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/nvme_ol_87.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+          <a href="https://docs.netapp.com/zh-cn/ontap-sanhost/nvme_ol_92.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/zh-tw/ontap-sanhost/nvme_ol_87.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+          <a href="https://docs.netapp.com/zh-tw/ontap-sanhost/nvme_ol_92.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/de-de/ontap-sanhost/nvme_ol_87.html" target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+          <a href="https://docs.netapp.com/de-de/ontap-sanhost/nvme_ol_92.html" target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/es-es/ontap-sanhost/nvme_ol_87.html" target="_self"><span translate="no" class="notranslate">Español</span></a>
+          <a href="https://docs.netapp.com/es-es/ontap-sanhost/nvme_ol_92.html" target="_self"><span translate="no" class="notranslate">Español</span></a>
         </li><li>
-          <a href="https://docs.netapp.com/fr-fr/ontap-sanhost/nvme_ol_87.html" target="_self"><span translate="no" class="notranslate">Français</span></a>
+          <a href="https://docs.netapp.com/fr-fr/ontap-sanhost/nvme_ol_92.html" target="_self"><span translate="no" class="notranslate">Français</span></a>
         </li></ul>
     </div>
     <!-- End Language Selector -->
@@ -585,6 +585,8 @@
             OL 9
           </a>
           
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
 
 
 
@@ -614,8 +616,6 @@
             OL 8
           </a>
           
-    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
-  
 
 
 
@@ -1893,7 +1893,7 @@
       data-pdf-exists="true" 
       data-pdf-filename="9.2"
       data-li-level="4#" 
-      class=" "
+      class="  active "
     ><a class="na-navbar-padding" href="/it-it/ontap-sanhost/nvme_ol_92.html">
         9.2
       </a></li><li 
@@ -1923,7 +1923,7 @@
       data-pdf-exists="true" 
       data-pdf-filename="8.7"
       data-li-level="4#" 
-      class="  active "
+      class=" "
     ><a class="na-navbar-padding" href="/it-it/ontap-sanhost/nvme_ol_87.html">
         8.7
       </a></li><li 
@@ -3233,14 +3233,14 @@
     </div>
   </span>
 </div><div class="n-doc__component-detail-heading-wrap">
-  <h1 class="n-doc__component-detail-heading">Configurazione host NVMe-of per Oracle Linux 8.7 con ONTAP</h1>
+  <h1 class="n-doc__component-detail-heading">Configurazione host NVMe-of per Oracle Linux 9.2 con ONTAP</h1>
 </div>
 
 
 <p class="page-details">
   
     
-    <time datetime="2023-06-07 16:42:41 +0000">06/07/2023</time>
+    <time datetime="2023-06-26 11:09:17 +0000">06/26/2023</time>
     
   
 
@@ -3266,15 +3266,15 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph lead">
-<p>NVMe over Fabrics (NVMe-of), inclusi NVMe over Fibre Channel (NVMe/FC) e altri trasporti, è supportato con Oracle Linux (OL) 8.7 con Ametric namespace Access (ANA). Negli ambienti NVMe-of, ANA è l&#8217;equivalente del multipathing ALUA in ambienti iSCSI e FC ed è implementato con multipath NVMe nel kernel.</p>
+<p>NVMe over Fabrics (NVMe-of), inclusi NVMe over Fibre Channel (NVMe/FC) e altri trasporti, è supportato con Oracle Linux (OL) 9.2 con Ametric namespace Access (ANA). Negli ambienti NVMe-of, ANA è l&#8217;equivalente del multipathing ALUA in ambienti iSCSI e FC ed è implementato con multipath NVMe nel kernel.</p>
 </div>
 <div class="paragraph">
-<p>Il seguente supporto è disponibile per la configurazione host NVMe/FC per OL 8.7 con ONTAP:</p>
+<p>Il seguente supporto è disponibile per la configurazione host NVMe-of per OL 9.2 con ONTAP:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Supporto per NVMe su TCP (NVMe/TCP) oltre a NVMe/FC. Il plug-in NetApp nel nativo <code>nvme-cli</code> Il pacchetto visualizza i dettagli ONTAP per gli spazi dei nomi NVMe/FC e NVMe/TCP.</p>
+<p>Supporto per NVMe su TCP (NVMe/TCP) oltre a NVMe/FC. Il plug-in NetApp nel pacchetto nvme-cli nativo visualizza i dettagli ONTAP per gli spazi dei nomi NVMe/FC e NVMe/TCP.</p>
 </li>
 <li>
 <p>Utilizzo di traffico NVMe e SCSI coesistente sullo stesso host su un determinato HBA (host bus adapter), senza le impostazioni esplicite di dm-multipath per impedire la richiesta di spazi dei nomi NVMe.</p>
@@ -3292,7 +3292,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>OL 8.7 ha il multipath NVMe nel kernel abilitato per gli spazi dei nomi NVMe per impostazione predefinita, pertanto non sono necessarie impostazioni esplicite.</p>
+<p>Oracle Linux 9.2 dispone di multipath NVMe in-kernel abilitato per gli spazi dei nomi NVMe per impostazione predefinita, pertanto non sono necessarie impostazioni esplicite.</p>
 </li>
 </ul>
 </div>
@@ -3310,13 +3310,13 @@
 <h2 id="convalidare-le-versioni-software">Convalidare le versioni software</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>È possibile utilizzare la seguente procedura per convalidare le versioni minime del software OL 8.7 supportate.</p>
+<p>È possibile utilizzare la seguente procedura per convalidare le versioni minime del software OL 9.2 supportate.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Fasi</div>
 <ol class="arabic">
 <li>
-<p>Installare OL 8.7 GA sul server. Una volta completata l&#8217;installazione, verificare di eseguire il kernel OL 8.7 GA specificato.</p>
+<p>Installare OL 9.2 GA sul server. Una volta completata l&#8217;installazione, verificare di eseguire il kernel OL 9.2 GA specificato.</p>
 <div class="listingblock">
 <div class="content">
 <pre># uname -r</pre>
@@ -3327,7 +3327,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>5.15.0-3.60.5.1.el8uek.x86_64</pre>
+<pre>5.15.0-101.103.2.1.el9uek.x86_64</pre>
 </div>
 </div>
 </li>
@@ -3343,12 +3343,28 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>nvme-cli-1.16-5.el8.x86_64</pre>
+<pre>nvme-cli-2.2.1-2.el9.x86_64</pre>
 </div>
 </div>
 </li>
 <li>
-<p>Sull&#8217;host Oracle Linux 8.7, selezionare <code>hostnqn</code> stringa a. <code>/etc/nvme/hostnqn</code>:</p>
+<p>Installare <code>libnvme</code> pacchetto:</p>
+<div class="listingblock">
+<div class="content">
+<pre>#rpm -qa|grep libnvme</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Esempio di output</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>libnvme-1.2-2.el9.x86_64</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Sull&#8217;host Oracle Linux 9.2, selezionare <code>hostnqn</code> stringa a. <code>/etc/nvme/hostnqn</code>:</p>
 <div class="listingblock">
 <div class="content">
 <pre># cat /etc/nvme/hostnqn</pre>
@@ -3359,7 +3375,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>nqn.2014-08.org.nvmexpress:uuid:791c54eb-545d-4ed3-8d41-91a0a53d4b24</pre>
+<pre>nqn.2014-08.org.nvmexpress:uuid:bc59d14c-47f3-11eb-b93c-3a68dd48673f</pre>
 </div>
 </div>
 </li>
@@ -3377,7 +3393,7 @@
 <div class="content">
 <pre>Vserver     Subsystem          Host NQN
 ----------- --------------- ----------------------------------------------------------
-vs_ol_nvme  nvme_ss_ol_1    nqn.2014-08.org.nvmexpress:uuid:791c54eb-545d-4ed3-8d41-91a0a53d4b24</pre>
+vs_nvme207   nvme_ss_ol_1    nqn.2014-08.org.nvmexpress:uuid:bc59d14c-47f3-11eb-b93c-3a68dd48673f</pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -3412,7 +3428,7 @@ Se il <code>hostnqn</code> le stringhe non corrispondono, è possibile utilizzar
 <div class="title">Fasi</div>
 <ol class="arabic">
 <li>
-<p>Verificare di utilizzare il modello di adattatore supportato.</p>
+<p>Verificare di utilizzare il modello di adattatore supportato:</p>
 <div class="listingblock">
 <div class="content">
 <pre># cat /sys/class/scsi_host/host*/modelname</pre>
@@ -3447,12 +3463,14 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter</pre>
 <div class="listingblock">
 <div class="content">
 <pre># cat /sys/class/scsi_host/host*/fwrev
-12.8.614.23, sli-4:2:c
-12.8.614.23, sli-4:2:c
-
-
-# cat /sys/module/lpfc/version
-0:14.0.0.1</pre>
+14.2.455.11, sli-4:2:c
+14.2.455.11, sli-4:2:c</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># cat /sys/module/lpfc/version
+0:14.2.0.5</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3489,26 +3507,26 @@ Online</pre>
 <pre># cat /sys/class/scsi_host/host*/nvme_info
 NVME Initiator Enabled
 XRI Dist lpfc0 Total 6144 IO 5894 ELS 250
-NVME LPORT lpfc0 WWPN x100000109b3c081f WWNN x200000109b3c081f DID x060300 ONLINE
-NVME RPORT WWPN x2010d039ea2c3e2d WWNN x200fd039ea2c3e2d DID x061f0e TARGET DISCSRVC ONLINE
-NVME RPORT WWPN x2011d039ea2c3e2d WWNN x200fd039ea2c3e2d DID x06270f TARGET DISCSRVC ONLINE
+NVME LPORT lpfc0 WWPN x100000109b1c1204 WWNN x200000109b1c1204 DID x011d00 ONLINE
+NVME RPORT WWPN x203800a098dfdd91 WWNN x203700a098dfdd91 DID x010c07 TARGET DISCSRVC ONLINE
+NVME RPORT WWPN x203900a098dfdd91 WWNN x203700a098dfdd91 DID x011507 TARGET DISCSRVC ONLINE
 NVME Statistics
-LS: Xmt 0000000a71 Cmpl 0000000a71 Abort 00000000
+LS: Xmt 0000000f78 Cmpl 0000000f78 Abort 00000000
 LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000
-Total FCP Cmpl 00000000558611c6 Issue 000000005578bb69 OutIO fffffffffff2a9a3
-abort 0000007a noxri 00000000 nondlp 00000447 qdepth 00000000 wqerr 00000000 err 00000000
-FCP CMPL: xb 00000a8e Err 0000e2a8
+Total FCP Cmpl 000000002fe29bba Issue 000000002fe29bc4 OutIO 000000000000000a
+abort 00001bc7 noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 00001e15 Err 0000d906
 NVME Initiator Enabled
 XRI Dist lpfc1 Total 6144 IO 5894 ELS 250
-NVME LPORT lpfc1 WWPN x100000109b3c0820 WWNN x200000109b3c0820 DID x060200 ONLINE
-NVME RPORT WWPN x2015d039ea2c3e2d WWNN x200fd039ea2c3e2d DID x062e0c TARGET DISCSRVC ONLINE
-NVME RPORT WWPN x2014d039ea2c3e2d WWNN x200fd039ea2c3e2d DID x06290f TARGET DISCSRVC ONLINE
+NVME LPORT lpfc1 WWPN x100000109b1c1205 WWNN x200000109b1c1205 DID x011900 ONLINE
+NVME RPORT WWPN x203d00a098dfdd91 WWNN x203700a098dfdd91 DID x010007 TARGET DISCSRVC ONLINE
+NVME RPORT WWPN x203a00a098dfdd91 WWNN x203700a098dfdd91 DID x012a07 TARGET DISCSRVC ONLINE
 NVME Statistics
-LS: Xmt 0000000a69 Cmpl 0000000a69 Abort 00000000
+LS: Xmt 0000000fa8 Cmpl 0000000fa8 Abort 00000000
 LS XMIT: Err 00000000 CMPL: xb 00000000 Err 00000000
-Total FCP Cmpl 0000000055814701 Issue 0000000055744b1c OutIO fffffffffff3041b
-abort 00000046 noxri 00000000 nondlp 0000043f qdepth 00000000 wqerr 00000000 err 00000000
-FCP CMPL: xb 00000a89 Err 0000e2f3</pre>
+Total FCP Cmpl 000000002e14f170 Issue 000000002e14f17a OutIO 000000000000000a
+abort 000016bb noxri 00000000 nondlp 00000000 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 00001f50 Err 0000d9f8</pre>
 </div>
 </div>
 </li>
@@ -3517,25 +3535,18 @@ FCP CMPL: xb 00000a89 Err 0000e2f3</pre>
 </div>
 </div>
 <div class="openblock">
-<div class="title">Adattatore FC Marvell/Qlogic per NVMe/FC</div>
+<div class="title">Adattatore FC Marvell/QLogic per NVMe/FC</div>
 <div class="content">
 <div class="olist arabic">
 <div class="title">Fasi</div>
 <ol class="arabic">
 <li>
-<p>Il driver nativo qla2xxx della posta in arrivo incluso nel kernel OL 8.7 GA presenta le ultime correzioni upstream essenziali per il supporto di ONTAP. Verificare che siano in esecuzione le versioni del firmware e del driver dell&#8217;adattatore supportate:</p>
+<p>Il driver nativo qla2xxx della posta in arrivo incluso nel kernel OL 9.2 GA presenta le ultime correzioni upstream essenziali per il supporto di ONTAP. Verificare che siano in esecuzione le versioni del firmware e del driver dell&#8217;adattatore supportate:</p>
 <div class="listingblock">
 <div class="content">
-<pre># cat /sys/class/fc_host/host*/symbolic_name</pre>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Esempio di output</strong></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>QLE2742 FW:v9.10.11 DVR:v10.02.06.200-k
-QLE2742 FW:v9.10.11 DVR:v10.02.06.200-k</pre>
+<pre># cat /sys/class/fc_host/host*/symbolic_name
+QLE2742 FW:v9.12.00 DVR:v10.02.08.100-k
+QLE2742 FW:v9.12.00 DVR:v10.02.08.100-k</pre>
 </div>
 </div>
 </li>
@@ -3555,7 +3566,7 @@ QLE2742 FW:v9.10.11 DVR:v10.02.06.200-k</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="abilita-io-da-1-mb-opzionale">Abilita i/o da 1 MB (opzionale)</h3>
+<h3 id="abilita-dimensione-io-1-mb-opzionale">Abilita dimensione i/o 1 MB (opzionale)</h3>
 <div class="paragraph">
 <p>ONTAP riporta un MDTS (MAX Data Transfer Size) di 8 nei dati del controller di identificazione, il che significa che la dimensione massima della richiesta di i/o può essere fino a 1 MB. Tuttavia, per emettere richieste di i/o di dimensione 1 MB per un host Broadcom NVMe/FC, è necessario aumentare <code>lpfc</code> valore di <code>lpfc_sg_seg_cnt</code> parametro a 256 dal valore predefinito di 64.</p>
 </div>
@@ -3621,54 +3632,48 @@ Non applicabile agli host Qlogic NVMe/FC.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>#  nvme discover -t tcp -w 192.168.6.13 -a 192.168.6.15
-Discovery Log Number of Records 6, Generation counter 8
+<pre># nvme discover -t tcp -w 192.168.167.5 -a 192.168.167.22
+
+Discovery Log Number of Records 8, Generation counter 18
 =====Discovery Log Entry 0======
-trtype: tcp
-adrfam: ipv4
-subtype: unrecognized
-treq: not specified
-portid: 0
+trtype:  tcp
+adrfam:  ipv4
+subtype: current discovery subsystem
+treq:    not specified
+portid:  0
 trsvcid: 8009
-subnqn: nqn.1992-08.com.netapp:sn.1c6ac66338e711eda41dd039ea3ad566:discovery
-traddr: 192.168.6.17
+subnqn:  nqn.1992-08.com.netapp:sn.c680f5bcae1411ed8639d039ea951c46:discovery
+traddr:  192.168.166.23
+eflags:  explicit discovery connections, duplicate discovery information
 sectype: none
 =====Discovery Log Entry 1======
-trtype: tcp
-adrfam: ipv4
-subtype: unrecognized
-treq: not specified
-portid: 1
+trtype:  tcp
+adrfam:  ipv4
+subtype: current discovery subsystem
+treq:    not specified
+portid:  1
 trsvcid: 8009
-subnqn: nqn.1992-08.com.netapp:sn.1c6ac66338e711eda41dd039ea3ad566:discovery
-traddr: 192.168.5.17
+subnqn:  nqn.1992-08.com.netapp:sn.c680f5bcae1411ed8639d039ea951c46:discovery
+traddr:  192.168.166.22
+eflags:  explicit discovery connections, duplicate discovery information
 sectype: none
 =====Discovery Log Entry 2======
-trtype: tcp
-adrfam: ipv4
-subtype: unrecognized
-treq: not specified
-portid: 2
+trtype:  tcp
+adrfam:  ipv4
+subtype: current discovery subsystem
+treq:    not specified
+portid:  2
 trsvcid: 8009
-subnqn: nqn.1992-08.com.netapp:sn.1c6ac66338e711eda41dd039ea3ad566:discovery
-traddr: 192.168.6.15
-sectype: none
-=====Discovery Log Entry 3======
-trtype: tcp
-adrfam: ipv4
-subtype: nvme subsystem
-treq: not specified
-portid: 0
-trsvcid: 4420
-subnqn: nqn.1992-08.com.netapp:sn.1c6ac66338e711eda41dd039ea3ad566:subsystem.host_95
-traddr: 192.168.6.17
+subnqn:  nqn.1992-08.com.netapp:sn.c680f5bcae1411ed8639d039ea951c46:discovery
+traddr:  192.168.167.23
+eflags:  explicit discovery connections, duplicate discovery information
 sectype: none
 ..........</pre>
 </div>
 </div>
 </li>
 <li>
-<p>Verificare che le altre combinazioni LIF iniziatore-destinazione NVMe/TCP siano in grado di recuperare correttamente i dati della pagina del registro di rilevamento.</p>
+<p>Verificare che le altre combinazioni LIF iniziatore-destinazione NVMe/TCP possano recuperare correttamente i dati della pagina del registro di rilevamento:</p>
 <div class="listingblock">
 <div class="content">
 <pre>nvme discover -t tcp -w host-traddr -a traddr</pre>
@@ -3679,10 +3684,10 @@ sectype: none
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># nvme discover -t tcp -w 192.168.5.13 -a 192.168.5.15
-# nvme discover -t tcp -w 192.168.5.13 -a 192.168.5.17
-# nvme discover -t tcp -w 192.168.6.13 -a 192.168.6.15
-# nvme discover -t tcp -w 192.168.6.13 -a 192.168.6.17</pre>
+<pre># nvme discover -t tcp -w 192.168.8.1 -a 192.168.8.48
+# nvme discover -t tcp -w 192.168.8.1 -a 192.168.8.49
+# nvme discover -t tcp -w 192.168.9.1 -a 192.168.9.48
+# nvme discover -t tcp -w 192.168.9.1 -a 192.168.9.49</pre>
 </div>
 </div>
 </li>
@@ -3698,10 +3703,10 @@ sectype: none
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># nvme connect-all -t tcp -w 192.168.5.13 -a 192.168.5.15 -l 1800
-# nvme connect-all -t tcp -w 192.168.5.13 -a 192.168.5.17 -l 1800
-# nvme connect-all -t tcp -w 192.168.6.13 -a 192.168.6.15 -l 1800
-# nvme connect-all -t tcp -w 192.168.6.13 -a 192.168.6.17 -l 1800</pre>
+<pre># nvme connect-all -t tcp -w 192.168.8.1 -a 192.168.8.48 -l 1800
+# nvme connect-all -t tcp -w 192.168.8.1 -a 192.168.8.49 -l 1800
+# nvme connect-all -t tcp -w 192.168.9.1 -a 192.168.9.48 -l 1800
+# nvme connect-all -t tcp -w 192.168.9.1 -a 192.168.9.49 -l 1800</pre>
 </div>
 </div>
 </li>
@@ -3719,16 +3724,13 @@ sectype: none
 <div class="title">Fasi</div>
 <ol class="arabic">
 <li>
-<p>Verificare che il multipath NVMe nel kernel sia attivato selezionando:</p>
+<p>Verificare le seguenti impostazioni NVMe/FC sull&#8217;host OL 9.2:</p>
 <div class="listingblock">
 <div class="content">
 <pre># cat /sys/module/nvme_core/parameters/multipath
 Y</pre>
 </div>
 </div>
-</li>
-<li>
-<p>Verificare che le impostazioni NVMe-of siano corrette (ad esempio <code>model</code> impostare su <code>NetApp ONTAP Controller</code> e bilanciamento del carico <code>iopolicy</code> impostare su <code>round-robin</code>) Per i rispettivi spazi dei nomi ONTAP, riflettere correttamente sull&#8217;host:</p>
 <div class="listingblock">
 <div class="content">
 <pre># cat /sys/class/nvme-subsystem/nvme-subsys*/model
@@ -3763,11 +3765,12 @@ round-robin</pre>
 /dev/nvme0n3 814vWBNRwf9HAAAAAAAB NetApp ONTAP Controller
 
 
+
 Namespace Usage    Format             FW             Rev
 -----------------------------------------------------------
 1                 85.90 GB / 85.90 GB  4 KiB + 0 B   FFFFFFFF
 2                 85.90 GB / 85.90 GB  24 KiB + 0 B  FFFFFFFF
-3                 85.90 GB / 85.90 GB  4 KiB + 0 B   FFFFFFFF</pre>
+3	                85.90 GB / 85.90 GB  4 KiB + 0 B   FFFFFFFF</pre>
 </div>
 </div>
 </li>
@@ -3790,10 +3793,10 @@ Namespace Usage    Format             FW             Rev
 <div class="content">
 <pre>nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.5f5f2c4aa73b11e9967e00a098df41bd:subsystem.nvme_ss_ol_1
 \
-+- nvme0 fc traddr=nn-0x203700a098dfdd91:pn-0x203800a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 <strong>live non-optimized</strong>
-+- nvme1 fc traddr=nn-0x203700a098dfdd91:pn-0x203900a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 <strong>live non-optimized</strong>
-+- nvme2 fc traddr=nn-0x203700a098dfdd91:pn-0x203a00a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 <strong>live optimized</strong>
-+- nvme3 fc traddr=nn-0x203700a098dfdd91:pn-0x203d00a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 <strong>live optimized</strong></pre>
++- nvme0 fc traddr=nn-0x203700a098dfdd91:pn-0x203800a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 live non-optimized
++- nvme1 fc traddr=nn-0x203700a098dfdd91:pn-0x203900a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 live non-optimized
++- nvme2 fc traddr=nn-0x203700a098dfdd91:pn-0x203a00a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 live optimized
++- nvme3 fc traddr=nn-0x203700a098dfdd91:pn-0x203d00a098dfdd91 host_traddr=nn-0x200000109b1c1205:pn-0x100000109b1c1205 live optimized</pre>
 </div>
 </div>
 </div>
@@ -3803,20 +3806,20 @@ Namespace Usage    Format             FW             Rev
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre># nvme list-subsys /dev/nvme1n40</pre>
+<pre>nvme list-subsys /dev/nvme1n22</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>Esempio di output:</strong></p>
+<p><strong>Esempio di output</strong></p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>nvme-subsys1 - NQN=nqn.1992-08.com.netapp:sn.68c036aaa3cf11edbb95d039ea243511:subsystem.tcp
 \
-+- nvme2 tcp traddr=192.168.8.49,trsvcid=4420,host_traddr=192.168.8.1 <strong>live non-optimized</strong>
-+- nvme3 tcp traddr=192.168.8.48,trsvcid=4420,host_traddr=192.168.8.1 <strong>live non-optimized</strong>
-+- nvme6 tcp traddr=192.168.9.49,trsvcid=4420,host_traddr=192.168.9.1 <strong>live optimized</strong>
-+- nvme7 tcp traddr=192.168.9.48,trsvcid=4420,host_traddr=192.168.9.1 <strong>live optimized</strong></pre>
+ +- nvme2 tcp traddr=192.168.8.49,trsvcid=4420,host_traddr=192.168.8.1 live optimized
+ +- nvme3 tcp traddr=192.168.8.48,trsvcid=4420,host_traddr=192.168.8.1 live optimized
+ +- nvme6 tcp traddr=192.168.9.49,trsvcid=4420,host_traddr=192.168.9.1 live non-optimized
+ +- nvme7 tcp traddr=192.168.9.48,trsvcid=4420,host_traddr=192.168.9.1 live non-optimized</pre>
 </div>
 </div>
 </div>
@@ -3846,6 +3849,8 @@ Namespace Usage    Format             FW             Rev
 /dev/nvme0n1   vs_ol_nvme  /vol/ol_nvme_vol_1_1_0/ol_nvme_ns
 /dev/nvme0n2   vs_ol_nvme  /vol/ol_nvme_vol_1_0_0/ol_nvme_ns
 /dev/nvme0n3   vs_ol_nvme  /vol/ol_nvme_vol_1_1_1/ol_nvme_ns
+
+
 
 
 NSID       UUID                                   Size
@@ -3919,32 +3924,8 @@ NSID       UUID                                   Size
 <h2 id="problemi-noti">Problemi noti</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>La configurazione dell&#8217;host NVMe-of per OL 8.7 con ONTAP presenta i seguenti problemi noti:</p>
+<p>Non ci sono problemi noti.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">ID bug NetApp</th>
-<th class="tableblock halign-left valign-top">Titolo</th>
-<th class="tableblock halign-left valign-top">Descrizione</th>
-<th class="tableblock halign-left valign-top">ID Bugzilla</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1517321</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Gli host Oracle Linux 8.7 NVMe-of creano controller di rilevamento persistenti duplicati</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Negli host OL 8.7 NVMe-of, i controller di rilevamento persistente (PDC) vengono creati passando il <code>-p</code> al <code>nvme discover</code> comando. Per una determinata combinazione iniziatore-destinazione, si prevede di creare un solo PDC con ogni chiamata di <code>nvme discover</code> comando. Tuttavia, a partire da OL 8.x, gli host NVMe-of finiscono per creare PDC duplicati con ogni chiamata di <code>nvme discover</code> con il <code>-p</code> opzione. In questo modo si sprecano risorse sia sull&#8217;host che sulla destinazione.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118" target="_blank" rel="noopener">"18118"</a></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 <div class="sect1">
