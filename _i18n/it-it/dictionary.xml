@@ -1995,7 +1995,6 @@
   <block id="834ccc84967581d1336062ada79c9a0e" category="admonition">Per configurare Oracle Linux 9.0 RedHat Enterprise kernel (RHCK), utilizzare <block ref="db48836fc998d5e9210c21f83870f464" category="inline-link-macro-rx"></block> Per Red Hat Enterprise Linux (RHEL) 9.0.</block>
   <block id="2de4eb9b3af281c4790a039cf2f92eb7" category="section-title">Impostazioni KVM</block>
   <block id="54ed56ff6f53cace0a89cfd9c793d498" category="paragraph">È inoltre possibile utilizzare le impostazioni consigliate per configurare la macchina virtuale basata su kernel (KVM). Non sono necessarie modifiche per configurare KVM poiché il LUN viene mappato all'hypervisor.</block>
-  <block id="fdf71d22ca12e1b94c3cffe88a22f330" category="paragraph">Non esistono problemi noti per Oracle Linux 9.0.</block>
   <block id="663a5883675ae80b4bcdfec1d5268ae6" category="paragraph">Il mirroring ASM potrebbe richiedere modifiche alle impostazioni del multipath Linux per consentire ad ASM di riconoscere un problema e passare a un gruppo di guasti alternativo. La maggior parte delle configurazioni ASM su ONTAP utilizza la ridondanza esterna, il che significa che la protezione dei dati è fornita dall'array esterno e ASM non esegue il mirroring dei dati. Alcuni siti utilizzano ASM con ridondanza normale per fornire il mirroring bidirezionale, in genere su siti diversi. Per ulteriori informazioni, consulta Oracle Databases su ONTAP.</block>
   <block id="0b9f55b9dffba7eae6a1222b3c2e4753" category="summary">Descrive come utilizzare CentOS 7.1 con ONTAP</block>
   <block id="cb3913ee3213f28b1d82507efb22156d" category="doc">Utilizzo di CentOS 7.1 con NetApp ONTAP</block>
@@ -3324,7 +3323,6 @@ Il<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code
   <block id="533f5c2e4bcf35d9cefe9c97046f7654" category="summary">Descrive come utilizzare Oracle Linux 9.1 con ONTAP</block>
   <block id="83b6364b5fed0880c85b1a8caf70b15f" category="doc">Utilizzo di Oracle Linux 9.1 con NetApp ONTAP</block>
   <block id="c6951501d0b58604dc509284a2398484" category="admonition">Per configurare Oracle Linux 9.1 RedHat Enterprise kernel (RHCK), utilizzare <block ref="972cf8eba53bcbbce4fc47d6efe3d4ad" category="inline-link-macro-rx"></block> Per Red Hat Enterprise Linux (RHEL) 9.1.</block>
-  <block id="1c50fcd4efa065aedf6e2667df8523f3" category="paragraph">Oracle Linux 9.1 con NetApp ONTAP presenta i seguenti problemi noti:</block>
   <block id="da80aa62fc6cf6b66539a5a3933874a8" category="cell"><block ref="da80aa62fc6cf6b66539a5a3933874a8" category="inline-link-rx"></block></block>
   <block id="20e1c7fed64a39ad5334f26be4f4d8c7" category="paragraph">Quando si esegue il comando CLI di Linux Unified host Utilities - "sanlun fcp show adapter -v" su un host SAN, il comando non riesce e viene visualizzato un messaggio di errore che indica che non è possibile individuare le dipendenze della libreria richieste per un rilevamento HBA (host bus adapter):</block>
   <block id="945ae6ecd5de8145a44bcea8e9d26556" category="summary">Descrive come utilizzare Red Hat Enterprise Linux 8.8 con ONTAP</block>
@@ -3377,4 +3375,7 @@ Il<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code
   <block id="beb55dba3ba1d2be4056c146cb0bf458" category="paragraph">Il sistema operativo Oracle Linux 9.2 viene compilato per riconoscere le LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per le configurazioni ASA e non ASA. È possibile ottimizzare ulteriormente le prestazioni per la configurazione host con le seguenti impostazioni consigliate.</block>
   <block id="a706283e3f8c7062e0c4c4b423b93965" category="admonition">Per configurare Oracle Linux 9.2 RedHat Enterprise kernel (RHCK), utilizzare <block ref="972cf8eba53bcbbce4fc47d6efe3d4ad" category="inline-link-macro-rx"></block> Per Red Hat Enterprise Linux (RHEL) 9.2.</block>
   <block id="01ae493ab1dc24745cd1c1e47aa25447" category="paragraph">Oracle Linux 9.2 con NetApp ONTAP presenta i seguenti problemi noti:</block>
+  <block id="02b2bcdfe73b2cce057d7b84806fa6ed" category="paragraph">Oracle Linux 9.1 con NetApp ONTAP presenta i seguenti problemi noti:</block>
+  <block id="5890aebb0489382354458498eb36394e" category="paragraph">Quando si esegue il comando CLI di Linux Unified host Utilities - "sanlun fcp show adapter -v" su un host SAN, il comando non riesce e viene visualizzato un messaggio di errore che indica che non è possibile individuare le dipendenze della libreria richieste per un rilevamento HBA (host bus adapter):</block>
+  <block id="cc40ed991073c638cc114ee18ad15d8c" category="paragraph">Oracle Linux 9.0 con NetApp ONTAP presenta i seguenti problemi noti:</block>
 </blocks>
