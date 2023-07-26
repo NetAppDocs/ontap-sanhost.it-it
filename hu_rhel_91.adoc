@@ -4,7 +4,7 @@ permalink: hu_rhel_91.html
 keywords: host utilities, red hat, rhel, linux, 9.1, netapp, ontap, rhel 
 summary: Descrive come utilizzare Red Hat Enterprise Linux 9.1 con ONTAP 
 ---
-= Utilizzo di Red Hat Enterprise Linux 9.1 con NetApp ONTAP
+= Utilizza Red Hat Enterprise Linux 9.1 con ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -24,7 +24,7 @@ summary: Descrive come utilizzare Red Hat Enterprise Linux 9.1 con ONTAP
 
 Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/site/downloads["Sito di supporto NetApp"^] in un file .rpm a 64 bit.
 
-L'installazione di Linux Unified host Utilities è fortemente consigliata da NetApp, ma non è obbligatoria. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
+L'installazione delle utility host unificate Linux è fortemente consigliata da NetApp, ma non è obbligatoria. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
 
 .Di cosa hai bisogno
 Se si dispone di una versione di Linux Unified host Utilities attualmente installata, è necessario aggiornarla o rimuoverla e procedere come segue per installare la versione più recente.
@@ -297,12 +297,3 @@ devices {
 
 | 1508554 | La CLI delle NetApp Linux host Utilities richiede dipendenze aggiuntive dei pacchetti di librerie per supportare il rilevamento dell'adattatore HBA Emulex | In RHEL 9.1, le utility host NETAPP Linux SAN CLI `sanlun fcp show adapter -v` Non riesce perché non è possibile trovare le dipendenze del pacchetto di libreria per supportare il rilevamento HBA. | N/A. 
 |===
-
-
-== Note di rilascio
-
-
-
-=== Mirroring ASM
-
-Il mirroring ASM (Automatic Storage Management) potrebbe richiedere modifiche alle impostazioni del multipath Linux per consentire ad ASM di riconoscere un problema e passare a un gruppo di guasti alternativo. La maggior parte delle configurazioni ASM su ONTAP utilizza la ridondanza esterna, il che significa che la protezione dei dati è fornita dall'array esterno e ASM non esegue il mirroring dei dati. Alcuni siti utilizzano ASM con ridondanza normale per fornire il mirroring bidirezionale, in genere su siti diversi. Vedere link:https://www.netapp.com/us/media/tr-3633.pdf["Database Oracle su ONTAP"^] per ulteriori informazioni.

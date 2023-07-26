@@ -4,7 +4,7 @@ permalink: hu_ol_74.html
 keywords: host utilities, oracle, linux, 7.4, netapp, ontap 
 summary: Descrive come utilizzare Oracle Linux 7.4 con ONTAP 
 ---
-= Utilizzo di Oracle Linux 7.4 con NetApp ONTAP
+= Utilizza Oracle Linux 7.4 con ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -20,11 +20,11 @@ summary: Descrive come utilizzare Oracle Linux 7.4 con ONTAP
 
 
 
-== Installazione di Linux Unified host Utilities
+== Installare le utility host unificate Linux
 
 Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["Sito di supporto NetApp"^] in un file .rpm a 32 bit e a 64 bit. Se non si conosce il file appropriato per la configurazione, utilizzare link:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità NetApp"^] per verificare quale si desidera.
 
-L'installazione di Linux Unified host Utilities è fortemente consigliata, ma non obbligatoria. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
+NetApp consiglia vivamente di installare le utility host unificate Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
 
 .Di cosa hai bisogno
 Se si dispone di una versione di Linux Unified host Utilities attualmente installata, è necessario aggiornarla oppure rimuoverla e procedere come segue per installare la versione più recente.
@@ -262,12 +262,3 @@ NOTE: Per configurare Oracle Linux 7.4 RedHat Enterprise kernel (RHCK), utilizza
 
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1109468["1109468"^] | Dump del firmware osservati su un hypervisor OL7.4 con scheda QLE8362 | Durante le operazioni di failover dello storage su un hypervisor OL7.4 con scheda QLE8362, i dump del firmware vengono osservati occasionalmente. I dump del firmware potrebbero causare un'interruzione i/o sull'host, che potrebbe arrivare fino a 500 secondi. Una volta completato il dump del firmware, l'operazione di i/o riprende normalmente. Non sono richieste ulteriori procedure di ripristino sull'host. Per indicare il dump del firmware, nel file /var/log/message viene visualizzato il seguente messaggio: Qla2xxx [0000:0c:00.3]-d001:8: Firmware dump saved to temp buffer (8/ffffc90008901000), dump status flags (0x3f) | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=16039["16039"^] 
 |===
-
-
-== Note di rilascio
-
-
-
-=== Mirroring ASM
-
-Il mirroring ASM (Automatic Storage Management) potrebbe richiedere modifiche alle impostazioni del multipath Linux per consentire ad ASM di riconoscere un problema e passare a un gruppo di guasti alternativo. La maggior parte delle configurazioni ASM su ONTAP utilizza la ridondanza esterna, il che significa che la protezione dei dati è fornita dall'array esterno e ASM non esegue il mirroring dei dati. Alcuni siti utilizzano ASM con ridondanza normale per fornire il mirroring bidirezionale, in genere su siti diversi. Vedere link:https://www.netapp.com/us/media/tr-3633.pdf["Database Oracle su ONTAP"^] per ulteriori informazioni.

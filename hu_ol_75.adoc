@@ -4,7 +4,7 @@ permalink: hu_ol_75.html
 keywords: host utilities, oracle, linux, 7.5, netapp, ontap 
 summary: Descrive come utilizzare Oracle Linux 7.5 con ONTAP 
 ---
-= Utilizzo di Oracle Linux 7.5 con NetApp ONTAP
+= Utilizza Oracle Linux 7.5 con ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -20,11 +20,11 @@ summary: Descrive come utilizzare Oracle Linux 7.5 con ONTAP
 
 
 
-== Installazione di Linux Unified host Utilities
+== Installare le utility host unificate Linux
 
 Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["Sito di supporto NetApp"^] in un file .rpm a 32 bit e a 64 bit. Se non si conosce il file appropriato per la configurazione, utilizzare link:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità NetApp"^] per verificare quale si desidera.
 
-L'installazione di Linux Unified host Utilities è fortemente consigliata, ma non obbligatoria. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
+NetApp consiglia vivamente di installare le utility host unificate Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
 
 .Di cosa hai bisogno
 Se si dispone di una versione di Linux Unified host Utilities attualmente installata, è necessario aggiornarla oppure rimuoverla e procedere come segue per installare la versione più recente.
@@ -262,12 +262,3 @@ NOTE: Per configurare Oracle Linux 7.5 RedHat Enterprise kernel (RHCK), utilizza
 
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1177239["1177239"^] | Interruzione del kernel osservata su OL7.5 con Qlogic QLE2672 16G FC durante le operazioni di failover dello storage | Durante le operazioni di failover dello storage su Oracle Linux 7 (OL7.5) con kernel 4.1.12-112.16.4.el7uek.x86_64 e Qlogic QLE2672 HBA, si potrebbe osservare un'interruzione del kernel. Ciò richiede un riavvio del sistema operativo che causa un'interruzione dell'applicazione. Se kdump è configurato, l'interruzione del kernel crea un file vmcore nella directory /var/crash/. Questa interruzione può essere osservata nel modulo "kmem_cache_alloc+118", registrato nel file vmcore e identificato con la stringa "Exception RIP: Kmem_cache_alloc+118". Dopo un'interruzione del kernel, è possibile eseguire il ripristino riavviando il sistema operativo host e riavviando l'applicazione. |  
 |===
-
-
-== Note di rilascio
-
-
-
-=== Mirroring ASM
-
-Il mirroring ASM (Automatic Storage Management) potrebbe richiedere modifiche alle impostazioni del multipath Linux per consentire ad ASM di riconoscere un problema e passare a un gruppo di guasti alternativo. La maggior parte delle configurazioni ASM su ONTAP utilizza la ridondanza esterna, il che significa che la protezione dei dati è fornita dall'array esterno e ASM non esegue il mirroring dei dati. Alcuni siti utilizzano ASM con ridondanza normale per fornire il mirroring bidirezionale, in genere su siti diversi. Vedere link:https://www.netapp.com/us/media/tr-3633.pdf["Database Oracle su ONTAP"^] per ulteriori informazioni.

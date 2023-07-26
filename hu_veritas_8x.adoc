@@ -4,7 +4,7 @@ permalink: hu_veritas_8x.html
 keywords: host utilities, veritas, infoscale, 8, netapp, ontap, sanhost, iscsi, red, hat linux, oracle, linux 
 summary: Fornisce indicazioni sulle impostazioni di configurazione degli host SAN ONTAP per la release della serie Veritas Infosscale 7 
 ---
-= Utilizzo di Veritas Infoscale 8 per Linux con NetApp ONTAP
+= Utilizza Veritas Infoscale 8 per Linux con ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -26,7 +26,7 @@ Questo documento fornisce indicazioni sulle impostazioni di configurazione degli
 
 
 
-== Installazione di Linux Unified host Utilities
+== Installare le utility host unificate Linux
 
 Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["Sito di supporto NetApp"^] in un file .rpm a 64 bit.
 

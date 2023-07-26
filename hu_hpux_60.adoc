@@ -18,12 +18,6 @@ summary: Descrive come utilizzare le utility host unificate Linux 7.1 con ONTAP
 :toc-position: content
 
 
-.Di cosa hai bisogno
-* Per un funzionamento affidabile, è necessario verificare che l'intera configurazione iSCSI, FC o FCoE sia supportata.
-
-
-È possibile utilizzare link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] per verificare la configurazione.
-
 
 
 == Toolkit SAN

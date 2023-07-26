@@ -4,7 +4,7 @@ permalink: hu_ol_92.html
 keywords: host utilities, oracle, linux, 9.2, netapp, ontap 
 summary: Descrive come utilizzare Oracle Linux 9.2 con ONTAP 
 ---
-= Utilizzo di Oracle Linux 9.2 con NetApp ONTAP
+= Utilizza Oracle Linux 9.2 con ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1P

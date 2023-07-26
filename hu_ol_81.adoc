@@ -4,7 +4,7 @@ permalink: hu_ol_81.html
 keywords: host utilities, oracle, linux, 8.1, netapp, ontap 
 summary: Descrive come utilizzare Oracle Linux 8.1 con ONTAP 
 ---
-= Utilizzo di Oracle Linux 8.1 con NetApp ONTAP
+= Utilizza Oracle Linux 8.1 con ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -20,7 +20,7 @@ summary: Descrive come utilizzare Oracle Linux 8.1 con ONTAP
 
 
 
-== Installazione di Linux Unified host Utilities
+== Installare le utility host unificate Linux
 
 Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["Sito di supporto NetApp"^] in un file .rpm a 64 bit.
 
@@ -261,13 +261,3 @@ Non esistono problemi noti per Oracle Linux 8.1.
 
 
 NOTE: Per i problemi noti di Oracle Linux (kernel compatibile con Red Hat), consultare link:hu_rhel_81.html#known-problems-and-limitations["problemi noti"] Per Red Hat Enterprise Linux (RHEL) 8.1.
-
-
-
-== Note di rilascio
-
-
-
-=== Mirroring ASM
-
-Il mirroring ASM (Automatic Storage Management) potrebbe richiedere modifiche alle impostazioni del multipath Linux per consentire ad ASM di riconoscere un problema e passare a un gruppo di guasti alternativo. La maggior parte delle configurazioni ASM su ONTAP utilizza la ridondanza esterna, il che significa che la protezione dei dati è fornita dall'array esterno e ASM non esegue il mirroring dei dati. Alcuni siti utilizzano ASM con ridondanza normale per fornire il mirroring bidirezionale, in genere su siti diversi. Vedere link:https://www.netapp.com/us/media/tr-3633.pdf["Database Oracle su ONTAP"^] per ulteriori informazioni.

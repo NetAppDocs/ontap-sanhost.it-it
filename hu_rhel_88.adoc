@@ -4,7 +4,7 @@ permalink: hu_rhel_88.html
 keywords: host utilities, red hat, rhel, linux, 8.8, netapp, ontap, rhel 
 summary: Descrive come utilizzare Red Hat Enterprise Linux 8.8 con ONTAP 
 ---
-= Utilizzo di Red Hat Enterprise Linux 8.8 con NetApp ONTAP
+= Utilizza Red Hat Enterprise Linux 8.8 con ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1

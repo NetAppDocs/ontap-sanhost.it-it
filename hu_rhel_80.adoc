@@ -4,7 +4,7 @@ permalink: hu_rhel_80.html
 keywords: host utilities, red hat, rhel, linux, 8.0, netapp, ontap 
 summary: Descrive come utilizzare Red Hat Enterprise Linux 8.0 con ONTAP 
 ---
-= Utilizzo di Red Hat Enterprise Linux 8.0 con NetApp ONTAP
+= Utilizza Red Hat Enterprise Linux 8.0 con ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -20,7 +20,7 @@ summary: Descrive come utilizzare Red Hat Enterprise Linux 8.0 con ONTAP
 
 
 
-== Installazione di Linux Unified host Utilities
+== Installare le utility host unificate Linux
 
 Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["Sito di supporto NetApp"^] in un file .rpm a 64 bit.
 
@@ -311,12 +311,3 @@ devices {
 
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1231098["1231098"^] | Le porte remote transitano nello stato bloccato su RHEL8 con Emulex LPe32002 32 GB FC durante le operazioni di failover dello storage | Le porte remote transitano in uno stato bloccato su RHEL8 con Emulex LPe32002 32GBFibre Channel (FC) durante le operazioni di failover dello storage. Quando il nodo di storage torna a uno stato ottimale, vengono visualizzati anche i file LIF e lo stato della porta remota deve essere "online". A volte, lo stato della porta remota potrebbe continuare a essere "bloccato" o "non presente". Questo stato può portare a un percorso "guasto" verso le LUN nel layer multipath. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1705573["1705573"^] 
 |===
-
-
-== Note di rilascio
-
-
-
-=== Mirroring ASM
-
-Il mirroring ASM (Automatic Storage Management) potrebbe richiedere modifiche alle impostazioni del multipath Linux per consentire ad ASM di riconoscere un problema e passare a un gruppo di guasti alternativo. La maggior parte delle configurazioni ASM su ONTAP utilizza la ridondanza esterna, il che significa che la protezione dei dati è fornita dall'array esterno e ASM non esegue il mirroring dei dati. Alcuni siti utilizzano ASM con ridondanza normale per fornire il mirroring bidirezionale, in genere su siti diversi. Vedere link:https://www.netapp.com/us/media/tr-3633.pdf["Database Oracle su ONTAP"^] per ulteriori informazioni.

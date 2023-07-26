@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: hu_nvme_index.html 
+keywords:  
+summary:  
+---
+= Panoramica
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+È possibile configurare alcuni host SAN per il protocollo NVMe over Fabrics (NVMe-of), che include NVMe over Fibre Channel (NVMe/FC) e NVMe over TCP (NVMe/TCP), con ONTAP come destinazione. A seconda del sistema operativo host e della versione di ONTAP, configurare e convalidare il protocollo NVMe/FC o NVMe/TCP o entrambi sull'host.
