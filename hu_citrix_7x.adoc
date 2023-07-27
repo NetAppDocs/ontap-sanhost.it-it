@@ -18,10 +18,7 @@ summary: Descrive come utilizzare Citrix XenServer 7.x con ONTAP
 :toc-position: content
 
 
-
-
-== Introduzione
-
+[role="lead"]
 Questo documento fornisce indicazioni sulle impostazioni di configurazione degli host SAN ONTAP per le release dei sistemi operativi Citrix XenServer 7 con protocolli FC, FCoE e iSCSI.
 
 

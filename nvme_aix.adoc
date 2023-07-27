@@ -319,7 +319,7 @@ hdisk1  11       Enabled  Sel,Non      nvme60  fcnvme0, 9
 
 == Problemi noti
 
-La configurazione degli host NVMe/FC per AIX con ONTAP presenta i seguenti problemi noti:
+La configurazione dell'host NVMe/FC per AIX con versione ONTAP presenta i seguenti problemi noti:
 
 [cols="10,30,30"]
 |===
@@ -341,5 +341,4 @@ La configurazione degli host NVMe/FC per AIX con ONTAP presenta i seguenti probl
 
 == Risoluzione dei problemi
 
-Prima di eseguire la risoluzione di eventuali errori NVMe/FC, verificare di eseguire una configurazione conforme alle specifiche IMT.
-Se i problemi persistono, contatta il supporto tecnico per ulteriori triage.
+Prima di eseguire la risoluzione di eventuali errori NVMe/FC, verificare che la configurazione in uso sia conforme alle specifiche dello strumento matrice di interoperabilità (IMT). Se i problemi persistono, contattare link:mysupport.netapp.com["Supporto NetApp"^] per ulteriori triage.

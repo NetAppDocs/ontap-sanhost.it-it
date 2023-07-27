@@ -18,11 +18,8 @@ summary: Fornisce indicazioni sulle impostazioni di configurazione degli host SA
 :toc-position: content
 
 
-
-
-== Introduzione
-
-Questo documento fornisce indicazioni sulle impostazioni di configurazione degli host SAN ONTAP per la release 8 della serie Veritas Infosscale Storage Foundation per le piattaforme Red Hat Enterprise Linux e Oracle Linux (basate su RHCK) con protocolli FC, FCoE e iSCSI.
+[role="lead"]
+È possibile utilizzare le impostazioni di configurazione degli host SAN di ONTAP per la release 8 della serie Veritas Infosscale Storage Foundation per le piattaforme Red Hat Enterprise Linux e Oracle Linux (basate su RHCK) con protocolli FC, FCoE e iSCSI.
 
 
 
@@ -283,6 +280,6 @@ Se si dispone di un ambiente multipercorso eterogeneo, tra cui Veritas Infosscal
 
 
 
-== Problemi e limitazioni noti
+== Problemi noti
 
-Non esistono problemi e limitazioni noti.
+Non ci sono problemi noti.

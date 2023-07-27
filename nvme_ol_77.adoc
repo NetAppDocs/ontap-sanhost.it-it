@@ -266,7 +266,9 @@ NOTE: Non applicabile agli host Qlogic NVMe/FC.
 
 
 
-== LPFC verbose Logging
+== LPFC verbose logging
+
+Impostare il driver lpfc per NVMe/FC.
 
 .Fasi
 . Impostare `lpfc_log_verbose` Impostazione del driver su uno dei seguenti valori per registrare gli eventi NVMe/FC.

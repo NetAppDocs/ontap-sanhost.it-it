@@ -436,6 +436,8 @@ sidebar:
         url: "/nvme_windows_2016.html"
       - title: 2012 R2
         url: "/nvme_windows_2012r2.html"
+    - title: Risolvere i problemi
+      url: "/troubleshoot.html"
   - title: Note legali
     url: "/legal_notice.html"
 product-family:

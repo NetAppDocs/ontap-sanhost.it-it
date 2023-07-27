@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-Non esiste una registrazione qla2xxx specifica simile per NVMe/FC a quella per `lpfc` driver. Pertanto, è possibile impostare il livello di registrazione generale di qla2xxx seguendo questa procedura:
+Non esiste una registrazione specifica di qla2xxx per NVMe/FC simile a quella per `lpfc` driver. Impostare invece il livello di registrazione generale di qla2xxx.
 
 .Fasi
 . Aggiungere il `ql2xextended_error_logging=0x1e400000` al corrispondente `modprobe qla2xxx conf` file.

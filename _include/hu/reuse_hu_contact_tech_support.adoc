@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-Se i problemi persistono, raccogliere i seguenti file e output dei comandi e contattare il supporto tecnico per ulteriori triage:
+Se si continuano a riscontrare problemi, raccogliere i seguenti file, output dei comandi e contatto link:mysupport.netapp.com["Supporto NetApp"^] per ulteriori triage:
 
 [listing]
 ----

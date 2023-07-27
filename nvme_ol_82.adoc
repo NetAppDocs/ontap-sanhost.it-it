@@ -31,7 +31,7 @@ NOTE: È possibile utilizzare le impostazioni di configurazione fornite in quest
 
 == Limitazioni note
 
-Nessuno.
+Non esistono limitazioni note.
 
 
 
@@ -242,7 +242,7 @@ Device                 Vserver                         Namespace Path           
 
 
 
-== Abilita 1MB i/o Size per Broadcom NVMe/FC
+== Abilita dimensione i/o di 1 MB per Broadcom NVMe/FC
 
 ONTAP riporta un MDTS (MAX Data Transfer Size) di 8 nei dati del controller di identificazione, il che significa che la dimensione massima della richiesta di i/o può essere fino a 1 MB. Tuttavia, per emettere richieste di i/o di dimensione 1 MB per un host Broadcom NVMe/FC, è necessario aumentare `lpfc` valore di `lpfc_sg_seg_cnt` parametro a 256 dal valore predefinito di 64.
 

@@ -18,10 +18,7 @@ summary: Descrive come configurare NVMe/FC per SUSE Linux Enterprise Server 15 S
 :toc-position: content
 
 
-
-
-== Supportabilità
-
+[role="lead"]
 NVMe/FC è supportato su ONTAP 9.6 e versioni successive con SLES15 SP2. L'host SLES15 SP2 può eseguire traffico NVMe/FC e FCP attraverso le stesse porte dell'adattatore per iniziatori Fibre Channel. Vedere link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] Per un elenco di controller e adattatori FC supportati.
 
 Per l'elenco più aggiornato delle configurazioni e delle versioni supportate, vedere link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^].
@@ -33,7 +30,7 @@ NOTE: È possibile utilizzare le impostazioni di configurazione fornite in quest
 
 == Limitazioni note
 
-Nessuno.
+Non esistono limitazioni note.
 
 
 
@@ -233,6 +230,10 @@ Device Vserver Namespace Path NSID UUID Size
   ]
 }
 ----
++
+== problemi noti
+Non ci sono problemi noti.
+
 
 
 
@@ -265,6 +266,8 @@ NOTE: Non applicabile agli host Qlogic NVMe/FC.
 
 
 == LPFC verbose Logging
+
+Impostare il driver lpfc per NVMe/FC.
 
 .Fasi
 . Impostare `lpfc_log_verbose` Impostazione del driver su uno dei seguenti valori per registrare gli eventi NVMe/FC.
