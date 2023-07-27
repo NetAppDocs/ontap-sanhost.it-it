@@ -435,7 +435,7 @@ NSID   UUID                               Size
 
 == Problemi noti
 
-La configurazione dell'host NVMe-of per RHEL 9.0 con release ONTAP presenta i seguenti problemi noti:
+La configurazione dell'host NVMe-of per RHEL 9.0 con ONTAP presenta i seguenti problemi noti:
 
 [cols="10,30,30,10"]
 |===

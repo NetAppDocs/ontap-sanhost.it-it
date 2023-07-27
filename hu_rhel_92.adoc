@@ -46,7 +46,7 @@ Il toolkit viene installato automaticamente quando si installa il pacchetto NetA
 .Esempio
 Nell'esempio seguente, il `sanlun lun show` Il comando restituisce le informazioni sul LUN.
 
-[listing]
+[source, cli]
 ----
 # sanlun lun show all
 ----
