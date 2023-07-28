@@ -19,7 +19,7 @@ summary: Note di release per le utility host AIX 6.1
 
 
 [role="lead"]
-Il presente documento Note di release contiene le informazioni più recenti sulla release AIX host Utilities 6.1, inclusi aggiornamenti su problemi noti, limitazioni, configurazione e gestione del sistema di storage ONTAP.
+Il documento delle note di rilascio contiene le informazioni più recenti sulla release AIX host Utilities 6.1, inclusi aggiornamenti su problemi noti, limitazioni, configurazione e gestione del sistema di storage ONTAP.
 
 Il documento Release Notes viene aggiornato quando diventano disponibili nuove informazioni sull'utilizzo delle Utility host AIX.
 

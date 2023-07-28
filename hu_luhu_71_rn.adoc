@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: hu_luhu_71_rn.html 
-keywords: host utilities, linux, 7.1, netapp, ontap, release, notes 
+keywords: host utilities, linux, 7.1, netapp, ontap, release, notes, linux 
 summary: Note sulla versione per le utility host unificate Linux 7.1 
 ---
 = Linux Unified host Utilities 7.1 - Note di release
@@ -19,7 +19,7 @@ summary: Note sulla versione per le utility host unificate Linux 7.1
 
 
 [role="lead"]
-Le Note di rilascio descrivono nuove funzionalità e miglioramenti, problemi e limitazioni noti e importanti precauzioni per la configurazione e la gestione dell'host specifico con il sistema di storage ONTAP.
+Le note di rilascio descrivono nuove funzionalità e miglioramenti, problemi e limitazioni noti e importanti precauzioni per la configurazione e la gestione dell'host specifico con il sistema di storage ONTAP.
 
 Per informazioni specifiche sulle versioni e sugli aggiornamenti del sistema operativo supportati dalle utility host, consultare link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^].
 
@@ -45,8 +45,8 @@ NOTE: Qualsiasi citazione di host Utilities o Linux host Utilities in questo doc
 ** Citrix XenServer
 
 
-* Sugli host Red Hat Enterprise Linux (RHEL) 6 e RHEL 7 è ora supportato un pacchetto ottimizzato per l'impostazione dei profili server. È possibile utilizzare `tuned-adm` comando per impostare profili diversi, a seconda dell'ambiente.  Ad esempio, è possibile utilizzare il profilo guest virtuale come macchina virtuale guest e il profilo storage aziendale per le configurazioni in cui vengono utilizzate le LUN degli array storage aziendali.  L'utilizzo di questi pacchetti ottimizzati può comportare un miglioramento del throughput e della latenza in ONTAP.
-* Aggiunge il supporto per gli adattatori Fibre Channel da 32 GB di Broadcom Emulex e Marvell Qlogic.
+* Sugli host Red Hat Enterprise Linux (RHEL) 6 e RHEL 7 è ora supportato un pacchetto ottimizzato per l'impostazione dei profili server. È possibile utilizzare `tuned-adm` comando per impostare profili diversi, a seconda dell'ambiente. Ad esempio, è possibile utilizzare il profilo guest virtuale come macchina virtuale guest e il profilo storage aziendale per le configurazioni in cui vengono utilizzate le LUN degli array storage aziendali. L'utilizzo di questi pacchetti ottimizzati può comportare un miglioramento del throughput e della latenza in ONTAP.
+* Aggiunge il supporto per gli adattatori FC da 32 GB di Broadcom Emulex e Marvell Qlogic.
 
 
 

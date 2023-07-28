@@ -19,7 +19,7 @@ summary: Note di release per Windows Unified host Utilities
 
 
 [role="lead"]
-Le presenti Note di rilascio contengono le informazioni più recenti per le versioni 7.2 e 7.1 di Windows Unified host Utilities, inclusi aggiornamenti su nuove funzionalità, miglioramenti e problemi noti. Il documento viene aggiornato quando diventano disponibili nuove informazioni sull'utilizzo delle utilità host di Windows.
+Le note di rilascio contengono le informazioni più recenti per le versioni 7.2 e 7.1 di Windows Unified host Utilities, inclusi aggiornamenti su nuove funzionalità, miglioramenti e problemi noti. Il documento viene aggiornato quando diventano disponibili nuove informazioni sull'utilizzo delle utilità host di Windows.
 
 
 
