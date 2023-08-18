@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_centos_70.html 
-keywords: host utilities, centos, linux, 7.0, netapp, ontap 
-summary: Descrive come utilizzare CentOS 7.0 con ONTAP 
+permalink: hu_sles_15SP5.html 
+keywords: host utilities, suse linux enterprise server 15 sp5, suse, linux, 15 sp5, netapp, ontap 
+summary: Viene descritto come utilizzare SUSE Linux Enterprise Server 15 SP5 con ONTAP 
 ---
-= Utilizzare CentOS 7.0 con ONTAP
+= Utilizzate SUSE Linux Enterprise Server 15 SP5 con ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -69,7 +69,7 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 == Avvio SAN
 
 .Di cosa hai bisogno
-Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare link:https://mysupport.netapp.com/matrix/imt.jsp?components=68128;&solution=1&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] Per verificare che il sistema operativo, l'HBA, il firmware dell'HBA, il BIOS di avvio dell'HBA e la versione di ONTAP siano supportati.
+Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare link:https://mysupport.netapp.com/matrix/imt.jsp?components=84067;&solution=1&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] Per verificare che il sistema operativo, l'HBA, il firmware dell'HBA, il BIOS di avvio dell'HBA e la versione di ONTAP siano supportati.
 
 .Fasi
 . Mappare il LUN di avvio SAN sull'host.
@@ -89,7 +89,7 @@ Per informazioni su come attivare il BIOS HBA, consultare la documentazione spec
 
 == Multipathing
 
-Per CentOS 7.0 il file /etc/multipath.conf deve esistere, ma non è necessario apportare modifiche specifiche al file. CentOS 7.0 viene compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente le LUN ONTAP.
+Per SUSE Linux Enterprise Server 15 SP5, la `/etc/multipath.conf` il file deve esistere, ma non è necessario apportare modifiche specifiche al file. SUSE Linux Enterprise Server 15 SP5 è compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente i LUN ONTAP.
 
 È possibile utilizzare `multipath -ll` Per verificare le impostazioni dei LUN ONTAP. Le sezioni seguenti forniscono un output multipath di esempio per un LUN mappato a figure ASA e non ASA.
 
@@ -106,12 +106,12 @@ Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP:
 ----
 # multipath -ll
 3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
-size=80G  features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 `-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:7:1    sdfi   130:64   active ready running
-  |- 11:0:9:1    sdiy  8:288     active ready running
-  |- 11:0:10:1  sdml 69:464   active ready running
-  |- 11:0:11:1  sdpt  131:304  active ready running
+  |- 3:0:7:9    sdco 69:192  active ready running
+  |- 3:0:8:9    sddi 71:0    active ready running
+  |- 14:0:8:9   sdjq 65:320  active ready running
+  `- 14:0:7:9   sdiw 8:256   active ready running
 ----
 
 NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
@@ -129,13 +129,13 @@ Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con 
 ----
 # multipath -ll
 3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
-size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle’ hwhandler='1 alua' wp=rw
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
-| |- 11:0:1:0 sdj  8:144  active ready running
-| |- 11:0:2:0 sdr  65:16  active ready running
+| |- 3:0:3:0    sdd  8:48    active ready running
+| |- 3:0:4:0    sdx  65:112  active ready running
 `-+- policy='service-time 0' prio=10 status=enabled
-  |- 11:0:0:0 sdb  8:i6   active ready running
-  |- 12:0:0:0 sdz  65:144 active ready running
+  |- 14:0:2:0   sdfk 130:96  active ready running
+  `- 14:0:5:0   sdgz 132:240 active ready running
 ----
 
 NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
@@ -144,7 +144,8 @@ NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non de
 
 == Impostazioni consigliate
 
-Il sistema operativo CentOS 7.0 viene compilato per riconoscere le LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per la configurazione ASA e non ASA.
+Il sistema operativo SUSE Linux Enterprise Server 15 SP5 viene compilato in modo da riconoscere i LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per le configurazioni ASA e non ASA. È possibile ottimizzare ulteriormente le prestazioni per la configurazione host con le seguenti impostazioni consigliate.
+
 Il `multipath.conf` il file deve esistere per l'avvio del daemon multipath, ma è possibile creare un file vuoto a zero byte utilizzando il seguente comando:
 
 `touch /etc/multipath.conf`
@@ -206,7 +207,7 @@ Controllare sempre il `/etc/multipath.conf` file per le impostazioni legacy, in 
 
 La tabella seguente mostra la criticità `multipathd` Parametri per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri vendor e uno qualsiasi di questi parametri viene ignorato, sarà necessario correggerli nelle successive stanze di `multipath.conf` File che si applicano specificamente alle LUN ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. Questi valori predefiniti devono essere ignorati solo previa consultazione di NetApp e/o di un vendor del sistema operativo e solo quando l'impatto è pienamente compreso.
 
-[cols="2*"]
+[cols="2"]
 |===
 | Parametro | Impostazione 
 
@@ -223,7 +224,7 @@ La tabella seguente mostra la criticità `multipathd` Parametri per i LUN ONTAP 
 | fast_io_fail_tmo | 5 
 
 
-| caratteristiche | "3 queue_if_no_path pg_init_retries 50" 
+| caratteristiche | "2 pg_init_retries 50" 
 
 
 | flush_on_last_del | "sì" 
@@ -273,7 +274,6 @@ defaults {
    path_checker      readsector0
    no_path_retry      fail
 }
-
 devices {
    device {
       vendor         "NETAPP  "
@@ -285,12 +285,6 @@ devices {
 ----
 
 
-=== Impostazioni KVM
+== Problemi noti
 
-È possibile utilizzare le impostazioni consigliate anche per configurare la macchina virtuale basata su kernel (KVM). Non sono necessarie modifiche per configurare KVM poiché il LUN viene mappato all'hypervisor.
-
-
-
-== Problemi e limitazioni noti
-
-Non esistono problemi noti per CentOS 7.0.
+Non ci sono problemi noti.
