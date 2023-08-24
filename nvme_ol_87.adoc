@@ -111,6 +111,22 @@ vs_ol_nvme  nvme_ss_ol_1    nqn.2014-08.org.nvmexpress:uuid:791c54eb-545d-4ed3-8
 
 NOTE: Se il `hostnqn` le stringhe non corrispondono, è possibile utilizzare `vserver modify` per aggiornare `hostnqn` Stringa sul sottosistema di array ONTAP corrispondente a `hostnqn` stringa da `/etc/nvme/hostnqn` sull'host.
 
+. Riavviare l'host.
++
+[NOTE]
+====
+Se si intende eseguire traffico NVMe e SCSI sullo stesso host esistente di Oracle Linux 8,7, NetApp consiglia di utilizzare il multipath NVMe in-kernel per gli spazi dei nomi ONTAP e dm-multipath per le LUN ONTAP. Questo significa anche che gli spazi dei nomi ONTAP devono essere inseriti nella blacklist in dm-multipath per evitare che dm-multipath rivendica questi dispositivi dello spazio dei nomi. Per eseguire questa operazione, aggiungere `enable_foreign` impostazione su `/etc/multipath.conf` file:
+
+[listing]
+----
+#cat /etc/multipath.conf
+defaults {
+    enable_foreign  NONE
+}
+----
+Riavviare il daemon multipath eseguendo `systemctl restart multipathd` per rendere effettiva la nuova impostazione.
+
+====
 
 
 
