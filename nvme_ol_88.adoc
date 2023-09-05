@@ -24,7 +24,7 @@ NVMe over Fabrics (NVMe-of), incluso NVMe over Fibre Channel (NVMe/FC) e altri t
 Il seguente supporto è disponibile per la configurazione host NVMe-of per OL 8,8 con ONTAP:
 
 * Supporto per NVMe su TCP (NVMe/TCP) oltre a NVMe/FC. Il plug-in NetApp nel nativo `nvme-cli` Il pacchetto visualizza i dettagli ONTAP per gli spazi dei nomi NVMe/FC e NVMe/TCP.
-* Il traffico NVMe e SCSI può essere eseguito sullo stesso host coesistente. Pertanto, per i LUN SCSI è possibile configurare dm-multipath per i dispositivi SCSI mpath, mentre NVMe multipath può essere utilizzato per configurare i dispositivi con namespace NVMe-of sull'host.
+* Il traffico NVMe e SCSI può essere eseguito sullo stesso host coesistente. Pertanto, per i LUN SCSI, è possibile configurare dm-multipath per i dispositivi SCSI mpath, mentre è possibile utilizzare NVMe multipath per configurare i dispositivi NVMe-of namespace sull'host.
 * Non esiste alcun supporto sanlun per NVMe-of. Pertanto, non vi è supporto di host utility per NVMe-of su un host OL 8,8. È possibile fare affidamento sul plug-in NetApp incluso in nativo `nvme-cli` Pacchetto per tutti i trasporti NVMe-of.
 
 
@@ -34,15 +34,13 @@ Per ulteriori informazioni sulle configurazioni supportate, consultare link:http
 
 == Caratteristiche
 
-* Oracle Linux 8,8 ha il multipath NVMe in-kernel abilitato per gli spazi dei nomi NVMe per impostazione predefinita, pertanto non sono necessarie impostazioni esplicite.
-
+Oracle Linux 8,8 ha il multipath NVMe in-kernel abilitato per gli spazi dei nomi NVMe per impostazione predefinita, pertanto non sono necessarie impostazioni esplicite.
 
 
 
 == Limitazioni note
 
-* L'avvio SAN che utilizza il protocollo NVMe-of non è attualmente supportato.
-
+L'avvio SAN che utilizza il protocollo NVMe-of non è attualmente supportato.
 
 
 
@@ -127,7 +125,7 @@ defaults {
   enable_foreign     NONE
 }
 ----
-Riavviare il daemon multipath eseguendo un `systemctl restart multipathd` per attivare la nuova impostazione.
+Riavviare il daemon multipath eseguendo un `systemctl restart multipathd` comando. In questo modo, la nuova impostazione diventa effettiva.
 
 ====
 
@@ -246,7 +244,7 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 .Adattatore FC Marvell/QLogic per NVMe/FC
 --
 .Fasi
-. Il driver inbox qla2xxx nativo incluso nel kernel OL 8,8 GA ha le ultime correzioni upstream essenziali per il supporto di ONTAP. Verificare che siano in esecuzione le versioni del firmware e del driver dell'adattatore supportate:
+. Il driver inbox qla2xxx nativo incluso nel kernel OL 8,8 GA ha le ultime correzioni essenziali per il supporto di ONTAP. Verificare che siano in esecuzione le versioni del firmware e del driver dell'adattatore supportate:
 +
 [listing]
 ----
@@ -400,7 +398,7 @@ nvme connect-all -t tcp -w host-traddr -a traddr -l 1800
 È possibile utilizzare la seguente procedura per convalidare NVMe-of.
 
 .Fasi
-. Verificare che il multipath NVMe nel kernel sia attivato selezionando:
+. Verifica che il multipath NVMe in-kernel sia abilitato:
 +
 [listing]
 ----
@@ -589,5 +587,5 @@ La configurazione host NVMe-of per OL 8,8 con release ONTAP presenta i seguenti 
 | ID bug NetApp | Titolo | Descrizione | ID Bugzilla 
 
 
-| 1517321 | Gli host NVMe-of di Oracle Linux 8,8 creano controller di rilevamento persistenti duplicati | Sugli host OL 8,8, la tecnologia NVMe-of, i controller di rilevamento persistente (PDC) vengono creati passando l' `-p` al `nvme discover` comando. Per una determinata combinazione iniziatore-destinazione, si prevede di creare un solo PDC con ogni chiamata di `nvme discover` comando. Tuttavia, a partire da OL 8.x, gli host NVMe-of finiscono per creare PDC duplicati con ogni chiamata di `nvme discover` con il `-p` opzione. In questo modo si sprecano risorse sia sull'host che sulla destinazione. | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118"^] 
+| 1517321 | Gli host Oracle Linux 8,8 NVMe-of creano PDC duplicati | Sugli host OL 8,8, la tecnologia NVMe-of, i controller di rilevamento persistente (PDC) vengono creati passando l' `-p` al `nvme discover` comando. Per una determinata combinazione iniziatore-destinazione, si prevede di creare un solo PDC con ogni chiamata di `nvme discover` comando. Tuttavia, a partire da OL 8.x, gli host NVMe-of finiscono per creare PDC duplicati con ogni chiamata di `nvme discover` con il `-p` opzione. In questo modo si sprecano risorse sia sull'host che sulla destinazione. | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118"^] 
 |===

@@ -22,10 +22,10 @@ summary: Descrive come installare le utility host di solaris
 
 == Installare le utility host di Solaris
 
-È possibile scaricare il file compresso contenente i pacchetti software di Utility host da link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["Sito di supporto NetApp"^]. Una volta ottenuto il file, è necessario estrarlo per ottenere i pacchetti software necessari per installare le Utility host.
+È possibile scaricare il file compresso contenente i pacchetti software di Utility host da https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["Sito di supporto NetApp"^]. Una volta ottenuto il file, è necessario estrarlo per ottenere i pacchetti software necessari per installare le Utility host.
 
 .Fasi
-. Scaricare una copia del file compresso contenente le utility host da link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["Sito di supporto NetApp"^] a una directory sull'host.
+. Scaricare una copia del file compresso contenente le utility host da https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["Sito di supporto NetApp"^] a una directory sull'host.
 . Accedere alla directory contenente il download.
 . Estrarre il file.
 +

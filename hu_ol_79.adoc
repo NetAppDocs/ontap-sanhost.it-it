@@ -22,14 +22,14 @@ summary: Descrive come utilizzare Oracle Linux 7.9 con ONTAP
 
 == Installare le utility host unificate Linux
 
-Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["Sito di supporto NetApp"^] in un file .rpm a 32 bit e a 64 bit. Se non si conosce il file appropriato per la configurazione, utilizzare link:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità NetApp"^] per verificare quale si desidera.
+Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] in un file .rpm a 32 bit e a 64 bit. Se non si conosce il file appropriato per la configurazione, utilizzare link:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità NetApp"^] per verificare quale si desidera.
 
 NetApp consiglia vivamente di installare le utility host unificate Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
 
 .Di cosa hai bisogno
 Se si dispone di una versione di Linux Unified host Utilities attualmente installata, è necessario aggiornarla oppure rimuoverla e procedere come segue per installare la versione più recente.
 
-. Scaricare il pacchetto software di utilità host unificate Linux a 32 bit o 64 bit dal link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["Sito di supporto NetApp"^] Al tuo host.
+. Scaricare il pacchetto software di utilità host unificate Linux a 32 bit o 64 bit dal link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] Al tuo host.
 . Utilizzare il seguente comando per installare il pacchetto software:
 +
 `rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_64`
@@ -295,5 +295,5 @@ Oracle Linux 7,9 con ONTAP presenta i seguenti problemi noti:
 | ID bug NetApp | Titolo | Descrizione | ID Bugzilla 
 
 
-| 1440718 | Se si annulla la mappatura o si mappa un LUN senza eseguire una nuova scansione SCSI, i dati sull'host potrebbero danneggiarsi | Quando si imposta `disable_changed_wwids` Parametro di configurazione multipercorso su sì, disabilita l'accesso al dispositivo di percorso in caso di cambiamento di un identificatore mondiale (WWID). Multipath disattiva l'accesso al dispositivo di percorso fino a quando l'ID WWID del percorso non viene ripristinato all'ID WWID del dispositivo multipath. Vedere link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["Knowledge base di NetApp: La corruzione del file system sul LUN iSCSI su Oracle Linux 7"^] per ulteriori informazioni. | Non applicabile 
+| 1440718 | Se si annulla la mappatura o si mappa un LUN senza eseguire una nuova scansione SCSI, i dati sull'host potrebbero danneggiarsi | Quando si imposta `disable_changed_wwids` Parametro di configurazione multipercorso su sì, disabilita l'accesso al dispositivo di percorso in caso di cambiamento di un identificatore mondiale (WWID). Multipath disattiva l'accesso al dispositivo di percorso fino a quando il WWID del percorso non viene ripristinato all'WWID del dispositivo multipath. Vedere link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["Knowledge base di NetApp: La corruzione del file system sul LUN iSCSI su Oracle Linux 7"^] per ulteriori informazioni. | Non applicabile 
 |===

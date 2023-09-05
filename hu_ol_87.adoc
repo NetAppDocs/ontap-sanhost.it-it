@@ -22,7 +22,7 @@ summary: Descrive come utilizzare Oracle Linux 8.7 con ONTAP
 
 == Installare le utility host unificate Linux
 
-Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["Sito di supporto NetApp"^] in un file .rpm a 64 bit.
+Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] in un file .rpm a 64 bit.
 
 NetApp consiglia vivamente di installare le utility host unificate Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
 
@@ -30,7 +30,7 @@ NetApp consiglia vivamente di installare le utility host unificate Linux, ma non
 Se si dispone di una versione di Linux Unified host Utilities attualmente installata, eseguire l'aggiornamento o la rimozione, quindi attenersi alla procedura descritta di seguito per installare la versione più recente.
 
 .Fasi
-. Scaricare il pacchetto software 64-bit Linux Unified host Utilities dal https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["Sito di supporto NetApp"^] al tuo host.
+. Scaricare il pacchetto software 64-bit Linux Unified host Utilities dal https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] al tuo host.
 . Installare il pacchetto software:
 +
 `rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_64`

@@ -22,14 +22,14 @@ summary: Descrive come utilizzare Red Hat Enterprise Linux 6.5 con ONTAP
 
 == Installare le utility host unificate Linux
 
-Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["Sito di supporto NetApp"^] in un file .rpm a 32 bit e a 64 bit. Se non si conosce il file appropriato per la configurazione, utilizzare link:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità NetApp"^] per verificare quale si desidera.
+Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] in un file .rpm a 32 bit e a 64 bit. Se non si conosce il file appropriato per la configurazione, utilizzare link:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità NetApp"^] per verificare quale si desidera.
 
 NetApp consiglia vivamente di installare le utility host unificate Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
 
 .Di cosa hai bisogno
 Se si dispone di una versione di Linux Unified host Utilities attualmente installata, è necessario aggiornarla oppure rimuoverla e procedere come segue per installare la versione più recente.
 
-. Scaricare il pacchetto software di utilità host unificate Linux a 32 bit o 64 bit dal link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["Sito di supporto NetApp"^] Al tuo host.
+. Scaricare il pacchetto software di utilità host unificate Linux a 32 bit o 64 bit dal link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] Al tuo host.
 . Utilizzare il seguente comando per installare il pacchetto software:
 +
 `rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_64`

@@ -22,10 +22,10 @@ summary: Descrive come utilizzare IBM AIX 7.2 e/o PowerVM VIOS 3.1 con ONTAP
 
 == Installare le utility host HP-UX
 
-È possibile scaricare il file compresso contenente i pacchetti software host Utilities dal NetApp Support Site. Una volta ottenuto il file, è necessario decomprimerlo per ottenere i pacchetti software necessari per installare le Utility host.
+È possibile scaricare il file compresso contenente i pacchetti software di Utility host da link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.0/downloads["Sito di supporto NetApp"^]. Una volta ottenuto il file, è necessario decomprimerlo per ottenere i pacchetti software necessari per installare le Utility host.
 
 .Fasi
-. Scaricare una copia del file compresso contenente le utility host da link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["Sito di supporto NetApp"^] a una directory sull'host.
+. Scaricare una copia del file compresso contenente le utility host da link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.0/downloads["Sito di supporto NetApp"^] a una directory sull'host.
 . Accedere alla directory contenente il download.
 . Decomprimere il file.
 +
