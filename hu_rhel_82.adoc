@@ -38,9 +38,6 @@ Se si dispone di una versione di Linux Unified host Utilities attualmente instal
 
 
 
-NOTE: È possibile utilizzare le impostazioni di configurazione fornite in questo documento per configurare i client cloud connessi a. link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] e. link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX per ONTAP"^].
-
-
 
 == Toolkit SAN
 
@@ -90,9 +87,38 @@ Per informazioni su come attivare il BIOS HBA, consultare la documentazione spec
 
 == Multipathing
 
-Per Red Hat Enterprise Linux (RHEL) 8.2 il file /etc/multipath.conf deve esistere, ma non è necessario apportare modifiche specifiche al file. RHEL 8.2 è compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente le LUN ONTAP.
+Per Red Hat Enterprise Linux (RHEL) 8,2 `/etc/multipath.conf` il file deve esistere, ma non è necessario apportare modifiche specifiche al file. RHEL 8,2 è compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente i LUN ONTAP.
 
-È possibile utilizzare `multipath -ll` Per verificare le impostazioni dei LUN ONTAP. Ci dovrebbero essere due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono attivi/ottimizzati, il che significa che sono serviti dal controller in cui si trova l'aggregato. I percorsi con priorità inferiori sono attivi ma non ottimizzati perché vengono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando non sono disponibili percorsi ottimizzati.
+È possibile utilizzare `multipath -ll` Per verificare le impostazioni dei LUN ONTAP. Le sezioni seguenti forniscono un output multipath di esempio per un LUN mappato a figure ASA e non ASA.
+
+
+
+=== Tutte le configurazioni DEGLI array SAN
+
+Nelle configurazioni ASA, tutti i percorsi verso una determinata LUN sono attivi e ottimizzati. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
+
+.Esempio
+Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP:
+
+[listing]
+----
+# multipath -ll
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:1    sdfi   130:64   active ready running
+  |- 11:0:9:1    sdiy   8:288    active ready running
+  |- 11:0:10:1   sdml   69:464   active ready running
+  |- 11:0:11:1   sdpt   131:304  active ready running
+----
+
+NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
+
+
+
+=== Configurazioni non ASA
+
+Per le configurazioni non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero vengono serviti dal controller in cui si trova l'aggregato. I percorsi con priorità inferiori sono attivi ma non ottimizzati perché vengono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando non sono disponibili percorsi ottimizzati.
 
 .Esempio
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:
@@ -108,6 +134,7 @@ size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
 `-+- policy='service-time 0' prio=10 status=enabled
 |- 15:0:0:35 sdaj 66:48 active ready running
 |- 15:0:1:35 sdbx 68:176 active ready running
+
 ----
 
 NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
@@ -264,6 +291,6 @@ devices {
 
 
 
-== Problemi e limitazioni noti
+== Problemi noti
 
 Non ci sono problemi noti per RHEL 8.2.
