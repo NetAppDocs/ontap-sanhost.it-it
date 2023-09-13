@@ -4,7 +4,7 @@ permalink: hu_solaris_62_cmd.html
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
 summary: Descrive come utilizzare le utility host unificate Linux 7.1 con ONTAP 
 ---
-= Riferimento al comando Solaris 6.2
+= Riferimento comandi Solaris host Utilities 6,2
 :toc: macro
 :hardbreaks:
 :toclevels: 1
