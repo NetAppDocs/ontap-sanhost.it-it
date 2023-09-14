@@ -848,28 +848,10 @@
   <block id="697675a4c21edc6fc07599249d9fe748" category="paragraph">In tutte le configurazioni array SAN (ASA), tutti i percorsi verso una determinata unità logica (LUN) sono attivi e ottimizzati. Ciò significa che l'i/o può essere servito contemporaneamente attraverso tutti i percorsi, consentendo in tal modo migliori performance.</block>
   <block id="230a02b4afeea5b0d97c6a68a6530da3" category="summary">Note sulla versione per le utility host HPUX 6.0</block>
   <block id="e16c4360565a75371ee1b578b4c1ecca" category="doc">Note sulla versione di HP-UX host Utilities 6.0</block>
-  <block id="02f8eb4aa3c5b1158e37fd1a9c849ca8" category="section-title">Informazioni su HP-UX host Utilities versione 6.0</block>
-  <block id="18691c1295f4b1c26d2e8a9a5b67cfb9" category="paragraph">Le utility host HP-UX supportano diversi ambienti HP-UX e protocolli multipli. Le utility host HP-UX supportano i seguenti ambienti:</block>
   <block id="8017a7ef798d9749aaed2e77fcebed98" category="list-text">MPIO nativo</block>
   <block id="4aade2cc63558a9db8aa3c9a6c9639d3" category="list-text">Veritas Dynamic Multipathing (DMP)</block>
-  <block id="89d83ddcffe2153b6741a0e85d8548a2" category="admonition">Per chiarire immediatamente quale ambiente viene utilizzato, questo documento specifica talvolta "DMP" per l'ambiente Veritas DMP e "MPIO" per l'ambiente nativo HP-UX. In alcuni casi, i comandi utilizzati potrebbero variare a seconda dei driver utilizzati. In questi casi, vengono specificati sia l'ambiente che i tipi di driver.</block>
-  <block id="06cc7f9865c73b00a63121a0f4b0b752" category="section-title">Miglioramenti di HP-UX host Utilities 6.0</block>
-  <block id="8812d57ba4da4daf9e7f43422d05e0a9" category="paragraph">Le Note di rilascio vengono aggiornate tra una release e l'altra del prodotto non appena sono disponibili nuove informazioni. HP-UX host Utilities 6.0 continua a supportare le seguenti versioni:</block>
   <block id="c7c7e4d1fc8a47f946a88914900694c3" category="list-text">HP-UX 11iv2</block>
   <block id="4feac8845db3a6b1f4e4ead570b6b3ad" category="list-text">HP-UX 11iv3</block>
-  <block id="7a1ba2e6d3a8198d5626f5d4e55d2293" category="paragraph">Non esistono problemi noti per la versione 6.0 di HP-UX.</block>
-  <block id="5f5628241e19b1175cc4bdd9c398f5b7" category="inline-link-macro">Guida alla configurazione del software ONTAP per la versione di ONTAP in uso</block>
-  <block id="3b0fe6f7d254eb266d210040bae111f5" category="list-text">Il <block ref="18f02cc408dbe2e94ae9ae202c089ef8" category="inline-link-macro-rx"></block></block>
-  <block id="29ecce87abc03f76c20d3fe564e26dbe" category="inline-link-macro">Guida all'amministrazione SAN di ONTAP per la versione di ONTAP in uso</block>
-  <block id="2895d2b5c5ce91fe3e854c5054f19b62" category="list-text">Il <block ref="13c491dae34255ba8eee5d0f620c1f33" category="inline-link-macro-rx"></block></block>
-  <block id="13d4f4be1ab239d2cd36fb812fad5fc1" category="inline-link-macro">Note di rilascio di ONTAP per la versione di ONTAP in uso</block>
-  <block id="d7b5ae94e622a21572fe07c48e20da09" category="list-text">Il <block ref="2ba744c2429cbcfc53bdb0428522a053" category="inline-link-macro-rx"></block></block>
-  <block id="3c7828b2d190734834ce40e8064c1dac" category="list-text"><block ref="3c7828b2d190734834ce40e8064c1dac" category="inline-link-macro-rx"></block></block>
-  <block id="2aa7ada2848fa0738fbfac1114907aa4" category="list-text"><block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block> (In precedenza System Configuration Guide)</block>
-  <block id="b90eb3e688d069ada30157d4030b66f5" category="inline-link-macro">Topologie FIBRE Channel SAN supportate</block>
-  <block id="a1976a5397f63f5caa13a0e86733d543" category="list-text"><block ref="a1976a5397f63f5caa13a0e86733d543" category="inline-link-macro-rx"></block></block>
-  <block id="c0965c2d259d63a3e2cbab60c837eaaa" category="inline-link-macro">Configurazione dell'host per le utility host</block>
-  <block id="c52f3cfca61100f76a974648c1c9a180" category="list-text"><block ref="c52f3cfca61100f76a974648c1c9a180" category="inline-link-macro-rx"></block></block>
   <block id="95a7c4ebc7538126d41cf3497f8e09b4" category="summary">Descrive come utilizzare Red Hat Enterprise Linux 6.4 con ONTAP</block>
   <block id="f0fac0f2b3b710a9568f39594d5f9df3" category="paragraph">Per Red Hat Enterprise Linux (RHEL) 6.4 il file /etc/multipath.conf deve esistere, ma non è necessario apportare modifiche specifiche al file. RHEL 6.4 è compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente le LUN ONTAP. Per attivare ALUA Handler, attenersi alla seguente procedura:</block>
   <block id="857c2f89db30800ff3058931e331923e" category="paragraph">Il sistema operativo RHEL 6.4 viene compilato per riconoscere i LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per la configurazione ASA e non ASA.</block>
@@ -890,15 +872,10 @@
   <block id="0f03ad1ba726a38547e37a072e28a71f" category="paragraph">HP-UX host Utilities è un software host NetApp che fornisce un kit di strumenti a riga di comando sull'host HP-UX. Il toolkit viene installato quando si installa il pacchetto NetApp host Utilities. Questo kit fornisce<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> Utility che consente di gestire LUN e HBA. Il<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> Il comando restituisce le informazioni relative alle LUN mappate all'host, al multipathing e alle informazioni necessarie per creare gruppi di iniziatori.</block>
   <block id="fcd0175f66a20efc7cd1c6567f9a5578" category="paragraph">Nell'esempio seguente, il<block ref="5927da9399de65ab7428ce807e88771e" prefix=" " category="inline-code"></block> Il comando restituisce le informazioni del LUN.</block>
   <block id="df806afef9dae5d43f20297c99fb14ca" category="admonition">Questo toolkit è comune a tutte le configurazioni e protocolli delle utility host. Di conseguenza, alcuni contenuti si applicano a una configurazione, ma non a un'altra. La presenza di componenti inutilizzati non influisce sulle prestazioni del sistema.</block>
-  <block id="272bb0cd3faf2ede65f3ff18b59a2e04" category="section-title">Installazione delle utility host HP-UX</block>
-  <block id="8d8dc06df50e7cce23a5ef1dbeed7796" category="paragraph">Il pacchetto software NetApp HP-UX host Utilities è disponibile sul sito <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> in un file compresso.</block>
-  <block id="e6836ae92ec45bf946aba470c3ee98e5" category="paragraph">È possibile scaricare il file compresso contenente i pacchetti software di Utility host da <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block>. Dopo aver scaricato il file, è necessario decomprimerlo prima dell'installazione.</block>
   <block id="83ea987146445e3a3ff4069f8c0095ac" category="list-text">Accedere all'host.</block>
   <block id="dd0ef0f389a16b505e475797a7b752ac" category="list-text">Scaricare il file HP-UX host Utilities<block ref="dfa8e0cbcc24953d6f700e7d845f35aa" prefix=" " category="inline-code"></block> dal <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> All'host HP-UX.</block>
-  <block id="5eaf61000f0f261f2e4793f7e336889a" category="list-text">Decomprimere<block ref="dfa8e0cbcc24953d6f700e7d845f35aa" prefix=" " category="inline-code"></block> immettere il seguente comando:</block>
   <block id="93b6e09e96afb8006209af84f438ca2b" category="paragraph"><block ref="569fcd13e8abb92609922921dbdbb69b" prefix="" category="inline-code"></block></block>
   <block id="1bad318175e7aa1eb67e6db2256bb9b1" category="paragraph">Il sistema inserisce il software estratto nella directory in cui è stato decompresso il file di depot.</block>
-  <block id="2a346f59c525e5728cec25bf9a377f2f" category="list-text">Installare il software immettendo il seguente comando:</block>
   <block id="2d903390e509c4d2f6da1a4d0787b5b6" category="paragraph"><block ref="874ad7cb71a3f78f78c8e867b4883453" prefix="" category="inline-code"></block></block>
   <block id="999cc5e84fec57fdd157e6fdacc5c96a" category="paragraph"><block ref="dd352037f1892741a1b2287230d933e4" prefix="" category="inline-code"></block> fornisce il percorso e il nome del file di deposito.</block>
   <block id="e661cef1335457aaa4b6047327cfb656" category="paragraph">Il<block ref="83250d1c05e63f6d60e79cc99841ad93" prefix=" " category="inline-code"></block> Command esegue uno script di installazione che verifica lo stato dell'installazione di HP-UX. Se il sistema soddisfa i requisiti, questo script installa<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> script di utilità e diagnostica in<block ref="00efbfd132947bf52638b0d09c5d373e" prefix=" " category="inline-code"></block> directory.</block>
@@ -2373,7 +2350,6 @@
   <block id="cebcd1a5ff2049be4533aaf6b185029d" category="summary">Note di release per le utility host AIX 6.1</block>
   <block id="4391e4a69364ebb845d6562846716af4" category="doc">AIX host Utilities 6.1 - Note sulla versione</block>
   <block id="66c2d1ced882bffc99d6170e17a232ef" category="paragraph">Per informazioni specifiche sulle versioni e sugli aggiornamenti del sistema operativo supportati dalle utility host, consultare <block ref="7ce73c7ae176dd6b577d1c14b445f0cd" category="inline-link-macro-rx"></block>.</block>
-  <block id="40289338bc754c0009f5e9a173f6e09a" category="list-text">AIX host Utilities 6.1 ha aggiunto il supporto per il problema di errore di memoria che si è verificato nelle versioni precedenti del sistema operativo host AIX. Con AIX host Utilities 6.1, è stato modificato solo il binario sanlun. Il MPIO e il relativo ODM rimangono invariati.</block>
   <block id="31e6a451d2627922bc41740af153d931" category="cell">ID Bug</block>
   <block id="ce88cf74aded8b7f41efd83d007f21f2" category="inline-link-macro">872113</block>
   <block id="0d39b3cffd5d0d33f0a5ed2db83a7aea" category="cell"><block ref="0d39b3cffd5d0d33f0a5ed2db83a7aea" category="inline-link-macro-rx"></block></block>
@@ -3197,7 +3173,6 @@ Il<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code
   <block id="e0e6cac7910fc81a1b1e43baf3884d5d" category="sidebar">Configurare gli host con NVMe-of</block>
   <block id="069c43556e66148f1f1eeabd7e9e7872" category="sidebar">Utility host AIX</block>
   <block id="2cac689df6b99782e23a143c9bfa2346" category="sidebar">Utility host HP-UX</block>
-  <block id="a4d5754af636a6318ee2ffcd80c52e27" category="sidebar">Utility host unificate Linux</block>
   <block id="8557e53cdfdd197b67dd8b986e602bf0" category="paragraph">È possibile utilizzare le impostazioni di configurazione degli host SAN di ONTAP per la release della serie 7 di Veritas Infosscale Storage Foundation per le piattaforme Red Hat Enterprise Linux e Oracle Linux (basate su RHCK) con protocolli FC, FCoE e iSCSI.</block>
   <block id="1bbb67631847a06bbd9b2e9dafec2134" category="section-title">Installare le utility host di Solaris</block>
   <block id="3f20da7f97c0948dba60855f74d8feb3" category="paragraph">È possibile configurare NVMe su Fibre Channel (NVMe/FC) su host che eseguono SUSE Linux Enterprise Server 15 SP1 e ONTAP come destinazione.</block>
@@ -3268,7 +3243,6 @@ Fare riferimento al report pubblico 1508554.</block>
   <block id="e1cd7b537be6453e906049c111d7b248" category="paragraph">È possibile recuperare un elenco di attributi del LUN ONTAP in base al nome del file del dispositivo host.</block>
   <block id="364c9974898b89845661be07a4997db2" category="paragraph">È possibile recuperare un elenco di LUN ONTAP rilevati su un host da una LIF WWPN di destinazione SVM specificata.</block>
   <block id="e214de5ea0b1a8eb765598cf4b80a404" category="summary">È possibile configurare alcuni host SAN per il protocollo NVMe over Fabrics (NVMe-of).</block>
-  <block id="b27a9cd7f027cd14587ddd1e70ef495c" category="paragraph">Le utility host unificate HP-UX consentono di gestire lo storage NetApp ONTAP collegato a un host HP-UX.</block>
   <block id="b1199565b654a20a5acee144d68ae4cb" category="paragraph">La configurazione dell'host NVMe-of per RHEL 9.0 con ONTAP presenta i seguenti problemi noti:</block>
   <block id="b6351e6ceb9609fde0ff665d6ec8e551" category="paragraph">È possibile configurare NVMe su Fibre Channel (NVMe/FC) sugli host che eseguono Windows Server 2022 utilizzando ONTAP come destinazione.</block>
   <block id="71451af1b87baede129f9469cc138039" category="paragraph">La configurazione dell'host NVMe-of per RHEL 8.7 con ONTAP presenta i seguenti problemi noti:</block>
@@ -3302,7 +3276,6 @@ Fare riferimento al report pubblico 1508554.</block>
   <block id="1e1ac2f92ca06b1f068f6aa6c61883c0" category="paragraph">Le note di rilascio descrivono nuove funzionalità e miglioramenti, problemi e limitazioni noti e importanti precauzioni per la configurazione e la gestione dell'host specifico con il sistema di storage ONTAP.</block>
   <block id="2ad9563dae62baefb397a0b93e22f08a" category="list-text">Sugli host Red Hat Enterprise Linux (RHEL) 6 e RHEL 7 è ora supportato un pacchetto ottimizzato per l'impostazione dei profili server. È possibile utilizzare<block ref="44559c6617511944fd997c63b107ee6b" prefix=" " category="inline-code"></block> comando per impostare profili diversi, a seconda dell'ambiente. Ad esempio, è possibile utilizzare il profilo guest virtuale come macchina virtuale guest e il profilo storage aziendale per le configurazioni in cui vengono utilizzate le LUN degli array storage aziendali. L'utilizzo di questi pacchetti ottimizzati può comportare un miglioramento del throughput e della latenza in ONTAP.</block>
   <block id="b91c8d257cb2ab1f821c4201c4d98d12" category="list-text">Aggiunge il supporto per gli adattatori FC da 32 GB di Broadcom Emulex e Marvell Qlogic.</block>
-  <block id="f6a506796011f5db21cf0cc405fcd88e" category="paragraph">Le note sulla versione contengono le informazioni più recenti sulle utility host HP-UX 6.0, inclusi aggiornamenti su problemi noti, limitazioni e configurazione e gestione del sistema storage ONTAP. Il documento Release Notes viene aggiornato quando diventano disponibili nuove informazioni sull'utilizzo delle utility host HP-UX.</block>
   <block id="a26aa7b42e8c5d7d2a6c295dc3421eb4" category="paragraph">La corretta configurazione è importante per ottenere le migliori performance e il successo del failover.</block>
   <block id="8b98a90c0f8d947a6126ce4314f1d147" category="paragraph">Le note di rilascio contengono le informazioni più recenti per le versioni 7.2 e 7.1 di Windows Unified host Utilities, inclusi aggiornamenti su nuove funzionalità, miglioramenti e problemi noti. Il documento viene aggiornato quando diventano disponibili nuove informazioni sull'utilizzo delle utilità host di Windows.</block>
   <block id="d183f649aa9dd1befe9fbbbebb9ce6f3" category="paragraph">In questo esempio, determineremo il WWID di un dispositivo e aggiungeremo al<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block> file.</block>
@@ -3383,7 +3356,6 @@ Fare riferimento al report pubblico 1508554.</block>
   <block id="7f31ebe6735efb5b2186c87408e0e0f8" category="cell">Raccomandazioni per Solaris 11,4 e HUK:
 Il binding del driver FC viene modificato da<block ref="b9ca0a083600812be33f42f91f00492c" prefix=" " category="inline-code"></block> a.<block ref="200efcf5dbc2c08d7c76deba0c7ecda8" prefix=" " category="inline-code"></block>. Spostare la configurazione in<block ref="d5ef7f69fa74e42b54d8244ee447ab2b" prefix=" " category="inline-code"></block> a.<block ref="88cafedaeae385b0e8278ab1804829cd" prefix=" " category="inline-code"></block> Come indicato in Oracle (ID documento 2595926.1). Il comportamento varia a seconda dei sistemi Solaris 11,4 appena installati e dei sistemi aggiornati da 11,3 o versioni precedenti.</block>
   <block id="eb5d1a08cb5aa5e6c62dcec6f972d7ef" category="list-text">FCP Generale: Visualizza i bug FC e HBA (host Bus Adapter) non associati a un host specifico.</block>
-  <block id="f6c2fd3ebbf068920b8c4d046c994e6a" category="list-text">FCP Solaris</block>
   <block id="82481f4407d05dc717ce43c2341e3316" category="paragraph">Per Red Hat Enterprise Linux (RHEL) 8,2<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> il file deve esistere, ma non è necessario apportare modifiche specifiche al file. RHEL 8,2 è compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente i LUN ONTAP.</block>
   <block id="aba18b63e77de37f7f9427743a3354c1" category="doc">Installare le utilità host Solaris 6,2</block>
   <block id="d29f4dfa68674c60d4b487fde42cc6bf" category="paragraph">Le utility host di Solaris consentono di gestire lo storage NetApp ONTAP collegato a un host Solaris.</block>
@@ -3401,14 +3373,10 @@ Il binding del driver FC viene modificato da<block ref="b9ca0a083600812be33f42f9
   <block id="92636cb01d99cfde50d65355f5255bf8" category="paragraph">È possibile utilizzare il riferimento comandi di esempio AIX host Utilities 6,1 per una convalida end-to-end della configurazione di archiviazione NetApp utilizzando lo strumento utilità host.</block>
   <block id="5cbce7f0ea158500dcff175373e3cbcf" category="paragraph">Le note sulla versione descrivono nuove funzioni e miglioramenti, problemi risolti nella versione corrente, problemi e limitazioni noti e importanti precauzioni relative alla configurazione e alla gestione dell'host AIX specifico con il sistema di storage ONTAP.</block>
   <block id="33871b6190a8d5adbe8b15282054766c" category="section-title">Novità</block>
-  <block id="1a82b73de761a6a59be95bd9d53da872" category="paragraph">La versione 6,1 delle utilità host AIX contiene le seguenti nuove funzioni e miglioramenti:</block>
-  <block id="13248c5a515080cbbc3bcbf8a6b0b086" category="list-text">FCP AIX</block>
   <block id="dc5f647593f94c8f6abf309012633912" category="doc">Installare le utilità host AIX 6,1</block>
-  <block id="8967f1758ff8784982c669fc54020cd1" category="paragraph">Sono supportati i seguenti protocolli:</block>
   <block id="6b8f0029ce30f9b4d5fe0def33875511" category="list-text">FC</block>
   <block id="14eae6ee278098bfad4f8a10fd6c1195" category="list-text">FCoE</block>
   <block id="e4e1c13bb0b14f6cb7608cbecea948ef" category="list-text">ISCSI</block>
-  <block id="a44498fdad524a976114bdc646d860cb" category="paragraph">Di seguito sono riportati gli ambienti supportati:</block>
   <block id="8c39f3d0a1e77e978ada064489abe290" category="list-text">AIX MPIO (SISTEMA OPERATIVO NATIVO)</block>
   <block id="c791b15d48a2be7d8c6a9c0b2badc362" category="list-text">PowerVM</block>
   <block id="f46d29974d2e1fa7b1fb4f55e009f7c2" category="paragraph">Per ulteriori informazioni su PowerVM, consultare il Red Book IBM PowerVM Live Partition Mobility.</block>
@@ -3418,6 +3386,26 @@ Il binding del driver FC viene modificato da<block ref="b9ca0a083600812be33f42f9
   <block id="7cfc2a0609811d433edc27220510bde6" category="list-text">Accedere alla<block ref="4885f2a79813769d8236c375fd40eeb7" category="inline-link-rx"></block> E scaricare il file compresso contenente le utilità host in una directory dell'host.</block>
   <block id="f8d5aed6f51d94047f74a803aca5670b" category="list-text">Decomprimere il file ed estrarre il pacchetto software SAN toolkit.</block>
   <block id="d7acb320d7561ff28aba5271a650f74e" category="list-text">Installare il toolkit SAN:</block>
-  <block id="62265376e9c5bff602dc413020e3dbf6" category="paragraph">AIX host Utilities è un software host NetApp che fornisce un toolkit della riga di comando sull'host IBM AIX. Il toolkit viene installato quando si installa il pacchetto NetApp host Utilities. Questo kit fornisce<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> Utility che consente di gestire LUN e HBA. Il<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> Il comando restituisce le informazioni relative alle LUN mappate all'host, al multipathing e alle informazioni necessarie per creare gruppi di iniziatori.</block>
-  <block id="61fea2801e02db33558a5fdb707a3986" category="admonition">Questo toolkit è comune a tutte le configurazioni e protocolli delle utility host. Di conseguenza, alcuni contenuti si applicano a una configurazione, ma non a un'altra. La presenza di componenti inutilizzati non influisce sulle prestazioni del sistema. IL toolkit SAN è supportato sulle versioni dei sistemi operativi AIX e PowerVM/VIOS.</block>
+  <block id="d371e5ff58b865f46aa4c65beb73405c" category="paragraph">Le note sulla versione descrivono nuove funzioni e miglioramenti, problemi risolti nella versione corrente, problemi e limitazioni noti e importanti precauzioni relative alla configurazione e alla gestione dell'host HP-UX specifico con il sistema di storage ONTAP.</block>
+  <block id="3517bcea87b684bd347c95104562d327" category="paragraph">HP-UX host Utilities 6.0 continua a supportare le seguenti versioni:</block>
+  <block id="a869215e627d2812c817b80130aa7824" category="paragraph">Non sono disponibili nuove funzioni, miglioramenti, limitazioni note o precauzioni per le utilità host HP-UX versione 6,0.</block>
+  <block id="f19106aa57c6316e97d751c16d547b41" category="list-text">FCP - Solaris</block>
+  <block id="7c0e66bb6addd5d99fc9457c74d9f1e5" category="summary">Viene descritto come utilizzare le utilità host unificate HP-UX 6,0 con ONTAP</block>
+  <block id="6dea40462e0a36a918cc6ee609a75f0c" category="paragraph">Le utilità host HP-UX consentono di collegare un host HP-UX allo storage NetApp.</block>
+  <block id="0a6cda4b6b1ee30ff2b1c2e7b1452c79" category="paragraph">Le utility host HP-UX supportano diversi ambienti HP-UX e protocolli multipli. Di seguito sono elencati gli ambienti supportati:</block>
+  <block id="466488bfcdd5dd2620fa669f44a082d5" category="admonition">Per indicare l'ambiente utilizzato, in questo documento vengono talvolta specificati "DMP" per l'ambiente Veritas DMP e "MPIO" per l'ambiente nativo HP-UX. In alcuni casi, i comandi utilizzati potrebbero variare a seconda dei driver utilizzati. In questi casi, vengono specificati sia l'ambiente che i tipi di driver.</block>
+  <block id="db0942d60692ceb816c153d46b6755a4" category="list-text">Per un funzionamento affidabile, verificare che sia supportata l'intera configurazione iSCSI, FC o FCoE.</block>
+  <block id="bbe48fb854ea022537208eeeff822f91" category="paragraph-title">A proposito di questa attività</block>
+  <block id="4b9a66cc328c269b47204207ea997015" category="paragraph">Il pacchetto software NetApp HP-UX host Utilities è disponibile sul sito <block ref="47b65262ba52aec6a3b66c8c933e9234" category="inline-link-macro-rx"></block> in un file compresso. Dopo aver scaricato il file, è necessario decomprimerlo prima dell'installazione.</block>
+  <block id="89b1d0829beb11befe8cef17a1a88149" category="list-text">Accedere al proprio host.</block>
+  <block id="411f721c4d437c447636df81f300973a" category="list-text">Decomprimere<block ref="dfa8e0cbcc24953d6f700e7d845f35aa" prefix=" " category="inline-code"></block> file:</block>
+  <block id="685e21144e7e399ef67e8a809cd52a1e" category="list-text">Installare il software:</block>
+  <block id="9b9e3c5faedc6bf7e489b0030b0ecd14" category="paragraph">La versione AIX host Utilities 6,1 contiene le seguenti nuove funzioni e miglioramenti:</block>
+  <block id="9ce16fbccdcb870f5e9db74a7bb90874" category="list-text">AIX host Utilities 6,1 ha aggiunto il supporto per il problema di errore della memoria che si è verificato nelle versioni precedenti del sistema operativo host AIX. Con AIX host Utilities 6.1, è stato modificato solo il binario sanlun. Il MPIO e il relativo ODM rimangono invariati.</block>
+  <block id="09244b95824d6e702b6eaab2034bdeec" category="list-text">FCP - AIX</block>
+  <block id="dd7ff764bddd19a335d884f8e17ede8d" category="paragraph">Le utilità host di AIX supportano i seguenti protocolli:</block>
+  <block id="01cf7b9650b6a23329edafdd13452ac5" category="paragraph">Le utilità host di AIX supportano i seguenti ambienti:</block>
+  <block id="09c2778b4197dd6dcc821c85eaf45906" category="paragraph">AIX host Utilities è un software host NetApp che fornisce un toolkit della riga di comando sull'host IBM AIX. Il toolkit viene installato quando si installa il pacchetto NetApp host Utilities. Questo kit fornisce<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> Utility che consente di gestire LUN e HBA (host bus adapter). Il<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> Il comando restituisce le informazioni relative alle LUN mappate all'host, al multipathing e alle informazioni necessarie per creare gruppi di iniziatori.</block>
+  <block id="bdaec84e97380168b375e0f6cc8968bc" category="admonition">Questo toolkit è comune a tutte le configurazioni e i protocolli delle utilità host. Di conseguenza, alcuni contenuti si applicano a una configurazione, ma non a un'altra. La presenza di componenti inutilizzati non influisce sulle prestazioni del sistema. IL toolkit SAN è supportato sulle versioni dei sistemi operativi AIX e PowerVM/VIOS.</block>
+  <block id="237e46c87c95b6d72dceaf420c603d90" category="sidebar">Utility host unificate Linux</block>
 </blocks>

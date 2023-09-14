@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_hpux_60.html 
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
-summary: Descrive come utilizzare le utility host unificate Linux 7.1 con ONTAP 
+summary: Viene descritto come utilizzare le utilità host unificate HP-UX 6,0 con ONTAP 
 ---
 = Utility host HP-UX 6.0
 :toc: macro
@@ -19,7 +19,51 @@ summary: Descrive come utilizzare le utility host unificate Linux 7.1 con ONTAP
 
 
 [role="lead"]
-Le utility host unificate HP-UX consentono di gestire lo storage NetApp ONTAP collegato a un host HP-UX.
+Le utilità host HP-UX consentono di collegare un host HP-UX allo storage NetApp.
+
+Le utility host HP-UX supportano diversi ambienti HP-UX e protocolli multipli. Di seguito sono elencati gli ambienti supportati:
+
+* MPIO nativo
+* Veritas Dynamic Multipathing (DMP)
+
+
+
+NOTE: Per indicare l'ambiente utilizzato, in questo documento vengono talvolta specificati "DMP" per l'ambiente Veritas DMP e "MPIO" per l'ambiente nativo HP-UX. In alcuni casi, i comandi utilizzati potrebbero variare a seconda dei driver utilizzati. In questi casi, vengono specificati sia l'ambiente che i tipi di driver.
+
+.Di cosa hai bisogno
+* Per un funzionamento affidabile, verificare che sia supportata l'intera configurazione iSCSI, FC o FCoE.
+
+
+È possibile utilizzare link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] per verificare la configurazione.
+
+.A proposito di questa attività
+Il pacchetto software NetApp HP-UX host Utilities è disponibile sul sito link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.0/downloads["Sito di supporto NetApp"^] in un file compresso. Dopo aver scaricato il file, è necessario decomprimerlo prima dell'installazione.
+
+.Fasi
+. Accedere al proprio host.
+. Scaricare il file HP-UX host Utilities `netapp_hpux_host_utilities_6.0_ia_pa.depot.gz` dal link:https://mysupport.netapp.com/site/["Sito di supporto NetApp"^] All'host HP-UX.
+. Decomprimere `netapp_hpux_host_utilities_6.0_ia_pa.depot.gz` file:
++
+`# gunzip netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`
+
++
+Il sistema inserisce il software estratto nella directory in cui è stato decompresso il file di depot.
+
+. Installare il software:
++
+`# swinstall -s /depot_path`
+
++
+`depot_path` fornisce il percorso e il nome del file di deposito.
+
++
+Il `swinstall` Command esegue uno script di installazione che verifica lo stato dell'installazione di HP-UX. Se il sistema soddisfa i requisiti, questo script installa `sanlun` script di utilità e diagnostica in `/opt/NetApp/santools/bin` directory.
+
+. Verificare l'installazione:
++
+`sanlun version`
+
+
 
 
 
@@ -45,37 +89,3 @@ sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c81t0d0  fclp0 
 ----
 
 NOTE: Questo toolkit è comune a tutte le configurazioni e protocolli delle utility host. Di conseguenza, alcuni contenuti si applicano a una configurazione, ma non a un'altra. La presenza di componenti inutilizzati non influisce sulle prestazioni del sistema.
-
-
-
-== Installazione delle utility host HP-UX
-
-Il pacchetto software NetApp HP-UX host Utilities è disponibile sul sito link:https://mysupport.netapp.com/site/["Sito di supporto NetApp"^] in un file compresso.
-
-È possibile scaricare il file compresso contenente i pacchetti software di Utility host da link:https://mysupport.netapp.com/site/["Sito di supporto NetApp"^]. Dopo aver scaricato il file, è necessario decomprimerlo prima dell'installazione.
-
-.Fasi
-. Accedere all'host.
-. Scaricare il file HP-UX host Utilities `netapp_hpux_host_utilities_6.0_ia_pa.depot.gz` dal link:https://mysupport.netapp.com/site/["Sito di supporto NetApp"^] All'host HP-UX.
-. Decomprimere `netapp_hpux_host_utilities_6.0_ia_pa.depot.gz` immettere il seguente comando:
-+
-`# gunzip netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`
-
-+
-Il sistema inserisce il software estratto nella directory in cui è stato decompresso il file di depot.
-
-. Installare il software immettendo il seguente comando:
-+
-`# swinstall -s /depot_path`
-
-+
-`depot_path` fornisce il percorso e il nome del file di deposito.
-
-+
-Il `swinstall` Command esegue uno script di installazione che verifica lo stato dell'installazione di HP-UX. Se il sistema soddisfa i requisiti, questo script installa `sanlun` script di utilità e diagnostica in `/opt/NetApp/santools/bin` directory.
-
-. Verificare l'installazione:
-+
-`sanlun version`
-
-

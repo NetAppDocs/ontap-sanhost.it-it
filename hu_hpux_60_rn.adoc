@@ -18,45 +18,12 @@ summary: Note sulla versione per le utility host HPUX 6.0
 :toc-position: content
 
 
-Le note sulla versione contengono le informazioni più recenti sulle utility host HP-UX 6.0, inclusi aggiornamenti su problemi noti, limitazioni e configurazione e gestione del sistema storage ONTAP. Il documento Release Notes viene aggiornato quando diventano disponibili nuove informazioni sull'utilizzo delle utility host HP-UX.
+Le note sulla versione descrivono nuove funzioni e miglioramenti, problemi risolti nella versione corrente, problemi e limitazioni noti e importanti precauzioni relative alla configurazione e alla gestione dell'host HP-UX specifico con il sistema di storage ONTAP.
 
-
-
-== Informazioni su HP-UX host Utilities versione 6.0
-
-Le utility host HP-UX supportano diversi ambienti HP-UX e protocolli multipli. Le utility host HP-UX supportano i seguenti ambienti:
-
-* MPIO nativo
-* Veritas Dynamic Multipathing (DMP)
-
-
-
-NOTE: Per chiarire immediatamente quale ambiente viene utilizzato, questo documento specifica talvolta "DMP" per l'ambiente Veritas DMP e "MPIO" per l'ambiente nativo HP-UX. In alcuni casi, i comandi utilizzati potrebbero variare a seconda dei driver utilizzati. In questi casi, vengono specificati sia l'ambiente che i tipi di driver.
-
-
-
-== Miglioramenti di HP-UX host Utilities 6.0
-
-Le Note di rilascio vengono aggiornate tra una release e l'altra del prodotto non appena sono disponibili nuove informazioni. HP-UX host Utilities 6.0 continua a supportare le seguenti versioni:
+HP-UX host Utilities 6.0 continua a supportare le seguenti versioni:
 
 * HP-UX 11iv2
 * HP-UX 11iv3
 
 
-
-
-== Problemi e limitazioni noti
-
-Non esistono problemi noti per la versione 6.0 di HP-UX.
-
-.Informazioni correlate
-*Configurazione e gestione del sistema storage ONTAP*
-
-* Il link:https://docs.netapp.com/us-en/ontap/setup-upgrade/index.html["Guida alla configurazione del software ONTAP per la versione di ONTAP in uso"^]
-* Il link:https://docs.netapp.com/us-en/ontap/san-management/index.html["Guida all'amministrazione SAN di ONTAP per la versione di ONTAP in uso"^]
-* Il link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["Note di rilascio di ONTAP per la versione di ONTAP in uso"^]
-* link:https://imt.netapp.com/matrix/#welcome["Matrice di interoperabilità NetApp"^]
-* link:https://hwu.netapp.com/["Hardware Universe"^] (In precedenza System Configuration Guide)
-* link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["Topologie FIBRE Channel SAN supportate"]
-* link:https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61343["Configurazione dell'host per le utility host"^]
-
+Non sono disponibili nuove funzioni, miglioramenti, limitazioni note o precauzioni per le utilità host HP-UX versione 6,0.

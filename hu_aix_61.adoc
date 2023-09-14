@@ -21,14 +21,14 @@ summary: Descrive come utilizzare IBM AIX 7.2 e/o PowerVM VIOS 3.1 con ONTAP
 [role="lead"]
 Le Utilità host unificate AIX consentono di gestire lo storage NetApp ONTAP collegato a un host AIX.
 
-Sono supportati i seguenti protocolli:
+Le utilità host di AIX supportano i seguenti protocolli:
 
 * FC
 * FCoE
 * ISCSI
 
 
-Di seguito sono riportati gli ambienti supportati:
+Le utilità host di AIX supportano i seguenti ambienti:
 
 * AIX MPIO (SISTEMA OPERATIVO NATIVO)
 * PowerVM
@@ -38,7 +38,7 @@ Per ulteriori informazioni su PowerVM, consultare il Red Book IBM PowerVM Live P
 
 
 .Di cosa hai bisogno
-* Per un funzionamento affidabile, è necessario verificare che l'intera configurazione iSCSI, FC o FCoE sia supportata.
+* Per un funzionamento affidabile, verificare che sia supportata l'intera configurazione iSCSI, FC o FCoE.
 +
 È possibile utilizzare https://mysupport.netapp.com/matrix/imt.jsp?components=65623%3B64703%3B&solution=1&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] per verificare la configurazione.
 
@@ -49,7 +49,7 @@ Per ulteriori informazioni su PowerVM, consultare il Red Book IBM PowerVM Live P
 NOTE: Il pacchetto software NetApp AIX host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["Sito di supporto NetApp"^] in un file tar.gz compresso. È necessario installare il kit di utilità host AIX mentre si utilizza MPIO AIX con l'archiviazione NetApp ONTAP.
 
 .Fasi
-. Accedere all'host.
+. Accedere al proprio host.
 +
 ** Su un host AIX, accedere come *root*.
 ** Su un host PowerVM, accedere come *padmin*, quindi immettere `oem_setup_env` per diventare root.
@@ -85,7 +85,7 @@ La seguente directory viene creata quando si decomprime il file: `ntap_aix_host_
 
 == Toolkit SAN
 
-AIX host Utilities è un software host NetApp che fornisce un toolkit della riga di comando sull'host IBM AIX. Il toolkit viene installato quando si installa il pacchetto NetApp host Utilities. Questo kit fornisce `sanlun` Utility che consente di gestire LUN e HBA. Il `sanlun` Il comando restituisce le informazioni relative alle LUN mappate all'host, al multipathing e alle informazioni necessarie per creare gruppi di iniziatori.
+AIX host Utilities è un software host NetApp che fornisce un toolkit della riga di comando sull'host IBM AIX. Il toolkit viene installato quando si installa il pacchetto NetApp host Utilities. Questo kit fornisce `sanlun` Utility che consente di gestire LUN e HBA (host bus adapter). Il `sanlun` Il comando restituisce le informazioni relative alle LUN mappate all'host, al multipathing e alle informazioni necessarie per creare gruppi di iniziatori.
 
 *Esempio*
 
@@ -109,4 +109,4 @@ data_vserver   /vol/vol3/lun3 hdisk11 fcs0   FCP      20g C
 data_vserver   /vol/vol4/lun4 hdisk14 fcs0   FCP      20g C
 ----
 
-NOTE: Questo toolkit è comune a tutte le configurazioni e protocolli delle utility host. Di conseguenza, alcuni contenuti si applicano a una configurazione, ma non a un'altra. La presenza di componenti inutilizzati non influisce sulle prestazioni del sistema. IL toolkit SAN è supportato sulle versioni dei sistemi operativi AIX e PowerVM/VIOS.
+NOTE: Questo toolkit è comune a tutte le configurazioni e i protocolli delle utilità host. Di conseguenza, alcuni contenuti si applicano a una configurazione, ma non a un'altra. La presenza di componenti inutilizzati non influisce sulle prestazioni del sistema. IL toolkit SAN è supportato sulle versioni dei sistemi operativi AIX e PowerVM/VIOS.
