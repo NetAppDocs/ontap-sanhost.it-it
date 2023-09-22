@@ -41,7 +41,7 @@ Per ulteriori informazioni sulle configurazioni supportate, consultare link:http
 
 == Limitazioni note
 
-Non esistono limitazioni note.
+L'avvio SAN che utilizza il protocollo NVMe-of non è attualmente supportato.
 
 
 

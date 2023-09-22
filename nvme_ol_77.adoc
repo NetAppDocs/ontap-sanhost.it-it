@@ -42,6 +42,7 @@ NOTE: È possibile utilizzare le impostazioni di configurazione fornite in quest
 
 * Gli script NVMe/FC di connessione automatica nativi non sono disponibili nel pacchetto nvme-cli. È possibile utilizzare gli script di connessione automatica esterni forniti dal vendor HBA.
 * Per impostazione predefinita, il bilanciamento del carico round-robin non è attivato. Per abilitare questa funzionalità, è necessario scrivere una regola udev. Nella sezione relativa all'abilitazione di NVMe/FC su OL 7.7 sono descritte le procedure.
+* L'avvio SAN che utilizza il protocollo NVMe-of non è attualmente supportato.
 
 
 

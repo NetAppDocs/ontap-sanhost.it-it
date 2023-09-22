@@ -40,6 +40,7 @@ RHEL 8.7 include il supporto per NVMe/TCP (come funzione Technology Preview) olt
 
 * Per RHEL 8.7, il multipath NVMe in-kernel rimane disattivato per impostazione predefinita. Pertanto, è necessario attivarlo manualmente.
 * NVMe/TCP su RHEL 8.7 rimane una funzione di anteprima tecnologica a causa di problemi aperti. Fare riferimento a. link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/8.7_release_notes/index["Note di rilascio di RHEL 8.7"^] per ulteriori informazioni.
+* L'avvio SAN che utilizza il protocollo NVMe-of non è attualmente supportato.
 
 
 

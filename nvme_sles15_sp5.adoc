@@ -40,7 +40,7 @@ SLES 15 SP5 ha la funzione di multipath NVMe in-kernel abilitata per gli namespa
 
 == Limitazioni note
 
-Non esistono limitazioni note.
+L'avvio SAN che utilizza il protocollo NVMe-of non è attualmente supportato.
 
 
 

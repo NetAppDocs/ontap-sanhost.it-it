@@ -40,7 +40,7 @@ Fare riferimento a. link:https://mysupport.netapp.com/matrix/["Matrice di intero
 
 == Limitazioni note
 
-Non esistono limitazioni note.
+L'avvio SAN che utilizza il protocollo NVMe-of non è attualmente supportato.
 
 
 

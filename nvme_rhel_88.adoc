@@ -35,6 +35,7 @@ Per ulteriori informazioni sulle configurazioni supportate, consultare link:http
 
 * Il multipath NVMe nel kernel è disattivato per impostazione predefinita per gli host RHEL 8.8 NVMe-of. Pertanto, è necessario attivarlo manualmente.
 * Negli host RHEL 8.8, NVMe/TCP è una funzionalità di anteprima tecnologica dovuta a problemi aperti.
+* L'avvio SAN che utilizza il protocollo NVMe-of non è attualmente supportato.
 
 
 

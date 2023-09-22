@@ -37,7 +37,7 @@ Per l'elenco più aggiornato delle configurazioni e delle versioni supportate, v
 
 == Limitazioni note
 
-Non esistono limitazioni note.
+L'avvio SAN che utilizza il protocollo NVMe-of non è attualmente supportato.
 
 
 

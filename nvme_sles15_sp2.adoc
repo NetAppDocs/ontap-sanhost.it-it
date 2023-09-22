@@ -30,7 +30,7 @@ NOTE: È possibile utilizzare le impostazioni di configurazione fornite in quest
 
 == Limitazioni note
 
-Non esistono limitazioni note.
+L'avvio SAN che utilizza il protocollo NVMe-of non è attualmente supportato.
 
 
 

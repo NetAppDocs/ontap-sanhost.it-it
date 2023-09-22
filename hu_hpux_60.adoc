@@ -21,7 +21,7 @@ summary: Viene descritto come utilizzare le utilità host unificate HP-UX 6,0 co
 [role="lead"]
 Le utilità host HP-UX consentono di collegare un host HP-UX allo storage NetApp.
 
-Le utility host HP-UX supportano diversi ambienti HP-UX e protocolli multipli. Di seguito sono elencati gli ambienti supportati:
+Le utilità host HP-UX supportano più protocolli e i seguenti ambienti:
 
 * MPIO nativo
 * Veritas Dynamic Multipathing (DMP)
@@ -69,7 +69,7 @@ Il `swinstall` Command esegue uno script di installazione che verifica lo stato 
 
 == Toolkit SAN
 
-HP-UX host Utilities è un software host NetApp che fornisce un kit di strumenti a riga di comando sull'host HP-UX. Il toolkit viene installato quando si installa il pacchetto NetApp host Utilities. Questo kit fornisce `sanlun` Utility che consente di gestire LUN e HBA. Il `sanlun` Il comando restituisce le informazioni relative alle LUN mappate all'host, al multipathing e alle informazioni necessarie per creare gruppi di iniziatori.
+HP-UX host Utilities è un software host NetApp che fornisce un kit di strumenti a riga di comando sull'host HP-UX. Il toolkit viene installato quando si installa il pacchetto NetApp host Utilities. Questo kit fornisce `sanlun` Che consente di gestire i LUN e gli adattatori bus host. (HBA). Il `sanlun` Il comando restituisce le informazioni relative alle LUN mappate all'host, al multipathing e alle informazioni necessarie per creare gruppi di iniziatori.
 
 .Esempio
 Nell'esempio seguente, il `sanlun lun show` Il comando restituisce le informazioni del LUN.
@@ -88,4 +88,4 @@ sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c81t0d0  fclp0 
 
 ----
 
-NOTE: Questo toolkit è comune a tutte le configurazioni e protocolli delle utility host. Di conseguenza, alcuni contenuti si applicano a una configurazione, ma non a un'altra. La presenza di componenti inutilizzati non influisce sulle prestazioni del sistema.
+NOTE: Questo toolkit è comune a tutte le configurazioni e i protocolli delle utilità host. Di conseguenza, alcuni contenuti si applicano a una configurazione, ma non a un'altra. La presenza di componenti inutilizzati non influisce sulle prestazioni del sistema.

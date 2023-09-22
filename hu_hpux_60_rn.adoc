@@ -20,7 +20,7 @@ summary: Note sulla versione per le utility host HPUX 6.0
 
 Le note sulla versione descrivono nuove funzioni e miglioramenti, problemi risolti nella versione corrente, problemi e limitazioni noti e importanti precauzioni relative alla configurazione e alla gestione dell'host HP-UX specifico con il sistema di storage ONTAP.
 
-HP-UX host Utilities 6.0 continua a supportare le seguenti versioni:
+HP-UX host Utilities 6,0 continua a supportare le seguenti versioni:
 
 * HP-UX 11iv2
 * HP-UX 11iv3
