@@ -22,14 +22,14 @@ summary: Come configurare NVMe-of host per RHEL 9.0 con ONTAP
 [role="lead"]
 NVMe-of (inclusi NVMe/FC e NVMe/TCP) è supportato con RHEL 9.0 con ANA (Asymmetric namespace Access) richiesto per i failover dello storage superstiti sull'array ONTAP. ANA è l'equivalente ALUA nell'ambiente NVM-of ed è attualmente implementato con NVMe multipath nel kernel. Questo documento contiene i dettagli per abilitare NVMe-of con multipath NVMe nel kernel utilizzando ANA su RHEL 9.0 e ONTAP come destinazione.
 
-Fare riferimento a. link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^] per informazioni dettagliate sulle configurazioni supportate.
+Per ulteriori informazioni sulle configurazioni supportate, consultare link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità NetApp"^].
 
 
 
 == Caratteristiche
 
-* A partire da RHEL 9.0, NVMe/TCP non è più una funzionalità di anteprima tecnologica (a differenza di RHEL 8), ma una funzionalità aziendale completamente supportata.
-* A partire da RHEL 9.0, il multipath NVMe in-kernel è attivato per impostazione predefinita per gli spazi dei nomi NVMe, senza la necessità di impostazioni esplicite (a differenza di RHEL 8).
+* A partire da RHEL 9,0, NVMe/TCP non è più una funzionalità di anteprima tecnologica (a differenza di RHEL 8), ma una funzione Enterprise completamente supportata.
+* A partire da RHEL 9,0, per impostazione predefinita, il multipath in-kernel NVMe è abilitato per gli namespace NVMe, senza richiedere impostazioni esplicite (a differenza di RHEL 8).
 
 
 
@@ -93,7 +93,7 @@ NOTE: Se le stringhe NQN host non corrispondono, utilizzare `vserver modify` Com
 .Broadcom/Emulex
 --
 .Fasi
-. Verificare di utilizzare l'adattatore supportato. Per l'elenco aggiornato degli adattatori supportati, vedere link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^].
+. Verificare di utilizzare l'adattatore supportato. Per ulteriori informazioni sulle schede di rete supportate, consultare la link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità NetApp"^].
 +
 [listing]
 ----
@@ -324,7 +324,10 @@ NetApp ONTAP Controller
 round-robin
 round-robin
 ----
-. Verificare che gli spazi dei nomi ONTAP riflettano correttamente sull'host. Ad esempio (a),
+. Verificare che gli spazi dei nomi ONTAP riflettano correttamente sull'host.
++
+Esempio (a):
+
 +
 [listing]
 ----
@@ -352,7 +355,10 @@ Format         FW Rev
 -----------------------
 4 KiB + 0 B   FFFFFFFF
 ----
-. Verificare che lo stato del controller di ciascun percorso sia attivo e che abbia uno stato ANA corretto. Ad esempio (a),
+. Verificare che lo stato del controller di ciascun percorso sia attivo e che abbia uno stato ANA corretto.
++
+Esempio (a):
+
 +
 [listing]
 ----
@@ -378,7 +384,10 @@ nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.56e362e9bb4f11ebbaded039ea165abc:su
 +- nvme15 tcp traddr=192.168.2.57 trsvcid=4420 host_traddr=192.168.2.9 live non-optimized
 +- nvme5 tcp traddr=192.168.1.52 trsvcid=4420 host_traddr=192.168.1.8 live non-optimized
 ----
-. Verificare che il plug-in NetApp visualizzi i valori corretti per ciascun dispositivo dello spazio dei nomi ONTAP. Ad esempio (a),
+. Verificare che il plug-in NetApp visualizzi i valori corretti per ciascun dispositivo dello spazio dei nomi ONTAP.
++
+Esempio (a):
+
 +
 [listing]
 ----
@@ -390,7 +399,10 @@ Device       Vserver        Namespace Path                            NSID
 UUID                                   Size
 --------------------------------------------
 72b887b1-5fb6-47b8-be0b-33326e2542e2   85.90GB
-
+----
++
+[listing]
+----
 # nvme netapp ontapdevices -o json
 {
 "ONTAPdevices" : [
