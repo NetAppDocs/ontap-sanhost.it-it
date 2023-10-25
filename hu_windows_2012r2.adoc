@@ -18,6 +18,9 @@ summary: Utilizzo di Windows Server 2012 R2 con ONTAP
 :toc-position: content
 
 
+[role="lead"]
+È possibile utilizzare le impostazioni di configurazione dell'host SAN ONTAP per configurare Windows server 2012 R2 con ONTAP come destinazione.
+
 
 
 == Avvio del sistema operativo
@@ -212,6 +215,6 @@ NOTE: Windows Unified host Utility imposta questi valori. Per informazioni detta
 
 
 
-== Limitazioni note
+== Problemi noti
 
-Non esistono problemi noti per Windows Server 2012 R2.
+Non esistono problemi noti per Windows Server 2012 R2 con ONTAP.

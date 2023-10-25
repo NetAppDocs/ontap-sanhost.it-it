@@ -18,8 +18,8 @@ summary: Utilizzo di Windows Server 2022 con ONTAP
 :toc-position: content
 
 
-
-
+[role="lead"]
+È possibile utilizzare le impostazioni di configurazione dell'host SAN ONTAP per configurare Windows server 2022 con ONTAP come destinazione.
 == Avvio del sistema operativo
 
 Sono disponibili due opzioni per l'avvio del sistema operativo: Mediante l'avvio locale o L'avvio SAN. Per l'avvio locale, installare il sistema operativo sul disco rigido locale (SSD, SATA, RAID e così via). Per l'avvio SAN, vedere le istruzioni riportate di seguito.
@@ -142,6 +142,6 @@ NOTE: Windows Unified host Utility imposta questi valori. Per informazioni detta
 
 
 
-== Limitazioni note
+== Problemi noti
 
-Non esistono problemi noti per Windows Server 2022.
+Non esistono problemi noti per Windows Server 2022 con ONTAP.

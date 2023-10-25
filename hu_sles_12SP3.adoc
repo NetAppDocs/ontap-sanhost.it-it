@@ -18,6 +18,9 @@ summary: Descrive come utilizzare SUSE Linux Enterprise Server 12 SP3 con ONTAP
 :toc-position: content
 
 
+[role="lead"]
+È possibile utilizzare le impostazioni di configurazione dell'host SAN di ONTAP per configurare SUSE Linux Enterprise Server 12 SP3 con ONTAP come destinazione.
+
 
 
 == Installare le utility host unificate Linux
@@ -285,7 +288,9 @@ devices {
 ----
 
 
-== Problemi e limitazioni noti
+== Problemi noti
+
+La versione SLES 15 SP3 con ONTAP presenta i seguenti problemi noti:
 
 [cols="4*"]
 |===

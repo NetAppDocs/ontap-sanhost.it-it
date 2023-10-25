@@ -18,6 +18,9 @@ summary: Descrive come utilizzare IBM AIX 7.2 e/o PowerVM VIOS 3.1 con ONTAP
 :toc-position: content
 
 
+[role="lead"]
+È possibile utilizzare le impostazioni di configurazione dell'host SAN ONTAP per configurare IBM AIX 7,2 e/o PowerVM (VIOS 3,1) con ONTAP come destinazione.
+
 
 
 == Installare le utility host AIX/VIOS
@@ -227,7 +230,9 @@ Per configurare AIX per SM-BC, consultare l'articolo della Knowledge base link:h
 
 
 
-== Problemi e limitazioni noti
+== Problemi noti
+
+La versione IBM AIX 7,2 e/o PowerVM (VIOS 3,1) con ONTAP presenta i seguenti problemi noti:
 
 [cols="4*"]
 |===

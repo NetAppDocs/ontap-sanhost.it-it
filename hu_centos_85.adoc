@@ -18,6 +18,9 @@ summary: Descrive come utilizzare CentOS 8.5 con ONTAP
 :toc-position: content
 
 
+[role="lead"]
+È possibile utilizzare le impostazioni di configurazione dell'host SAN ONTAP per configurare CentOS 8,5 con ONTAP come destinazione.
+
 
 
 == Installare le utility host unificate Linux
@@ -293,6 +296,6 @@ devices {
 
 
 
-== Problemi e limitazioni noti
+== Problemi noti
 
-Non esistono problemi di tipo noto per CentOS 8.5.
+Non ci sono problemi noti per CentOS 8,5 con la versione ONTAP.

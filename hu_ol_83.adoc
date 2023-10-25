@@ -18,6 +18,9 @@ summary: Descrive come utilizzare Oracle Linux 8.3 con ONTAP
 :toc-position: content
 
 
+[role="lead"]
+È possibile utilizzare le impostazioni di configurazione dell'host SAN di ONTAP per configurare Oracle Linux 8,3 con ONTAP come destinazione.
+
 
 
 == Installare le utility host unificate Linux
@@ -291,9 +294,9 @@ NOTE: Per configurare Oracle Linux 8.3 Red Hat Enterprise kernel (RHCK), utilizz
 
 
 
-== Problemi e limitazioni noti
+== Problemi noti
 
-Non esistono problemi noti per Oracle Linux 8.3.
+Non ci sono problemi noti per Oracle Linux 8,3 con ONTAP release.
 
 
 NOTE: Per i problemi noti di Oracle Linux (kernel compatibile con Red Hat), consultare link:hu_rhel_83.html#known-problems-and-limitations["problemi noti"] Nella corrispondente documentazione sulla release di Red Hat Enterprise Linux.

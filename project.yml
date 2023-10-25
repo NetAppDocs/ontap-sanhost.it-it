@@ -13,7 +13,7 @@ sidebar:
     url: "/index.html"
   - title: Panoramica
     url: "/overview.html"
-  - title: Installare LE utilità host SAN
+  - title: Installare le utilità host SAN
     entries:
     - title: Panoramica
       url: "/hu_sanhost_index.html"
@@ -33,7 +33,7 @@ sidebar:
         url: "/hu_hpux_60.html"
       - title: Esempio di riferimento al comando
         url: "/hu_hpux_60_cmd.html"
-    - title: Utilità host unificate Linux
+    - title: Utility host unificate Linux
       entries:
       - title: Note di rilascio
         url: "/hu_luhu_71_rn.html"

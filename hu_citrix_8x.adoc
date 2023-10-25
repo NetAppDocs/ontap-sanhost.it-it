@@ -235,7 +235,9 @@ NOTE: Citrix Hypervisor consiglia l'utilizzo dei tool Citrix VM per tutte le mac
 
 
 
-== Problemi e limitazioni noti
+== Problemi noti
+
+La versione Citrix Hypervisor con ONTAP presenta i seguenti problemi noti:
 
 [cols="4*"]
 |===

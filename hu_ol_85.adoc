@@ -18,6 +18,9 @@ summary: Descrive come utilizzare Oracle Linux 8.5 con ONTAP
 :toc-position: content
 
 
+[role="lead"]
+È possibile utilizzare le impostazioni di configurazione dell'host SAN di ONTAP per configurare Oracle Linux 8,5 con ONTAP come destinazione.
+
 
 
 == Installare le utility host unificate Linux
@@ -297,9 +300,9 @@ NOTE: Per configurare Oracle Linux 8.5 RedHat Enterprise kernel (RHCK), utilizza
 
 
 
-== Problemi e limitazioni noti
+== Problemi noti
 
-Non esistono problemi noti per Oracle Linux 8.5.
+Non ci sono problemi noti per Oracle Linux 8,5 con ONTAP release.
 
 
 NOTE: Per i problemi noti di Oracle Linux (kernel compatibile con Red Hat), consultare link:hu_rhel_85.html#known-problems-and-limitations["problemi noti"] Nella corrispondente documentazione sulla release di Red Hat Enterprise Linux.

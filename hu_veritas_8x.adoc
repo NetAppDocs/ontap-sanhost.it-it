@@ -282,4 +282,4 @@ Se si dispone di un ambiente multipercorso eterogeneo, tra cui Veritas Infosscal
 
 == Problemi noti
 
-Non ci sono problemi noti.
+Non ci sono problemi noti per la versione Veritas infoscale 8 per Linux con ONTAP.

@@ -18,6 +18,9 @@ summary: Descrive come utilizzare Red Hat Enterprise Linux 6.9 con ONTAP
 :toc-position: content
 
 
+[role="lead"]
+È possibile utilizzare le impostazioni di configurazione dell'host SAN di ONTAP per configurare Red Hat Enterprise Linux 6,9 con ONTAP come destinazione.
+
 
 
 == Installare le utility host unificate Linux
@@ -305,7 +308,9 @@ devices {
 
 
 
-== Problemi e limitazioni noti
+== Problemi noti
+
+La versione RHEL 6,9 con ONTAP presenta i seguenti problemi noti:
 
 [cols="4*"]
 |===

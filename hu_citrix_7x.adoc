@@ -247,6 +247,6 @@ NOTE: Citrix XenServer consiglia l'utilizzo dei tool Citrix VM per tutte le macc
 
 
 
-== Problemi e limitazioni noti
+== Problemi noti
 
-Non esistono problemi e limitazioni noti.
+Non vi sono problemi noti per la versione Citrix XenServer con ONTAP.

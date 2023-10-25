@@ -18,6 +18,9 @@ summary: Descrive come utilizzare Oracle Linux 9.2 con ONTAP
 :toc-position: content
 
 
+[role="lead"]
+È possibile utilizzare le impostazioni di configurazione dell'host SAN di ONTAP per configurare Oracle Linux 9,2 con ONTAP come destinazione.
+
 
 
 == Installare le utility host unificate Linux
@@ -295,7 +298,7 @@ NOTE: Per configurare Oracle Linux 9.2 RedHat Enterprise kernel (RHCK), utilizza
 
 == Problemi noti
 
-Oracle Linux 9.2 con ONTAP presenta i seguenti problemi noti:
+Oracle Linux 9,2 con ONTAP presenta i seguenti problemi noti:
 
 [cols="10,30,30,10"]
 |===

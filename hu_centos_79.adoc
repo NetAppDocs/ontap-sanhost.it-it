@@ -18,6 +18,9 @@ summary: Descrive come utilizzare CentOS 7.9 con ONTAP
 :toc-position: content
 
 
+[role="lead"]
+È possibile utilizzare le impostazioni di configurazione dell'host SAN ONTAP per configurare CentOS 7,9 con ONTAP come destinazione.
+
 
 
 == Installare le utility host unificate Linux
@@ -291,7 +294,9 @@ devices {
 
 
 
-== Problemi e limitazioni noti
+== Problemi noti
+
+CentOS 7,9 con ONTAP presenta i seguenti problemi noti:
 
 [cols="4*"]
 |===

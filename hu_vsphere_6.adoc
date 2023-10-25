@@ -307,6 +307,8 @@ Utilizzare il seguente comando per verificare QFullSampleSize:
 
 == Problemi noti
 
+VMware vSphere 6,5 e 6,7 con ONTAP presentano i seguenti problemi noti:
+
 [cols="21%,20%,14%,27%"]
 |===
 | *Versione del sistema operativo* | *ID bug NetApp* | *Titolo* | *Descrizione* 

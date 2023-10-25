@@ -18,6 +18,9 @@ summary: Descrive come utilizzare Red Hat Enterprise Linux 7.2 con ONTAP
 :toc-position: content
 
 
+[role="lead"]
+È possibile utilizzare le impostazioni di configurazione dell'host SAN di ONTAP per configurare Red Hat Enterprise Linux 7,2 con ONTAP come destinazione.
+
 
 
 == Installare le utility host unificate Linux
@@ -292,6 +295,6 @@ devices {
 
 
 
-== Problemi e limitazioni noti
+== Problemi noti
 
-Non ci sono problemi noti per RHEL 7.2.
+Non ci sono problemi noti per RHEL 7,2 con la versione ONTAP.

@@ -65,7 +65,7 @@ Fare riferimento a. link:hu_wuhu_72.html["Documentazione di Windows host Utiliti
 
 
 
-== Problemi noti
+== Problemi e limitazioni noti
 
 Alcuni comportamenti imprevisti e potenzialmente indesiderati, nonché, in alcuni casi, soluzioni alternative per evitare questi comportamenti, sono stati identificati nella versione 7.1.
 

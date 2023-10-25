@@ -18,6 +18,9 @@ summary: Descrive come utilizzare Oracle Linux 8,8 con ONTAP
 :toc-position: content
 
 
+[role="lead"]
+È possibile utilizzare le impostazioni di configurazione dell'host SAN di ONTAP per configurare Oracle Linux 8,8 con ONTAP come destinazione.
+
 
 
 == Installare le utility host unificate Linux
@@ -295,4 +298,4 @@ NOTE: Per configurare Oracle Linux 8,8 RedHat Enterprise kernel, utilizzare link
 
 == Problemi noti
 
-Non ci sono problemi noti.
+Non ci sono problemi noti per Oracle Linux 8,8 con ONTAP release.

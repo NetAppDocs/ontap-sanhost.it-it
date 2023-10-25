@@ -18,6 +18,9 @@ summary: Viene descritto come utilizzare SUSE Linux Enterprise Server 15 SP5 con
 :toc-position: content
 
 
+[role="lead"]
+È possibile utilizzare le impostazioni di configurazione dell'host SAN di ONTAP per configurare SUSE Linux Enterprise Server 15 SP5 con ONTAP come destinazione.
+
 
 
 == Installare le utility host unificate Linux
@@ -287,4 +290,4 @@ devices {
 
 == Problemi noti
 
-Non ci sono problemi noti.
+Non esistono problemi noti per SUSE Linux Enterprise Server 15 SP5 con ONTAP.

@@ -267,6 +267,6 @@ Se si dispone di un ambiente multipercorso eterogeneo, tra cui Veritas Infosscal
 
 
 
-== Problemi e limitazioni noti
+== Problemi noti
 
-Non esistono problemi e limitazioni noti.
+Non ci sono problemi noti per Veritas Storage Foundation 6 per Linux con ONTAP.
