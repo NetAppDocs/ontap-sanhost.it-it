@@ -6,12 +6,19 @@ Non esiste una registrazione specifica di qla2xxx per NVMe/FC simile a quella pe
 
 .Fasi
 . Aggiungere il `ql2xextended_error_logging=0x1e400000` al corrispondente `modprobe qla2xxx conf` file.
-. Ricreare il `initramfs` in esecuzione `dracut -f` e riavviare l'host.
-. Dopo il riavvio, verificare che la registrazione dettagliata sia stata applicata come segue:
+. Eseguire `dracut -f` e riavviare l'host.
+. Dopo il riavvio, verificare che la registrazione dettagliata sia stata abilitata:
 +
 [listing]
 ----
 # cat /etc/modprobe.d/qla2xxx.conf
+----
++
+Output di esempio:
+
++
+[listing]
+----
 options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 # cat /sys/module/qla2xxx/parameters/ql2xextended_error_logging
 507510784

@@ -149,12 +149,12 @@ NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non de
 
 Il sistema operativo SUSE Linux Enterprise Server 15 SP4 viene compilato per riconoscere le LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per la configurazione ASA e non ASA.
 
-Il `multipath.conf` il file deve esistere per l'avvio del daemon multipath, ma è possibile creare un file vuoto a zero byte utilizzando il comando:
-`touch /etc/multipath.conf`
+Il `multipath.conf` il file deve esistere per avviare il daemon multipath, ma è possibile creare un file vuoto a zero byte utilizzando il comando:
+`touch /etc/multipath.conf`.
 
 La prima volta che si crea questo file, potrebbe essere necessario attivare e avviare i servizi multipath.
 
-Non è necessario aggiungere nulla direttamente a. `multipath.conf` file, a meno che non si disponga di periferiche che non si desidera gestire con multipath o che non si dispongano di impostazioni che sovrascrivono le impostazioni predefinite.
+Non è necessario aggiungere nulla direttamente a `multipath.conf` file, a meno che non si disponga di periferiche che non si desidera gestire con multipath o che non si dispongano di impostazioni che sovrascrivono le impostazioni predefinite.
 
 È possibile aggiungere la seguente sintassi a `multipath.conf` file per escludere i dispositivi indesiderati.
 
@@ -171,7 +171,7 @@ In questo esempio, `sda` È il disco SCSI locale da aggiungere alla blacklist.
 # /usr/lib/udev/scsi_id -gud /dev/sda
 360030057024d0730239134810c0cb833
 ----
-. Aggiungere questo `WWID` alla lista nera in `/etc/multipath.conf`:
+. Aggiungere il `WWID` valore alla stanza della blacklist in `/etc/multipath.conf` file:
 +
 [listing]
 ----
@@ -183,7 +183,7 @@ devnode "^cciss.*"
 ----
 
 
-Controllare sempre il `/etc/multipath.conf` file per le impostazioni legacy, in particolare nella sezione delle impostazioni predefinite, che potrebbero sovrascrivere le impostazioni predefinite.
+Controllare sempre il `/etc/multipath.conf` file per le impostazioni legacy, in particolare nella sezione delle impostazioni predefinite, che potrebbero prevalere sulle impostazioni predefinite.
 
 La tabella seguente mostra i parametri multipath critici per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri vendor e uno qualsiasi di questi parametri viene ignorato, sarà necessario correggerli nelle successive fasi di `multipath.conf` Che si applicano specificamente alle LUN ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. Questi valori predefiniti devono essere ignorati solo in consultazione con NetApp e/o il vendor del sistema operativo e solo quando l'impatto è pienamente compreso.
 
@@ -246,7 +246,7 @@ La tabella seguente mostra i parametri multipath critici per i LUN ONTAP e i val
 | vendor | NETAPP 
 |===
 .Esempio
-Nell'esempio seguente viene illustrato come correggere un valore predefinito sovrascritto. In questo caso, il `multipath.conf` il file definisce i valori per `path_checker` e. `no_path_retry` Non compatibili con LUN ONTAP. Se non possono essere rimossi a causa di altri array SAN ancora collegati all'host, questi parametri possono essere corretti specificamente per i LUN ONTAP con un dispositivo.
+Nell'esempio seguente viene illustrato come correggere un valore predefinito sovrascritto. In questo caso, il `multipath.conf` il file definisce i valori per `path_checker` e. `no_path_retry` Non compatibili con LUN ONTAP. Se questi parametri non possono essere rimossi perché altri array SAN sono ancora collegati all'host, possono invece essere corretti specificamente per i LUN ONTAP con una stanza di dispositivo.
 
 [listing]
 ----
