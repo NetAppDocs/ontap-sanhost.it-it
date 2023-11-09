@@ -906,7 +906,7 @@ DHHC-1:03:WorVEV83eYO53kV4Iel5OpphbX5LAphO3F8fgH3913tlrkSGDBJTt3crXeTUB8fCwGbPsE
 --
 È possibile utilizzare `/etc/nvme/config.json` file con `nvme connect-all` Comando quando sono disponibili più sottosistemi NVMe sulla configurazione del controller ONTAP.
 
-È possibile generare il file JSON utilizzando `-o` opzione. Fare riferimento a. link:https://docs.netapp.com/us-en/ontap/concepts/manual-pages.html["Pagine man di ONTAP"^] per ulteriori opzioni di sintassi.
+È possibile generare il file JSON utilizzando `-o` opzione. Per ulteriori opzioni di sintassi, fare riferimento alle pagine man di NVMe Connect-all.
 
 .Fasi
 . Configurare il file JSON:

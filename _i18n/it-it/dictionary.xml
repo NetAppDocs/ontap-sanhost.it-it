@@ -3578,8 +3578,6 @@ Nell'esempio seguente, viene generata una chiave casuale dhCHAP con HMAC imposta
   <block id="84ea3979460de46128b29ddab7d89cd0" category="paragraph">*Esempio di output per la configurazione bidirezionale:*</block>
   <block id="a6c9e3a7671c1fd9d7328c3be5d107b5" category="open-title">File JSON</block>
   <block id="e8bdd625277829c32849608bfaaf1041" category="paragraph">È possibile utilizzare<block ref="2be2042afe5d55c4305aa3ff91b1ff5f" prefix=" " category="inline-code"></block> file con<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> Comando quando sono disponibili più sottosistemi NVMe sulla configurazione del controller ONTAP.</block>
-  <block id="be0bd4d71e13a5ad44e756862b63fb17" category="inline-link-macro">Pagine man di ONTAP</block>
-  <block id="32c203213cf44e803bc3c227bd240164" category="paragraph">È possibile generare il file JSON utilizzando<block ref="b2ed43620b7fff2689035f1e99c24ded" prefix=" " category="inline-code"></block> opzione. Fare riferimento a. <block ref="4d8de0f1b018ca27a073061938808cb9" category="inline-link-macro-rx"></block> per ulteriori opzioni di sintassi.</block>
   <block id="7be934ce8b58f4891a1f5bec99cfea5f" category="list-text">Configurare il file JSON:</block>
   <block id="76dfba31c261b7600a97b27a404095b4" category="list-text">Connettersi al controller ONTAP utilizzando il file di configurazione JSON:</block>
   <block id="fbcde6a9a9bc69bb6785a0b0a3403428" category="list-text">Verificare che i segreti dhchap siano stati abilitati per i rispettivi controller per ciascun sottosistema:</block>
@@ -3589,4 +3587,5 @@ Nell'esempio seguente, viene generata una chiave casuale dhCHAP con HMAC imposta
   <block id="9688ec84efd5b1cb7c885e598b6ebf4a" category="list-text">Dopo il riavvio, verificare che la registrazione dettagliata sia stata abilitata:</block>
   <block id="684c45496e08c180fd6b056747c6d7e6" category="cell">Le connessioni multiple al secondo (MCS) non sono supportate con l'avvio del software iSCSI</block>
   <block id="a22d253913fa8deba78982e6393df807" category="cell">Quando si utilizza l'avvio del software iSCSI con iSCSI MCS, la connessione iniziale di avvio iSCSI non può essere protetta. Ciò può causare la disconnessione dal LUN di avvio e causare l'interruzione del sistema host.</block>
+  <block id="86891fa05c8b78ad9621085c8abc1fb4" category="paragraph">È possibile generare il file JSON utilizzando<block ref="b2ed43620b7fff2689035f1e99c24ded" prefix=" " category="inline-code"></block> opzione. Per ulteriori opzioni di sintassi, fare riferimento alle pagine man di NVMe Connect-all.</block>
 </blocks>
