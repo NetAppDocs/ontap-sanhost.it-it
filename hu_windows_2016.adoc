@@ -44,7 +44,7 @@ NOTE: È possibile utilizzare le impostazioni di configurazione fornite in quest
 
 
 
-== Installazione degli hotfix di Windows
+== Installare gli aggiornamenti rapidi di Windows
 
 Si consiglia di utilizzare *l'ultimo aggiornamento cumulativo* da installare sul server.
 
@@ -65,9 +65,9 @@ TIP: Molti hotfix richiedono un riavvio dell'host Windows, ma è possibile scegl
 
 
 
-== Installazione delle utilità host unificate di Windows
+== Installare le utilità host di Windows Unified
 
-Le utilità host unificate di Windows (WUHU) sono un insieme di programmi software con documentazione che consente di collegare computer host a dischi virtuali (LUN) su UNA SAN NetApp. Si consiglia di scaricare e installare il kit di utilità più recente. Per informazioni e istruzioni sulla configurazione DI WUHU, fare riferimento a. link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71.html["Documentazione DI WUHU 7.1"].
+Le utilità host unificate di Windows (WUHU) sono un insieme di programmi software con documentazione che consente di collegare computer host a dischi virtuali (LUN) su UNA SAN NetApp. NetApp consiglia di scaricare e installare il kit di utilità più recente. Per informazioni e istruzioni sulla configurazione di WUHU, fare riferimento a. link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Documentazione di Windows Unified host Utilities"] E selezionare la procedura di installazione per la versione di Windows Unified host Utilities.
 
 
 
@@ -144,7 +144,7 @@ Per gli HBA Fibre Channel QLogic:
 | PortDownRetryCount | 10 
 |===
 
-NOTE: Windows Unified host Utility imposta questi valori. Per informazioni dettagliate sulle impostazioni consigliate, fare riferimento a. link:https://library.netapp.com/ecmdocs/ECMLP2789202/html/index.html["Guida all'installazione delle utility host di Windows 7.1"^].
+NOTE: Windows Unified host Utility imposta questi valori. Per informazioni dettagliate sulle impostazioni consigliate, fare riferimento a. link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Documentazione di Windows host Utilities"] E selezionare la procedura di installazione per la versione di Windows Unified host Utilities.
 
 
 
