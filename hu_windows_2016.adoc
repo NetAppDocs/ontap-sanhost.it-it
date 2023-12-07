@@ -46,7 +46,7 @@ NOTE: È possibile utilizzare le impostazioni di configurazione fornite in quest
 
 == Installare gli aggiornamenti rapidi di Windows
 
-Si consiglia di utilizzare *l'ultimo aggiornamento cumulativo* da installare sul server.
+NetApp consiglia di installare l'aggiornamento cumulativo più recente* sul server.
 
 
 NOTE: Accedere alla link:https://www.catalog.update.microsoft.com/Search.aspx?q=Update+Windows+Server+2016["Catalogo di aggiornamenti Microsoft 2016"^] Sito Web per ottenere e installare gli hotfix Windows necessari per la versione di Windows in uso.

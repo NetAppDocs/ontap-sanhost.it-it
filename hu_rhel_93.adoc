@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_centos_77.html 
-keywords: host utilities, centos, linux, 7.7, netapp, ontap, netapp 
-summary: Descrive come utilizzare CentOS 7.7 con ONTAP 
+permalink: hu_rhel_93.html 
+keywords: host utilities, red hat, rhel, linux, 9.3, netapp, ontap, rhel 
+summary: Descrive come utilizzare Red Hat Enterprise Linux 9,3 con ONTAP 
 ---
-= Utilizzare CentOS 7.7 con ONTAP
+= Utilizzate Red Hat Enterprise Linux 9,3 con ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -19,60 +19,57 @@ summary: Descrive come utilizzare CentOS 7.7 con ONTAP
 
 
 [role="lead"]
-È possibile utilizzare le impostazioni di configurazione dell'host SAN ONTAP per configurare CentOS 7,7 con ONTAP come destinazione.
+È possibile utilizzare le impostazioni di configurazione dell'host SAN di ONTAP per configurare Red Hat Enterprise Linux 9,3 con ONTAP come destinazione.
 
 
 
 == Installare le utility host unificate Linux
 
-Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] in un file .rpm a 32 bit e a 64 bit. Se non si conosce il file appropriato per la configurazione, utilizzare link:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità NetApp"^] per verificare quale si desidera.
+Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] in un file .rpm a 64 bit.
 
 NetApp consiglia vivamente di installare le utility host unificate Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
 
 .Di cosa hai bisogno
-Se si dispone di una versione di Linux Unified host Utilities attualmente installata, è necessario aggiornarla oppure rimuoverla e procedere come segue per installare la versione più recente.
+Se si dispone di una versione di Linux Unified host Utilities attualmente installata, eseguire l'aggiornamento o la rimozione, quindi attenersi alla procedura descritta di seguito per installare la versione più recente.
 
-. Scaricare il pacchetto software di utilità host unificate Linux a 32 bit o 64 bit dal link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] Al tuo host.
-. Utilizzare il seguente comando per installare il pacchetto software:
+.Fasi
+. Scaricare il pacchetto software 64-bit Linux Unified host Utilities dal https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] al tuo host.
+. Installare il pacchetto software:
 +
 `rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_64`
 
 
 
 
-NOTE: È possibile utilizzare le impostazioni di configurazione fornite in questo documento per configurare i client cloud connessi a. link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] e. link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX per ONTAP"^].
 
+== Kit di strumenti SAN
 
+Il kit di strumenti viene installato automaticamente quando si installa il pacchetto di utilità host NetApp. Questo kit fornisce `sanlun` Utility che consente di gestire LUN e HBA. Il `sanlun` Il comando restituisce le informazioni relative alle LUN mappate all'host, al multipathing e alle informazioni necessarie per creare gruppi di iniziatori.
 
-== Toolkit SAN
-
-Il toolkit viene installato automaticamente quando si installa il pacchetto NetApp host Utilities. Questo kit fornisce `sanlun` Utility che consente di gestire LUN e HBA. Il `sanlun` Il comando restituisce le informazioni relative alle LUN mappate all'host, al multipathing e alle informazioni necessarie per creare gruppi di iniziatori.
-
-.Esempio
 Nell'esempio seguente, il `sanlun lun show` Il comando restituisce le informazioni sul LUN.
 
 [source, cli]
 ----
 # sanlun lun show all
 ----
-Output di esempio:
+*Esempio di output:*
 
 [listing]
 ----
 controller(7mode/E-Series)/            device     host               lun
 vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
--------------------------------------------------------------------------
-data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDOT
+------------------------------------------------------------------------------------
+vs_147_32glpe	         /vol/vol1/lun	 /dev/sdb	Host11  FCP        10g	cDOT
+vs_147_32glpe	         /vol/vol1/lun	 /dev/sdx	Host11  FCP        10g	cDOT
+vs_147_32glpe	         /vol/vol2/lun	 /dev/sdbt  host12 FCP        10g	cDOT
+vs_147_32glpe	         /vol/vol2/lun	 /dev/sdax	host12  FCP        10g	cDOT
 ----
 
 
 == Avvio SAN
 
 .Di cosa hai bisogno
-Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare link:https://mysupport.netapp.com/matrix/imt.jsp?components=89085;&solution=1&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] Per verificare che il sistema operativo, l'HBA, il firmware dell'HBA, il BIOS di avvio dell'HBA e la versione di ONTAP siano supportati.
+Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] Per verificare che il sistema operativo, l'HBA, il firmware dell'HBA e il BIOS di avvio dell'HBA e la versione ONTAP siano supportati.
 
 .Fasi
 . Mappare il LUN di avvio SAN sull'host.
@@ -92,7 +89,7 @@ Per informazioni su come attivare il BIOS HBA, consultare la documentazione spec
 
 == Multipathing
 
-Per CentOS 7.7 il file /etc/multipath.conf deve esistere, ma non è necessario apportare modifiche specifiche al file. CentOS 7.7 viene compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente le LUN ONTAP.
+Per Red Hat Enterprise Linux (RHEL) 9,3, il `/etc/multipath.conf` il file deve esistere, ma non è necessario apportare modifiche specifiche al file. RHEL 9,3 è compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente i LUN ONTAP.
 
 È possibile utilizzare `multipath -ll` Per verificare le impostazioni dei LUN ONTAP. Le sezioni seguenti forniscono un output multipath di esempio per un LUN mappato a figure ASA e non ASA.
 
@@ -108,13 +105,13 @@ Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP:
 [listing]
 ----
 # multipath -ll
-3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
-size=80G  features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
+3600a098038314359725d516c69733471 dm-22 NETAPP,LUN C-Mode
+size=160G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 `-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:7:1    sdfi   130:64   active ready running
-  |- 11:0:9:1    sdiy  8:288     active ready running
-  |- 11:0:10:1  sdml 69:464   active ready running
-  |- 11:0:11:1  sdpt  131:304  active ready running
+  |- 11:0:3:0  sdau 66:224 active ready running
+  |- 12:0:4:0  sdco 69:192 active ready running
+  |- 12:0:0:0  sdav 66:240 active ready running
+  `- 11:0:2:0  sdat 66:208 active ready running
 ----
 
 NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
@@ -131,14 +128,15 @@ Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con 
 [listing]
 ----
 # multipath -ll
-3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
-size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle’ hwhandler='1 alua' wp=rw
+3600a0980383149783224544d334a644d dm-10 NETAPP,LUN C-Mode
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
-| |- 11:0:1:0 sdj  8:144  active ready running
-| |- 11:0:2:0 sdr  65:16  active ready running
+| |- 12:0:0:18 sdbj 67:208 active ready running
+| `- 11:0:1:18 sdan 66:112 active ready running
 `-+- policy='service-time 0' prio=10 status=enabled
-  |- 11:0:0:0 sdb  8:i6   active ready running
-  |- 12:0:0:0 sdz  65:144 active ready running
+  |- 11:0:0:18 sdt  65:48  active ready running
+  `- 12:0:3:18 sdcf 69:48  active ready running
+
 ----
 
 NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
@@ -147,7 +145,8 @@ NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non de
 
 == Impostazioni consigliate
 
-Il sistema operativo CentOS 7.7 viene compilato per riconoscere le LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per la configurazione ASA e non ASA.
+Il sistema operativo RHEL 9,3 viene compilato in modo da riconoscere i LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente sia per le configurazioni ASA che per quelle non ASA. È possibile ottimizzare ulteriormente le prestazioni per la configurazione host con le seguenti impostazioni consigliate.
+
 Il `multipath.conf` il file deve esistere per l'avvio del daemon multipath, ma è possibile creare un file vuoto a zero byte utilizzando il seguente comando:
 
 `touch /etc/multipath.conf`
@@ -226,7 +225,7 @@ La tabella seguente mostra la criticità `multipathd` Parametri per i LUN ONTAP 
 | fast_io_fail_tmo | 5 
 
 
-| caratteristiche | "3 queue_if_no_path pg_init_retries 50" 
+| caratteristiche | "2 pg_init_retries 50" 
 
 
 | flush_on_last_del | "sì" 
@@ -268,21 +267,21 @@ La tabella seguente mostra la criticità `multipathd` Parametri per i LUN ONTAP 
 | vendor | NETAPP 
 |===
 .Esempio
-Nell'esempio seguente viene illustrato come correggere un valore predefinito sovrascritto. In questo caso, il `multipath.conf` il file definisce i valori per `path_checker` e. `no_path_retry` Non compatibili con LUN ONTAP. Se non possono essere rimossi a causa di altri array SAN ancora collegati all'host, questi parametri possono essere corretti specificamente per i LUN ONTAP con un dispositivo.
+Nell'esempio seguente viene illustrato come correggere un valore predefinito sovrascritto. In questo caso, il `multipath.conf` il file definisce i valori per `path_checker` e. `no_path_retry` Non compatibili con LUN ONTAP. Se non possono essere rimossi perché altri array SAN sono ancora collegati all'host, questi parametri possono essere corretti specificamente per i LUN ONTAP con un dispositivo.
 
 [listing]
 ----
 defaults {
    path_checker      readsector0
-   no_path_retry      fail
+   no_path_retry     fail
 }
 
 devices {
    device {
       vendor         "NETAPP  "
       product         "LUN.*"
-      no_path_retry     queue
-      path_checker      tur
+      no_path_retry    queue
+      path_checker     tur
    }
 }
 ----
@@ -296,12 +295,12 @@ devices {
 
 == Problemi noti
 
-CentOS 7,7 con ONTAP presenta i seguenti problemi noti:
+La versione RHEL 9,3 con ONTAP presenta i seguenti problemi noti:
 
-[cols="4*"]
+[cols="20, 20, 50,20"]
 |===
 | ID bug NetApp | Titolo | Descrizione | ID Bugzilla 
 
 
-| 1440718 | Se si dismappa o si mappa un LUN senza eseguire una nuova scansione SCSI, i dati sull'host potrebbero danneggiarsi. | Quando si imposta il parametro di configurazione multipath 'disable_changed_wids' su YES, l'accesso al path device viene disattivato in caso di modifica dell'ID WWID. Multipath disattiva l'accesso al dispositivo di percorso fino a quando l'ID WWID del percorso non viene ripristinato all'ID WWID del dispositivo multipath. Per ulteriori informazioni, vedere link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["Knowledge base di NetApp: La corruzione del file system sul LUN iSCSI su Oracle Linux 7"^]. | N/A. 
+| 1508554 | NetApp Linux host Utilities CLI richiede dipendenze aggiuntive del pacchetto libreria per supportare il rilevamento dell'adattatore HBA (host Bus Adapter) Emulex | In RHEL 9.x, la CLI delle utilità host SAN di NetApp Linux `sanlun fcp show adapter -v` Non riesce perché non è possibile trovare le dipendenze del pacchetto libreria per supportare la ricerca HBA (host Bus Adapter) Emulex. | Non applicabile 
 |===

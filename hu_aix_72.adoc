@@ -129,7 +129,7 @@ up      secondary  path3  fcs1    fc_aix_4        1
 
 === Tutte le configurazioni DEGLI array SAN
 
-Nelle configurazioni ASA, tutti i percorsi verso una determinata LUN sono attivi e ottimizzati. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
+In tutte le configurazioni di array SAN (ASA), tutti i percorsi verso una determinata LUN sono attivi e ottimizzati. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
 
 .Esempio
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP:

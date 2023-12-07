@@ -43,7 +43,7 @@ Se si sceglie di utilizzare l'avvio SAN, questo deve essere supportato dalla con
 
 == Installare gli aggiornamenti rapidi di Windows
 
-Si consiglia di utilizzare *l'ultimo aggiornamento cumulativo* da installare sul server.
+NetApp consiglia di installare l'aggiornamento cumulativo più recente* sul server.
 
 
 NOTE: Accedere alla link:https://www.catalog.update.microsoft.com/Search.aspx?q=update%20%22windows%20server%202022%22["Catalogo di aggiornamenti Microsoft 2022"^] Sito Web per ottenere e installare gli hotfix Windows necessari per la versione di Windows in uso.
