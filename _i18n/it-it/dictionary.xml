@@ -3611,4 +3611,11 @@ Nell'esempio seguente, viene generata una chiave casuale dhCHAP con HMAC imposta
   <block id="af1363e13388a6153d5ee5e31361b059" category="list-text">Verifica che le altre combinazioni di LIF initiator NVMe/TCP siano in grado di recuperare correttamente i dati della pagina del log di rilevamento:</block>
   <block id="4d2ccda8ed0dd9cdf2d1d56f266ef18c" category="paragraph">Non ci sono problemi noti per la configurazione host NVMe-of per RHEL 9,3 con ONTAP release.</block>
   <block id="7391a7cd9aaad0e97cd0084d95a4c0fd" category="sidebar">9,3</block>
+  <block id="9bc6d3e09829b4f5254ca05574123571" category="summary">Descrive come utilizzare Red Hat Enterprise Linux 8,9 con ONTAP</block>
+  <block id="07401b9dd6cd70fd46911f32946adf00" category="doc">Utilizzate Red Hat Enterprise Linux 8,9 con ONTAP</block>
+  <block id="e501d2dbdb42de58f02c1f3abfe2b8a1" category="paragraph">È possibile utilizzare le impostazioni di configurazione dell'host SAN di ONTAP per configurare Red Hat Enterprise Linux 8,9 con ONTAP come destinazione.</block>
+  <block id="ae6778e372ba1bd8a8b15c0befa78706" category="paragraph">Per Red Hat Enterprise Linux (RHEL) 8,9, il<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> il file deve esistere, ma non è necessario apportare modifiche specifiche al file. RHEL 8,9 è compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente i LUN ONTAP.</block>
+  <block id="b0ba321d68fcbee6d08cb969c6dee835" category="paragraph">Il sistema operativo RHEL 8,9 viene compilato in modo da riconoscere i LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente sia per le configurazioni ASA che per quelle non ASA. È possibile ottimizzare ulteriormente le prestazioni per la configurazione host con le seguenti impostazioni consigliate.</block>
+  <block id="51856bc21ee60e0edd3d375bda86c100" category="paragraph">Non ci sono problemi noti per RHEL 8,9.</block>
+  <block id="4407c95e5daa7102b34d0879e4eb12ed" category="sidebar">8,9</block>
 </blocks>
