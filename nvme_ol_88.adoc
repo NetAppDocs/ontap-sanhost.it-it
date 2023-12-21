@@ -5,17 +5,14 @@ keywords: nvme, oracle linux, 8.8, host configuration
 summary: NVMe-of host Configuration per Oracle Linux 8,8 con ONTAP 
 ---
 = NVMe-of host Configuration per Oracle Linux 8,8 con ONTAP
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

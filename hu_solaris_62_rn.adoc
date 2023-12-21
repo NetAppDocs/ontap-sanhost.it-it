@@ -5,17 +5,14 @@ keywords: host utilities, solaris, 6.2 netapp, ontap
 summary: Note sulla versione per Solaris host Utilities 6.2 
 ---
 = Note sulla versione di Solaris host Utilities 6.2
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

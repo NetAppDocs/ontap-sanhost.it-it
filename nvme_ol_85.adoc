@@ -5,17 +5,14 @@ keywords: nvme, linux, oracle,
 summary:  
 ---
 = Configurazione host NVMe/FC per Oracle Linux 8.5 con ONTAP
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 

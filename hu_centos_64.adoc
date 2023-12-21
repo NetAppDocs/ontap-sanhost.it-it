@@ -5,17 +5,14 @@ keywords: host utilities, cent, os, 6.4, netapp, ontap
 summary: Descrive come utilizzare CentOS 6.4 con ONTAP 
 ---
 = Utilizzare CentOS 6.4 con ONTAP
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

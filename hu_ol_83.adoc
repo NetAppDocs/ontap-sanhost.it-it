@@ -5,17 +5,14 @@ keywords: host utilities, oracle, linux, 8.3, netapp, ontap
 summary: Descrive come utilizzare Oracle Linux 8.3 con ONTAP 
 ---
 = Utilizza Oracle Linux 8.3 con ONTAP
-:toc: macro
 :hardbreaks:
 :toclevels: 1P
 :allow-uri-read: 
-:toc: 
 :toclevels: 1P
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

@@ -5,17 +5,14 @@ keywords: host utilities, veritas, infoscale, 8, netapp, ontap, sanhost, iscsi, 
 summary: Fornisce indicazioni sulle impostazioni di configurazione degli host SAN ONTAP per la release della serie Veritas Infosscale 7 
 ---
 = Utilizza Veritas Infoscale 8 per Linux con ONTAP
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

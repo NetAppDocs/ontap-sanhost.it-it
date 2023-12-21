@@ -5,17 +5,14 @@ keywords: nvme, windows, enterprise
 summary: Configurazione host NVMe/FC per Windows Server 2012 R2 con ONTAP 
 ---
 = Configurazione host NVMe/FC per Windows Server 2012 R2 con ONTAP
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

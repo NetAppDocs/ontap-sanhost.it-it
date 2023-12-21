@@ -5,17 +5,14 @@ keywords: host utilities, hpux, 6.0, netapp, ontap, release, notes
 summary: Note sulla versione per le utility host HPUX 6.0 
 ---
 = Note sulla versione di HP-UX host Utilities 6.0
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 Le note sulla versione descrivono nuove funzioni e miglioramenti, problemi risolti nella versione corrente, problemi e limitazioni noti e importanti precauzioni relative alla configurazione e alla gestione dell'host HP-UX specifico con il sistema di storage ONTAP.
