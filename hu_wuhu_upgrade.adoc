@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: hu_wuhu_upgrade.html 
+keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
+summary: 'Le utility host unificate di Windows includono un programma di installazione che imposta i parametri HBA e di registro di Windows richiesti in modo che l"host Windows gestisca correttamente i comportamenti del sistema di storage per le piattaforme NetApp ONTAP ed e-Series.' 
+---
+= Aggiornare Windows Unified host Utilities
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+Il nuovo pacchetto di installazione di Utility host deve trovarsi in un percorso accessibile dall'host di Windows. Seguire le istruzioni per l'installazione interattiva delle utilità host o dalla riga di comando di Windows per aggiornare il pacchetto di installazione.
+
+[role="tabbed-block"]
+====
+.Aggiornamento interattivo
+--
+Per aggiornare il pacchetto software host Utilities in modo interattivo, è necessario eseguire il programma di installazione host Utilities e seguire le istruzioni.
+
+.Fasi
+. Passare alla directory in cui è stato scaricato il file eseguibile.
+. Eseguire il file eseguibile e seguire le istruzioni visualizzate.
+. Riavviare l'host Windows quando richiesto.
+. Al termine del riavvio, controllare la versione dell'utility host:
++
+.. Aprire *pannello di controllo*.
+.. Accedere a *programmi e funzionalità* e controllare la versione dell'utility host.
+
+
+
+
+--
+.Aggiornamento da una riga di comando
+--
+È possibile eseguire un aggiornamento automatico delle nuove utilità host immettendo i comandi appropriati al prompt dei comandi di Windows.
+
+.Fasi
+. Digitare il seguente comando al prompt dei comandi di Windows:
++
+`msiexec /i installer.msi /quiet MULTIPATHING= {0 | 1} [INSTALLDIR=inst_path]`
+
++
+** `installer` è il nome di `.msi` File per l'architettura della CPU.
+** MULTIPATHING specifica se è installato il supporto MPIO. I valori consentiti sono "0" per no e "1" per sì.
+** `inst_path` È il percorso in cui sono installati i file delle utility host. Il percorso predefinito è `C:\Program Files\NetApp\Windows Host Utilities\`.
+
+
+
+
+
+NOTE: Per visualizzare le opzioni standard di Microsoft Installer (MSI) per la registrazione e altre funzioni, immettere `msiexec /help` Al prompt dei comandi di Windows. Ad esempio, il `msiexec /i install.msi /quiet /l*v <install.log> LOGVERBOSE=1` visualizza le informazioni di registrazione.
+
+Il sistema si riavvia automaticamente al termine dell'installazione.
+
+--
+====

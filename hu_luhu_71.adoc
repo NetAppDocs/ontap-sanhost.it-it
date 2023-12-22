@@ -16,7 +16,7 @@ summary: Descrive come utilizzare le utility host unificate Linux 7.1 con ONTAP
 
 
 [role="lead"]
-Le utility host unificate di Linux consentono di gestire lo storage NetApp ONTAP collegato a un host Linux. NetApp consiglia vivamente di installare le utility host unificate Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
+LUHU (Linux Unified host Utilities) consente di gestire lo storage NetApp ONTAP collegato a un host Linux. NetApp consiglia vivamente di installare le utility host unificate Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
 
 Sono supportate le seguenti distribuzioni Linux:
 

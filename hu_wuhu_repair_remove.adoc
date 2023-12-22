@@ -1,0 +1,57 @@
+---
+sidebar: sidebar 
+permalink: hu_wuhu_repair_remove.html 
+keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
+summary: 'Le utility host unificate di Windows includono un programma di installazione che imposta i parametri HBA e di registro di Windows richiesti in modo che l"host Windows gestisca correttamente i comportamenti del sistema di storage per le piattaforme NetApp ONTAP ed e-Series.' 
+---
+= Riparare e rimuovere le utilità host di Windows Unified
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+È possibile utilizzare l'opzione *Repair* del programma di installazione di host Utilities per aggiornare le impostazioni dell'adattatore bus host (HBA) e del Registro di sistema di Windows. È inoltre possibile rimuovere completamente le utilità host, in modo interattivo o dalla riga di comando di Windows.
+
+[role="tabbed-block"]
+====
+.Riparare o rimuovere in modo interattivo
+--
+L'opzione *Ripara* aggiorna il registro di sistema di Windows e gli HBA FC con le impostazioni richieste. È inoltre possibile rimuovere completamente le utility host.
+
+.Fasi
+. Aprire Windows *programmi e funzionalità* (Windows Server 2012 R2, Windows Server 2016, Windows Server 2019 e Windows 2022).
+. Selezionare *NetApp Windows Unified host Utilities*.
+. Selezionare *Cambia*.
+. Selezionare *Repair* (Riparazione) o *Remove* (Rimuovi), in base alle necessità.
+. Seguire le istruzioni visualizzate.
+
+
+--
+.Riparare o rimuovere dalla riga di comando
+--
+L'opzione *Ripara* aggiorna il registro di sistema di Windows e gli HBA FC con le impostazioni richieste. È inoltre possibile rimuovere completamente le utility host da una riga di comando di Windows.
+
+.Fasi
+. Immettere il seguente comando nella riga di comando di Windows per riparare le utilità host di Windows:
++
+`msiexec /f installer.msi [/quiet]`
+
++
+** `/f` ripara l'installazione.
+** `installer.msi` È il nome del programma di installazione di Windows host Utilities sul sistema.
+** `/quiet` elimina tutti i feedback e riavvia automaticamente il sistema senza chiedere conferma al completamento del comando.
+
+
+
+
+--
+====
