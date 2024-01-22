@@ -249,8 +249,6 @@ NOTE: Non applicabile agli host Qlogic NVMe/FC.
 
 === Abilitare i servizi NVMe
 
-Puoi utilizzare la seguente procedura per abilitare i servizi NVMe.
-
 Il include due servizi di boot NVMe/FC `nvme-cli` pacchetto, tuttavia, _solo_ `nvmefc-boot-connections.service` è abilitato all'avvio durante l'avvio del sistema;  `nvmf-autoconnect.service` non è abilitato. Pertanto, è necessario attivare manualmente `nvmf-autoconnect.service` per l'avvio durante l'avvio del sistema.
 
 .Fasi
@@ -568,7 +566,7 @@ Device           Vserver                   Namespace Path                       
 
 
 
-== Miglioramenti al rilevamento
+== Creare un controller di rilevamento permanente
 
 A partire da ONTAP 9.11.1, è possibile creare un controller di rilevamento persistente (PDC) per l'host SLES 15 SP4 utilizzando la procedura seguente. È necessario un PDC per rilevare automaticamente l'aggiunta o la rimozione di scenari e le modifiche ai dati della pagina del log di rilevamento da parte del sottosistema NVMe.
 
