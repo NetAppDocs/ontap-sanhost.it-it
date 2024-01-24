@@ -3548,4 +3548,14 @@ Le utility host<block ref="a49e6041666308abe45789ecfadd593e" prefix=" " category
   <block id="6a96fe80380b5c7c7a686cbebfad76d9" category="list-text">Generare la chiave dhchap per l'host SLES15 SP5:</block>
   <block id="d3e220182499e43aeadc8bda16bcb3db" category="paragraph">Nell'esempio seguente, viene generata una chiave casuale dhCHAP con HMAC impostato su 3 (SHA-512).</block>
   <block id="bd8e8f9aa877bbf46ba78e30655f8fcb" category="paragraph">Non ci sono problemi noti per SLES 15 SP5 con la versione ONTAP.</block>
+  <block id="4ac1d0cb33ca920ad318b5108ad35c83" category="summary">Viene descritto come utilizzare Ubuntu 20,04 con ONTAP</block>
+  <block id="884709522224b2e2f9861c09fe418c9f" category="doc">Utilizzare Ubuntu 20,04 con ONTAP</block>
+  <block id="c47bdeb8aa6e7dfdadec0c481e4a21ce" category="paragraph">È possibile utilizzare le impostazioni di configurazione dell'host SAN ONTAP per configurare Ubuntu 20,04 con ONTAP come destinazione.</block>
+  <block id="b93c5ef5e73d23bb7f86e491eeee988e" category="admonition">Il pacchetto software NetApp Linux Unified host Utilities non è disponibile per il sistema operativo Ubuntu 20,04.</block>
+  <block id="17ce72ad1f5e6eaa8a603ac974a06f2d" category="paragraph">Per Ubuntu 20,04, il<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> il file deve esistere, ma non è necessario apportare modifiche specifiche al file. Ubuntu 20,04 è compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente i LUN ONTAP.</block>
+  <block id="cb22bc47f0f8e662ab604bbcbf236866" category="paragraph">Il sistema operativo Ubuntu 20,04 viene compilato per riconoscere i LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per entrambe le configurazioni ASA e non ASA. È possibile ottimizzare ulteriormente le prestazioni per la configurazione host con le seguenti impostazioni consigliate.</block>
+  <block id="47310b4ac9536318d7bb35ce155bbc39" category="paragraph">Non ci sono problemi noti per Ubuntu 20,04 con la versione ONTAP.</block>
+  <block id="3d945423f8e9496c429a5d8c65b4604f" category="sidebar">Ubuntu</block>
+  <block id="4ecf3c9493d36f3a582a25b68e645741" category="sidebar">Ubuntu-FCP</block>
+  <block id="7cd95c816f8a04ff858a857e3e5a484d" category="sidebar">20,04</block>
 </blocks>
