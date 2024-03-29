@@ -3558,4 +3558,31 @@ Le utility host<block ref="a49e6041666308abe45789ecfadd593e" prefix=" " category
   <block id="3d945423f8e9496c429a5d8c65b4604f" category="sidebar">Ubuntu</block>
   <block id="4ecf3c9493d36f3a582a25b68e645741" category="sidebar">Ubuntu-FCP</block>
   <block id="7cd95c816f8a04ff858a857e3e5a484d" category="sidebar">20,04</block>
+  <block id="61b07fd83e5960959693b88b1afdfcbe" category="summary">Viene descritto come utilizzare Ubuntu 22,04 con ONTAP</block>
+  <block id="d2142f1d82ab3f8920c5e47446631d4b" category="doc">Utilizzare Ubuntu 22,04 con ONTAP</block>
+  <block id="4fbbd56106aac3814f8ddd0f05db140b" category="paragraph">È possibile utilizzare le impostazioni di configurazione dell'host SAN ONTAP per configurare Ubuntu 22,04 con ONTAP come destinazione.</block>
+  <block id="7c1e8635bc3420ecd446913f429d9ea8" category="admonition">Il pacchetto software NetApp Linux Unified host Utilities non è disponibile per il sistema operativo Ubuntu 22,04.</block>
+  <block id="aa9b36be0bfd178660104314442edd58" category="paragraph">Per Ubuntu 22,04, il<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> il file deve esistere, ma non è necessario apportare modifiche specifiche al file. Ubuntu 22,04 è compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente i LUN ONTAP.</block>
+  <block id="918af3e81e1488cf1519a1f43482b774" category="paragraph">Il sistema operativo Ubuntu 22,04 viene compilato per riconoscere i LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per entrambe le configurazioni ASA e non ASA. È possibile ottimizzare ulteriormente le prestazioni per la configurazione host con le seguenti impostazioni consigliate.</block>
+  <block id="268d764f10521ffc4e0f9dfd03765bd6" category="paragraph">Non ci sono problemi noti per Ubuntu 22,04 con la versione ONTAP.</block>
+  <block id="78550e91fbb2b5810210b43b287b7c4e" category="summary">Come configurare host NVMe-of per Ubuntu 22,04 con ONTAP</block>
+  <block id="be09412791a80b1e99189d1da97f513c" category="doc">Configurazione host NVMe-of per Ubuntu 22,04 con ONTAP</block>
+  <block id="c6846e0213409c96ad77f710fa307642" category="paragraph">NVMe over Fabrics (NVMe-of), inclusi NVMe over Fibre Channel (NVMe/FC) e altri trasporti, è supportato con Ubuntu 22,04 con Asymmetric Namespace Access (ANA). Negli ambienti NVMe-of, ANA è l'equivalente del multipathing ALUA in ambienti iSCSI e FC ed è implementato con multipath NVMe nel kernel.</block>
+  <block id="71251761db71d74ce129581af51deea0" category="paragraph">Il seguente supporto è disponibile per la configurazione host NVMe-of per Ubuntu 22,04 con ONTAP:</block>
+  <block id="c7b8b08d4869ac84fdd57c23e53885a4" category="list-text">Il plug-in NetApp nel pacchetto nvme-cli nativo visualizza i dettagli ONTAP per gli namespace NVMe/FC.</block>
+  <block id="ee255f2b3c440f68a5bcc9252dfbbd03" category="paragraph">Ubuntu 22,04 ha la tecnologia multipath NVMe in-kernel abilitata per i namespace NVMe per impostazione predefinita. Pertanto, non sono necessarie impostazioni esplicite.</block>
+  <block id="3621191bce4af482b56d942fb4c692d3" category="paragraph">È possibile utilizzare la seguente procedura per convalidare le versioni minime supportate del software Ubuntu 22,04.</block>
+  <block id="daeaa7aff0b3adc4e01d754047800447" category="list-text">Installare Ubuntu 22,04 sul server. Al termine dell'installazione, verificare che il kernel Ubuntu 22,04 specificato sia in esecuzione:</block>
+  <block id="8f3ce7816b499a01a35c5c583a9b91a5" category="list-text">Sull'host Ubuntu 22,04, controllare la stringa hostnqn in<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>:</block>
+  <block id="c720f9a8702e2d5947dcfd0b4d0f2744" category="list-text">Il driver inbox qla2xxx nativo incluso nel kernel Ubuntu 22,04 GA ha le ultime correzioni upstream essenziali per il supporto di ONTAP. Verificare che siano in esecuzione le versioni del firmware e del driver dell'adattatore supportate:</block>
+  <block id="9b581488b49c5ac223f72f44dce46098" category="list-text">Eseguire il comando nvme Connect-all in tutti i LIF NVMe/TCP Initiator-target supportati nei nodi e impostare il periodo di timeout per la perdita del controller per almeno 30 minuti o 1800 secondi:</block>
+  <block id="2d737bddc26fec4760722ea17aae3833" category="open-title">NVME/TCP</block>
+  <block id="b410fbf5a06284dbc3bed26b9ccd2094" category="paragraph">Theere non sono problemi noti per la configurazione host NVMe-of per Ubuntu 22,04 con ONTAP release.</block>
+  <block id="90fc24312f4ab09ff404f0abfb26b105" category="cell">ID JIRA</block>
+  <block id="fb99255f11e8a5c23d9e98c28ef9997d" category="cell">1593771</block>
+  <block id="970c941050f97a801dd7266734957b39" category="cell">Un host SAN Red Hat Enterprise Linux 9,3 QLogic incontra la perdita di multipercorsi parziali durante le operazioni di mobilità dello storage</block>
+  <block id="a33a041bd9f15b20d1f9f0d86a594262" category="cell">Durante l'operazione di takeover dello storage controller ONTAP, si prevede che metà dei multi-path si interrompa o passi a una modalità di failover, per poi ripristinare il percorso completo durante il workflow di giveback. Tuttavia, con un host Red Hat Enterprise Linux (RHEL) 9,3 QLogic, vengono ripristinati solo i multipercorsi parziali dopo un'operazione di giveback del failover dello storage.</block>
+  <block id="a98f12afd377cfff4657909446bff74a" category="cell">RHEL 17811</block>
+  <block id="e764fe6b8f8825a307a87cedbef45678" category="sidebar">22.04</block>
+  <block id="829d28d8727a4d458f1c35bda30f5ad7" category="sidebar">NVMeoF Ubuntu</block>
 </blocks>
