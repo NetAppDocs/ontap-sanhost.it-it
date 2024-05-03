@@ -15,16 +15,21 @@ summary: Questo contenuto fornisce una guida specifica per la distribuzione su c
 :imagesdir: ./media/
 
 
-Questo contenuto fornisce Best practice specifiche per host e versione per configurare rapidamente gli host SAN connessi allo storage ONTAP.
+[role="lead"]
+Gli host SAN devono essere configurati per il multipathing e con parametri e impostazioni specifici, fondamentali per il corretto funzionamento con i LUN ONTAP.  La configurazione dell'host varia in base al sistema operativo host e al protocollo.  La corretta configurazione è importante per ottenere le migliori performance e il successo del failover.
+
+È necessario configurare gli host SAN in modo che utilizzino le utilità host SAN di NetApp. Le utilità host SAN consentono di gestire e monitorare i LUN e gli HBA (host Bus Adapter). Ad esempio, è possibile utilizzare le utilità host SAN per recuperare un elenco di tutti i LUN mappati a un host o per visualizzare un elenco di tutti gli attributi di un LUN specifico mappato a un host. L'assistenza clienti NetApp può anche utilizzare le utilità host SAN per raccogliere informazioni sulla configurazione in caso di problemi che richiedono assistenza.
+
+NetApp consiglia di utilizzare il software delle utilità host SAN, se disponibile per l'host SAN.
+
+Se è supportato dalla configurazione SAN, è anche possibile configurare l'host in modo che utilizzi l'avvio SAN per una distribuzione semplificata e una maggiore scalabilità. Utilizzando l'avvio SAN, è possibile installare più nuovi server collegandoli alla SAN e configurando le impostazioni di avvio appropriate. In questo modo si risparmia tempo eliminando la necessità di installare il sistema operativo su ciascun server singolarmente.
 
 Gli host SAN e lo storage ONTAP possono risiedere on-premise, nel cloud o in entrambi.
 
 
 NOTE: In un ambiente cloud, gli host sono generalmente denominati client. Tutte le informazioni specifiche dell'host contenute in questo contenuto si applicano anche ai client cloud.
 
-Ad esempio, è possibile configurare lo storage ONTAP on-premise per connettersi a host SAN on-premise o a client cloud SAN. È anche possibile eseguire la configurazione link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] oppure link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX per ONTAP"^] Per connettersi a host SAN on-premise o a client cloud SAN.
-
-La corretta configurazione è importante per ottenere le migliori performance e il successo del failover.
+Ad esempio, è possibile configurare lo storage ONTAP on-premise per la connessione a host SAN on-premise o client cloud SAN. È inoltre possibile configurare i servizi di storage in esecuzione in un ambiente cloud, come link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] oppure link:https://docs.netapp.com/us-en/bluexp-fsx-ontap/index.html["Amazon FSX per NetApp ONTAP"^] Per connettersi a host SAN on-premise o client cloud SAN.
 
 .Informazioni correlate
 * Il link:https://docs.netapp.com/us-en/ontap/san-config/index.html["Configurazione SAN ONTAP"^] Per la versione di ONTAP in uso
