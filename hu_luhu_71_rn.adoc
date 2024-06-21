@@ -72,6 +72,6 @@ situato:
 [root@hostname ~] nel sanlun fcp show adapter -v
 Impossibile individuare la libreria /usr/lib64/libHBAAPI.so
 Assicurarsi che il pacchetto che installa la libreria sia installato e caricato
-Fare riferimento al report pubblico 1508554. 
+Fare riferimento a NetApp Bugs online - link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^]. 
 |===
 link:https://mysupport.netapp.com/site/bugs-online/product["NetApp Bugs Online"^] fornisce informazioni complete sui problemi più noti, incluse le soluzioni consigliate, se possibile.

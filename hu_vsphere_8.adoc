@@ -355,12 +355,12 @@ VMware vSphere 8.x con ONTAP presenta i seguenti problemi noti:
 | ID bug NetApp | Titolo | Descrizione 
 
 
-| 1543660 | L'errore i/o si verifica quando le macchine virtuali Linux che utilizzano gli adattatori vNVMe incontrano una lunga finestra APD (All Paths Down)  a| 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1543660["1543660"^] | L'errore i/o si verifica quando le macchine virtuali Linux che utilizzano gli adattatori vNVMe incontrano una lunga finestra APD (All Paths Down)  a| 
 Le macchine virtuali Linux che eseguono vSphere 8.x e versioni successive e che utilizzano adattatori virtuali NVMe (vNVME) riscontrano un errore i/o perché l'operazione di ripetizione vNVMe è disattivata per impostazione predefinita. Per evitare interruzioni sulle macchine virtuali Linux che eseguono kernel meno recenti durante un All Paths Down (APD) o un carico i/o pesante, VMware ha introdotto un "VSCSIDisableNvmeRetry" sintonizzabile per disattivare l'operazione di ripetizione di vNVMe.
 
 |===
 .Informazioni correlate
 * link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597-VMware vSphere con ONTAP"^]
 * link:https://kb.vmware.com/s/article/2031038["Supporto di VMware vSphere 5.x, 6.x e 7.x con NetApp MetroCluster (2031038)"^]
-* link:https://kb.vmware.com/s/article/83370["NetApp ONTAP con NetApp SnapMirror Business Continuity (SM-BC) con cluster di storage metro VMware vSphere (vMSC)"^]
+* link:https://kb.vmware.com/s/article/83370["NetApp ONTAP con sincronizzazione attiva SnapMirror NetApp con VMware vSphere Metro Storage Cluster (vMSC)"^]
 

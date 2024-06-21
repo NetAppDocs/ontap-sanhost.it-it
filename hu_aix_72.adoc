@@ -217,13 +217,13 @@ Per impostazione predefinita, il sistema operativo AIX applica un timeout i/o pi
 
 
 
-== Supporto AIX con SM-BC
+== Supporto AIX con sincronizzazione attiva SnapMirror
 
-A partire da ONTAP 9.11.1, AIX è supportato con SM-BC. Con una configurazione AIX, il cluster primario è il cluster "attivo".
+A partire da ONTAP 9.11.1, AIX è supportato con la sincronizzazione attiva SnapMirror. Con una configurazione AIX, il cluster primario è il cluster "attivo".
 
 In una configurazione AIX, i failover sono disruptive. Con ogni failover, sarà necessario eseguire una nuova scansione sull'host per riprendere le operazioni di i/O.
 
-Per configurare AIX per SM-BC, consultare l'articolo della Knowledge base link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/How_to_configure_an_AIX_host_for_SnapMirror_Business_Continuity_(SM-BC)["Come configurare un host AIX per SnapMirror Business Continuity (SM-BC)"^].
+Per configurare AIX per la sincronizzazione attiva di SnapMirror, fare riferimento all'articolo della Knowledge base link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/How_to_configure_an_AIX_host_for_SnapMirror_Business_Continuity_(SM-BC)["Come configurare un host AIX per la sincronizzazione attiva di SnapMirror"^].
 
 
 
@@ -236,11 +236,11 @@ La versione IBM AIX 7,2 e/o PowerVM (VIOS 3,1) con ONTAP presenta i seguenti pro
 | ID bug NetApp | Titolo | Descrizione | ID partner 
 
 
-| 1416221 | AIX 7200-05-01 ha rilevato un'interruzione i/o sui dischi iSCSI virtuali (VIOS 3.1.1.x) durante il failover dello storage | L'interruzione i/o può verificarsi durante le operazioni di failover dello storage sugli host AIX 7.2 TL5 sui dischi iSCSI virtuali mappati tramite VIOS 3.1.1.x. Per impostazione predefinita, il `rw_timeout` Il valore dei dischi iSCSI virtuali (hdisk) su VIOC sarà di 45 secondi. Se si verifica un ritardo i/o superiore a 45 secondi durante il failover dello storage, potrebbe verificarsi un errore i/O. Per evitare questa situazione, fare riferimento alla soluzione alternativa indicata nel DOCUMENTO BURT. Come per IBM, dopo l'applicazione di APAR - IJ34739 (prossima release), è possibile modificare dinamicamente il valore rw_timeout utilizzando `chdev` comando. | NA 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1416221["1416221"^] | AIX 7200-05-01 ha rilevato un'interruzione i/o sui dischi iSCSI virtuali (VIOS 3.1.1.x) durante il failover dello storage | L'interruzione i/o può verificarsi durante le operazioni di failover dello storage sugli host AIX 7.2 TL5 sui dischi iSCSI virtuali mappati tramite VIOS 3.1.1.x. Per impostazione predefinita, il `rw_timeout` Il valore dei dischi iSCSI virtuali (hdisk) su VIOC sarà di 45 secondi. Se si verifica un ritardo i/o superiore a 45 secondi durante il failover dello storage, potrebbe verificarsi un errore i/O. Per evitare questa situazione, fare riferimento alla soluzione alternativa indicata nel DOCUMENTO BURT. Come per IBM, dopo l'applicazione di APAR - IJ34739 (prossima release), è possibile modificare dinamicamente il valore rw_timeout utilizzando `chdev` comando. | NA 
 
 
-| 1414700 | AIX 7.2 TL04 ha rilevato un'interruzione i/o sui dischi iSCSI virtuali (VIOS 3.1.1.x) durante il failover dello storage | Durante le operazioni di failover dello storage su host AIX 7.2 TL4 sui dischi iSCSI virtuali mappati tramite VIOS 3.1.1.x. è possibile che si verifichi un'interruzione i/o Per impostazione predefinita, il `rw_timeout` Il valore dell'adattatore vSCSI su VIOC è di 45 secondi. Se si verifica un ritardo i/o superiore a 45 secondi durante un failover dello storage, potrebbe verificarsi un errore i/O. Per evitare questa situazione, fare riferimento alla soluzione alternativa indicata nel DOCUMENTO BURT. | NA 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1414700["1414700"^] | AIX 7.2 TL04 ha rilevato un'interruzione i/o sui dischi iSCSI virtuali (VIOS 3.1.1.x) durante il failover dello storage | Durante le operazioni di failover dello storage su host AIX 7.2 TL4 sui dischi iSCSI virtuali mappati tramite VIOS 3.1.1.x. è possibile che si verifichi un'interruzione i/o Per impostazione predefinita, il `rw_timeout` Il valore dell'adattatore vSCSI su VIOC è di 45 secondi. Se si verifica un ritardo i/o superiore a 45 secondi durante un failover dello storage, potrebbe verificarsi un errore i/O. Per evitare questa situazione, fare riferimento alla soluzione alternativa indicata nel DOCUMENTO BURT. | NA 
 
 
-| 1307653 | Problemi di i/o su VIOS 3.1.1.10 durante guasti SFO e i/o diretto | Su VIOS 3.1.1 i guasti io possono essere rilevati su un disco client NPIV supportato da adattatori FC da 16 GB. Inoltre, un `vfchost` Il driver potrebbe entrare in uno stato in cui interrompe l'elaborazione delle richieste di i/o dal client. L'applicazione di IBM APAR IJ22290 IBM APAR IJ23222 risolve il problema. | NA 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1307653["1307653"^] | Problemi di i/o su VIOS 3.1.1.10 durante guasti SFO e i/o diretto | Su VIOS 3.1.1 i guasti io possono essere rilevati su un disco client NPIV supportato da adattatori FC da 16 GB. Inoltre, un `vfchost` Il driver potrebbe entrare in uno stato in cui interrompe l'elaborazione delle richieste di i/o dal client. L'applicazione di IBM APAR IJ22290 IBM APAR IJ23222 risolve il problema. | NA 
 |===

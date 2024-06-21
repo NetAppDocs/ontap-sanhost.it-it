@@ -214,13 +214,13 @@ Per impostazione predefinita, il sistema operativo AIX applica un timeout i/o pi
 
 
 
-== Supporto AIX con SM-BC
+== Supporto AIX con sincronizzazione attiva SnapMirror
 
-A partire da ONTAP 9.11.1, AIX è supportato con SM-BC. Con una configurazione AIX, il cluster primario è il cluster "attivo".
+A partire da ONTAP 9.11.1, AIX è supportato con la sincronizzazione attiva SnapMirror. Con una configurazione AIX, il cluster primario è il cluster "attivo".
 
 In una configurazione AIX, i failover sono disruptive. Con ogni failover, sarà necessario eseguire una nuova scansione sull'host per riprendere le operazioni di i/O.
 
-Per configurare AIX per SM-BC, consultare l'articolo della Knowledge base link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/How_to_configure_an_AIX_host_for_SnapMirror_Business_Continuity_(SM-BC)["Come configurare un host AIX per SnapMirror Business Continuity (SM-BC)"^].
+Per configurare AIX per SM-BC, consultare l'articolo della Knowledge base link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/How_to_configure_an_AIX_host_for_SnapMirror_Business_Continuity_(SM-BC)["Come configurare un host AIX per la sincronizzazione attiva di SnapMirror"^].
 
 
 

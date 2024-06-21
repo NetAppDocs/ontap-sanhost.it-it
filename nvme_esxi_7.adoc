@@ -280,4 +280,4 @@ La configurazione dell'host NVMe-of per ESXi 7.x con ONTAP presenta i seguenti p
 .Informazioni correlate
 link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597-VMware vSphere con ONTAP"^]
 link:https://kb.vmware.com/s/article/2031038["Supporto di VMware vSphere 5.x, 6.x e 7.x con NetApp MetroCluster (2031038)"^]
-link:https://kb.vmware.com/s/article/83370["Supporto di VMware vSphere 6.x e 7.x con NetApp® SnapMirror® Business Continuity (SM-BC)"^]
+link:https://kb.vmware.com/s/article/83370["Supporto di VMware vSphere 6.x e 7.x con sincronizzazione attiva di NetApp® SnapMirror"^]

@@ -246,12 +246,12 @@ NOTE: Le patch sono disponibili per Oracle bug 15824910 su varie versioni di Sol
 
 
 
-== Impostazioni consigliate per SnapMirror Business Continuity
+== Impostazioni consigliate per la sincronizzazione attiva di SnapMirror
 
-Per verificare che le applicazioni client Solaris non siano disgregative quando si verifica uno switchover di failover del sito non pianificato in un ambiente SnapMirror Business Continuity (SM-BC), è necessario configurare la seguente impostazione sull'host Solaris 11.4. Questa impostazione sovrascrive il modulo di failover `f_tpgs` per impedire l'esecuzione del percorso di codice che rileva il conflitto.
+Per verificare che le applicazioni client Solaris non subiscano interruzioni quando si verifica uno switchover non pianificato del failover del sito in un ambiente di sincronizzazione attivo SnapMirror, è necessario configurare l'impostazione seguente sull'host Solaris 11,4. Questa impostazione sovrascrive il modulo di failover `f_tpgs` per impedire l'esecuzione del percorso di codice che rileva il conflitto.
 
 
-NOTE: A partire da ONTAP 9.9.1, le configurazioni di impostazione SM-BC sono supportate nell'host Solaris 11.4.
+NOTE: A partire da ONTAP 9,9.1, le configurazioni delle impostazioni di sincronizzazione attiva di SnapMirror sono supportate nell'host Solaris 11,4.
 
 Seguire le istruzioni per configurare il parametro override:
 
@@ -277,7 +277,7 @@ svl_fops_name = 0xa00298d69e0 "conf f_tpgs"
 
 
 
-NOTE: Dopo `scsi-vhci-failover-override` è stato applicato, `conf` viene aggiunto a. `svl_fops_name`. Per ulteriori informazioni e per le modifiche consigliate alle impostazioni predefinite, consultare l'articolo della Knowledge base di NetApp https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Impostazioni consigliate per il supporto degli host Solaris nella configurazione di SnapMirror Business Continuity (SM-BC)"^].
+NOTE: Dopo `scsi-vhci-failover-override` è stato applicato, `conf` viene aggiunto a. `svl_fops_name`. Per ulteriori informazioni e per le modifiche consigliate alle impostazioni predefinite, consultare l'articolo della Knowledge base di NetApp https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Supporto host Solaris impostazioni consigliate nella configurazione di sincronizzazione attiva di SnapMirror"^].
 
 
 
@@ -290,14 +290,14 @@ Solaris 11,4 con ONTAP presenta i seguenti problemi noti:
 | ID bug NetApp | Titolo | Descrizione | ID Oracle 
 
 
-| 1362435 | Modifiche al binding del driver FC HUK 6.2 e Solaris_11.4 | Fare riferimento alle raccomandazioni per Solaris 11,4 e HUK. Il binding del driver FC viene modificato da `ssd (4D)` a. `sd (4D)`. Sposta la configurazione esistente da `ssd.conf` a. `sd.conf` Come menzionato in Oracle DOC: 2595926,1). Il comportamento varia a seconda dei sistemi Solaris 11,4 appena installati e dei sistemi aggiornati da Solaris 11,3 o versioni precedenti. | (DOC ID 2595926.1) 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1362435["1362435"^] | Modifiche al binding del driver FC HUK 6.2 e Solaris_11.4 | Fare riferimento alle raccomandazioni per Solaris 11,4 e HUK. Il binding del driver FC viene modificato da `ssd (4D)` a. `sd (4D)`. Sposta la configurazione esistente da `ssd.conf` a. `sd.conf` Come menzionato in Oracle DOC: 2595926,1). Il comportamento varia a seconda dei sistemi Solaris 11,4 appena installati e dei sistemi aggiornati da Solaris 11,3 o versioni precedenti. | (DOC ID 2595926.1) 
 
 
-| 1366780 | Problema LIF di Solaris riscontrato durante l'operazione di giveback SFO (Storage failover) con HBA (host Bus Adapter) Emulex 32G su x86 Arch | Problema della LIF di Solaris riscontrato con la versione firmware Emulex 12,6.x e successive sulla piattaforma x86_64. | SR 3-24746803021 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1366780["1366780"^] | Problema LIF di Solaris riscontrato durante l'operazione di giveback SFO (Storage failover) con HBA (host Bus Adapter) Emulex 32G su x86 Arch | Problema della LIF di Solaris riscontrato con la versione firmware Emulex 12,6.x e successive sulla piattaforma x86_64. | SR 3-24746803021 
 
 
-| 1368957 | Solaris 11.x `cfgadm -c configure` Si è verificato un errore i/o con la configurazione Emulex end-to-end | In esecuzione `cfgadm -c configure` Nella configurazione end-to-end Emulex si verifica un errore i/O. Questo problema è stato risolto in ONTAP 9.5P17, 9.6P14 , 9.7P13 e 9.8P2 | Non applicabile 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1368957["1368957"^] | Solaris 11.x `cfgadm -c configure` Si è verificato un errore i/o con la configurazione Emulex end-to-end | In esecuzione `cfgadm -c configure` Nella configurazione end-to-end Emulex si verifica un errore i/O. Questo problema è stato risolto in ONTAP 9.5P17, 9.6P14 , 9.7P13 e 9.8P2 | Non applicabile 
 
 
-| 1345622 | Report di percorsi anomali su host Solaris con ASA/PPorts utilizzando i comandi nativi del sistema operativo | I problemi di segnalazione di percorsi intermittenti si verificano su Solaris 11,4 con All SAN Array (ASA). | Non applicabile 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1345622["1345622"^] | Report di percorsi anomali su host Solaris con ASA/PPorts utilizzando i comandi nativi del sistema operativo | I problemi di segnalazione di percorsi intermittenti si verificano su Solaris 11,4 con All SAN Array (ASA). | Non applicabile 
 |===
