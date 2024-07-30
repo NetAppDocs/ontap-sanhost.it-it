@@ -15,6 +15,9 @@ summary: Descrive come configurare NVMe/FC per Oracle Linux 7.7 con ONTAP
 :imagesdir: ./media/
 
 
+[role="lead"]
+È possibile configurare NVMe over Fibre Channel (NVMe/FC) su host Initiator che eseguono Oracle Linux 7,7 e ONTAP come destinazione.
+
 
 
 == Supportabilità

@@ -293,6 +293,3 @@ devices {
 == Problemi noti
 
 Non ci sono problemi noti per la configurazione dell'host FC per RHEL 9,4 con ONTAP release.
-
-|===
-|===

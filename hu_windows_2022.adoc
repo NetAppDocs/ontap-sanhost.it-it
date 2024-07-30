@@ -94,7 +94,7 @@ NOTE: I percorsi non ottimizzati vengono utilizzati solo quando non sono disponi
 .Esempio
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati.
 
-image::nonasa.png[nonasa]
+image::nonasa.png[Schermata di una LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati]
 
 
 
@@ -102,7 +102,7 @@ image::nonasa.png[nonasa]
 
 Per la configurazione di tutti gli array SAN (ASA), deve essere presente un gruppo di percorsi con priorità singole. Tutti i percorsi sono attivi/ottimizzati, ovvero vengono serviti dal controller e l'i/o viene inviato su tutti i percorsi attivi.
 
-image::asa.png[ASA]
+image::asa.png[Schermata di ONTAP LUN con percorsi attivi/ottimizzati]
 
 
 NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.

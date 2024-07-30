@@ -13,7 +13,6 @@ summary: Come configurare host NVMe-of per Ubuntu 22,04 con ONTAP
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:source-highlighter: highlighter.js
 
 
 [role="lead"]
