@@ -1,5 +1,5 @@
 ---
-permalink: legal-notices.html 
+permalink: legal_notices.html 
 sidebar: sidebar 
 keywords: legal, notices, copyright, trademarks, patents 
 summary: 'Le note legali forniscono l"accesso a dichiarazioni di copyright, marchi, brevetti e altro ancora.' 
