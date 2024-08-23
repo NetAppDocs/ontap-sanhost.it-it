@@ -256,7 +256,7 @@ devices {
 }
 ----
 
-NOTE: Per configurare Oracle Linux 8.1 RedHat Enterprise kernel (RHCK), utilizzare link:hu_rhel_81.html#recommended-settings["impostazioni consigliate"] Per Red Hat Enterprise Linux (RHEL) 8.1.
+NOTE: Per configurare Oracle Linux 8,1 Red Hat Enterprise kernel (RHCK), utilizzare il link:hu_rhel_81.html#recommended-settings["impostazioni consigliate"] per Red Hat Enterprise Linux (RHEL) 8,1.
 
 
 

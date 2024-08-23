@@ -283,7 +283,7 @@ devices {
 }
 ----
 
-NOTE: Per configurare Oracle Linux 8,8 RedHat Enterprise kernel, utilizzare link:hu_rhel_88.html#recommended-settings["impostazioni consigliate"] Per Red Hat Enterprise Linux (RHEL) 8,8.
+NOTE: Per configurare Oracle Linux 8,8 Red Hat Enterprise kernel, utilizzare link:hu_rhel_88.html#recommended-settings["impostazioni consigliate"]per Red Hat Enterprise Linux (RHEL) 8,8.
 
 
 
