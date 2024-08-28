@@ -274,7 +274,7 @@ devices {
 }
 ----
 
-NOTE: Per configurare Oracle Linux 8,9 RedHat Enterprise kernel, utilizzare il link:hu_rhel_88.html#recommended-settings["impostazioni consigliate"] per Red Hat Enterprise Linux (RHEL) 8,9.
+NOTE: Per configurare Oracle Linux 8,9 RedHat Enterprise kernel, utilizzare il link:hu_rhel_89.html#recommended-settings["impostazioni consigliate"] per Red Hat Enterprise Linux (RHEL) 8,9.
 
 
 
