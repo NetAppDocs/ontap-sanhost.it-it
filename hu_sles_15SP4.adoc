@@ -120,7 +120,7 @@ NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non de
 
 === Configurazioni non ASA
 
-Per le configurazioni non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero vengono serviti dal controller in cui si trova l'aggregato. I percorsi con priorità inferiori sono attivi ma non ottimizzati perché vengono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando non sono disponibili percorsi ottimizzati.
+Per le configurazioni non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero vengono serviti dal controller in cui si trova l'aggregato. I percorsi con priorità inferiori sono attivi ma non ottimizzati perché vengono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
 
 .Esempio
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:
@@ -151,7 +151,7 @@ Il `multipath.conf` il file deve esistere per avviare il daemon multipath, ma è
 
 La prima volta che si crea questo file, potrebbe essere necessario attivare e avviare i servizi multipath.
 
-Non è necessario aggiungere nulla direttamente a `multipath.conf` file, a meno che non si disponga di periferiche che non si desidera gestire con multipath o che non si dispongano di impostazioni che sovrascrivono le impostazioni predefinite.
+Non è necessario aggiungere nulla direttamente al `multipath.conf` file, a meno che non si disponga di dispositivi che non si desidera gestire multipath o di impostazioni esistenti che sovrascrivono le impostazioni predefinite.
 
 È possibile aggiungere la seguente sintassi a `multipath.conf` file per escludere i dispositivi indesiderati.
 
@@ -182,7 +182,7 @@ devnode "^cciss.*"
 
 Controllare sempre il `/etc/multipath.conf` file per le impostazioni legacy, in particolare nella sezione delle impostazioni predefinite, che potrebbero prevalere sulle impostazioni predefinite.
 
-La tabella seguente mostra i parametri multipath critici per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri vendor e uno qualsiasi di questi parametri viene ignorato, sarà necessario correggerli nelle successive fasi di `multipath.conf` Che si applicano specificamente alle LUN ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. Questi valori predefiniti devono essere ignorati solo in consultazione con NetApp e/o il vendor del sistema operativo e solo quando l'impatto è pienamente compreso.
+La tabella seguente mostra i parametri multipath critici per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri fornitori e uno qualsiasi di questi parametri viene sovrascritto, sarà necessario correggerli in seguito nelle versioni `multipath.conf` che si applicano specificamente ai LUN di ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. È necessario ignorare queste impostazioni predefinite solo in consultazione con NetApp, il fornitore del sistema operativo o entrambi, e solo quando l'impatto è pienamente compreso.
 
 [cols="2"]
 |===

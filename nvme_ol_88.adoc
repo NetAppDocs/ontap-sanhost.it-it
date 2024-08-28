@@ -264,18 +264,18 @@ QLE2742 FW:v9.12.00 DVR:v10.02.08.100-k
 
 === Abilita dimensione i/o 1 MB (opzionale)
 
-ONTAP riporta un MDTS (MAX Data Transfer Size) di 8 nei dati del controller di identificazione, il che significa che la dimensione massima della richiesta di i/o può essere fino a 1 MB. Tuttavia, per emettere richieste di i/o di dimensione 1 MB per un host Broadcom NVMe/FC, è necessario aumentare `lpfc` valore di `lpfc_sg_seg_cnt` parametro a 256 dal valore predefinito di 64.
+ONTAP riporta un MDTS (MAX Data Transfer Size) di 8 nei dati del controller di identificazione. Ciò significa che le dimensioni massime delle richieste i/o possono essere fino a 1MB MB. Per emettere richieste di i/o di dimensioni pari a 1 MB per un host Broadcom NVMe/FC, è necessario aumentare il `lpfc` valore del `lpfc_sg_seg_cnt` parametro a 256 dal valore predefinito di 64.
 
 .Fasi
-. Impostare `lpfc_sg_seg_cnt` parametro a 256.
+. Impostare il `lpfc_sg_seg_cnt` parametro su 256:
 +
 [listing]
 ----
 # cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
-. Eseguire un `dracut -f` e riavviare l'host.
-. Verificare che `lpfc_sg_seg_cnt` è 256.
+. Eseguire un `dracut -f` comando e riavviare l'host:
+. Verificare che `lpfc_sg_seg_cnt` sia 256:
 +
 [listing]
 ----
@@ -584,5 +584,5 @@ La configurazione host NVMe-of per OL 8,8 con release ONTAP presenta i seguenti 
 | ID bug NetApp | Titolo | Descrizione | ID Bugzilla 
 
 
-| 1517321 | Gli host Oracle Linux 8,8 NVMe-of creano PDC duplicati | Sugli host OL 8,8, la tecnologia NVMe-of, i controller di rilevamento persistente (PDC) vengono creati passando l' `-p` al `nvme discover` comando. Per una determinata combinazione iniziatore-destinazione, si prevede di creare un solo PDC con ogni chiamata di `nvme discover` comando. Tuttavia, a partire da OL 8.x, gli host NVMe-of finiscono per creare PDC duplicati con ogni chiamata di `nvme discover` con il `-p` opzione. In questo modo si sprecano risorse sia sull'host che sulla destinazione. | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118"^] 
+| 1517321 | Gli host Oracle Linux 8,8 NVMe-of creano PDC duplicati | Negli host OL 8,8 NVMe-of, i controller di rilevamento persistente (PDC) vengono creati passando `-p` l'opzione al `nvme discover` comando. Per una determinata combinazione iniziatore-target, ogni esecuzione del `nvme discover` comando dovrebbe creare un PDC. Tuttavia, a partire da OL 8.x, gli host NVMe-of creano PDC duplicati. In questo modo si sprecano risorse sia sull'host che sulla destinazione. | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118"^] 
 |===

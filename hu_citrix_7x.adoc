@@ -51,7 +51,7 @@ A causa delle incompatibilità con l'architettura Integrated multipath Managemen
 
 === Configurazioni non ASA
 
-Per le configurazioni non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero vengono serviti dal controller in cui si trova l'aggregato. I percorsi con priorità inferiori sono attivi ma non ottimizzati perché vengono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando non sono disponibili percorsi ottimizzati.
+Per le configurazioni non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero vengono serviti dal controller in cui si trova l'aggregato. I percorsi con priorità inferiori sono attivi ma non ottimizzati perché vengono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
 
 .Esempio
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:
@@ -122,7 +122,7 @@ Main PID:  3789 (multipathd)
   CGroup:  /control.slice/multipathd.service
             3789  /sbin/multipathd
 ----
-Non è necessario aggiungere contenuti a `/etc/multipath.conf` file, a meno che non si disponga di periferiche che non si desidera gestire con multipath o che non si dispongano di impostazioni che sovrascrivono le impostazioni predefinite. È possibile aggiungere la seguente sintassi a `multipath.conf` file per escludere i dispositivi indesiderati.
+Non è necessario aggiungere contenuto al `/etc/multipath.conf` file, a meno che non si disponga di dispositivi che non si desidera gestire multipath o di impostazioni esistenti che sovrascrivono le impostazioni predefinite. È possibile aggiungere al `multipath.conf` file la seguente sintassi per escludere le periferiche indesiderate.
 
 [listing]
 ----
