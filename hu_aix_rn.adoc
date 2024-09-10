@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_aix_61_rn.html 
-keywords: host utilities, aix, 6.1 netapp, ontap, powervm 
+permalink: hu_aix_rn.html 
+keywords: host utilities, aix, 6.1 netapp, 7.0, ontap, powervm 
 summary: Note di release per le utility host AIX 6.1 
 ---
-= AIX host Utilities 6.1 - Note sulla versione
+= Note sulla versione delle utilità host di AIX
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -24,22 +24,12 @@ Per informazioni specifiche sulle versioni e sugli aggiornamenti del sistema ope
 
 == Novità
 
-La versione AIX host Utilities 6,1 contiene le seguenti nuove funzioni e miglioramenti:
+Le versioni recenti delle utilità host AIX contengono le seguenti nuove funzioni e miglioramenti:
 
+* AIX host Utilities 7,0 supporta SCSI UNMAP sul sistema operativo host AIX. Con AIX host Utilities 7,0, il thin provisioning SCSI funziona perfettamente con i LUN AIX e NetApp per dispositivi FC.
 * AIX host Utilities 6,1 ha aggiunto il supporto per il problema di errore della memoria che si è verificato nelle versioni precedenti del sistema operativo host AIX. Con AIX host Utilities 6.1, è stato modificato solo il binario sanlun. Il MPIO e il relativo ODM rimangono invariati.
 
 
-
-
-== Risolto in questa versione
-
-[cols="3"]
-|===
-| ID Bug | Titolo | Descrizione 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/872113["872113"^] | `sanlun lun show –p` Il comando potrebbe causare un errore di memoria su alcune versioni del sistema operativo host AIX | Vengono segnalate istanze intermittenti di AIX coredump durante l'esecuzione di `sanlun lun show -p` comando. Di Sanlun `lun show -p` Fornisce le informazioni di multipathing per tutti i LUN rilevati su un host. Dispone queste informazioni per indicare quale dispositivo SCSI proviene da quale LUN, lo stato del percorso (primario o secondario) e altri dettagli. Tuttavia, su alcuni host AIX che eseguono `sanlun lun show -p` il comando potrebbe causare un errore di memoria. Questo problema si verifica solo quando si esegue il comando sanlun con `-p` opzione. 
-|===
 
 
 == Problemi e limitazioni noti
@@ -49,6 +39,9 @@ La versione AIX host Utilities 6,1 contiene le seguenti nuove funzioni e miglior
 [cols="3"]
 |===
 | ID bug | Titolo | Descrizione 
+
+
+| N/A. | Supporto SCSI UNMAP per LUN iSCSI NetApp ONTAP | AIX host Utilities 7,0 supporta solo la funzione SCSI UNMAP per i dispositivi FC. Il supporto SCSI UNMAP per dispositivi iSCSI non è incluso in questa versione. 
 
 
 | link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1069147["1069147"^] | AIX HU Sanlun segnala una velocità HBA errata | Durante l'esecuzione di, vengono segnalate istanze di sanlun che visualizzano velocità HBA errate `sanlun fcp show adapter –v` comando. Il `sanlun fcp show adapter –v` Il comando visualizza le informazioni relative alle schede HBA, ad esempio le velocità supportate e negoziate per gli adattatori. Questo sembra essere solo un problema di segnalazione. Per identificare la velocità effettiva, utilizzare `fcstat fcsx` comando. 
