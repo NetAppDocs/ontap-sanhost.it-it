@@ -168,7 +168,7 @@ blacklist {
 }
 ----
 .Esempio
-In questo esempio, determineremo il WWID di un dispositivo e aggiungeremo al `multipath.conf` file.
+Nell'esempio seguente `multipath.conf` viene determinato il WWID di una periferica e aggiunto al file.
 
 .Fasi
 . Eseguire il seguente comando per determinare l'ID WWID:
@@ -196,7 +196,7 @@ blacklist {
 
 Controllare sempre il `/etc/multipath.conf` file per le impostazioni legacy, in particolare nella sezione delle impostazioni predefinite, che potrebbero prevalere sulle impostazioni predefinite.
 
-Nella tabella seguente vengono illustrati i `multipathd` parametri critici per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri fornitori e uno di questi parametri viene sovrascritto, sarà necessario correggerli in seguito nel `multipath.conf` file che si applica specificamente ai LUN di ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. È necessario ignorare queste impostazioni predefinite solo in consultazione con NetApp, il fornitore del sistema operativo o entrambi, e solo quando l'impatto è pienamente compreso.
+Nella tabella seguente vengono illustrati i `multipathd` parametri critici per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri fornitori e uno di questi parametri viene sovrascritto, è necessario correggerli in seguito nel `multipath.conf` file che si applica specificamente ai LUN di ONTAP. Senza questa correzione, i LUN ONTAP potrebbero non funzionare come previsto. È necessario ignorare queste impostazioni predefinite solo in consultazione con NetApp, il fornitore del sistema operativo o entrambi, e solo quando l'impatto è pienamente compreso.
 
 [cols="2*"]
 |===
@@ -280,10 +280,10 @@ devices {
 
 La versione SLES 12 SP5 con ONTAP presenta i seguenti problemi noti:
 
-[cols="4*"]
+[cols="3*"]
 |===
-| ID bug NetApp | Titolo | Descrizione | ID Bugzilla 
+| ID bug NetApp | Titolo | Descrizione 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1284293["1284293"^] | L'interruzione del kernel si verifica su SLES12 SP5 con QLogic QLE2562 8GB FC HBA durante le operazioni di failover dello storage | Durante le operazioni di failover dello storage sul kernel SLES12 SP5 si verifica un'interruzione del kernel con un HBA (host bus adapter) QLogic QLE2562 Fibre Channel (FC). L'interruzione del kernel causa il riavvio di SLES12 SP5, con conseguente interruzione dell'applicazione. Se il meccanismo kdump è attivato, l'interruzione del kernel genera un file vmcore che si trova nella directory /var/crash/. Controllare il file vmcore per determinare la causa dell'interruzione. Un failover dello storage con un evento QLogic QLE2562 HBA influisce sul modulo "THREAD_INFO: Ffffff8aedf723c2c0". Individuare questo evento nel file vmcore cercando la seguente stringa: " [THREAD_INFO: Ffff8aedf723c2c0]". Dopo l'interruzione del kernel, riavviare il sistema operativo host per consentirne il ripristino. Quindi riavviare le applicazioni. | link:http://bugzilla.suse.com/show_bug.cgi?id=1157966["1157966"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1284293["1284293"^] | L'interruzione del kernel si verifica su SLES12 SP5 con QLogic QLE2562 8GB FC HBA durante le operazioni di failover dello storage | Durante le operazioni di failover dello storage sul kernel SLES12 SP5 si verifica un'interruzione del kernel con un HBA (host bus adapter) QLogic QLE2562 Fibre Channel (FC). L'interruzione del kernel causa il riavvio di SLES12 SP5, con conseguente interruzione dell'applicazione. Se il meccanismo kdump è attivato, l'interruzione del kernel genera un file vmcore che si trova nella directory /var/crash/. Controllare il file vmcore per determinare la causa dell'interruzione. Un failover dello storage con un evento QLogic QLE2562 HBA influisce sul modulo "THREAD_INFO: Ffffff8aedf723c2c0". Individuare questo evento nel file vmcore cercando la seguente stringa: " [THREAD_INFO: Ffff8aedf723c2c0]". Dopo l'interruzione del kernel, riavviare il sistema operativo host per consentirne il ripristino. Quindi riavviare le applicazioni. 
 |===

@@ -451,10 +451,10 @@ NSID UUID                                   Size
 
 La configurazione dell'host NVMe-of per RHEL 9.1 con ONTAP presenta i seguenti problemi noti:
 
-[cols="10,30,30,10"]
+[cols="20,40,40"]
 |===
-| ID bug NetApp | Titolo | Descrizione | ID Bugzilla 
+| ID bug NetApp | Titolo | Descrizione 
 
 
-| 1503468 | `nvme list-subsys` il comando restituisce un elenco di controller nvme ripetuto per un determinato sottosistema | Il `nvme list-subsys` il comando dovrebbe restituire un elenco univoco di controller nvme associati a un determinato sottosistema. In RHEL 9.1, il `nvme list-subsys` Il comando restituisce i controller nvme con il rispettivo stato ANA per tutti gli spazi dei nomi che appartengono a un determinato sottosistema. Tuttavia, lo stato ANA è un attributo per namespace, pertanto, sarebbe ideale visualizzare voci univoche del controller nvme con lo stato del percorso se si elenca la sintassi del comando del sottosistema per un dato namespace. | 2130106 
+| 1503468 | `nvme list-subsys` il comando restituisce un elenco di controller nvme ripetuto per un determinato sottosistema | Il `nvme list-subsys` il comando dovrebbe restituire un elenco univoco di controller nvme associati a un determinato sottosistema. In RHEL 9.1, il `nvme list-subsys` Il comando restituisce i controller nvme con il rispettivo stato ANA per tutti gli spazi dei nomi che appartengono a un determinato sottosistema. Tuttavia, lo stato ANA è un attributo per namespace, pertanto, sarebbe ideale visualizzare voci univoche del controller nvme con lo stato del percorso se si elenca la sintassi del comando del sottosistema per un dato namespace. 
 |===

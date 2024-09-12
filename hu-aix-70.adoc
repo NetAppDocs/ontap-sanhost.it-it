@@ -43,7 +43,7 @@ Per ulteriori informazioni su PowerVM, consultare il Red Book IBM PowerVM Live P
 
 
 
-NOTE: Il pacchetto software utilità host NetApp AIX è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["Sito di supporto NetApp"^]in un file compresso tar.gz. È necessario installare il kit di utilità host AIX mentre si utilizza MPIO AIX con l'archiviazione NetApp ONTAP.
+NOTE: Il pacchetto software utilità host NetApp AIX è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.0["Sito di supporto NetApp"^]in un file compresso tar.gz. È necessario installare il kit di utilità host AIX mentre si utilizza MPIO AIX con l'archiviazione NetApp ONTAP.
 
 .Fasi
 . Accedere al proprio host.
@@ -52,7 +52,7 @@ NOTE: Il pacchetto software utilità host NetApp AIX è disponibile su link:http
 ** Su un host PowerVM, accedere come *padmin*, quindi immettere il `oem_setup_env` comando per diventare un utente root.
 
 
-. Accedere a https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["Sito di supporto NetApp"^] e scaricare il file compresso contenente le utilità host in una directory dell'host.
+. Accedere a https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.0["Sito di supporto NetApp"^] e scaricare il file compresso contenente le utilità host in una directory dell'host.
 . Accedere alla directory contenente il download.
 . Decomprimere il file ed estrarre il pacchetto software SAN toolkit:
 +

@@ -182,7 +182,7 @@ blacklist {
 }
 ----
 .Esempio
-In questo esempio, determineremo il WWID di un dispositivo e aggiungeremo al `multipath.conf` file.
+Nell'esempio seguente `multipath.conf` viene determinato il WWID di una periferica e aggiunto al file.
 
 .Fasi
 . Eseguire il seguente comando per determinare l'ID WWID:
@@ -210,7 +210,7 @@ blacklist {
 
 Controllare sempre il `/etc/multipath.conf` file per le impostazioni legacy, in particolare nella sezione delle impostazioni predefinite, che potrebbero prevalere sulle impostazioni predefinite.
 
-Nella tabella seguente vengono illustrati i `multipathd` parametri critici per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri fornitori e uno di questi parametri viene sovrascritto, sarà necessario correggerli in seguito nel `multipath.conf` file che si applica specificamente ai LUN di ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. È necessario ignorare queste impostazioni predefinite solo in consultazione con NetApp, il fornitore del sistema operativo o entrambi, e solo quando l'impatto è pienamente compreso.
+Nella tabella seguente vengono illustrati i `multipathd` parametri critici per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri fornitori e uno di questi parametri viene sovrascritto, è necessario correggerli in seguito nel `multipath.conf` file che si applica specificamente ai LUN di ONTAP. Senza questa correzione, i LUN ONTAP potrebbero non funzionare come previsto. È necessario ignorare queste impostazioni predefinite solo in consultazione con NetApp, il fornitore del sistema operativo o entrambi, e solo quando l'impatto è pienamente compreso.
 
 [cols="2*"]
 |===
@@ -301,22 +301,22 @@ devices {
 
 La versione RHEL 6,5 con ONTAP presenta i seguenti problemi noti:
 
-[cols="4*"]
+[cols="3*"]
 |===
-| ID bug NetApp | Titolo | Descrizione | ID Bugzilla 
+| ID bug NetApp | Titolo | Descrizione 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=760515["760515"^] | Durante le operazioni di failover dello storage sono stati osservati guasti al percorso o blocchi dell'host in RHEL 6.5 8G Qlogic FC SAN host | Durante le operazioni di failover dello storage sono stati osservati guasti al percorso o blocchi dell'host in RHEL 6.5 8G Qlogic FC SAN host. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1033136["1033136"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=760515["760515"^] | Durante le operazioni di failover dello storage sono stati osservati guasti al percorso o blocchi dell'host in RHEL 6.5 8G Qlogic FC SAN host | Durante le operazioni di failover dello storage sono stati osservati guasti al percorso o blocchi dell'host in RHEL 6.5 8G Qlogic FC SAN host. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=758271["758271"^] | il firmware bnx2 non viene caricato durante l'avvio con initrd personalizzato (dracut -f) | Le porte del controller Gigabit Broadcom NetXtreme II non eseguono il ping a causa del mancato caricamento del firmware bnx2 durante l'avvio con initrd personalizzato. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1007463["1007463"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=758271["758271"^] | il firmware bnx2 non viene caricato durante l'avvio con initrd personalizzato (dracut -f) | Le porte del controller Gigabit Broadcom NetXtreme II non eseguono il ping a causa del mancato caricamento del firmware bnx2 durante l'avvio con initrd personalizzato. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=799394["799394"^] | RHEL 6U5: Durante l'i/o con operazioni di failover dello storage si verifica un crash dell'host Emulex 16G FC (LPe16002B-M6) | IL crash dell'host 16G FC Emulex (LPe16002B-M6) si verifica durante le operazioni di i/o con failover dello storage. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1063699["1063699"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=799394["799394"^] | RHEL 6U5: Durante l'i/o con operazioni di failover dello storage si verifica un crash dell'host Emulex 16G FC (LPe16002B-M6) | IL crash dell'host 16G FC Emulex (LPe16002B-M6) si verifica durante le operazioni di i/o con failover dello storage. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=786571["786571"^] | Blocco host QLogic FCoE/errori di percorso osservati in RHEL 6.5 durante le operazioni di i/o con failover dello storage | Durante le operazioni di i/o con failover dello storage, in RHEL 6.5 vengono osservati blocchi/errori di percorso dell'host QLogic FCoE (QLE8242). In tali scenari, potrebbe essere visualizzato il seguente messaggio: "Timeout cmd della mailbox, cmd=0x54, mb[0]=0x54. Scheduling ISP abort" (interruzione ISP scheduling) che porta a host hung/path failures (errori di blocco/percorso | link:https://bugzilla.redhat.com/show_bug.cgi?id=1068619["1068619"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=786571["786571"^] | Blocco host QLogic FCoE/errori di percorso osservati in RHEL 6.5 durante le operazioni di i/o con failover dello storage | Durante le operazioni di i/o con failover dello storage, in RHEL 6.5 vengono osservati blocchi/errori di percorso dell'host QLogic FCoE (QLE8242). In tali scenari, potrebbe essere visualizzato il seguente messaggio: "Timeout cmd della mailbox, cmd=0x54, mb[0]=0x54. Scheduling ISP abort" (interruzione ISP scheduling) che porta a host hung/path failures (errori di blocco/percorso 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=801580["801580"^] | Blocchi dell'host FC 16G QLogic o guasti del percorso osservati in RHEL 6.5 durante le operazioni di i/o con failover dello storage | I ritardi di i/o superiori a 600 secondi vengono osservati con l'host FC QLogic 16G (QLE2672) durante le operazioni di failover dello storage. In tali scenari, viene visualizzato il seguente messaggio: "Failed mbx[0]=54, mb[1]=0, mb[2]=76b9, mb[3]=5200, cmd=54" | link:https://bugzilla.redhat.com/show_bug.cgi?id=1068622["1068622"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=801580["801580"^] | Blocchi dell'host FC 16G QLogic o guasti del percorso osservati in RHEL 6.5 durante le operazioni di i/o con failover dello storage | I ritardi di i/o superiori a 600 secondi vengono osservati con l'host FC QLogic 16G (QLE2672) durante le operazioni di failover dello storage. In tali scenari, viene visualizzato il seguente messaggio: "Failed mbx[0]=54, mb[1]=0, mb[2]=76b9, mb[3]=5200, cmd=54" 
 |===

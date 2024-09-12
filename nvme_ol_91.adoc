@@ -554,11 +554,11 @@ La configurazione dell'host NVMe-of per OL 9.1 con ONTAP presenta i seguenti pro
 
 [cols=""20"]
 |===
-| ID bug NetApp | Titolo | Descrizione | ID Bugzilla 
+| ID bug NetApp | Titolo | Descrizione 
 
 
-| 1536937 | `nvme list-subsys` Il comando stampa i controller NVMe ripetuti per un sottosistema | Il `nvme list-subsys` Il comando dovrebbe restituire un elenco univoco di controller NVMe associati a un determinato sottosistema. In Oracle Linux 9.1 `nvme list-subsys` Il comando restituisce i controller NVMe con il rispettivo stato ANA (Asymmetric namespace access) per tutti gli spazi dei nomi che appartengono a un determinato sottosistema. Tuttavia, sarebbe utile visualizzare le voci univoche del controller NVMe con lo stato del percorso se si elenca la sintassi del comando del sottosistema per un dato namespace perché lo stato ANA è un attributo per-namespace. | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=17998["17998"^] 
+| 1536937 | `nvme list-subsys` Il comando stampa i controller NVMe ripetuti per un sottosistema | Il `nvme list-subsys` Il comando dovrebbe restituire un elenco univoco di controller NVMe associati a un determinato sottosistema. In Oracle Linux 9.1 `nvme list-subsys` Il comando restituisce i controller NVMe con il rispettivo stato ANA (Asymmetric namespace access) per tutti gli spazi dei nomi che appartengono a un determinato sottosistema. Tuttavia, sarebbe utile visualizzare le voci univoche del controller NVMe con lo stato del percorso se si elenca la sintassi del comando del sottosistema per un dato namespace perché lo stato ANA è un attributo per-namespace. 
 
 
-| 1539101 | Gli host Oracle Linux 9.1 NVMe-of non riescono a creare un controller di rilevamento persistente | Su host Oracle Linux 9.1 NVMe-of, è possibile utilizzare `nvme discover -p` Per creare controller di rilevamento persistenti (PDC). Quando si utilizza questo comando, è necessario creare un PDC per ogni combinazione initiator-target. Tuttavia, se si esegue Oracle Linux 9.1 su un host NVMe-of, la creazione del PDC non riesce quando `nvme discover -p` il comando viene eseguito. | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18196["18196"^] 
+| 1539101 | Gli host Oracle Linux 9.1 NVMe-of non riescono a creare un controller di rilevamento persistente | Su host Oracle Linux 9.1 NVMe-of, è possibile utilizzare `nvme discover -p` Per creare controller di rilevamento persistenti (PDC). Quando si utilizza questo comando, è necessario creare un PDC per ogni combinazione initiator-target. Tuttavia, se si esegue Oracle Linux 9.1 su un host NVMe-of, la creazione del PDC non riesce quando `nvme discover -p` il comando viene eseguito. 
 |===

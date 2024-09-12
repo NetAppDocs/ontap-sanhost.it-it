@@ -170,7 +170,7 @@ blacklist {
 }
 ----
 .Esempio
-In questo esempio, determineremo il WWID di un dispositivo e aggiungeremo al `multipath.conf` file.
+Nell'esempio seguente `multipath.conf` viene determinato il WWID di una periferica e aggiunto al file.
 
 .Fasi
 . Eseguire il seguente comando per determinare l'ID WWID:
@@ -198,7 +198,7 @@ blacklist {
 
 Controllare sempre il `/etc/multipath.conf` file per le impostazioni legacy, in particolare nella sezione delle impostazioni predefinite, che potrebbero prevalere sulle impostazioni predefinite.
 
-Nella tabella seguente vengono illustrati i `multipathd` parametri critici per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri fornitori e uno di questi parametri viene sovrascritto, sarà necessario correggerli in seguito nel `multipath.conf` file che si applica specificamente ai LUN di ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. È necessario ignorare queste impostazioni predefinite solo in consultazione con NetApp, il fornitore del sistema operativo o entrambi, e solo quando l'impatto è pienamente compreso.
+Nella tabella seguente vengono illustrati i `multipathd` parametri critici per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri fornitori e uno di questi parametri viene sovrascritto, è necessario correggerli in seguito nel `multipath.conf` file che si applica specificamente ai LUN di ONTAP. Senza questa correzione, i LUN ONTAP potrebbero non funzionare come previsto. È necessario ignorare queste impostazioni predefinite solo in consultazione con NetApp, il fornitore del sistema operativo o entrambi, e solo quando l'impatto è pienamente compreso.
 
 [cols="2*"]
 |===
@@ -289,16 +289,16 @@ devices {
 
 La versione RHEL 8,1 con ONTAP presenta i seguenti problemi noti:
 
-[cols="4*"]
+[cols="3*"]
 |===
-| ID bug NetApp | Titolo | Descrizione | ID Bugzilla 
+| ID bug NetApp | Titolo | Descrizione 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1275843["1275843"^] | Durante il failover dello storage, Red Hat Enterprise Linux 8.1 con QLogic QLE2672 16GB FC HBA potrebbe causare un'interruzione del kernel | Durante le operazioni di failover dello storage sul kernel Red Hat Enterprise Linux 8.1 con un HBA (host bus adapter) QLogic QLE2672 Fibre Channel (FC) potrebbe verificarsi un'interruzione del kernel. L'interruzione del kernel causa il riavvio di Red Hat Enterprise Linux 8.1, con conseguente interruzione delle applicazioni. Se il meccanismo kdump è attivato, l'interruzione del kernel genera un file vmcore che si trova nella directory/var/crash/. È possibile controllare il file vmcore per determinare la causa dell'interruzione.Un failover dello storage con l'evento QLogic QLE2672 HBA influisce sul modulo "kmem_cache_alloc+131". È possibile individuare l'evento nel file vmcore individuando la seguente stringa: " [Exception RIP: Kmem_cache_alloc+131]"dopo l'interruzione del kernel, riavviare il sistema operativo host e ripristinare il sistema operativo. Quindi riavviare le applicazioni | link:https://bugzilla.redhat.com/show_bug.cgi?id=1760819["1760819"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1275843["1275843"^] | Durante il failover dello storage, Red Hat Enterprise Linux 8.1 con QLogic QLE2672 16GB FC HBA potrebbe causare un'interruzione del kernel | Durante le operazioni di failover dello storage sul kernel Red Hat Enterprise Linux 8.1 con un HBA (host bus adapter) QLogic QLE2672 Fibre Channel (FC) potrebbe verificarsi un'interruzione del kernel. L'interruzione del kernel causa il riavvio di Red Hat Enterprise Linux 8.1, con conseguente interruzione delle applicazioni. Se il meccanismo kdump è attivato, l'interruzione del kernel genera un file vmcore che si trova nella directory/var/crash/. È possibile controllare il file vmcore per determinare la causa dell'interruzione.Un failover dello storage con l'evento QLogic QLE2672 HBA influisce sul modulo "kmem_cache_alloc+131". È possibile individuare l'evento nel file vmcore individuando la seguente stringa: " [Exception RIP: Kmem_cache_alloc+131]"dopo l'interruzione del kernel, riavviare il sistema operativo host e ripristinare il sistema operativo. Quindi riavviare le applicazioni 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1275838["1275838"^] | L'interruzione del kernel si verifica su Red Hat Enterprise Linux 8.1 con QLogic QLE2742 32 GB FC HBA durante le operazioni di failover dello storage | L'interruzione del kernel si verifica durante le operazioni di failover dello storage sul kernel Red Hat Enterprise Linux 8.1 con un HBA (host bus adapter) QLogic QLE2742 Fibre Channel (FC). L'interruzione del kernel causa il riavvio di Red Hat Enterprise Linux 8.1, con conseguente interruzione delle applicazioni. Se il meccanismo kdump è attivato, l'interruzione del kernel genera un file vmcore che si trova nella directory/var/crash/. È possibile controllare il file vmcore per determinare la causa dell'interruzione. Un failover dello storage con l'evento QLogic QLE2742 HBA influisce sul modulo "kmem_cache_alloc+131". È possibile individuare l'evento nel file vmcore individuando la seguente stringa: " [Exception RIP: Kmem_cache_alloc+131]"dopo l'interruzione del kernel, riavviare il sistema operativo host e ripristinare il sistema operativo. Quindi riavviare le applicazioni. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1744082["1744082"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1275838["1275838"^] | L'interruzione del kernel si verifica su Red Hat Enterprise Linux 8.1 con QLogic QLE2742 32 GB FC HBA durante le operazioni di failover dello storage | L'interruzione del kernel si verifica durante le operazioni di failover dello storage sul kernel Red Hat Enterprise Linux 8.1 con un HBA (host bus adapter) QLogic QLE2742 Fibre Channel (FC). L'interruzione del kernel causa il riavvio di Red Hat Enterprise Linux 8.1, con conseguente interruzione delle applicazioni. Se il meccanismo kdump è attivato, l'interruzione del kernel genera un file vmcore che si trova nella directory/var/crash/. È possibile controllare il file vmcore per determinare la causa dell'interruzione. Un failover dello storage con l'evento QLogic QLE2742 HBA influisce sul modulo "kmem_cache_alloc+131". È possibile individuare l'evento nel file vmcore individuando la seguente stringa: " [Exception RIP: Kmem_cache_alloc+131]"dopo l'interruzione del kernel, riavviare il sistema operativo host e ripristinare il sistema operativo. Quindi riavviare le applicazioni. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1266250["1266250"^] | L'accesso a più percorsi non riesce durante l'installazione di Red Hat Enterprise Linux 8.1 su LUN SAN iSCSI | Non è possibile accedere a più percorsi durante l'installazione di Red Hat Enterprise Linux 8.1 su dispositivi multipath iSCSI SAN LUN. L'installazione non è possibile su un dispositivo iSCSI multipath e il servizio multipath non è abilitato sul dispositivo di boot SAN. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1758504["1758504"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1266250["1266250"^] | L'accesso a più percorsi non riesce durante l'installazione di Red Hat Enterprise Linux 8.1 su LUN SAN iSCSI | Non è possibile accedere a più percorsi durante l'installazione di Red Hat Enterprise Linux 8.1 su dispositivi multipath iSCSI SAN LUN. L'installazione non è possibile su un dispositivo iSCSI multipath e il servizio multipath non è abilitato sul dispositivo di boot SAN. 
 |===

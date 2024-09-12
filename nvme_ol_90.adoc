@@ -489,8 +489,8 @@ La configurazione host NVMe-of per Oracle Linux 9.0 con ONTAP presenta i seguent
 
 [cols=""20"]
 |===
-| ID bug NetApp | Titolo | Descrizione | ID Bugzilla 
+| ID bug NetApp | Titolo | Descrizione 
 
 
-| 1517321 | Gli host Oracle Linux 9.0 NVMe-of creano controller di rilevamento persistenti duplicati | Negli host Oracle Linux 9.0 NVMe over Fabrics (NVMe-of), è possibile utilizzare `nvme discover -p` Per creare controller di rilevamento persistenti (PDC). Quando si utilizza questo comando, è necessario creare un solo PDC per ogni combinazione initiator-target. Tuttavia, se si esegue ONTAP 9.10.1 e Oracle Linux 9.0 con un host NVMe-of, viene creato ogni volta un PDC duplicato `nvme discover -p` viene eseguito. Ciò comporta un utilizzo non necessario delle risorse sia sull'host che sulla destinazione. | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118"^] 
+| 1517321 | Gli host Oracle Linux 9.0 NVMe-of creano controller di rilevamento persistenti duplicati | Negli host Oracle Linux 9.0 NVMe over Fabrics (NVMe-of), è possibile utilizzare `nvme discover -p` Per creare controller di rilevamento persistenti (PDC). Quando si utilizza questo comando, è necessario creare un solo PDC per ogni combinazione initiator-target. Tuttavia, se si esegue ONTAP 9.10.1 e Oracle Linux 9.0 con un host NVMe-of, viene creato ogni volta un PDC duplicato `nvme discover -p` viene eseguito. Ciò comporta un utilizzo non necessario delle risorse sia sull'host che sulla destinazione. 
 |===

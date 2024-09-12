@@ -147,7 +147,7 @@ blacklist {
 }
 ----
 .Esempio
-In questo esempio, determineremo il WWID di un dispositivo e aggiungeremo al `multipath.conf` file.
+Nell'esempio seguente `multipath.conf` viene determinato il WWID di una periferica e aggiunto al file.
 
 .Fasi
 . Eseguire il seguente comando per determinare l'ID WWID:
@@ -175,7 +175,7 @@ blacklist {
 
 Controllare sempre il `/etc/multipath.conf` file per le impostazioni legacy, in particolare nella sezione delle impostazioni predefinite, che potrebbero prevalere sulle impostazioni predefinite.
 
-Nella tabella seguente vengono illustrati i `multipathd` parametri critici per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri fornitori e uno di questi parametri viene sovrascritto, sarà necessario correggerli in seguito nel `multipath.conf` file che si applica specificamente ai LUN di ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. È necessario ignorare queste impostazioni predefinite solo in consultazione con NetApp, il fornitore del sistema operativo o entrambi, e solo quando l'impatto è pienamente compreso.
+Nella tabella seguente vengono illustrati i `multipathd` parametri critici per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri fornitori e uno di questi parametri viene sovrascritto, è necessario correggerli in seguito nel `multipath.conf` file che si applica specificamente ai LUN di ONTAP. Senza questa correzione, i LUN ONTAP potrebbero non funzionare come previsto. È necessario ignorare queste impostazioni predefinite solo in consultazione con NetApp, il fornitore del sistema operativo o entrambi, e solo quando l'impatto è pienamente compreso.
 
 [cols="2*"]
 |===
@@ -266,10 +266,10 @@ devices {
 
 CentOS 7,6 con ONTAP presenta i seguenti problemi noti:
 
-[cols="4*"]
+[cols="3*"]
 |===
-| ID bug NetApp | Titolo | Descrizione | ID Bugzilla 
+| ID bug NetApp | Titolo | Descrizione 
 
 
-| 1440718 | Se si dismappa o si mappa un LUN senza eseguire una nuova scansione SCSI, i dati sull'host potrebbero danneggiarsi. | Quando si imposta il parametro di configurazione multipath 'disable_changed_wids' su YES, l'accesso al path device viene disattivato in caso di modifica dell'ID WWID. Multipath disattiva l'accesso al dispositivo di percorso fino a quando l'ID WWID del percorso non viene ripristinato all'ID WWID del dispositivo multipath. Per ulteriori informazioni, vedere link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["Knowledge base di NetApp: La corruzione del file system sul LUN iSCSI su Oracle Linux 7"^]. | N/A. 
+| 1440718 | Se si dismappa o si mappa un LUN senza eseguire una nuova scansione SCSI, i dati sull'host potrebbero danneggiarsi. | Quando si imposta il parametro di configurazione multipath 'disable_changed_wids' su YES, l'accesso al path device viene disattivato in caso di modifica dell'ID WWID. Multipath disattiva l'accesso al dispositivo di percorso fino a quando l'ID WWID del percorso non viene ripristinato all'ID WWID del dispositivo multipath. Per ulteriori informazioni, vedere link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["Knowledge base di NetApp: La corruzione del file system sul LUN iSCSI su Oracle Linux 7"^]. 
 |===

@@ -182,7 +182,7 @@ blacklist {
 }
 ----
 .Esempio
-In questo esempio, determineremo il WWID di un dispositivo e aggiungeremo al `multipath.conf` file.
+Nell'esempio seguente `multipath.conf` viene determinato il WWID di una periferica e aggiunto al file.
 
 .Fasi
 . Eseguire il seguente comando per determinare l'ID WWID:
@@ -210,7 +210,7 @@ blacklist {
 
 Controllare sempre il `/etc/multipath.conf` file per le impostazioni legacy, in particolare nella sezione delle impostazioni predefinite, che potrebbero prevalere sulle impostazioni predefinite.
 
-Nella tabella seguente vengono illustrati i `multipathd` parametri critici per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri fornitori e uno di questi parametri viene sovrascritto, sarà necessario correggerli in seguito nel `multipath.conf` file che si applica specificamente ai LUN di ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. È necessario ignorare queste impostazioni predefinite solo in consultazione con NetApp, il fornitore del sistema operativo o entrambi, e solo quando l'impatto è pienamente compreso.
+Nella tabella seguente vengono illustrati i `multipathd` parametri critici per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri fornitori e uno di questi parametri viene sovrascritto, è necessario correggerli in seguito nel `multipath.conf` file che si applica specificamente ai LUN di ONTAP. Senza questa correzione, i LUN ONTAP potrebbero non funzionare come previsto. È necessario ignorare queste impostazioni predefinite solo in consultazione con NetApp, il fornitore del sistema operativo o entrambi, e solo quando l'impatto è pienamente compreso.
 
 [cols="2*"]
 |===
@@ -301,13 +301,13 @@ devices {
 
 La versione RHEL 6,9 con ONTAP presenta i seguenti problemi noti:
 
-[cols="4*"]
+[cols="3*"]
 |===
-| ID bug NetApp | Titolo | Descrizione | ID Bugzilla 
+| ID bug NetApp | Titolo | Descrizione 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1067272["1067272"^] | Lo stato della porta remota sull'host EMULEX LPe32002 potrebbe essere "bloccato" durante le operazioni di failover dello storage | Durante le operazioni di failover dello storage, lo stato di alcune porte remote sull'host RHEL 6.9 con adattatore LPe32002 potrebbe diventare "bloccato". Poiché le interfacce logiche si bloccano quando un nodo di storage è inattivo, la porta remota imposta lo stato del nodo di storage su "bloccato". Tuttavia, quando il nodo di storage torna allo stato ottimale, vengono anche presentate le interfacce logiche e lo stato della porta remota dovrebbe essere "in linea". Tuttavia, in alcune occasioni la porta remota continua a essere nello stato "bloccato". Questo stato si manifesta come "failed failed failed" (guasto non riuscito) per LE LUN nel layer multipath. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1427496["427496"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1067272["1067272"^] | Lo stato della porta remota sull'host EMULEX LPe32002 potrebbe essere "bloccato" durante le operazioni di failover dello storage | Durante le operazioni di failover dello storage, lo stato di alcune porte remote sull'host RHEL 6.9 con adattatore LPe32002 potrebbe diventare "bloccato". Poiché le interfacce logiche si bloccano quando un nodo di storage è inattivo, la porta remota imposta lo stato del nodo di storage su "bloccato". Tuttavia, quando il nodo di storage torna allo stato ottimale, vengono anche presentate le interfacce logiche e lo stato della porta remota dovrebbe essere "in linea". Tuttavia, in alcune occasioni la porta remota continua a essere nello stato "bloccato". Questo stato si manifesta come "failed failed failed" (guasto non riuscito) per LE LUN nel layer multipath. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1076584["1076584"^] | I dump del firmware vengono eseguiti su Red Hat Enterprise Linux 6.9 QLogic QE8362 HBA durante le operazioni di failover dello storage | I dump del firmware possono verificarsi durante le operazioni di failover dello storage su host Red Hat Enterprise Linux (RHEL) 6.9 con HBA (host bus adapter) QLogic QLE8362, mentre i dump del firmware vengono osservati occasionalmente. I dump del firmware potrebbero manifestarsi come un'interruzione i/o sull'host che può durare fino a 1200 secondi. Una volta completato il deaddei core del firmware, l'operazione di i/o riprende normalmente. Non sono richieste ulteriori procedure di ripristino sull'host. Per indicare il dump del firmware, nel file dei messaggi /var/log/ viene visualizzato il seguente messaggio: Kernel: Qla2xxx [0000:0c:00.3]-d001:3: Firmware dump saved to temp buffer (3/ffffc90018b01000), dump status flags (0x3f) | link:https://bugzilla.redhat.com/show_bug.cgi?id=1438711["1438711"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1076584["1076584"^] | I dump del firmware vengono eseguiti su Red Hat Enterprise Linux 6.9 QLogic QE8362 HBA durante le operazioni di failover dello storage | I dump del firmware possono verificarsi durante le operazioni di failover dello storage su host Red Hat Enterprise Linux (RHEL) 6.9 con HBA (host bus adapter) QLogic QLE8362, mentre i dump del firmware vengono osservati occasionalmente. I dump del firmware potrebbero manifestarsi come un'interruzione i/o sull'host che può durare fino a 1200 secondi. Una volta completato il deaddei core del firmware, l'operazione di i/o riprende normalmente. Non sono richieste ulteriori procedure di ripristino sull'host. Per indicare il dump del firmware, nel file dei messaggi /var/log/ viene visualizzato il seguente messaggio: Kernel: Qla2xxx [0000:0c:00.3]-d001:3: Firmware dump saved to temp buffer (3/ffffc90018b01000), dump status flags (0x3f) 
 |===
