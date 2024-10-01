@@ -507,4 +507,9 @@ NSID       UUID                                   Size
 
 == Problemi noti
 
-Theere non sono problemi noti per la configurazione host NVMe-of per Ubuntu 22,04 con ONTAP release.
+La configurazione host NVMe-of per Ubuntu 22,04 con ONTAP presenta il seguente problema noto:
+
+[cols="15,20,50,15"]
+|===
+| ID bug NetApp | Titolo | Descrizione | CONTAPEXT-2037 
+|===
