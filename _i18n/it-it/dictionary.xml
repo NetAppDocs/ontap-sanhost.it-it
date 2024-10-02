@@ -3544,4 +3544,6 @@ Per ulteriori informazioni e per le modifiche consigliate alle impostazioni pred
   <block id="95fdb97b04811943bd6001978d618d31" category="list-text">Accedere a<block ref="97bc3f4ff245555de180ca8882444906" category="inline-link-rx"></block> e scaricare il file compresso contenente le utilità host in una directory dell'host.</block>
   <block id="0142c1c78731d2b44a6976490ee04599" category="paragraph">La configurazione host NVMe-of per Ubuntu 22,04 con ONTAP presenta il seguente problema noto:</block>
   <block id="364053ddb08791e86bba8694da89f153" category="cell">CONTAPEXT-2037</block>
+  <block id="e53d231580138a5c74d1783c30057235" category="cell">Gli host Ubuntu 22,04 NVMe-of creano controller di rilevamento persistenti duplicati</block>
+  <block id="f7529407d6b5167c4740699e83603d32" category="cell">Sugli host NVMe-of, è possibile utilizzare il comando "nvme Discover -p" per creare PDC (Persistent Discovery Controller). Questo comando dovrebbe creare un solo PDC per ogni combinazione iniziatore-destinazione. Tuttavia, se si esegue Ubuntu 22,04 su un host NVMe-of, viene creato un PDC duplicato ogni volta che viene eseguito "nvme Discover -p". Ciò comporta un utilizzo non necessario delle risorse sia sull'host che sulla destinazione.</block>
 </blocks>

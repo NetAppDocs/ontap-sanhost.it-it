@@ -509,7 +509,10 @@ NSID       UUID                                   Size
 
 La configurazione host NVMe-of per Ubuntu 22,04 con ONTAP presenta il seguente problema noto:
 
-[cols="15,20,50,15"]
+[cols="20,20,60"]
 |===
-| ID bug NetApp | Titolo | Descrizione | CONTAPEXT-2037 
+| ID bug NetApp | Titolo | Descrizione 
+
+
+| CONTAPEXT-2037 | Gli host Ubuntu 22,04 NVMe-of creano controller di rilevamento persistenti duplicati | Sugli host NVMe-of, è possibile utilizzare il comando "nvme Discover -p" per creare PDC (Persistent Discovery Controller). Questo comando dovrebbe creare un solo PDC per ogni combinazione iniziatore-destinazione. Tuttavia, se si esegue Ubuntu 22,04 su un host NVMe-of, viene creato un PDC duplicato ogni volta che viene eseguito "nvme Discover -p". Ciò comporta un utilizzo non necessario delle risorse sia sull'host che sulla destinazione. 
 |===
