@@ -26,8 +26,7 @@ Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link
 
 NetApp consiglia vivamente di installare le utility host unificate Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
 
-.Di cosa hai bisogno
-Se si dispone di una versione di Linux Unified host Utilities attualmente installata, eseguire l'aggiornamento o la rimozione, quindi attenersi alla procedura descritta di seguito per installare la versione più recente.
+Se è attualmente installata una versione di Linux Unified host Utilities, è necessario aggiornarla o rimuoverla e procedere come segue per installare la versione più recente.
 
 .Fasi
 . Scaricare il pacchetto software 64-bit Linux Unified host Utilities dal https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] al tuo host.
@@ -59,7 +58,7 @@ Output di esempio:
 ----
 controller(7mode/E-Series)/            device     host               lun
 vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
--------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
 data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
 data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
@@ -92,7 +91,7 @@ Per informazioni su come attivare il BIOS HBA, consultare la documentazione spec
 
 Per Oracle Linux 8.0 il file /etc/multipath.conf deve esistere, ma non è necessario apportare modifiche specifiche al file. Oracle Linux 8.0 è compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente le LUN ONTAP.
 
-Il `multipath -ll` comando consente di verificare le impostazioni dei LUN di ONTAP. Ci dovrebbero essere due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono attivi/ottimizzati, il che significa che sono serviti dal controller in cui si trova l'aggregato. I percorsi con priorità inferiori sono attivi ma non ottimizzati perché vengono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
+Il `multipath -ll` comando consente di verificare le impostazioni dei LUN di ONTAP. Ci dovrebbero essere due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, il che significa che vengono gestiti dal controller in cui si trova l'aggregato. I percorsi con priorità più basse sono attivi ma non ottimizzati perché sono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
 
 .Esempio
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:
@@ -110,7 +109,7 @@ size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
 |- 15:0:1:35 sdbx 68:176 active ready running
 ----
 
-NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
+NOTE: Un singolo LUN non deve richiedere più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
 
 
 
@@ -144,7 +143,7 @@ blacklist {
 Nell'esempio seguente `multipath.conf` viene determinato il WWID di una periferica e aggiunto al file.
 
 .Fasi
-. Eseguire il seguente comando per determinare l'ID WWID:
+. Determinare il WWID:
 +
 [listing]
 ----
@@ -152,7 +151,7 @@ Nell'esempio seguente `multipath.conf` viene determinato il WWID di una periferi
 360030057024d0730239134810c0cb833
 ----
 +
-`sda` È il disco SCSI locale che dobbiamo aggiungere alla blacklist.
+`sda` È il disco SCSI locale che si desidera aggiungere alla blacklist.
 
 . Aggiungere il `WWID` alla lista nera `/etc/multipath.conf`:
 +

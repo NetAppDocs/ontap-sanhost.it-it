@@ -4,9 +4,9 @@
 
 Per la configurazione non ASA, devono essere presenti due gruppi di percorsi con priorità diverse.
 
-I percorsi con priorità più elevate sono Active/Optimized, ovvero vengono serviti dal controller in cui si trova l'aggregato.
+I percorsi con priorità più elevate sono Active/Optimized, ovvero gestiti dal controller in cui si trova l'aggregato.
 
-I percorsi con priorità inferiori sono attivi ma non ottimizzati perché vengono serviti da un controller diverso.
+I percorsi con priorità più basse sono attivi ma non ottimizzati perché sono serviti da un controller diverso.
 
 
 NOTE: I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.

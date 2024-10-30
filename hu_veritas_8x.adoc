@@ -26,8 +26,7 @@ Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link
 
 NetApp consiglia vivamente di installare le utility host unificate Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
 
-.Di cosa hai bisogno
-Se si dispone di una versione di Linux Unified host Utilities attualmente installata, eseguire l'aggiornamento o la rimozione, quindi attenersi alla procedura descritta di seguito per installare la versione più recente.
+Se è attualmente installata una versione di Linux Unified host Utilities, è necessario aggiornarla o rimuoverla e procedere come segue per installare la versione più recente.
 
 .Fasi
 . Scaricare il pacchetto software 64-bit Linux Unified host Utilities dal https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] al tuo host.
@@ -96,7 +95,7 @@ Per informazioni su come attivare il BIOS HBA, consultare la documentazione spec
 Verificare che la configurazione soddisfi i requisiti di sistema. Per ulteriori informazioni, consultare il tool NetApp Interoperability Matrix e Veritas HCL Matrix.
 
 .Esempio
-In questo esempio, il `vxdmpadm` Viene utilizzato per verificare che il multipath VxDMP abbia l'array di destinazione ONTAP collegato.
+Nell'esempio seguente, il `vxdmpadm` comando viene utilizzato per verificare che il multipath VxDMP disponga dell'array di destinazione ONTAP collegato.
 
 [listing]
 ----
@@ -157,7 +156,7 @@ NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non de
 
 == Configurazione non ASA
 
-Per la configurazione non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero vengono serviti dal controller in cui si trova l'aggregato. I percorsi con priorità inferiori sono attivi ma non ottimizzati perché vengono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
+Per la configurazione non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero gestiti dal controller in cui si trova l'aggregato. I percorsi con priorità più basse sono attivi ma non ottimizzati perché sono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
 
 .Esempio
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:

@@ -44,7 +44,7 @@ Puoi usare la seguente procedura per attivare NVMe/FC.
 . Installare Red Hat Enterprise Linux 8.3 GA sul server.
 . Se si sta eseguendo l'aggiornamento da RHEL 8,2 a RHEL 8,3 utilizzando il `yum update/upgrade` comando, il tuo `/etc/nvme/host*` i file potrebbero andare persi. Per evitare la perdita di file, attenersi alla seguente procedura:
 +
-.Fasi
+.Mostra output di esempio
 [%collapsible]
 ====
 .. Eseguire il backup di `/etc/nvme/host*` file.

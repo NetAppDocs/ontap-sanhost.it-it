@@ -228,8 +228,10 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 --
 .Adattatore FC Marvell/QLogic per NVMe/FC
 --
+Il driver inbox qla2xxx nativo incluso nel kernel OL 9,1 GA ha le ultime correzioni upstream. Queste correzioni sono essenziali per il supporto di ONTAP.
+
 .Fasi
-. Il driver nativo qla2xxx della posta in arrivo incluso nel kernel OL 9.1 GA presenta le ultime correzioni upstream essenziali per il supporto di ONTAP. Verificare che siano in esecuzione le versioni del firmware e del driver dell'adattatore supportate:
+. Verificare che siano in esecuzione le versioni del firmware e del driver dell'adattatore supportate:
 +
 [listing]
 ----

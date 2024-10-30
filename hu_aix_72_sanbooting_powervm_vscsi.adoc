@@ -44,7 +44,7 @@ I LUN vengono visualizzati sull'host come dischi. È possibile utilizzare questi
 Annotare i numeri delle istanze di hdisk. Li si utilizza quando si esegue la configurazione del percorso.
 
 +
-Il `lsdev -type disk` il comando produce il seguente tipo di output. L'output di questo esempio è stato troncato.
+Il `lsdev -type disk` comando produce il seguente tipo di output. L'output nell'esempio seguente è troncato.
 
 +
 [listing]

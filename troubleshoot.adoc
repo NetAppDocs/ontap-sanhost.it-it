@@ -16,7 +16,7 @@ summary: È possibile configurare le impostazioni degli host SAN ONTAP per VMwar
 
 
 [role="lead"]
-Prima di eseguire la risoluzione di eventuali errori NVMe-of per gli host RHEL, OL e SLES, verificare che sia in esecuzione una configurazione conforme alle specifiche dello strumento matrice di interoperabilità (IMT), quindi procedere con i passaggi successivi per eseguire il debug di eventuali problemi lato host.
+Prima di risolvere eventuali errori NVMe-of per gli host RHEL, OL e SUSE Linux Enterprise Server, verificare che sia in esecuzione una configurazione conforme alle specifiche di Interoperability Matrix Tool (IMT), quindi procedere con i passaggi successivi per eseguire il debug di eventuali problemi sul lato host.
 
 
 NOTE: Le istruzioni per la risoluzione dei problemi non sono applicabili agli host AIX, Windows e ESXi.

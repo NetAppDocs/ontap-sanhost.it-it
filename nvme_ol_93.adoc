@@ -243,8 +243,10 @@ FCP CMPL: xb 000010a5 Err 000147e4
 --
 .Adattatore FC Marvell/QLogic per NVMe/FC
 --
+Il driver inbox qla2xxx nativo incluso nel kernel OL 9,3 GA ha le ultime correzioni upstream. Queste correzioni sono essenziali per il supporto di ONTAP.
+
 .Fasi
-. Il driver inbox qla2xxx nativo incluso nel kernel OL 9,3 GA ha le ultime correzioni upstream essenziali per il supporto di ONTAP. Verificare che siano in esecuzione le versioni del firmware e del driver dell'adattatore supportate:
+. Verificare che siano in esecuzione le versioni del firmware e del driver dell'adattatore supportate:
 +
 [listing]
 ----

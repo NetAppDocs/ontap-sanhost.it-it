@@ -3,4 +3,4 @@
 
 
 
-NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
+NOTE: Un singolo LUN non deve richiedere più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.

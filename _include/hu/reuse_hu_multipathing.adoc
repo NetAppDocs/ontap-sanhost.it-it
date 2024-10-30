@@ -2,4 +2,6 @@
 :allow-uri-read: 
 
 
-È possibile utilizzare `multipath -ll` Per verificare le impostazioni dei LUN ONTAP. Le sezioni seguenti forniscono un output multipath di esempio per un LUN mappato a figure ASA e non ASA.
+È possibile utilizzare `multipath -ll` Per verificare le impostazioni dei LUN ONTAP.
+
+Nelle sezioni seguenti vengono forniti esempi di output multipath per una LUN mappata a figure ASA e non ASA.

@@ -2,22 +2,19 @@
 :allow-uri-read: 
 
 
-Il `multipath.conf` il file deve esistere per l'avvio del daemon multipath, ma è possibile creare un file vuoto a zero byte utilizzando il seguente comando:
+Il `multipath.conf` file deve esistere per avviare il daemon multipath. Se questo file non esiste, è possibile creare un file vuoto a zero byte utilizzando il seguente comando:
 
-`touch /etc/multipath.conf`.
+`touch /etc/multipath.conf`
 
-La prima volta che si crea questo file, potrebbe essere necessario attivare e avviare i servizi multipath.
+La prima volta che si crea il `multipath.conf` file, potrebbe essere necessario attivare e avviare i servizi multipath utilizzando i seguenti comandi:
 
 [listing]
 ----
 # chkconfig multipathd on
 # /etc/init.d/multipathd start
 ----
-* Non è necessario aggiungere nulla direttamente a `multipath.conf` file a meno che non si disponga di periferiche che non si desidera gestire multipath o di impostazioni esistenti che sovrascrivono le impostazioni predefinite.
-* È possibile aggiungere la seguente sintassi a `multipath.conf` file per escludere i dispositivi indesiderati:
-+
-** Sostituire l'<DevId> con la stringa WWID del dispositivo che si desidera escludere:
-+
+Non è necessario aggiungere dispositivi direttamente al `multipath.conf` file, a meno che non si disponga di dispositivi che non si desidera gestire multipath o di impostazioni esistenti che sovrascrivono le impostazioni predefinite. Per escludere i dispositivi indesiderati, aggiungere al file la seguente sintassi `multipath.conf`, sostituendo <DevId> con la stringa WWID del dispositivo che si desidera escludere:
+
 [listing]
 ----
 blacklist {
@@ -27,12 +24,8 @@ blacklist {
         devnode "^cciss.*"
 }
 ----
-
-
-
-
 .Esempio
-In questo esempio, `sda` È il disco SCSI locale da aggiungere alla blacklist.
+Nell'esempio seguente, `sda` è il disco SCSI locale che si desidera aggiungere alla blacklist.
 
 .Fasi
 . Eseguire il seguente comando per determinare l'ID WWID:

@@ -26,9 +26,9 @@ Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link
 
 NetApp consiglia vivamente di installare le utility host unificate Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
 
-.Di cosa hai bisogno
-Se si dispone di una versione di Linux Unified host Utilities attualmente installata, è necessario aggiornarla oppure rimuoverla e procedere come segue per installare la versione più recente.
+Se è attualmente installata una versione di Linux Unified host Utilities, è necessario aggiornarla o rimuoverla e procedere come segue per installare la versione più recente.
 
+.Fasi
 . Scaricare il pacchetto software di utilità host unificate Linux a 32 bit o 64 bit dal link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] Al tuo host.
 . Utilizzare il seguente comando per installare il pacchetto software:
 +
@@ -58,7 +58,7 @@ Output di esempio:
 ----
 controller(7mode/E-Series)/            device     host               lun
 vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
--------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
 data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
 data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
@@ -101,7 +101,7 @@ kernel /vmlinuz-3.8.13-68.1.2.el6uek.x86_64 ro root=/dev/mapper/vg_ibmx3550m4210
 ....
 . Utilizzare `mkinitrd` comando per ricreare l'immagine initrd. Oracle 6x e le versioni successive utilizzano: Il comando: `mkinitrd -f /boot/ initrd-"uname -r".img uname -r`Oppure il comando: `dracut -f`
 . Riavviare l'host.
-. Verificare l'output del `cat /proc/cmdline` comando per assicurarsi che l'impostazione sia completa. Il `multipath -ll` comando consente di verificare le impostazioni dei LUN di ONTAP. Ci dovrebbero essere due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono attivi/ottimizzati, il che significa che sono serviti dal controller in cui si trova l'aggregato. I percorsi con priorità inferiori sono attivi ma non ottimizzati perché vengono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
+. Verificare l'output del `cat /proc/cmdline` comando per assicurarsi che l'impostazione sia completa. Il `multipath -ll` comando consente di verificare le impostazioni dei LUN di ONTAP. Ci dovrebbero essere due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, il che significa che vengono gestiti dal controller in cui si trova l'aggregato. I percorsi con priorità più basse sono attivi ma non ottimizzati perché sono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
 
 
 .Esempio
@@ -120,7 +120,7 @@ size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
   |- 0:0:19:37 sddu 71:192  active ready running
 ----
 
-NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
+NOTE: Un singolo LUN non deve richiedere più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
 
 
 
@@ -128,22 +128,19 @@ NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non de
 
 Il sistema operativo Oracle Linux 6.6 viene compilato per riconoscere le LUN ONTAP e impostare automaticamente correttamente tutti i parametri di configurazione.
 
-Il `multipath.conf` il file deve esistere per l'avvio del daemon multipath, ma è possibile creare un file vuoto a zero byte utilizzando il seguente comando:
+Il `multipath.conf` file deve esistere per avviare il daemon multipath. Se questo file non esiste, è possibile creare un file vuoto a zero byte utilizzando il seguente comando:
 
-`touch /etc/multipath.conf`.
+`touch /etc/multipath.conf`
 
-La prima volta che si crea questo file, potrebbe essere necessario attivare e avviare i servizi multipath.
+La prima volta che si crea il `multipath.conf` file, potrebbe essere necessario attivare e avviare i servizi multipath utilizzando i seguenti comandi:
 
 [listing]
 ----
 # chkconfig multipathd on
 # /etc/init.d/multipathd start
 ----
-* Non è necessario aggiungere nulla direttamente a `multipath.conf` file a meno che non si disponga di periferiche che non si desidera gestire multipath o di impostazioni esistenti che sovrascrivono le impostazioni predefinite.
-* È possibile aggiungere la seguente sintassi a `multipath.conf` file per escludere i dispositivi indesiderati:
-+
-** Sostituire l'<DevId> con la stringa WWID del dispositivo che si desidera escludere:
-+
+Non è necessario aggiungere dispositivi direttamente al `multipath.conf` file, a meno che non si disponga di dispositivi che non si desidera gestire multipath o di impostazioni esistenti che sovrascrivono le impostazioni predefinite. Per escludere i dispositivi indesiderati, aggiungere al file la seguente sintassi `multipath.conf`, sostituendo <DevId> con la stringa WWID del dispositivo che si desidera escludere:
+
 [listing]
 ----
 blacklist {
@@ -153,12 +150,8 @@ blacklist {
         devnode "^cciss.*"
 }
 ----
-
-
-
-
 .Esempio
-In questo esempio, `sda` È il disco SCSI locale da aggiungere alla blacklist.
+Nell'esempio seguente, `sda` è il disco SCSI locale che si desidera aggiungere alla blacklist.
 
 .Fasi
 . Eseguire il seguente comando per determinare l'ID WWID:

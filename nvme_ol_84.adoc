@@ -32,7 +32,7 @@ NOTE: È possibile utilizzare le impostazioni di configurazione fornite in quest
 == Caratteristiche
 
 * Oracle Linux 8.4 dispone di multipath NVMe in-kernel abilitato per impostazione predefinita per i nomi NVMe.
-* Con Oracle Linux 8.4, `nvme-fc auto-connect` gli script sono inclusi nel file nativo `nvme-cli` pacchetto. Puoi affidarti a questi script nativi di connessione automatica invece di installare gli script di connessione automatica forniti da un vendor esterno.
+* Con Oracle Linux 8,4, `nvme-fc auto-connect` gli script sono inclusi nel pacchetto nativo `nvme-cli`. È possibile utilizzare questi script di connessione automatica nativi invece di installare script di connessione automatica in uscita forniti dal fornitore esterno.
 * Con Oracle Linux 8.4, una soluzione nativa `udev` la regola viene fornita come parte di `nvme-cli` Pacchetto che consente il bilanciamento del carico round-robin per il multipath NVMe. Pertanto, non è più necessario creare manualmente questa regola.
 * Con Oracle Linux 8.4, il traffico NVMe e SCSI può essere eseguito sullo stesso host coesistente. In effetti, si prevede che questa sia la configurazione host comunemente implementata. Pertanto, è possibile configurare dm-multipath come di consueto per i LUN SCSI che risultano in dispositivi mpath, mentre NVMe multipath può essere utilizzato per configurare i dispositivi NVMe-of multipath (ad esempio, `/dev/nvmeXnY`) sull'host.
 * Con Oracle Linux 8.4, il plug-in NetApp nel nativo `nvme-cli` Il pacchetto è in grado di visualizzare i dettagli di ONTAP e gli spazi dei nomi ONTAP.
@@ -217,8 +217,10 @@ NOTE: Non applicabile agli host Qlogic NVMe/FC.
 
 == Configurare l'adattatore FC Marvell/QLogic per NVMe/FC
 
+Il driver inbox qla2xxx nativo incluso nel kernel OL 8,4 GA ha le ultime correzioni upstream. Queste correzioni sono essenziali per il supporto di ONTAP.
+
 .Fasi
-. Verificare che siano in esecuzione le versioni del firmware e del driver dell'adattatore supportate. Il driver nativo qla2xxx della posta in arrivo incluso nel kernel OL 8.4 GA presenta le ultime correzioni upstream essenziali per il supporto di ONTAP.
+. Verificare che siano in esecuzione le versioni del firmware e del driver dell'adattatore supportate:
 +
 [listing]
 ----

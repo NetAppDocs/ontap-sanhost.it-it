@@ -26,9 +26,9 @@ Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link
 
 NetApp consiglia vivamente di installare le utility host unificate Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
 
-.Di cosa hai bisogno
-Se si dispone di una versione di Linux Unified host Utilities attualmente installata, è necessario aggiornarla oppure rimuoverla e procedere come segue per installare la versione più recente.
+Se è attualmente installata una versione di Linux Unified host Utilities, è necessario aggiornarla o rimuoverla e procedere come segue per installare la versione più recente.
 
+.Fasi
 . Scaricare il pacchetto software di utilità host unificate Linux a 32 bit o 64 bit dal link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] Al tuo host.
 . Utilizzare il seguente comando per installare il pacchetto software:
 +
@@ -58,7 +58,7 @@ Output di esempio:
 ----
 controller(7mode/E-Series)/            device     host               lun
 vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
--------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
 data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
 data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
@@ -91,7 +91,7 @@ Per informazioni su come attivare il BIOS HBA, consultare la documentazione spec
 
 Per SUSE Linux Enterprise Server 15 SP2, il file /etc/multipath.conf deve esistere, ma non è necessario apportare modifiche specifiche al file. SUSE Linux Enterprise Server 15 SP2 viene compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente le LUN ONTAP. Utilizzare `+multipath -ll+` Controllare le impostazioni dei LUN ONTAP.
 
-Ci dovrebbero essere due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero vengono serviti dal controller in cui si trova l'aggregato. I percorsi con priorità inferiori sono attivi ma non ottimizzati perché vengono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
+Ci dovrebbero essere due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero gestiti dal controller in cui si trova l'aggregato. I percorsi con priorità più basse sono attivi ma non ottimizzati perché sono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
 
 .Esempio
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati.
@@ -142,7 +142,7 @@ blacklist {
 Nell'esempio seguente `multipath.conf` viene determinato il WWID di una periferica e aggiunto al file.
 
 .Fasi
-. Eseguire il seguente comando per determinare l'ID WWID:
+. Determinare il WWID:
 +
 [listing]
 ----
@@ -150,7 +150,7 @@ Nell'esempio seguente `multipath.conf` viene determinato il WWID di una periferi
 360030057024d0730239134810c0cb833
 ----
 +
-`sda` È il disco SCSI locale che dobbiamo aggiungere alla blacklist.
+`sda` È il disco SCSI locale che si desidera aggiungere alla blacklist.
 
 . Aggiungere il `WWID` alla lista nera `/etc/multipath.conf`:
 +
@@ -249,15 +249,15 @@ devices {
 
 == Problemi noti
 
-La versione SLES 15 SP2 con ONTAP presenta i seguenti problemi noti:
+SUSE Linux Enterprise Server 15 SP2 con ONTAP presenta i seguenti problemi noti:
 
 [cols="1,3,3"]
 |===
 | ID bug NetApp | Titolo | Descrizione 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1308744["1308744"^] | L'avvio iSCSI dalla SAN non riesce con una configurazione IP statica dopo aver completato un'installazione del sistema operativo SLES15SP2  a| 
-Il LUN smontato iSCSI non si è avviato dopo aver completato un'installazione del sistema operativo SLES 15 SP2 con una configurazione IP statica. L'errore di boot si verifica ogni volta che si utilizza la configurazione IP statica. Ciò comporta il rifiuto del server di continuare il processo di avvio con il seguente messaggio di errore:
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1308744["1308744"^] | L'avvio iSCSI da SAN non riesce ad avviarsi con una configurazione IP statica dopo aver completato un'installazione del sistema operativo SUSE Linux Enterprise Server 15S P2  a| 
+L'avvio del LUN iSCSI con avvio non è riuscito dopo aver completato un'installazione del sistema operativo SUSE Linux Enterprise Server 15 SP2 con una configurazione IP statica. L'errore di boot si verifica ogni volta che si utilizza la configurazione IP statica. Ciò comporta il rifiuto del server di continuare il processo di avvio con il seguente messaggio di errore:
 
 [listing]
 ----
