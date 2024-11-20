@@ -16,7 +16,7 @@ summary: Descrive come configurare NVMe/FC per SUSE Linux Enterprise Server 15 S
 
 
 [role="lead"]
-NVMe over Fabrics o NVMe-of (inclusi NVMe/FC e altri trasporti) è supportato da SUSE Linux Enterprise Server 15 SP3 con ANA (Asymmetric Namespace Access). ANA è l'equivalente ALUA nell'ambiente NVMe-of ed è attualmente implementato con il multipath NVMe nel kernel. Utilizzando questa procedura, è possibile abilitare NVMe-of con multipath NVMe in-kernel utilizzando ANA su SUSE Linux Enterprise Server 15 SP3 e ONTAP come destinazione.
+NVMe over Fabrics o NVMe-of (inclusi NVMe/FC e altri trasporti) è supportato per SUSE Linux Enterprise Server 15 SP3 con ANA (Asymmetric Namespace Access). ANA è l'equivalente ALUA negli ambienti NVMe-of ed è attualmente implementato con il multipath NVMe in-kernel. Utilizzando questa procedura, è possibile abilitare NVMe-of con multipath NVMe in-kernel utilizzando ANA su SUSE Linux Enterprise Server 15 SP3 e ONTAP come destinazione.
 
 Fare riferimento a. link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^] per informazioni dettagliate sulle configurazioni supportate.
 
@@ -25,7 +25,7 @@ Fare riferimento a. link:https://mysupport.netapp.com/matrix/["Matrice di intero
 == Caratteristiche
 
 * SUSE Linux Enterprise Server 15 SP3 supporta NVMe/FC e altri trasporti.
-* Non esiste alcun supporto sanlun per NVMe-of. Pertanto, non è disponibile il supporto LUHU per NVMe-of su SUSE Linux Enterprise Server 15 SP3. Puoi utilizzare il plug-in NetApp incluso nel pacchetto nvme-cli nativo per NVMe-of. Questo dovrebbe supportare tutti i trasporti NVMe-of.
+* Non esiste alcun supporto sanlun per NVMe-of. Pertanto, non è disponibile il supporto LUHU per NVMe-of su SUSE Linux Enterprise Server 15 SP3. Puoi fare affidamento sul plug-in NetApp incluso nel pacchetto nvme-cli nativo per NVMe-of. Questo dovrebbe supportare tutti i trasporti NVMe-of.
 * Il traffico NVMe e SCSI può essere eseguito sullo stesso host coesistente. In effetti, si prevede che questa sia la configurazione host comunemente implementata per i clienti. Pertanto, per SCSI, è possibile configurare `dm-multipath` Come di consueto per i LUN SCSI che causano dispositivi mpath, mentre il multipath NVMe potrebbe essere utilizzato per configurare i dispositivi NVMe-of multipath sull'host.
 
 

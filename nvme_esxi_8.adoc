@@ -22,8 +22,9 @@ summary: 'È possibile configurare NVMe over Fabrics (NVMe-of) sugli host inizia
 
 == Supportabilità
 
-* A partire da ONTAP 9.10.1, il protocollo NVMe/TCP è supportato per ONTAP.
+* A partire dall'allocazione dello spazio ONTAP 9.16,1 è abilitata per impostazione predefinita per tutti i namespace NVMe appena creati.
 * A partire da ONTAP 9.9.1 P3, il protocollo NVMe/FC è supportato per ESXi 8 e versioni successive.
+* A partire da ONTAP 9.10.1, il protocollo NVMe/TCP è supportato per ONTAP.
 
 
 
@@ -266,6 +267,38 @@ tcp.vmnic2:34:80:0d:30:ca:e0-tcp.192.168.100.167:4420-uuid.f4f14337c3ad4a639edf0
    Path State: active
    Path Config: {ANA_GRP_id=6,*ANA_GRP_state=AO*,health=UP}
 ----
+
+
+
+
+== Attivare l'allocazione dello spazio
+
+L'allocazione dello spazio è supportata per ESXi 8.x e versioni successive.
+
+Quando l'allocazione dello spazio è attivata, se uno spazio dei nomi si esaurisce, ONTAP comunica all'host che non è disponibile spazio libero per le operazioni di scrittura; lo spazio dei nomi rimane online e le operazioni di lettura continuano a essere gestite. Le operazioni di scrittura riprendono quando diventa disponibile ulteriore spazio libero. L'allocazione dello spazio consente anche all'host di eseguire `UNMAP` (talvolta chiamate `TRIM`) operazioni. Le operazioni di ANNULLAMENTO DELLA MAPPATURA consentono a un host di identificare blocchi di dati non più necessari perché non contengono più dati validi. Il sistema storage può quindi disallocare tali blocchi di dati in modo che lo spazio possa essere consumato altrove.
+
+.Prima di iniziare
+link:https://docs.netapp.com/us-en/ontap/san-admin/enable-space-allocation.html["Attivare l'allocazione dello spazio sul sistema di storage ONTAP"^]. Quindi eseguire i seguenti passaggi sull'host ESXi.
+
+.Fasi
+. Sull'host ESXi, verificare che il DSM sia disattivato:
++
+`esxcfg-advcfg -g /SCSi/NVmeUseDsmTp4040`
+
++
+Il valore previsto è 0.
+
+. Abilitare il DSM NVMe:
++
+`esxcfg-advcfg -s 1 /Scsi/NvmeUseDsmTp4040`
+
+. Verificare che il DSM sia abilitato:
++
+`esxcfg-advcfg -g /SCSi/NVmeUseDsmTp4040`
+
++
+Il valore previsto è 1.
+
 
 
 
