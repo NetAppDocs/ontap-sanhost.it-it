@@ -217,7 +217,7 @@ ONTAP riporta un MDTS (MAX Data Transfer Size) di 8 nei dati del controller di i
 # cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
-. Eseguire un `dracut -f` e riavviare l'host.
+. Eseguire il `dracut -f` comando e riavviare l'host.
 . Dopo il riavvio, verificare che sia stata applicata la suddetta impostazione controllando il valore sysfs corrispondente:
 +
 [listing]

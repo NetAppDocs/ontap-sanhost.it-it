@@ -1,32 +1,37 @@
 ---
 sidebar: sidebar 
-permalink: hu_ubuntu_2204.html 
+permalink: hu_ubuntu_2404.html 
 keywords: host utilities, red hat, rhel, linux, 20.04, netapp, ontap, ubuntu 
-summary: Viene descritto come utilizzare Ubuntu 22,04 con ONTAP 
+summary: Viene descritto come utilizzare Ubuntu 24,04 con ONTAP 
 ---
-= Utilizzare Ubuntu 22,04 con ONTAP
+= Utilizzare Ubuntu 24,04 con ONTAP
+:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
+:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
+:toc-position: content
 
 
 [role="lead"]
-È possibile utilizzare le impostazioni di configurazione dell'host SAN ONTAP per configurare Ubuntu 22,04 con ONTAP come destinazione.
+È possibile utilizzare le impostazioni di configurazione dell'host SAN ONTAP per configurare Ubuntu 24,04 con ONTAP come destinazione.
 
 
-NOTE: Il pacchetto software NetApp Linux Unified host Utilities non è disponibile per il sistema operativo Ubuntu 22,04.
+NOTE: Il pacchetto software NetApp Linux Unified host Utilities non è disponibile per il sistema operativo Ubuntu 24,04.
 
 
 
 == Avvio SAN
 
-.Di cosa hai bisogno
-Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] Per verificare che il sistema operativo, l'HBA, il firmware dell'HBA, il BIOS di avvio dell'HBA e la versione di ONTAP siano supportati.
+Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione.
+
+.Prima di iniziare
+Utilizzare link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^]per verificare che il sistema operativo, l'HBA, il firmware dell'HBA, il BIOS di avvio dell'HBA e la versione ONTAP siano supportati.
 
 .Fasi
 . Mappare il LUN di avvio SAN sull'host.
@@ -46,24 +51,24 @@ Per informazioni su come attivare il BIOS HBA, consultare la documentazione spec
 
 == Multipathing
 
-Per Ubuntu 22,04, il `/etc/multipath.conf` il file deve esistere, ma non è necessario apportare modifiche specifiche al file. Ubuntu 22,04 è compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente i LUN ONTAP.
+Per Ubuntu 24,04, il `/etc/multipath.conf` file deve esistere, ma non è necessario apportare modifiche al file perché Ubuntu 24,04 è compilato con le impostazioni necessarie per riconoscere e gestire correttamente i LUN ONTAP.
 
-È possibile utilizzare `multipath -ll` Per verificare le impostazioni dei LUN ONTAP.
-
-Nelle sezioni seguenti vengono forniti esempi di output multipath per una LUN mappata a figure ASA e non ASA.
+Per tutte le configurazioni ASA (SAN Array) e non ASA, è possibile utilizzare `multipath -ll` il comando per verificare le impostazioni di un LUN ONTAP, come illustrato negli esempi seguenti.
 
 
+NOTE: Un singolo LUN non deve richiedere più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
 
-=== Tutte le configurazioni DEGLI array SAN
 
-In tutte le configurazioni di array SAN (ASA), tutti i percorsi verso una determinata LUN sono attivi e ottimizzati. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
 
-.Esempio
-Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP:
+=== Configurazioni ASA
+
+Nelle configurazioni ASA, tutti i percorsi verso una determinata LUN sono attivi e ottimizzati. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
+
+Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP mappato a un personaggio ASA:
 
 [listing]
 ----
-# multipath -ll
+# # multipath -ll
 3600a098038314559533f524d6c652f62 dm-24 NETAPP,LUN C-Mode
 size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 `-+- policy='service-time 0' prio=50 status=active
@@ -71,41 +76,32 @@ size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
   |- 11:0:3:13 sdah 66:16  active ready running
   |- 12:0:1:13 sdbc 67:96  active ready running
   `- 12:0:3:13 sdbx 68:176 active ready running
-
 ----
-
-NOTE: Un singolo LUN non deve richiedere più di quattro percorsi. La presenza di più di quattro percorsi potrebbe causare problemi di percorso durante gli errori di storage.
-
 
 
 === Configurazioni non ASA
 
 Per le configurazioni non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero gestiti dal controller in cui si trova l'aggregato. I percorsi con priorità più basse sono attivi ma non ottimizzati perché sono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
 
-.Esempio
-Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:
+Nell'esempio seguente viene visualizzato l'output corretto per una LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati mappati a un personaggio non ASA:
 
 [listing]
 ----
 # multipath -ll
-3600a098038314c4c715d5732674e6141 dm-0 NETAPP,LUN C-Mode
-size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+3600a098038314837352453694b542f4a dm-0 NETAPP,LUN C-Mode
+size=160G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
-| |- 11:0:1:0 sda 8:0  active ready running
-| `- 12:0:2:0 sdd 8:48 active ready running
+| |- 14:0:3:0 sdbk 67:224 active ready running
+| `- 15:0:2:0 sdbl 67:240 active ready running
 `-+- policy='service-time 0' prio=10 status=enabled
-  |- 11:0:2:0 sdb 8:16 active ready running
-  `- 12:0:1:0 sdc 8:32 active ready running
-
+  |- 14:0:0:0 sda  8:0    active ready running
+  `- 15:0:1:0 sdv  65:80  active ready running
 ----
-
-NOTE: Un singolo LUN non deve richiedere più di quattro percorsi. La presenza di più di quattro percorsi potrebbe causare problemi di percorso durante gli errori di storage.
-
 
 
 == Impostazioni consigliate
 
-Il sistema operativo Ubuntu 22,04 viene compilato per riconoscere i LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per entrambe le configurazioni ASA e non ASA. È possibile ottimizzare ulteriormente le prestazioni per la configurazione host con le seguenti impostazioni consigliate.
+Il sistema operativo Ubuntu 24,04 viene compilato per riconoscere i LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per le configurazioni ASA e non ASA. Inoltre, è possibile utilizzare le seguenti impostazioni consigliate per ottimizzare ulteriormente le prestazioni della configurazione host.
 
 Il `multipath.conf` file deve esistere per avviare il daemon multipath. Se questo file non esiste, è possibile creare un file vuoto a zero byte utilizzando il `touch /etc/multipath.conf` comando
 
@@ -213,8 +209,7 @@ Nella tabella seguente vengono illustrati i parametri critici `multipathd` per i
 
 | vendor | NETAPP 
 |===
-.Esempio
-Nell'esempio seguente viene illustrato come correggere un valore predefinito sovrascritto. In questo caso, il `multipath.conf` il file definisce i valori per `path_checker` e. `no_path_retry` Non compatibili con LUN ONTAP. Se non possono essere rimossi perché altri array SAN sono ancora collegati all'host, questi parametri possono essere corretti specificamente per i LUN ONTAP con un dispositivo.
+Nell'esempio seguente viene illustrato come correggere un valore predefinito sovrascritto. In questo caso, il `multipath.conf` file definisce i valori per `path_checker` e `no_path_retry` che non sono compatibili con i LUN di ONTAP. Se non possono essere rimossi perché altri array SAN sono ancora collegati all'host, questi parametri possono essere corretti specificamente per i LUN ONTAP con un dispositivo.
 
 [listing]
 ----
@@ -242,4 +237,4 @@ devices {
 
 == Problemi noti
 
-Non ci sono problemi noti per Ubuntu 22,04 con la versione ONTAP.
+Non ci sono problemi noti per Ubuntu 24,04 con la versione ONTAP.

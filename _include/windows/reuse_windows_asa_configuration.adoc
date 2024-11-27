@@ -7,4 +7,4 @@ Per la configurazione di tutti gli array SAN (ASA), deve essere presente un grup
 image::asa.png[Schermata di ONTAP LUN con percorsi attivi/ottimizzati]
 
 
-NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non devono essere necessari più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
+NOTE: Un singolo LUN non deve richiedere più di quattro percorsi. La presenza di più di quattro percorsi potrebbe causare problemi di percorso durante gli errori di storage.
