@@ -56,7 +56,7 @@ Per Ubuntu 24,04, il `/etc/multipath.conf` file deve esistere, ma non è necessa
 Per tutte le configurazioni ASA (SAN Array) e non ASA, è possibile utilizzare `multipath -ll` il comando per verificare le impostazioni di un LUN ONTAP, come illustrato negli esempi seguenti.
 
 
-NOTE: Un singolo LUN non deve richiedere più di quattro percorsi. Più di otto percorsi potrebbero causare problemi di percorso durante gli errori dello storage.
+NOTE: Un singolo LUN non deve richiedere più di quattro percorsi. Più di quattro percorsi possono causare problemi di percorso durante gli errori di storage.
 
 
 
