@@ -172,7 +172,7 @@ blacklist {
 ----
 
 
-È necessario controllare sempre il `/etc/multipath.conf` file, specialmente nella sezione dei valori predefiniti, per le impostazioni legacy che possono sovrascrivere le impostazioni predefinite.
+È necessario controllare sempre il `/etc/multipath.conf` file, specialmente nella sezione dei valori predefiniti, per le impostazioni legacy che potrebbero sovrascrivere le impostazioni predefinite.
 
 Nella tabella seguente vengono illustrati i parametri critici `multipathd` per i LUN ONTAP e le impostazioni richieste. Se un host è connesso a LUN di altri fornitori e uno di questi parametri viene sovrascritto, è necessario correggerli in seguito nel `multipath.conf` file che si applica specificamente ai LUN di ONTAP. Senza questa correzione, i LUN ONTAP potrebbero non funzionare come previsto. È necessario ignorare queste impostazioni predefinite solo in consultazione con NetApp, il fornitore del sistema operativo o entrambi, e solo quando l'impatto è pienamente compreso.
 
