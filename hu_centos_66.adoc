@@ -22,15 +22,15 @@ summary: Descrive come utilizzare CentOS 6.6 con ONTAP
 
 == Installare le utility host unificate Linux
 
-Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] in un file .rpm a 32 bit e a 64 bit. Se non si conosce il file appropriato per la configurazione, utilizzare link:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità NetApp"^] per verificare quale si desidera.
+Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^]in un file .rpm a 32 e 64 bit. Se non si conosce il file adatto alla configurazione, utilizzare per verificare quale file è link:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità NetApp"^]necessario.
 
-NetApp consiglia vivamente di installare le utility host unificate Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
+NetApp consiglia vivamente di installare le utilità host unificate di Linux, ma non è obbligatorio. Le utility non modificano alcuna impostazione sul vostro host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
 
-Se è attualmente installata una versione di Linux Unified host Utilities, è necessario aggiornarla o rimuoverla e procedere come segue per installare la versione più recente.
+Se Linux Unified host Utilities è attualmente installato, è necessario aggiornarlo alla versione più recente oppure rimuoverlo e seguire questa procedura per installare la versione più recente.
 
 .Fasi
-. Scaricare il pacchetto software di utilità host unificate Linux a 32 bit o 64 bit dal link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] Al tuo host.
-. Utilizzare il seguente comando per installare il pacchetto software:
+. Scaricare il pacchetto software di utilità host unificate Linux a 32 bit o 64 bit dal link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] al tuo host.
+. Installare il pacchetto software:
 +
 `rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_64`
 
@@ -76,7 +76,7 @@ Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla conf
 . Verificare che siano disponibili più percorsi.
 +
 
-NOTE: Una volta attivato il sistema operativo host e eseguito sui percorsi, diventano disponibili più percorsi.
+NOTE: Più percorsi diventano disponibili dopo che il sistema operativo host è attivo e in esecuzione sui percorsi.
 
 . Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN.
 +
@@ -161,7 +161,7 @@ NOTE: Un singolo LUN non deve richiedere più di quattro percorsi. La presenza d
 
 Il sistema operativo CentOS 6.6 viene compilato per riconoscere le LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per la configurazione ASA e non ASA.
 
-Il `multipath.conf` file deve esistere per avviare il daemon multipath. Se questo file non esiste, è possibile creare un file vuoto a zero byte utilizzando il `touch /etc/multipath.conf` comando
+Il `multipath.conf` file deve esistere per avviare il daemon multipath. Se questo file non esiste, è possibile creare un file vuoto a zero byte utilizzando il `touch /etc/multipath.conf` comando.
 
 La prima volta che si crea il `multipath.conf` file, potrebbe essere necessario attivare e avviare i servizi multipath utilizzando i seguenti comandi:
 
@@ -207,7 +207,7 @@ blacklist {
 
 È necessario controllare sempre il `/etc/multipath.conf` file, specialmente nella sezione dei valori predefiniti, per le impostazioni legacy che potrebbero sovrascrivere le impostazioni predefinite.
 
-Nella tabella seguente vengono illustrati i parametri critici `multipathd` per i LUN ONTAP e le impostazioni richieste. Se un host è connesso a LUN di altri fornitori e uno di questi parametri viene sovrascritto, è necessario correggerli in seguito nel `multipath.conf` file che si applica specificamente ai LUN di ONTAP. Senza questa correzione, i LUN ONTAP potrebbero non funzionare come previsto. È necessario ignorare queste impostazioni predefinite solo in consultazione con NetApp, il fornitore del sistema operativo o entrambi, e solo quando l'impatto è pienamente compreso.
+Nella tabella seguente vengono illustrati i `multipathd` parametri critici per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri fornitori e uno di questi parametri viene sovrascritto, è necessario correggerli in seguito nel `multipath.conf` file che si applica specificamente ai LUN di ONTAP. Senza questa correzione, i LUN ONTAP potrebbero non funzionare come previsto. È necessario ignorare queste impostazioni predefinite solo in consultazione con NetApp, il fornitore del sistema operativo o entrambi, e solo quando l'impatto è pienamente compreso.
 
 [cols="2*"]
 |===

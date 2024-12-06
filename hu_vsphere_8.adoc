@@ -30,7 +30,7 @@ Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla conf
 . Verificare che siano disponibili più percorsi.
 +
 
-NOTE: Una volta attivato il sistema operativo host e eseguito sui percorsi, diventano disponibili più percorsi.
+NOTE: Più percorsi diventano disponibili dopo che il sistema operativo host è attivo e in esecuzione sui percorsi.
 
 . Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN.
 +
