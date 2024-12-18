@@ -57,7 +57,7 @@ La seguente directory viene creata quando si decomprime il file: `ntap_aix_host_
 
 == Toolkit SAN
 
-Il kit di strumenti viene installato automaticamente quando si installa il pacchetto di utilità host NetApp. Questo kit fornisce `sanlun` Utility che consente di gestire LUN e HBA. Il `sanlun` Il comando restituisce le informazioni relative alle LUN mappate all'host, al multipathing e alle informazioni necessarie per creare gruppi di iniziatori.
+L'installazione del pacchetto Utilità host NetApp installa automaticamente il toolkit. Questo kit fornisce l' `sanlun`utility, che consente di gestire LUN e HBA (host Bus Adapter). Il `sanlun` comando restituisce informazioni sui LUN mappati all'host, sul multipathing e sulle informazioni necessarie per creare gruppi iniziatori.
 
 .Esempio
 Nell'esempio seguente, il `sanlun lun show` Il comando restituisce le informazioni sul LUN.
@@ -99,7 +99,7 @@ Per AIX, il modulo di controllo del percorso (PCM) è responsabile del controllo
 Per le configurazioni non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero gestiti dal controller in cui si trova l'aggregato. I percorsi con priorità più basse sono attivi ma non ottimizzati perché sono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
 
 .Esempio
-Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:
+Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati.
 
 [listing]
 ----
@@ -126,10 +126,10 @@ up      secondary  path3  fcs1    fc_aix_4        1
 
 === Tutte le configurazioni DEGLI array SAN
 
-In tutte le configurazioni di array SAN (ASA), tutti i percorsi verso una determinata LUN sono attivi e ottimizzati. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
+Tutte le configurazioni di array SAN (ASA) ottimizzano tutti i percorsi verso una determinata LUN, mantenendoli attivi. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
 
 .Esempio
-Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP:
+Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP.
 
 
 NOTE: Tutte le configurazioni DEGLI array SAN (ASA) sono supportate a partire da ONTAP 9.8 per gli host AIX.

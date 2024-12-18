@@ -242,7 +242,7 @@ Non ci sono problemi noti.
 ONTAP riporta un MDTS (MAX Data Transfer Size) di 8 nei dati del controller di identificazione. Ciò significa che le dimensioni massime delle richieste i/o possono essere fino a 1MB MB. Per emettere richieste di i/o di dimensioni pari a 1 MB per un host Broadcom NVMe/FC, è necessario aumentare il `lpfc` valore del `lpfc_sg_seg_cnt` parametro a 256 dal valore predefinito di 64.
 
 
-NOTE: I seguenti passaggi non si applicano agli host Qlogic NVMe/FC.
+NOTE: Questi passaggi non si applicano agli host Qlogic NVMe/FC.
 
 .Fasi
 . Impostare il `lpfc_sg_seg_cnt` parametro su 256:
@@ -256,16 +256,13 @@ cat /etc/modprobe.d/lpfc.conf
 ----
 options lpfc lpfc_sg_seg_cnt=256
 ----
-. Eseguire il `dracut -f` comando e riavviare l'host:
-. Verificare che `lpfc_sg_seg_cnt` sia 256:
+. Eseguire il `dracut -f` comando e riavviare l'host.
+. Verificare che il valore previsto di `lpfc_sg_seg_cnt` sia 256:
 +
 [listing]
 ----
 cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 ----
-+
-Il valore previsto è 256.
-
 
 
 

@@ -16,9 +16,7 @@ summary: NVMe-of host Configuration per Oracle Linux 8,10 con ONTAP
 
 
 [role="lead"]
-Le configurazioni host SAN di NetApp supportano il protocollo NVMe over Fabrics (NVMe-of) su Oracle Linux 8,10 con Asymmetric Namespace Access (ANA).
-
-Puoi utilizzare NVMe-of con le LUN di ONTAP. Negli ambienti NVMe-of, ANA è l'equivalente del multipathing ALUA negli ambienti iSCSI e FCP e viene implementata con la funzionalità multipath NVMe in-kernel.
+Le configurazioni host SAN di NetApp supportano il protocollo NVMe over Fabrics (NVMe-of) con l'Asymmetric Namespace Access (ANA). Negli ambienti NVMe-of, ANA equivale al multipathing ALUA (Asymmetric Logical Unit Access) in ambienti iSCSI e FCP. ANA è implementato utilizzando la funzione multipath NVMe nel kernel.
 
 .A proposito di questa attività
 È possibile utilizzare il seguente supporto e caratteristiche con la configurazione host NVMe-of per Oracle Linux 8,10. Prima di avviare il processo di configurazione, è inoltre necessario esaminare le limitazioni note.
@@ -257,7 +255,6 @@ NOTE: Il driver inbox qla2xxx nativo incluso nel kernel di Oracle Linux 10 GA ha
 `cat /sys/class/fc_host/host*/symbolic_name`
 
 +
-.Esempio ouptut
 [listing]
 ----
 QLE2772 FW:v9.15.00 DVR:v10.02.09.100-k
@@ -278,7 +275,7 @@ QLE2772 FW:v9.15.00 DVR:v10.02.09.100-k
 ONTAP riporta un MDTS (MAX Data Transfer Size) di 8 nei dati del controller di identificazione. Ciò significa che le dimensioni massime delle richieste i/o possono essere fino a 1MB MB. Per emettere richieste di i/o di dimensioni pari a 1 MB per un host Broadcom NVMe/FC, è necessario aumentare il `lpfc` valore del `lpfc_sg_seg_cnt` parametro a 256 dal valore predefinito di 64.
 
 
-NOTE: I seguenti passaggi non si applicano agli host Qlogic NVMe/FC.
+NOTE: Questi passaggi non si applicano agli host Qlogic NVMe/FC.
 
 .Fasi
 . Impostare il `lpfc_sg_seg_cnt` parametro su 256:
@@ -292,16 +289,13 @@ cat /etc/modprobe.d/lpfc.conf
 ----
 options lpfc lpfc_sg_seg_cnt=256
 ----
-. Eseguire il `dracut -f` comando e riavviare l'host:
-. Verificare che `lpfc_sg_seg_cnt` sia 256:
+. Eseguire il `dracut -f` comando e riavviare l'host.
+. Verificare che il valore previsto di `lpfc_sg_seg_cnt` sia 256:
 +
 [listing]
 ----
 cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 ----
-+
-Il valore previsto è 256.
-
 
 
 
@@ -445,7 +439,6 @@ Per supportare il corretto funzionamento dei LUN ONTAP, verificare che lo stato 
 +
 .. `cat /sys/class/nvme-subsystem/nvme-subsys*/model`
 +
-.Esempio di uscita
 [listing]
 ----
 NetApp ONTAP Controller

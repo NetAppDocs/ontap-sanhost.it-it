@@ -99,10 +99,10 @@ Nelle sezioni seguenti vengono forniti esempi di output multipath per una LUN ma
 
 === Tutte le configurazioni DEGLI array SAN
 
-In tutte le configurazioni di array SAN (ASA), tutti i percorsi verso una determinata LUN sono attivi e ottimizzati. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
+Tutte le configurazioni di array SAN (ASA) ottimizzano tutti i percorsi verso una determinata LUN, mantenendoli attivi. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
 
 .Esempio
-Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP:
+Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP.
 
 [listing]
 ----
@@ -126,7 +126,7 @@ NOTE: Un singolo LUN non deve richiedere più di quattro percorsi. La presenza d
 Per le configurazioni non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero gestiti dal controller in cui si trova l'aggregato. I percorsi con priorità più basse sono attivi ma non ottimizzati perché sono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
 
 .Esempio
-Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:
+Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati.
 
 [listing]
 ----
@@ -151,10 +151,12 @@ Il sistema operativo SUSE Linux Enterprise Server 12 SP3 viene compilato per ric
 
 La prima volta che si crea il `multipath.conf` file, potrebbe essere necessario attivare e avviare i servizi multipath utilizzando i seguenti comandi:
 
-`# chkconfig multipathd on`
-`# /etc/init.d/multipathd start`
-
-Non è necessario aggiungere nulla direttamente al `multipath.conf` file a meno che non si disponga di dispositivi che non si desidera gestire multipath o di impostazioni esistenti che sovrascrivono le impostazioni predefinite. Per escludere i dispositivi indesiderati, aggiungere al `multipath.conf` file la seguente sintassi, sostituendo <DevId> con la stringa WWID del dispositivo che si desidera escludere:
+[listing]
+----
+chkconfig multipathd on
+/etc/init.d/multipathd start
+----
+Non è necessario aggiungere nulla direttamente al `multipath.conf` file a meno che non si disponga di dispositivi che non si desidera gestire multipath o di impostazioni esistenti che sovrascrivono le impostazioni predefinite. Per escludere i dispositivi indesiderati, aggiungere la seguente sintassi al `multipath.conf` file, sostituendo <DevId> con la stringa WWID (Worldwide Identifier) del dispositivo che si desidera escludere:
 
 [listing]
 ----
@@ -172,127 +174,118 @@ Nell'esempio seguente `multipath.conf` viene determinato il WWID di una periferi
 +
 [listing]
 ----
-# /lib/udev/scsi_id -gud /dev/sda
+/lib/udev/scsi_id -gud /dev/sda
+----
++
+[listing]
+----
+3600a098038314c4a433f5774717a3046
+/lib/udev/scsi_id -gud /dev/sda
+----
++
 360030057024d0730239134810c0cb833
-----
-+
-`sda` È il disco SCSI locale che si desidera aggiungere alla blacklist.
-
-. Aggiungere il `WWID` alla lista nera `/etc/multipath.conf`:
-+
-[listing]
-----
-blacklist {
-     wwid   360030057024d0730239134810c0cb833
-     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
-     devnode "^hd[a-z]"
-     devnode "^cciss.*"
-}
-----
 
 
-È necessario controllare sempre il `/etc/multipath.conf` file, specialmente nella sezione dei valori predefiniti, per le impostazioni legacy che potrebbero sovrascrivere le impostazioni predefinite.
-
-Nella tabella seguente vengono illustrati i `multipathd` parametri critici per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri fornitori e uno di questi parametri viene sovrascritto, è necessario correggerli in seguito nel `multipath.conf` file che si applica specificamente ai LUN di ONTAP. Senza questa correzione, i LUN ONTAP potrebbero non funzionare come previsto. È necessario ignorare queste impostazioni predefinite solo in consultazione con NetApp, il fornitore del sistema operativo o entrambi, e solo quando l'impatto è pienamente compreso.
-
-[cols="2*"]
-|===
-| Parametro | Impostazione 
-
-
-| detect_prio | sì 
-
-
-| dev_loss_tmo | "infinito" 
-
-
-| failback | immediato 
-
-
-| fast_io_fail_tmo | 5 
-
-
-| caratteristiche | "2 pg_init_retries 50" 
-
-
-| flush_on_last_del | "sì" 
-
-
-| gestore_hardware | "0" 
-
-
-| no_path_retry | coda 
-
-
-| path_checker | "a" 
-
-
-| policy_di_raggruppamento_percorsi | "group_by_prio" 
-
-
-| path_selector | "tempo di servizio 0" 
-
-
-| intervallo_polling | 5 
-
-
-| prio | "ONTAP" 
-
-
-| prodotto | LUN.* 
-
-
-| retain_attached_hw_handler | sì 
-
-
-| peso_rr | "uniforme" 
-
-
-| user_friendly_names | no 
-
-
-| vendor | NETAPP 
-|===
-.Esempio
-Nell'esempio seguente viene illustrato come correggere un valore predefinito sovrascritto. In questo caso, il `multipath.conf` il file definisce i valori per `path_checker` e. `no_path_retry` Non compatibili con LUN ONTAP. Se non possono essere rimossi a causa di altri array SAN ancora collegati all'host, questi parametri possono essere corretti specificamente per i LUN ONTAP con un dispositivo.
 
 [listing]
 ----
-defaults {
- path_checker readsector0
- no_path_retry fail
-}
-devices {
- device {
- vendor "NETAPP "
- product "LUN.*"
- no_path_retry queue
- path_checker tur
- }
-}
++
+`sda` is the local SCSI disk that you want to add to the blacklist.
+
+. Add the `WWID` to the blacklist stanza in `/etc/multipath.conf`:
+[source,cli]
++
+----
+blacklist { wwwwid 3600a098038314c433f5774717a3066 devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*" devnode "^hd[a-z]" devnode "^ccciss.*" }
+
+[listing]
 ----
 
+Always check your `/etc/multipath.conf` file, especially in the defaults section, for legacy settings that might be overriding default settings.
 
-== Problemi noti
+The following table demonstrates the critical `multipathd` parameters for ONTAP LUNs and the required values. If a host is connected to LUNs from other vendors and any of these parameters are overridden, they must be corrected by later stanzas in the `multipath.conf` file that apply specifically to ONTAP LUNs. Without this correction, the ONTAP LUNs might not work as expected. You should only override these defaults in consultation with NetApp, the OS vendor, or both, and only when the impact is fully understood.
 
-SUSE Linux Enterprise Server 15 SP3 con ONTAP presenta i seguenti problemi noti:
+//ONTAPDOC-2578 9-Dec-2024
+//ONTAPDOC-2561 25-Nov-202
 
-[cols="3*"]
+
+[cols=2*,options="header"]
 |===
-| ID bug NetApp | Titolo | Descrizione 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1089555["1089555"^] | Interruzione del kernel osservata nella versione del kernel SLES12 SP3 con Emulex LPe16002 16 GB FC durante l'operazione di failover dello storage | Durante le operazioni di failover dello storage sulla versione del kernel SLES12 SP3 con Emulex LPe16002 HBA, potrebbe verificarsi un'interruzione del kernel. L'interruzione del kernel richiede un riavvio del sistema operativo, che a sua volta causa un'interruzione dell'applicazione. Se kdump è configurato, l'interruzione del kernel genera un file vmcore sotto /var/crash/directory. È possibile esaminare la causa del guasto nel file vmcore. Esempio: Nel caso osservato, l'interruzione del kernel è stata osservata nel modulo "lpfc_sli_ringtxcmpl_put+51" ed è registrata nel file vmcore – Exception RIP: Lpfc_sli_ringtxcmpl_put+51. Ripristinare il sistema operativo dopo l'interruzione del kernel riavviando il sistema operativo host e riavviando l'applicazione. 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1089561["1089561"^] | Interruzione del kernel osservata nella versione del kernel SLES12 SP3 con Emulex LPe32002 32 GB FC durante le operazioni di failover dello storage | Durante le operazioni di failover dello storage sulla versione del kernel SLES12 SP3 con Emulex LPe32002 HBA, potrebbe verificarsi un'interruzione del kernel. L'interruzione del kernel richiede un riavvio del sistema operativo, che a sua volta causa un'interruzione dell'applicazione. Se kdump è configurato, l'interruzione del kernel genera un file vmcore sotto /var/crash/directory. È possibile esaminare la causa del guasto nel file vmcore. Esempio: Nel caso osservato, l'interruzione del kernel è stata osservata nel modulo "lpfc_sli_free_hbq+76" e viene registrato nel file vmcore – Exception RIP: Lpfc_sli_free_hbq+76. Ripristinare il sistema operativo dopo l'interruzione del kernel riavviando il sistema operativo host e riavviando l'applicazione. 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1117248["1117248"^] | Interruzione del kernel osservata su SLES12SP3 con QLogic QLE2562 8 GB FC durante le operazioni di failover dello storage | Durante le operazioni di failover dello storage sul kernel Sles12sp3 (kernel-default-4.4.82-6.3.1) con QLogic QLE2562 HBA, è stata osservata la rottura del kernel a causa di un panico nel kernel. Il kernel panic causa il riavvio del sistema operativo, causando un'interruzione dell'applicazione. Il kernel panic genera il file vmcore nella directory /var/crash/ se kdump è configurato. In caso di kernel panic, il file vmcore può essere utilizzato per comprendere la causa del guasto. Esempio: In questo caso, il panico è stato osservato nel modulo "blk_Finish_Request+289". Viene registrato nel file vmcore con la seguente stringa: "Exception RIP: blk_Finish_Request+289" dopo l'interruzione del kernel, è possibile ripristinare il sistema operativo riavviando il sistema operativo host. È possibile riavviare l'applicazione secondo necessità. 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1117261["1117261"^] | Interruzione del kernel osservata su SLES12SP3 con Qlogic QLE2662 16 GB FC durante le operazioni di failover dello storage | Durante le operazioni di failover dello storage sul kernel Sles12sp3 (kernel-default-4.4.82-6.3.1) con Qlogic QLE2662 HBA, si potrebbe osservare un'interruzione del kernel. Ciò richiede un riavvio del sistema operativo che causa l'interruzione dell'applicazione. L'interruzione del kernel genera un file vmcore nella directory /var/crash/ se kdump è configurato. Il file vmcore può essere utilizzato per comprendere la causa dell'errore. Esempio: In questo caso l'interruzione del kernel è stata osservata nel modulo "Unknown or invalid address" (Indirizzo sconosciuto o non valido) e viene registrato nel file vmcore con la seguente stringa - Exception RIP: Unknown or invalid address (RIP eccezione: Indirizzo sconosciuto o non valido). Dopo l'interruzione del kernel, il sistema operativo può essere ripristinato riavviando il sistema operativo host e riavviando l'applicazione secondo necessità. 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1117274["1117274"^] | Interruzione del kernel osservata su SLES12SP3 con Emulex LPe16002 16 GB FC durante le operazioni di failover dello storage | Durante le operazioni di failover dello storage sul kernel Sles12sp3 (kernel-default-4.4.87-3.1) con Emulex LPe16002 HBA, si potrebbe osservare un'interruzione del kernel. Ciò richiede un riavvio del sistema operativo che causa l'interruzione dell'applicazione. L'interruzione del kernel genera un file vmcore nella directory /var/crash/ se kdump è configurato. Il file vmcore può essere utilizzato per comprendere la causa dell'errore. Esempio: In questo caso è stata osservata un'interruzione del kernel nel modulo "raw_spin_lock_irqSave+30" e viene registrato nel file vmcore con la seguente stringa: – Exception RIP: _Raw_spin_lock_irqSave+30. Dopo l'interruzione del kernel, il sistema operativo può essere ripristinato riavviando il sistema operativo host e riavviando l'applicazione secondo necessità. 
+| Parameter
+| Setting
+| detect_prio | yes
+| dev_loss_tmo | "infinity"
+| failback | immediate
+| fast_io_fail_tmo | 5
+| features | "2 pg_init_retries 50"
+| flush_on_last_del | "yes"
+| hardware_handler | "0"
+| no_path_retry | queue
+| path_checker | "tur"
+| path_grouping_policy | "group_by_prio"
+| path_selector | "service-time 0"
+| polling_interval | 5
+| prio | "ontap"
+| product | LUN.*
+| retain_attached_hw_handler | yes
+| rr_weight | "uniform"
+| user_friendly_names | no
+| vendor | NETAPP
 |===
+
+.Example
+
+The following example shows how to correct an overridden default. In this case, the `multipath.conf` file defines values for `path_checker` and `no_path_retry` that are not compatible with ONTAP LUNs. If they cannot be removed because of other SAN arrays still attached to the host, these parameters can be corrected specifically for ONTAP LUNs with a device stanza.
+
+----
+Impostazioni predefinite { PATH_checker readsector0 no_PATH_RETRY FAIL } dispositivi { dispositivo { fornitore "NetApp " prodotto "LUN.*" no_PATH_RETRY coda path_checker tur }
+
+[listing]
+----
+
+== Known issues
+
+The SUSE Linux Enterprise Server 15 SP3 with ONTAP release has the following known issues:
+
+[cols=3*,options="header"]
+|===
+| NetApp Bug ID
+| Title
+| Description
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1089555[1089555^] | Kernel disruption observed on kernel version SLES12 SP3 with Emulex LPe16002 16GB FC during storage failover operation | A kernel disruption might occur during storage failover operations on kernel version SLES12 SP3 with Emulex LPe16002 HBA. The kernel disruption prompts a reboot of the operating system, which in turn causes an application disruption. If the kdump is configured, the kernel disruption generates a vmcore file under /var/crash/directory. You can investigate the cause of the failure in the vmcore file.
+Example:
+In the observed case, the kernel disruption was observed in the module “lpfc_sli_ringtxcmpl_put+51” and is logged in the vmcore file
+– exception RIP: lpfc_sli_ringtxcmpl_put+51.
+
+Recover the operating system after the kernel disruption by rebooting the host operating system and restarting the application.
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1089561[1089561^] | Kernel disruption observed on kernel version SLES12 SP3 with Emulex LPe32002 32GB FC during storage failover operations | A kernel disruption might occur during storage failover operations on kernel version SLES12 SP3 with Emulex LPe32002 HBA. The kernel disruption prompts a reboot of the operating system, which in turn causes an application disruption. If the kdump is configured, the kernel disruption generates a vmcore file under /var/crash/directory. You can investigate the cause of the failure in the vmcore file.
+Example:
+In the observed case, the kernel disruption was observed in the module
+“lpfc_sli_free_hbq+76” and is logged in the vmcore file
+– exception RIP: lpfc_sli_free_hbq+76.
+
+Recover the operating system after the kernel disruption by rebooting the host operating system and restarting the application.
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1117248[1117248^] | Kernel disruption observed on SLES12SP3 with QLogic QLE2562 8GB FC during storage failover operations |  During storage failover operations on the Sles12sp3 kernel (kernel-default-4.4.82-6.3.1) with QLogic QLE2562 HBA, the kernel disruption was observed due to a panic in the kernel. The kernel panic leads to a reboot of the operating system, causing an application disruption. The kernel panic generates the vmcore file under the /var/crash/ directory if kdump is configured. Upon the kernel panic, the vmcore file can be used to understand the cause of the failure.
+Example:
+In this case, the panic was observed in the “blk_finish_request+289” module.
+It is logged in the vmcore file with the following string:
+"exception RIP: blk_finish_request+289"
+
+After the kernel disruption, you can recover the operating system  by rebooting the Host OS. You can restart the application as required.
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1117261[1117261^] | Kernel disruption observed on SLES12SP3 with Qlogic QLE2662 16GB FC during storage failover operations | During storage failover operations on Sles12sp3 kernel (kernel-default-4.4.82-6.3.1) with Qlogic QLE2662 HBA, you might observe kernel disruption. This prompts a reboot of the operating system causing application disruption. The kernel disruption generates a vmcore file under /var/crash/ directory if kdump is configured. The vmcore file can be used to understand the cause of the failure.
+Example:
+In this case the Kernel disruption was observed in the module "unknown or invalid address" and is logged in vmcore file with the following string - exception RIP: unknown or invalid address.
+
+After kernel disruption, the operating system can be recovered by rebooting the host operating system and restarting the application as required.
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1117274[1117274^] | Kernel disruption observed on SLES12SP3 with Emulex LPe16002 16GB FC during storage failover operations | During storage failover operations on Sles12sp3 kernel (kernel-default-4.4.87-3.1) with Emulex LPe16002 HBA, you might observe kernel disruption. This prompts a reboot of the operating system causing application disruption. The kernel disruption
+generates a vmcore file under the /var/crash/ directory if kdump is configured. The vmcore file can be used to understand the cause
+of the failure.
+Example:
+In this case kernel disruption was observed in the module “raw_spin_lock_irqsave+30” and is logged in the vmcore file with the following string:
+– exception RIP: _raw_spin_lock_irqsave+30.
+
+After kernel disruption, the operating system can be recovered by rebooting the host operating system and restarting the application as required.
+|===
+
+// 2024 SEP 2, ONTAPDOC-2345
+----

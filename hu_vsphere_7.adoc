@@ -67,7 +67,7 @@ system      tpgs_on        VMW_PSP_RR                   NetApp arrays with ALUA 
 Per le configurazioni non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero gestiti dal controller in cui si trova l'aggregato. I percorsi con priorità più basse sono attivi ma non ottimizzati perché sono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
 
 .Esempio
-Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:
+Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati.
 
 *`esxcli storage nmp device list -d naa.600a098038313530772b4d673979372f`*
 
@@ -127,10 +127,10 @@ fc.20000090fae0ec8f:10000090fae0ec8f-fc.201000a098dfe3d1:200c00a098dfe3d1-naa.60
 
 === Tutte le configurazioni DEGLI array SAN
 
-In tutte le configurazioni di array SAN (ASA), tutti i percorsi verso una determinata LUN sono attivi e ottimizzati. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
+Tutte le configurazioni di array SAN (ASA) ottimizzano tutti i percorsi verso una determinata LUN, mantenendoli attivi. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
 
 .Esempio
-Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP:
+Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP.
 
 *`esxcli storage nmp device list -d naa.600a098038304759563f4e7837574453`*
 

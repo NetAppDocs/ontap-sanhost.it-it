@@ -22,11 +22,9 @@ summary: Fornisce indicazioni sulle impostazioni di configurazione degli host SA
 
 == Installare le utility host unificate Linux
 
-Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] in un file .rpm a 64 bit.
+È possibile scaricare il pacchetto software NetApp Linux Unified host Utilities come file 64-bit.rpm dal link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^].
 
 NetApp consiglia vivamente di installare le utility host unificate Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
-
-Se è attualmente installata una versione di Linux Unified host Utilities, è necessario aggiornarla o rimuoverla e procedere come segue per installare la versione più recente.
 
 .Fasi
 . Scaricare il pacchetto software 64-bit Linux Unified host Utilities dal https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] al tuo host.
@@ -40,7 +38,7 @@ Se è attualmente installata una versione di Linux Unified host Utilities, è ne
 
 == Toolkit SAN
 
-Il kit di strumenti viene installato automaticamente quando si installa il pacchetto di utilità host NetApp. Questo kit fornisce `sanlun` Utility che consente di gestire LUN e HBA. Il `sanlun` Il comando restituisce le informazioni relative alle LUN mappate all'host, al multipathing e alle informazioni necessarie per creare gruppi di iniziatori.
+L'installazione del pacchetto Utilità host NetApp installa automaticamente il toolkit. Questo kit fornisce l' `sanlun`utility, che consente di gestire LUN e HBA (host Bus Adapter). Il `sanlun` comando restituisce informazioni sui LUN mappati all'host, sul multipathing e sulle informazioni necessarie per creare gruppi iniziatori.
 
 .Esempio
 Nella figura seguente, la `sanlun show` Il comando restituisce le informazioni sul LUN.

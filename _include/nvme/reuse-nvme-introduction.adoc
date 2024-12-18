@@ -2,4 +2,4 @@
 :allow-uri-read: 
 
 
-Puoi utilizzare NVMe-of con le LUN di ONTAP. Negli ambienti NVMe-of, ANA è l'equivalente del multipathing ALUA negli ambienti iSCSI e FCP e viene implementata con la funzionalità multipath NVMe in-kernel.
+Le configurazioni host SAN di NetApp supportano il protocollo NVMe over Fabrics (NVMe-of) con l'Asymmetric Namespace Access (ANA). Negli ambienti NVMe-of, ANA equivale al multipathing ALUA (Asymmetric Logical Unit Access) in ambienti iSCSI e FCP. ANA è implementato utilizzando la funzione multipath NVMe nel kernel.

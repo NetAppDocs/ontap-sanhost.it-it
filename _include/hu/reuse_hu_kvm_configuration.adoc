@@ -1,9 +1,9 @@
-= Impostazioni KVM
+= Configurare le impostazioni KVM
 :allow-uri-read: 
 
 
 
 
-=== Impostazioni KVM
+=== Configurare le impostazioni KVM
 
-È possibile utilizzare le impostazioni consigliate anche per configurare la macchina virtuale basata su kernel (KVM). Non sono necessarie modifiche per configurare KVM poiché il LUN viene mappato all'hypervisor.
+È possibile utilizzare le impostazioni consigliate anche per configurare la macchina virtuale basata su kernel (KVM). Non sono necessarie modifiche per configurare KVM perché la LUN è mappata all'hypervisor.

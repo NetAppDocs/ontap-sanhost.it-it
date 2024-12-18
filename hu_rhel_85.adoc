@@ -22,11 +22,9 @@ summary: Descrive come utilizzare Red Hat Enterprise Linux 8.5 con ONTAP
 
 == Installare le utility host unificate Linux
 
-Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] in un file .rpm a 64 bit.
+È possibile scaricare il pacchetto software NetApp Linux Unified host Utilities come file 64-bit.rpm dal link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^].
 
 NetApp consiglia vivamente di installare le utility host unificate Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
-
-Se è attualmente installata una versione di Linux Unified host Utilities, è necessario aggiornarla o rimuoverla e procedere come segue per installare la versione più recente.
 
 .Fasi
 . Scaricare il pacchetto software 64-bit Linux Unified host Utilities dal https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] al tuo host.
@@ -99,10 +97,10 @@ Nelle sezioni seguenti vengono forniti esempi di output multipath per una LUN ma
 
 === Tutte le configurazioni DEGLI array SAN
 
-In tutte le configurazioni di array SAN (ASA), tutti i percorsi verso una determinata LUN sono attivi e ottimizzati. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
+Tutte le configurazioni di array SAN (ASA) ottimizzano tutti i percorsi verso una determinata LUN, mantenendoli attivi. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
 
 .Esempio
-Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP:
+Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP.
 
 [listing]
 ----
@@ -125,7 +123,7 @@ NOTE: Un singolo LUN non deve richiedere più di quattro percorsi. La presenza d
 Per le configurazioni non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero gestiti dal controller in cui si trova l'aggregato. I percorsi con priorità più basse sono attivi ma non ottimizzati perché sono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
 
 .Esempio
-Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:
+Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati.
 
 [listing]
 ----
@@ -152,10 +150,12 @@ Il `multipath.conf` file deve esistere per avviare il daemon multipath. Se quest
 
 La prima volta che si crea il `multipath.conf` file, potrebbe essere necessario attivare e avviare i servizi multipath utilizzando i seguenti comandi:
 
-`# chkconfig multipathd on`
-`# /etc/init.d/multipathd start`
-
-Non è necessario aggiungere nulla direttamente al `multipath.conf` file a meno che non si disponga di dispositivi che non si desidera gestire multipath o di impostazioni esistenti che sovrascrivono le impostazioni predefinite. Per escludere i dispositivi indesiderati, aggiungere al `multipath.conf` file la seguente sintassi, sostituendo <DevId> con la stringa WWID del dispositivo che si desidera escludere:
+[listing]
+----
+# systemctl enable multipathd
+# systemctl start multipathd
+----
+Non è necessario aggiungere dispositivi direttamente al `multipath.conf` file, a meno che non si disponga di dispositivi che non si desidera gestire multipath o di impostazioni esistenti che sovrascrivono le impostazioni predefinite. È possibile escludere le periferiche indesiderate aggiungendo la seguente sintassi al `multipath.conf` file, sostituendo <DevId> con la stringa WWID del dispositivo che si desidera escludere:
 
 [listing]
 ----
@@ -166,14 +166,18 @@ blacklist {
         devnode "^cciss.*"
 }
 ----
-Nell'esempio seguente `multipath.conf` viene determinato il WWID di una periferica e aggiunto al file.
+Nell'esempio seguente, si determina il WWID di un dispositivo e si aggiunge il dispositivo al `multipath.conf` file.
 
 .Fasi
 . Determinare il WWID:
 +
 [listing]
 ----
-# /lib/udev/scsi_id -gud /dev/sda
+/lib/udev/scsi_id -gud /dev/sda
+----
++
+[listing]
+----
 360030057024d0730239134810c0cb833
 ----
 +
@@ -192,9 +196,9 @@ blacklist {
 ----
 
 
-È necessario controllare sempre il `/etc/multipath.conf` file, specialmente nella sezione dei valori predefiniti, per le impostazioni legacy che potrebbero sovrascrivere le impostazioni predefinite.
+Controllare sempre il file, soprattutto nella sezione dei valori predefiniti, per verificare `/etc/multipath.conf` le impostazioni legacy che potrebbero sovrascrivere le impostazioni predefinite.
 
-Nella tabella seguente vengono illustrati i `multipathd` parametri critici per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri fornitori e uno di questi parametri viene sovrascritto, è necessario correggerli in seguito nel `multipath.conf` file che si applica specificamente ai LUN di ONTAP. Senza questa correzione, i LUN ONTAP potrebbero non funzionare come previsto. È necessario ignorare queste impostazioni predefinite solo in consultazione con NetApp, il fornitore del sistema operativo o entrambi, e solo quando l'impatto è pienamente compreso.
+Nella tabella seguente vengono illustrati i `multipathd` parametri critici per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri fornitori e uno di questi parametri viene sovrascritto, sarà necessario correggerli in seguito nel `multipath.conf` file che si applica specificamente ai LUN di ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. È necessario ignorare queste impostazioni predefinite solo in consultazione con NetApp e/o un fornitore del sistema operativo e solo quando l'impatto è pienamente compreso.
 
 [cols="2*"]
 |===
@@ -275,9 +279,9 @@ devices {
 ----
 
 
-=== Impostazioni KVM
+=== Configurare le impostazioni KVM
 
-È possibile utilizzare le impostazioni consigliate anche per configurare la macchina virtuale basata su kernel (KVM). Non sono necessarie modifiche per configurare KVM poiché il LUN viene mappato all'hypervisor.
+È possibile utilizzare le impostazioni consigliate anche per configurare la macchina virtuale basata su kernel (KVM). Non sono necessarie modifiche per configurare KVM perché la LUN è mappata all'hypervisor.
 
 
 

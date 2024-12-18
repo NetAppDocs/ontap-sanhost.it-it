@@ -1,0 +1,57 @@
+= 
+:allow-uri-read: 
+
+
+Il `multipath.conf` file deve esistere per avviare il daemon multipath. Se questo file non esiste, è possibile creare un file vuoto a zero byte utilizzando il `touch /etc/multipath.conf` comando.
+
+La prima volta che si crea il `multipath.conf` file, potrebbe essere necessario attivare e avviare i servizi multipath utilizzando i seguenti comandi:
+
+[listing]
+----
+# systemctl enable multipathd
+# systemctl start multipathd
+----
+Non è necessario aggiungere dispositivi direttamente al `multipath.conf` file, a meno che non si disponga di dispositivi che non si desidera gestire multipath o di impostazioni esistenti che sovrascrivono le impostazioni predefinite. È possibile escludere le periferiche indesiderate aggiungendo la seguente sintassi al `multipath.conf` file, sostituendo <DevId> con la stringa WWID del dispositivo che si desidera escludere:
+
+[listing]
+----
+blacklist {
+        wwid <DevId>
+        devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+        devnode "^hd[a-z]"
+        devnode "^cciss.*"
+}
+----
+Nell'esempio seguente, si determina il WWID di un dispositivo e si aggiunge il dispositivo al `multipath.conf` file.
+
+.Fasi
+. Determinare il WWID:
++
+[listing]
+----
+/lib/udev/scsi_id -gud /dev/sda
+----
++
+[listing]
+----
+360030057024d0730239134810c0cb833
+----
++
+`sda` È il disco SCSI locale che si desidera aggiungere alla blacklist.
+
+. Aggiungere il `WWID` alla lista nera `/etc/multipath.conf`:
++
+[listing]
+----
+blacklist {
+     wwid   360030057024d0730239134810c0cb833
+     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+     devnode "^hd[a-z]"
+     devnode "^cciss.*"
+}
+----
+
+
+Controllare sempre il file, soprattutto nella sezione dei valori predefiniti, per verificare `/etc/multipath.conf` le impostazioni legacy che potrebbero sovrascrivere le impostazioni predefinite.
+
+Nella tabella seguente vengono illustrati i `multipathd` parametri critici per i LUN ONTAP e i valori richiesti. Se un host è connesso a LUN di altri fornitori e uno di questi parametri viene sovrascritto, sarà necessario correggerli in seguito nel `multipath.conf` file che si applica specificamente ai LUN di ONTAP. In caso contrario, i LUN ONTAP potrebbero non funzionare come previsto. È necessario ignorare queste impostazioni predefinite solo in consultazione con NetApp e/o un fornitore del sistema operativo e solo quando l'impatto è pienamente compreso.
