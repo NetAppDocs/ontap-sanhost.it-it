@@ -277,7 +277,7 @@ devices {
 }
 ----
 
-NOTE: Per configurare Oracle Linux 8,3 Red Hat Enterprise kernel (RHCK), utilizzare il link:hu_rhel_83.html#recommended-settings["impostazioni consigliate"] per Red Hat Enterprise Linux (RHEL) 8,3.
+NOTE: Per configurare Oracle Linux 8,3 Red Hat Compatible kernel (RHCK), utilizzare il link:hu_rhel_83.html#recommended-settings["impostazioni consigliate"] per Red Hat Enterprise Linux (RHEL) 8,3.
 
 
 
@@ -286,4 +286,4 @@ NOTE: Per configurare Oracle Linux 8,3 Red Hat Enterprise kernel (RHCK), utilizz
 Non ci sono problemi noti per Oracle Linux 8,3 con ONTAP release.
 
 
-NOTE: Per i problemi noti di Oracle Linux (Red Hat Compatible kernel), consultate la link:hu_rhel_83.html#known-problems-and-limitations["problemi noti"] sezione nella relativa documentazione di rilascio di Red Hat Enterprise Linux.
+NOTE: Per i problemi noti di Oracle Linux RHCK, consultare la link:hu_rhel_83.html#known-problems-and-limitations["problemi noti"] sezione nella relativa documentazione di rilascio di RHEL.

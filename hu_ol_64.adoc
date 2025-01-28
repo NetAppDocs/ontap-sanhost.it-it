@@ -253,7 +253,7 @@ devices {
 }
 ----
 
-NOTE: Per configurare Oracle Linux 6,4 Red Hat Enterprise kernel (RHCK), utilizzare il link:hu_rhel_64.html#recommended-settings["impostazioni consigliate"] per Red Hat Enterprise Linux (RHEL) 6,4.
+NOTE: Per configurare Oracle Linux 6,4 Red Hat Compatible kernel (RHCK), utilizzare il link:hu_rhel_64.html#recommended-settings["impostazioni consigliate"] per Red Hat Enterprise Linux (RHEL) 6,4.
 
 
 
@@ -278,4 +278,4 @@ Oracle Linux 6,4 con ONTAP presenta i seguenti problemi noti:
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=739909["739909"^] | La chiamata di sistema SG_io ioctl non riesce sui dispositivi dm-multipath dopo un guasto FC sugli host OL6.x e OL5.x con UEK2 | Si verifica un problema sugli host Oracle Linux 6.x con kernel UEK2 e Oracle Linux 5.x con kernel UEK2. I comandi sg_* su un dispositivo multipath non funzionano con il codice di errore EAGAIN (errno) dopo un errore di fabric che causa la disattivazione di tutti i percorsi nel gruppo di percorsi attivi. Questo problema si verifica solo quando non si verifica alcun i/o sui dispositivi multipath. sg_inq -v /dev/mapper/3600a098041764937303f436c75324370 richiesta cdb: 12 00 00 00 24 00 ioctl(SG_io v3) non riuscito con os_err (errno) = 11 richiesta: Errore so pass-through: Risorsa temporaneamente non disponibile HDIO_GET_IDENTITY ioctl non riuscita: Risorsa temporaneamente non disponibile [11] richiesta SCSI e recupero delle informazioni ATA non riuscito su /dev/mapper/3600a098041764937303f436c75324370. Questo problema si verifica perché il passaggio del gruppo di percorsi ad altri gruppi attivi non viene attivato durante le chiamate ioctl() quando non si verifica alcun i/o sul dispositivo DM-multipath. Il problema è stato osservato sulle seguenti versioni dei pacchetti kernel-uek e device-mapper-multipath: Versioni di OL6.4: Kernel-uek-2.6.39-400.17.1.el6uek device-mapper-multipath-0.4.9-64.0.1.el6 versioni di OL5.9: Kernel-uek-2.6.39 64.0-400.17.1.el5uek device-mapper-multipath-0.4.9 
 |===
 
-NOTE: Per i problemi noti di Oracle Linux (kernel compatibile con Red Hat), consultare link:hu_rhel_64.html#known-problems-and-limitations["problemi noti"] Per Red Hat Enterprise Linux (RHEL) 6.4.
+NOTE: Per i problemi noti di Oracle Linux RHCK, consultare la link:hu_rhel_64.html#known-problems-and-limitations["problemi noti"] per RHEL 6,4.
