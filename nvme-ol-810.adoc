@@ -31,7 +31,7 @@ A seconda della configurazione host, è possibile configurare NNMe/FC, NVMe/TCP 
 
 
 +
-Per ulteriori informazioni sulle configurazioni supportate, consultare link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità NetApp"^].
+Per ulteriori informazioni sulle configurazioni supportate, vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 
 * Funzioni disponibili:
 +
@@ -182,7 +182,7 @@ Emulex LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 0:14.2.0.13
 ----
 +
-Per l'elenco aggiornato dei driver della scheda di rete supportati e delle versioni del firmware, vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità NetApp"^].
+Per l'elenco aggiornato dei driver della scheda di rete supportati e delle versioni del firmware, vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 
 
 
@@ -290,7 +290,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . Eseguire il `dracut -f` comando e riavviare l'host.
-. Verificare che il valore previsto di `lpfc_sg_seg_cnt` sia 256:
+. Verificare che il valore per `lpfc_sg_seg_cnt` sia 256:
 +
 [listing]
 ----

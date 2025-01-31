@@ -18,15 +18,15 @@ summary: Descrive come configurare NVMe/FC per SUSE Linux Enterprise Server 15 S
 [role="lead"]
 NVMe over Fabrics o NVMe-of (inclusi NVMe/FC e altri trasporti) è supportato per SUSE Linux Enterprise Server 15 SP3 con ANA (Asymmetric Namespace Access). ANA è l'equivalente ALUA negli ambienti NVMe-of ed è attualmente implementato con il multipath NVMe in-kernel. Utilizzando questa procedura, è possibile abilitare NVMe-of con multipath NVMe in-kernel utilizzando ANA su SUSE Linux Enterprise Server 15 SP3 e ONTAP come destinazione.
 
-Fare riferimento a. link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^] per informazioni dettagliate sulle configurazioni supportate.
+Per informazioni dettagliate sulle configurazioni supportate, fare riferimento allalink:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 
 
 
 == Caratteristiche
 
 * SUSE Linux Enterprise Server 15 SP3 supporta NVMe/FC e altri trasporti.
-* Non esiste alcun supporto sanlun per NVMe-of. Pertanto, non è disponibile il supporto LUHU per NVMe-of su SUSE Linux Enterprise Server 15 SP3. Puoi fare affidamento sul plug-in NetApp incluso nel pacchetto nvme-cli nativo per NVMe-of. Questo dovrebbe supportare tutti i trasporti NVMe-of.
-* Il traffico NVMe e SCSI può essere eseguito sullo stesso host coesistente. In effetti, si prevede che questa sia la configurazione host comunemente implementata per i clienti. Pertanto, per SCSI, è possibile configurare `dm-multipath` Come di consueto per i LUN SCSI che causano dispositivi mpath, mentre il multipath NVMe potrebbe essere utilizzato per configurare i dispositivi NVMe-of multipath sull'host.
+* Non esiste alcun supporto sanlun per NVMe-of. Pertanto, su SUSE Linux Enterprise Server 15 SP3 non è disponibile alcun supporto per Linux host Utilities per NVMe-of. Puoi fare affidamento sul plug-in NetApp incluso nel pacchetto nvme-cli nativo per NVMe-of. Questo dovrebbe supportare tutti i trasporti NVMe-of.
+* Il traffico NVMe e SCSI può essere eseguito sullo stesso host. In effetti, si prevede che questa sia la configurazione host comunemente implementata per i clienti. Pertanto, per SCSI è possibile configurare `dm-multipath` normalmente le LUN SCSI con conseguenti dispositivi mpath, mentre multipath NVMe può essere utilizzato per configurare dispositivi multipath NVMe-of sull'host.
 
 
 
@@ -39,15 +39,15 @@ L'avvio SAN che utilizza il protocollo NVMe-of non è attualmente supportato.
 
 == Abilitare il multipath NVMe nel kernel
 
-Il multipath NVMe in-kernel è già abilitato per impostazione predefinita sugli host SUSE Linux Enterprise Server, come SUSE Linux Enterprise Server 15 SP3. Pertanto, non sono necessarie ulteriori impostazioni. Per informazioni dettagliate sulle configurazioni supportate, fare riferimento allalink:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^].
+Il multipath NVMe in-kernel è già abilitato per impostazione predefinita sugli host SUSE Linux Enterprise Server, come SUSE Linux Enterprise Server 15 SP3. Pertanto, non sono necessarie ulteriori impostazioni. Per informazioni dettagliate sulle configurazioni supportate, fare riferimento allalink:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 
 
 
 == NVMe-of Initiator Packages
 
-Fare riferimento a. link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^] per informazioni dettagliate sulle configurazioni supportate.
+Per informazioni dettagliate sulle configurazioni supportate, fare riferimento allalink:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 
-. Verificare di disporre dei pacchetti MU kernel e nvme-cli richiesti installati sull'host MU di SUSE Linux Enterprise Server 15 SP3.
+. Verificare di avere installato il kernel e i pacchetti MU nvme-cli richiesti sull'host MU di SUSE Linux Enterprise Server 15 SP3.
 +
 Esempio:
 
@@ -208,7 +208,7 @@ FCP CMPL: xb 0000159d Err 000135c3
 
 ==== Abilita dimensione i/o 1 MB (opzionale)
 
-ONTAP riporta un MDTS (MAX Data Transfer Size) di 8 nei dati del controller di identificazione, il che significa che la dimensione massima della richiesta di i/o deve essere fino a 1 MB. Tuttavia, per emettere richieste di i/o di dimensione 1 MB per l'host Broadcom NVMe/FC, il parametro lpfc `lpfc_sg_seg_cnt` dovrebbe inoltre essere aumentato fino a 256 dal valore predefinito di 64. Seguire le istruzioni riportate di seguito:
+ONTAP riporta un MDTS (MAX Data Transfer Size) di 8 nei dati del controller di identificazione, il che significa che la dimensione massima della richiesta di i/o deve essere fino a 1 MB. Tuttavia, per emettere richieste di i/o di dimensione 1MB per l'host Broadcom NVMe/FC, il parametro lpfc `lpfc_sg_seg_cnt` deve anche essere aumentato fino a 256 volte rispetto al valore predefinito di 64. Seguire le istruzioni riportate di seguito:
 
 . Aggiungere il valore 256 nei rispettivi `modprobe lpfc.conf` file:
 +

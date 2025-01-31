@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_luhu_71.html 
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
-summary: Descrive come utilizzare le utility host unificate Linux 7.1 con ONTAP 
+summary: Viene descritto come utilizzare le utilità host Linux 7,1 con ONTAP 
 ---
-= Installare Linux Unified host Utilities 7.1
+= Installare le utilità host Linux 7,1
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: Descrive come utilizzare le utility host unificate Linux 7.1 con ONTAP
 
 
 [role="lead"]
-LUHU (Linux Unified host Utilities) consente di gestire lo storage NetApp ONTAP collegato a un host Linux. NetApp consiglia vivamente di installare le utility host unificate Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
+Le utilità host Linux consentono di gestire lo storage ONTAP collegato a un host Linux. NetApp consiglia vivamente di installare le utilità host Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
 
 Sono supportate le seguenti distribuzioni Linux:
 
@@ -27,16 +27,16 @@ Sono supportate le seguenti distribuzioni Linux:
 * Citrix XenServer
 
 
-.Di cosa hai bisogno
-Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] in un file .rpm a 32 bit o a 64 bit.
+.Prima di iniziare
+Il pacchetto software NetApp Linux host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^]in un file .rpm a 32 o 64 bit.
 
 * Per un funzionamento affidabile, è necessario verificare che l'intera configurazione iSCSI, FC o FCoE sia supportata.
 +
-È possibile utilizzare https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] per verificare la configurazione.
+È possibile utilizzare link:https://imt.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^]per verificare la configurazione.
 
 * È necessario installare i pacchetti di gestione HBA (host bus adapter) disponibili sul sito di supporto del vendor.
 +
-Il software di gestione consente ai comandi DEL toolkit SAN di raccogliere informazioni sugli HBA FC, ad esempio le WWPN. Per `sanlun fcp show adapter` per funzionare, verificare che i seguenti pacchetti siano installati correttamente:
+Il software di gestione consente ai comandi del toolkit SAN di raccogliere informazioni sugli HBA FC, ad esempio i WWPN. Affinché il `sanlun fcp show adapter` comando funzioni, verificare che i seguenti pacchetti siano installati correttamente:
 
 +
 ** Marvell QLogic HBA – CLI QConvergeConsole
@@ -48,28 +48,25 @@ Il software di gestione consente ai comandi DEL toolkit SAN di raccogliere infor
 
 
 
-NOTE: Il software Linux Unified host Utilities non supporta i protocolli host NVMe over Fibre Channel (NVMe/FC) e NVMe over TCP (NVMe/TCP).
+NOTE: Il software delle utilità host Linux non supporta i protocolli host NVMe over Fibre Channel (NVMe/FC) e NVMe over TCP (NVMe/TCP).
 
 .Fasi
-. Se si dispone di una versione di Linux Unified host Utilities attualmente installata, utilizzare il seguente comando per rimuoverla:
+. Se è attualmente installata una versione di Linux host Utilities, utilizzare il seguente comando per rimuoverla:
 +
 [source, cli]
 ----
 rpm -e netapp_linux_unified_host_utilities-7-1
 ----
 +
-Per le versioni precedenti di Linux host Utilities, accedere alla directory in cui è installato il software dell'utility host e immettere il comando di disinstallazione per rimuovere il pacchetto installato.
+Per le versioni precedenti di Linux host Utilities, andare alla directory in cui è installato il software dell'utilità host e immettere il comando di disinstallazione per rimuovere il pacchetto installato.
 
-. Scaricare il pacchetto software di utilità host unificate Linux a 32 bit o 64 bit dal link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] al tuo host.
+. Scaricare il pacchetto software Linux host Utilities a 32 o 64 bit dal al proprio hostlink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^].
 . Accedere alla directory in cui è stato scaricato il pacchetto software e utilizzare il seguente comando per installarlo:
 +
 [source, cli]
 ----
 rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_xx.rpm
 ----
-+
-*Esempio di output*
-
 +
 [listing]
 ----
@@ -84,9 +81,6 @@ Updating / installing...
 ----
 sanlun version
 ----
-+
-*Esempio di output*
-
 +
 [listing]
 ----
@@ -104,7 +98,7 @@ Quando si configura un ambiente FC che utilizza driver nativi della posta in arr
 
 == Toolkit SAN
 
-Linux Unified host Utilities è un software host NetApp che fornisce un kit di strumenti a riga di comando sul vostro host Linux.
+Linux host Utilities è un software host NetApp che fornisce un toolkit della riga di comando sul vostro host Linux.
 
 Il toolkit viene installato automaticamente quando si installa il pacchetto NetApp host Utilities. Questo kit fornisce `sanlun` Utility che consente di gestire LUN e HBA. Il `sanlun` Il comando restituisce le informazioni relative alle LUN mappate all'host, al multipathing e alle informazioni necessarie per creare gruppi di iniziatori.
 
@@ -130,7 +124,7 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 [NOTE]
 ====
 * Questo toolkit è comune a tutte le configurazioni e protocolli delle utility host. Di conseguenza, alcuni contenuti si applicano a una configurazione, ma non a un'altra. La presenza di componenti inutilizzati non influisce sulle prestazioni del sistema.
-* IL toolkit SAN non è supportato su Citrix XenServer, Oracle VM e Red Hat Enterprise Virtualization Hypervisor.
+* Il SAN Toolkit non è supportato su Citrix XenServer, Oracle VM e Red Hat Enterprise Virtualization Hypervisor.
 
 
 ====

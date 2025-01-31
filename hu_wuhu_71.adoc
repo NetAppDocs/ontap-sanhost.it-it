@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_wuhu_71.html 
 keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
-summary: 'Le utility host unificate di Windows includono un programma di installazione che imposta i parametri HBA e di registro di Windows richiesti in modo che l"host Windows gestisca correttamente i comportamenti del sistema di storage per le piattaforme NetApp ONTAP ed e-Series.' 
+summary: 'Le utilità host Windows includono un programma di installazione che imposta i parametri richiesti del Registro di sistema e dell"HBA di Windows in modo che l"host Windows gestisca correttamente i comportamenti del sistema storage per le piattaforme ONTAP ed e-Series.' 
 ---
-= Installare Windows Unified host Utilities 7,1
+= Installare le utilità host Windows 7,1
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -19,9 +19,9 @@ summary: 'Le utility host unificate di Windows includono un programma di install
 
 
 [role="lead"]
-Le utilità Windows Unified host (WUHU) consentono di collegare un computer host Windows ai sistemi di archiviazione NetApp.
+Le utilità host di Windows consentono di collegare un computer host di Windows ai sistemi di archiviazione NetApp.
 
-Le utilità host di Windows Unified supportano le seguenti versioni di Windows:
+Le utilità host di Windows supportano le seguenti versioni di Windows:
 
 * Windows 2022
 * Windows 2019
@@ -30,7 +30,7 @@ Le utilità host di Windows Unified supportano le seguenti versioni di Windows:
 * Windows 2012
 
 
-Le utilità Windows Unified host includono un programma di installazione che imposta i parametri richiesti del Registro di sistema di Windows e dell'HBA (host Bus Adapter) in modo che un host Windows possa gestire correttamente i comportamenti del sistema storage per le piattaforme NetApp ONTAP ed e-Series.
+Le utilità host Windows includono un programma di installazione che imposta i parametri richiesti del Registro di sistema di Windows e dell'HBA (host Bus Adapter) in modo che un host Windows possa gestire correttamente i comportamenti del sistema storage per le piattaforme ONTAP ed e-Series.
 
 Quando si installa il software host Utilities, il programma di installazione imposta i parametri necessari del registro di Windows e dell'adattatore bus host (HBA).
 
@@ -54,7 +54,7 @@ I seguenti programmi e file vengono installati sul computer host di Windows. La 
 
 | `san_version.exe` | Visualizza la versione delle utilità host e degli HBA FC. 
 |===
-Le utilità host supportano diverse configurazioni host di Windows, protocolli e opzioni di multipathing. Vedere https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità NetApp"^] per l'elenco aggiornato delle configurazioni supportate.
+Le utilità host supportano diverse configurazioni host di Windows, protocolli e opzioni di multipathing. Consultare la https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^] per l'elenco aggiornato delle configurazioni supportate.
 
 
 
@@ -63,7 +63,7 @@ Le utilità host supportano diverse configurazioni host di Windows, protocolli e
 Prima di installare le Utility host, verificare che la versione delle Utility host supporti la configurazione del sistema host e storage in modo che il software venga installato correttamente.
 
 .Fasi
-. Verificare la configurazione supportata in http://mysupport.netapp.com/matrix["Tool di matrice di interoperabilità NetApp"^].
+. Verificare la configurazione supportata in http://mysupport.netapp.com/matrix["Tool di matrice di interoperabilità"^] .
 . Controllare le correzioni rapide richieste per il rispettivo host su link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["Documentazione Windows per host SAN"].
 +
 
@@ -105,14 +105,14 @@ NOTE: Non modificare manualmente le impostazioni dell'HBA.
 
 Il programma di installazione installa il pacchetto Utility host e imposta il registro di sistema di Windows e le impostazioni HBA.
 
-È necessario specificare se includere il supporto multipathing quando si installa il pacchetto software Windows Unified host Utilities. Il programma di installazione richiede di scegliere la seguente opzione. È inoltre possibile eseguire un'installazione silenziosa (non assistita) dal prompt dei comandi di Windows.
+È necessario specificare se includere il supporto multipathing quando si installa il pacchetto software Utilità host di Windows. Il programma di installazione richiede di scegliere la seguente opzione. È inoltre possibile eseguire un'installazione silenziosa (non assistita) dal prompt dei comandi di Windows.
 
 .Supporto multipathing
 * Scegliere `MPIO` Se si dispone di più percorsi dall'host o dalla macchina virtuale di Windows al sistema di storage.
 * Scegliere `no MPIO` solo se si utilizza un singolo percorso per il sistema storage.
 
 
-La selezione di MPIO non è disponibile per i sistemi Windows XP e Windows Vista; i/o multipath non è supportato su questi sistemi operativi guest. Per i guest Hyper-V, i dischi raw (pass-through) non vengono visualizzati nel sistema operativo guest se si sceglie il supporto multipathing. È possibile utilizzare dischi raw o MPIO, ma non entrambi nel sistema operativo guest.
+La selezione di Microsoft Multipath i/o (MPIO) non è disponibile per i sistemi Windows XP e Windows Vista; multipath i/o non è supportato su questi sistemi operativi guest. Per i guest Hyper-V, i dischi raw (pass-through) non vengono visualizzati nel sistema operativo guest se si sceglie il supporto multipathing. È possibile utilizzare dischi raw o MPIO, ma non entrambi nel sistema operativo guest.
 
 È possibile installare le utilità host in modo interattivo o utilizzando la riga di comando. Il nuovo pacchetto di installazione di Utility host deve trovarsi in un percorso accessibile dall'host di Windows. Seguire le istruzioni per l'installazione interattiva delle utilità host o dalla riga di comando di Windows.
 

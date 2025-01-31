@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_wuhu_71_rn.html 
 keywords: host utilities, linux, 7.1, 7.2, netapp, ontap, release, notes 
-summary: Note di release per Windows Unified host Utilities 
+summary: Note sulla versione per le utilità host di Windows 
 ---
-= Windows Unified host Utilities - Note sulla versione
+= Note sulla versione delle utilità host di Windows
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -18,31 +18,31 @@ summary: Note di release per Windows Unified host Utilities
 [role="lead"]
 Le note di rilascio descrivono nuove funzioni e miglioramenti, problemi risolti nella versione corrente, problemi e limitazioni noti e importanti precauzioni relative alla configurazione e alla gestione dell'host Windows specifico con il sistema di storage ONTAP in uso.
 
-Per informazioni specifiche sulle versioni e sugli aggiornamenti del sistema operativo supportati dalle utility host, consultare link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^].
+Per informazioni specifiche sulle versioni e gli aggiornamenti del sistema operativo supportati dalle utilità host, consultare link:https://imt.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^].
 
 
 
 == Novità
 
-* Windows Unified host Utilities 7.2 include il supporto per le impostazioni dei parametri dei driver NVMe/FC e per le correzioni dei bug per le nuove schede vendor.
-* Windows Unified host Utilities 7.1 include il supporto per i sistemi storage e-Series, il supporto per ONTAP 9 e versioni successive e timeout iSCSI migliorati per un failover più rapido.
+* Windows host Utilities 7,2 include il supporto per le impostazioni dei parametri del driver NVMe/FC e le correzioni dei bug per le nuove schede del fornitore.
+* Windows host Utilities 7,1 include il supporto per i sistemi di storage e-Series, il supporto per ONTAP 9 e versioni successive e timeout iSCSI migliorati per un failover più rapido.
 
 
 
 
 == Problemi e limitazioni noti
 
-È necessario conoscere i seguenti problemi e limitazioni noti che potrebbero influire sulle prestazioni dell'host specifico. Nella versione Windows Unified host Utilities 7,1 sono stati identificati alcuni comportamenti imprevisti e potenzialmente indesiderati e soluzioni alternative per evitare questi comportamenti.
+È necessario conoscere i seguenti problemi e limitazioni noti che potrebbero influire sulle prestazioni dell'host specifico. Alcuni comportamenti imprevisti e potenzialmente indesiderati e soluzioni alternative per evitare questi comportamenti sono stati identificati nella versione 7,1 di Windows host Utilities.
 
 [cols="30, 30, 20"]
 |===
 | Titolo | Descrizione | Soluzione alternativa 
 
 
-| Esecuzione di `linux_gos_timeout-install.sh` Lo script non è più necessario per i guest Hyper-V che eseguono Red Hat Enterprise Linux o SUSE Linux Enterprise Server | Non è più necessario eseguire `linux_gos_timeout-install.sh` Script per modificare i timeout dei dischi su guest Red Hat Enterprise Linux 5, Red Hat Enterprise Linux 6 o SUSE Linux Enterprise Server 11 Hyper-V perché vengono utilizzate le impostazioni di timeout predefinite. Il `linux_gos_timeout-install.sh` Lo script incluso nelle versioni precedenti delle utilità host non è più incluso nella versione Windows Unified host Utilities 7,1. Windows Unified host Utilities 7.1 utilizza le impostazioni predefinite di timeout del disco. | Non applicabile 
+| Esecuzione di `linux_gos_timeout-install.sh` Lo script non è più necessario per i guest Hyper-V che eseguono Red Hat Enterprise Linux o SUSE Linux Enterprise Server | Non è più necessario eseguire `linux_gos_timeout-install.sh` lo script per modificare i timeout del disco su guest Red Hat Enterprise Linux 5, Red Hat Enterprise Linux 6 o SUSE Linux Enterprise Server 11 Hyper-V perché vengono utilizzate le impostazioni di timeout predefinite.  `linux_gos_timeout-install.sh`Lo script incluso nelle versioni precedenti delle utilità host non è più incluso nella versione 7,1 delle utilità host di Windows. Utilità host di Windows 7,1 utilizza le impostazioni predefinite di timeout del disco. | Non applicabile 
 
 
-| Le sessioni iSCSI non si ricollegano dopo il riavvio con IPv4 e IPv6 misti | In una configurazione MPIO (Multipath i/o) o MCS (Multiple Connections per Session) con endpoint IPv4 e IPv6, alcune sessioni iSCSI potrebbero non riuscire a riconnettersi dopo il riavvio dell'host Windows. | Utilizzare tutti gli endpoint IPv4 o IPv6. Non utilizzare IPv4 e IPv6. 
+| Le sessioni iSCSI non si ricollegano dopo il riavvio con IPv4 e IPv6 misti | In una configurazione Microsoft Multipath i/o (MPIO) o in più connessioni per sessione (MCS) con endpoint IPv4 e IPv6, è possibile che alcune sessioni iSCSI non si riconnettano dopo il riavvio dell'host Windows. | Utilizzare tutti gli endpoint IPv4 o IPv6. Non utilizzare IPv4 e IPv6. 
 
 
 | L'avvio del software iSCSI non supporta più connessioni per sessione (MCS) | Quando si utilizza l'avvio del software iSCSI con iSCSI MCS, la connessione iniziale di avvio iSCSI non può essere protetta. Ciò può causare la disconnessione dal LUN di avvio e causare l'interruzione del sistema host. | Microsoft non supporta MCS per gli host avviati dal software iSCSI. Utilizza MPIO come soluzione ad alta disponibilità. Tenere presente che la combinazione di MPIO e MCS non è supportata. 

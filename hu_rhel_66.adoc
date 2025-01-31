@@ -20,16 +20,16 @@ summary: Descrive come utilizzare Red Hat Enterprise Linux 6.6 con ONTAP
 
 
 
-== Installare le utility host unificate Linux
+== Installare le utilità host Linux
 
-Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^]in un file .rpm a 32 e 64 bit. Se non si conosce il file adatto alla configurazione, utilizzare per verificare quale file è link:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità NetApp"^]necessario.
+Il pacchetto software NetApp Linux host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^]in un file .rpm a 32 bit e a 64 bit. Se non si conosce il file adatto alla configurazione, utilizzare per verificare quale file è link:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^]necessario.
 
-NetApp consiglia vivamente di installare le utilità host unificate di Linux, ma non è obbligatorio. Le utility non modificano alcuna impostazione sul vostro host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
+NetApp consiglia vivamente di installare le utilità host Linux, ma non è obbligatorio. Le utility non modificano alcuna impostazione sul vostro host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
 
-Se Linux Unified host Utilities è attualmente installato, è necessario aggiornarlo alla versione più recente oppure rimuoverlo e seguire questa procedura per installare la versione più recente.
+Se avete installato Linux host Utilities, è necessario aggiornarlo alla versione più recente, oppure rimuoverlo e seguire questi passaggi per installare la versione più recente.
 
 .Fasi
-. Scaricare il pacchetto software di utilità host unificate Linux a 32 bit o 64 bit dal link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] al tuo host.
+. Scaricare il pacchetto software Linux host Utilities a 32 o 64 bit dal al proprio hostlink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^].
 . Installare il pacchetto software:
 +
 `rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_64`
@@ -68,8 +68,8 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 
 == Avvio SAN
 
-.Di cosa hai bisogno
-Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare link:https://mysupport.netapp.com/matrix/imt.jsp?components=68653;&solution=1&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] Per verificare che il sistema operativo, l'HBA, il firmware dell'HBA, il BIOS di avvio dell'HBA e la versione di ONTAP siano supportati.
+.Prima di iniziare
+Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare link:https://imt.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^]per verificare che il sistema operativo, l'HBA, il firmware dell'HBA e il BIOS di avvio dell'HBA e la versione ONTAP siano supportati.
 
 .Fasi
 . Mappare il LUN di avvio SAN sull'host.
@@ -312,7 +312,7 @@ La versione RHEL 6,6 con ONTAP presenta i seguenti problemi noti:
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=863878["863878"^] | Si verifica un crash del kernel con l'host RHEL 6U6 durante gli errori di storage | Durante lo storage/fabric si potrebbe verificare un crash del kernel sull'host RHEL 6U6. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=852674["1076584"^] | I/o si bloccano fino a 300 secondi con l'host QLogic 16G FC (QLE2672) durante i guasti dello storage in RHEL 6U4 | Durante i guasti di storage/fabric, è possibile che si verifichino interruzioni di i/o fino a 300 secondi sull'host QLogic 16G FC (QLE2672). 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=852674["1076584"^] | Stallo i/o fino a 300 secondi visto con l'host QLogic 16G FC (QLE2672) durante errori di storage in RHEL 6U4 | È possibile osservare uno stallo i/o fino a 300 secondi su un host FC QLogic 16G (QLE2672) durante errori dello storage/fabric. 
 
 
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=795684["795684"^] | Il multipath RHEL6 U5 raggruppa in modo errato le mappe multipath durante le operazioni di errore di failover dello storage e del mod | È possibile che si osservi un raggruppamento di percorsi non corretto sui LUN durante il funzionamento on-demand dello spostamento del LUN insieme agli errori dello storage. Durante lo spostamento del LUN, le priorità del percorso multiplo cambiano e il multipath non è in grado di ricaricare la tabella dei dispositivi a causa di un guasto al dispositivo causato da un errore dello storage. Questo porta a un raggruppamento di percorsi non corretto. 

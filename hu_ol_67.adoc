@@ -20,16 +20,16 @@ summary: Descrive come utilizzare Oracle Linux 6.7 con ONTAP
 
 
 
-== Installare le utility host unificate Linux
+== Installare le utilità host Linux
 
-Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^]in un file .rpm a 32 e 64 bit. Se non si conosce il file adatto alla configurazione, utilizzare per verificare quale file è link:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità NetApp"^]necessario.
+Il pacchetto software NetApp Linux host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^]in un file .rpm a 32 bit e a 64 bit. Se non si conosce il file adatto alla configurazione, utilizzare per verificare quale file è link:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^]necessario.
 
-NetApp consiglia vivamente di installare le utilità host unificate di Linux, ma non è obbligatorio. Le utility non modificano alcuna impostazione sul vostro host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
+NetApp consiglia vivamente di installare le utilità host Linux, ma non è obbligatorio. Le utility non modificano alcuna impostazione sul vostro host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
 
-Se Linux Unified host Utilities è attualmente installato, è necessario aggiornarlo alla versione più recente oppure rimuoverlo e seguire questa procedura per installare la versione più recente.
+Se avete installato Linux host Utilities, è necessario aggiornarlo alla versione più recente, oppure rimuoverlo e seguire questi passaggi per installare la versione più recente.
 
 .Fasi
-. Scaricare il pacchetto software di utilità host unificate Linux a 32 bit o 64 bit dal link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] al tuo host.
+. Scaricare il pacchetto software Linux host Utilities a 32 o 64 bit dal al proprio hostlink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^].
 . Installare il pacchetto software:
 +
 `rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_64`
@@ -68,8 +68,8 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 
 == Avvio SAN
 
-.Di cosa hai bisogno
-Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare https://mysupport.netapp.com/matrix/imt.jsp?components=74908;74907;71545;71546;&solution=1&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] Per verificare che il sistema operativo, l'HBA, il firmware dell'HBA, il BIOS di avvio dell'HBA e la versione di ONTAP siano supportati.
+.Prima di iniziare
+Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare link:https://imt.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^]per verificare che il sistema operativo, l'HBA, il firmware dell'HBA e il BIOS di avvio dell'HBA e la versione ONTAP siano supportati.
 
 .Fasi
 . Mappare il LUN di avvio SAN sull'host.

@@ -18,14 +18,14 @@ summary: Descrive come configurare NVMe/FC per SUSE Linux Enterprise Server 15 S
 [role="lead"]
 È possibile configurare NVMe su Fibre Channel (NVMe/FC) su host che eseguono SUSE Linux Enterprise Server 15 SP1 e ONTAP come destinazione.
 
-NVMe/FC è supportato su ONTAP 9.6 o versioni successive per le seguenti versioni di SUSE Linux Enterprise Server:
+A partire da ONTAP 9,6, NVMe/FC è supportato per le seguenti versioni di SUSE Linux Enterprise Server:
 
 * SUSE Linux Enterprise Server 15 SP1
 +
 L'host SUSE Linux Enterprise Server 15 SP1 può eseguire sia il traffico NVMe/FC che FCP tramite le stesse porte dell'adattatore iniziatore Fibre Channel. Consultare la link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] per un elenco di controller e adattatori FC supportati.
 
 +
-Per l'elenco più aggiornato delle configurazioni e delle versioni supportate, vedere link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^].
+Per l'elenco aggiornato delle configurazioni e delle versioni supportate, vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 
 * Gli script nativi di connessione automatica NVMe/FC sono inclusi nel pacchetto nvme-cli. È possibile utilizzare il driver lpfc inbox nativo su SUSE Linux Enterprise Server 15 SP1.
 
@@ -74,7 +74,7 @@ nqn.2014-08.org.nvmexpress:uuid:75953f3b-77fe-4e03-bf3c-09d5a156fbcd
 
 == Configurare Broadcom FC Adapter per NVMe/FC
 
-. Verificare di utilizzare l'adattatore supportato. Per l'elenco più aggiornato degli adattatori supportati, consultare link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^].
+. Verificare di utilizzare l'adattatore supportato. Per l'elenco corrente delle schede di rete supportate, vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 +
 [listing]
 ----
@@ -240,7 +240,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . Eseguire il `dracut -f` comando e riavviare l'host.
-. Verificare che il valore previsto di `lpfc_sg_seg_cnt` sia 256:
+. Verificare che il valore per `lpfc_sg_seg_cnt` sia 256:
 +
 [listing]
 ----

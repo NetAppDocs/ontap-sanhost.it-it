@@ -26,7 +26,7 @@ Il supporto e le funzionalità seguenti sono disponibili con la configurazione h
 ** Supporto di NVMe over TCP (NVMe/TCP) oltre a NVMe over Fibre Channel (NVMe/FC). Il plug-in NetApp nel pacchetto nvme-cli nativo visualizza i dettagli ONTAP per gli spazi dei nomi NVMe/FC e NVMe/TCP.
 ** Esecuzione di traffico NVMe e SCSI sullo stesso host. Ad esempio, è possibile configurare dm-multipath per i dispositivi SCSI mpath per i LUN SCSI e utilizzare NVMe Multipath per configurare i dispositivi con namespace NVMe-of sull'host.
 +
-Per ulteriori informazioni sulle configurazioni supportate, consultare link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità NetApp"^].
+Per ulteriori informazioni sulle configurazioni supportate, vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 
 
 
@@ -173,7 +173,7 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 0:14.2.0.13
 ----
 +
-Per l'elenco più aggiornato delle versioni firmware e dei driver della scheda di rete supportati, consultare link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità NetApp"^].
+Per l'elenco aggiornato dei driver della scheda di rete supportati e delle versioni del firmware, vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 
 
 
@@ -303,7 +303,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . Eseguire il `dracut -f` comando e riavviare l'host.
-. Verificare che il valore previsto di `lpfc_sg_seg_cnt` sia 256:
+. Verificare che il valore per `lpfc_sg_seg_cnt` sia 256:
 +
 [listing]
 ----

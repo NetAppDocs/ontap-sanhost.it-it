@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_wuhu_hba_settings.html 
 keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
-summary: 'Le utility host unificate di Windows includono un programma di installazione che imposta i parametri HBA e di registro di Windows richiesti in modo che l"host Windows gestisca correttamente i comportamenti del sistema di storage per le piattaforme NetApp ONTAP ed e-Series.' 
+summary: 'Le utilità host Windows includono un programma di installazione che imposta i parametri richiesti del Registro di sistema e dell"HBA di Windows in modo che l"host Windows gestisca correttamente i comportamenti del sistema storage per le piattaforme ONTAP ed e-Series.' 
 ---
 = Configurare le impostazioni del Registro di sistema
 :toc: macro
@@ -27,22 +27,22 @@ Non tutti i valori si applicano al modulo DSM (Device-Specific Module) per Gesti
 
 Gli HBA FC, NVMe/FC e iSCSI dispongono inoltre di parametri che è necessario impostare per garantire le migliori performance e gestire con successo gli eventi del sistema storage.
 
-Il programma di installazione fornito con Windows Unified host Utilities imposta i parametri Windows, FC e NVMe/FC HBA sui valori supportati.
+Il programma di installazione fornito con Windows host Utilities imposta i parametri Windows, FC e NVMe/FC HBA sui valori supportati.
 
 È necessario impostare manualmente i parametri HBA iSCSI.
 
-Il programma di installazione imposta valori diversi a seconda che si specifichi il supporto MPIO (Multipath i/o) quando si esegue il programma di installazione.
+Il programma di installazione imposta valori diversi a seconda che si specifica il supporto Microsoft Multipath i/o (MPIO) quando si esegue il programma di installazione.
 
 
 NOTE: Non modificare questi valori se non dietro richiesta dell'assistenza tecnica NetApp.
 
 
 
-== Valori del Registro di sistema impostati da Windows Unified host Utilities 7,2
+== Valori del Registro di sistema impostati dalle utilità host di Windows 7,2
 
-Il programma di installazione di Windows Unified host Utilities imposta automaticamente i valori del Registro di sistema in base alle scelte effettuate durante l'installazione. È necessario conoscere questi valori del Registro di sistema e la versione del sistema operativo.
+Il programma di installazione delle utilità host di Windows imposta automaticamente i valori del Registro di sistema in base alle scelte effettuate durante l'installazione. È necessario conoscere questi valori del Registro di sistema e la versione del sistema operativo.
 
-I seguenti valori vengono impostati dal programma di installazione di Windows Unified host Utilities. Tutti i valori sono espressi in decimali, se non diversamente specificato.
+I seguenti valori vengono impostati dal programma di installazione delle utilità host di Windows. Tutti i valori sono espressi in decimali, se non diversamente specificato.
 
 
 NOTE: HKLM è l'abbreviazione di `HKEY_LOCAL_MACHINE`.
@@ -124,7 +124,7 @@ NOTE: HKLM è l'abbreviazione di `HKEY_LOCAL_MACHINE`.
 
 === Parametri NVMe
 
-I seguenti parametri del driver NVMe Emulex vengono aggiornati quando si installa Windows Unified host Utilities 7,2:
+I seguenti parametri del driver NVMe Emulex vengono aggiornati durante l'installazione delle utilità host Windows 7,2:
 
 * EnableNVMe = 1
 * NVMEMode = 0
@@ -133,11 +133,11 @@ I seguenti parametri del driver NVMe Emulex vengono aggiornati quando si install
 
 
 
-== Valori del Registro di sistema impostati da Windows Unified host Utilities 7,1
+== Valori del Registro di sistema impostati dalle utilità host di Windows 7,1
 
-Il programma di installazione di Windows Unified host Utilities imposta automaticamente i valori del Registro di sistema in base alle scelte effettuate durante l'installazione. È necessario conoscere questi valori del Registro di sistema, la versione del sistema operativo.
+Il programma di installazione delle utilità host di Windows imposta automaticamente i valori del Registro di sistema in base alle scelte effettuate durante l'installazione. È necessario conoscere questi valori del Registro di sistema, la versione del sistema operativo.
 
-I seguenti valori vengono impostati dal programma di installazione di Windows Unified host Utilities. Tutti i valori sono espressi in decimali, se non diversamente specificato.
+I seguenti valori vengono impostati dal programma di installazione delle utilità host di Windows. Tutti i valori sono espressi in decimali, se non diversamente specificato.
 
 
 NOTE: `HKLM` è l'abbreviazione di `HKEY_LOCAL_MACHINE`.

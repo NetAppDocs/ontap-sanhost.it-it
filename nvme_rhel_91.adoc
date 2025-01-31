@@ -24,7 +24,7 @@ Il seguente supporto è disponibile per la configurazione host NVMe-of per RHEL 
 * Utilizzo di traffico NVMe e SCSI coesistente sullo stesso host su un determinato HBA (host bus adapter), senza le impostazioni esplicite di dm-multipath per impedire la richiesta di spazi dei nomi NVMe.
 
 
-Fare riferimento a. link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità NetApp"^] per informazioni dettagliate sulle configurazioni supportate.
+Per informazioni dettagliate sulle configurazioni supportate, fare riferimento allalink:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 
 
 
@@ -46,7 +46,7 @@ Puoi usare la seguente procedura per abilitare il multipath NVMe in-kernel.
 
 .Fasi
 . Installare RHEL 9,1 sul server.
-. Una volta completata l'installazione, verificare che il kernel RHEL 9,1 specificato sia in esecuzione. Vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità NetApp"^] per l'elenco più aggiornato delle versioni supportate.
+. Una volta completata l'installazione, verificare che il kernel RHEL 9,1 specificato sia in esecuzione. Per l'elenco aggiornato delle versioni supportate, vedere la link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 +
 Esempio:
 
@@ -99,7 +99,7 @@ NOTE: Se le stringhe NQN host non corrispondono, utilizzare `vserver modify` Per
 .Broadcom/Emulex
 --
 .Fasi
-. Verificare di utilizzare l'adattatore supportato. Vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità NetApp"^] per l'elenco più aggiornato delle schede supportate.
+. Verificare di utilizzare l'adattatore supportato. Per l'elenco aggiornato delle schede di rete supportate, vedere la link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 +
 [listing]
 ----
@@ -113,7 +113,7 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 
 ----
-. Verificare di utilizzare il firmware Broadcom lpfc e il driver della posta in arrivo consigliati. Vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità NetApp"^] per l'elenco più aggiornato delle versioni firmware e dei driver della scheda di rete supportati.
+. Verificare di utilizzare il firmware Broadcom lpfc e il driver della posta in arrivo consigliati. Consultare la link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^] per l'elenco aggiornato dei driver della scheda di rete e delle versioni del firmware supportate.
 +
 [listing]
 ----
@@ -230,7 +230,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . Eseguire il `dracut -f` comando e riavviare l'host.
-. Verificare che il valore previsto di `lpfc_sg_seg_cnt` sia 256:
+. Verificare che il valore per `lpfc_sg_seg_cnt` sia 256:
 +
 [listing]
 ----

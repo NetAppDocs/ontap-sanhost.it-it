@@ -13,7 +13,7 @@ sidebar:
     url: "/index.html"
   - title: Panoramica
     url: "/overview.html"
-  - title: Installare le utilità host SAN
+  - title: Installare LE utilità host SAN
     entries:
     - title: Panoramica
       url: "/hu_sanhost_index.html"
@@ -35,11 +35,11 @@ sidebar:
         url: "/hu_hpux_60.html"
       - title: Esempio di riferimento al comando
         url: "/hu_hpux_60_cmd.html"
-    - title: Utility host unificate Linux
+    - title: Utility host Linux
       entries:
       - title: Note di rilascio
         url: "/hu_luhu_71_rn.html"
-      - title: Installare LUHU 7.1
+      - title: Installare le utilità host Linux 7,1
         url: "/hu_luhu_71.html"
       - title: Esempio di riferimento al comando
         url: "/hu_luhu_71_cmd.html"
@@ -51,17 +51,17 @@ sidebar:
         url: "/hu_solaris_62.html"
       - title: Esempio di riferimento al comando
         url: "/hu_solaris_62_cmd.html"
-    - title: Utility host unificate di Windows
+    - title: Utilità host Windows
       entries:
       - title: Note di rilascio
         url: "/hu_wuhu_71_rn.html"
-      - title: Installare WUHU 7.2
+      - title: Installare le utilità host Windows 7,2
         url: "/hu_wuhu_72.html"
-      - title: Installare WUHU 7.1
+      - title: Installare le utilità host Windows 7,1
         url: "/hu_wuhu_71.html"
-      - title: Aggiornamento WUHU
+      - title: Aggiornare le utilità host di Windows
         url: "/hu_wuhu_upgrade.html"
-      - title: Riparare e rimuovere WUHU
+      - title: Riparare e rimuovere le utilità host di Windows
         url: "/hu_wuhu_repair_remove.html"
       - title: Configurare le impostazioni del Registro di sistema
         url: "/hu_wuhu_hba_settings.html"

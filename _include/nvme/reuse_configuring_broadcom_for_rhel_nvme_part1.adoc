@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-Per l'elenco aggiornato degli adattatori supportati, consultare link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità NetApp"^].
+Per l'elenco corrente delle schede di rete supportate, vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 
 .Fasi
 . Verificare di utilizzare l'adattatore supportato.
@@ -71,7 +71,7 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 ----
 . Abilita dimensione i/o 1 MB _(opzionale)_.
 +
-Il `lpfc_sg_seg_cnt` Il parametro deve essere impostato su 256 per consentire al driver lpfc di emettere richieste di i/o fino a 1 MB di dimensione.
+Il `lpfc_sg_seg_cnt` parametro deve essere impostato su 256 affinché il driver lpfc invii richieste di i/o di dimensioni fino a 1MB MB.
 
 +
 [listing]

@@ -22,7 +22,7 @@ summary: Descrive come configurare NVMe/FC per Oracle Linux 7.7 con ONTAP
 
 == Supportabilità
 
-NVMe/FC è supportato su ONTAP 9.6 o versione successiva per Oracle Linux 7.7. L'host Oracle Linux 7,7 può eseguire traffico NVMe e SCSI tramite le stesse porte dell'adattatore iniziatore Fibre Channel. Consultare la link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] per un elenco di controller e adattatori FC supportati. Per l'elenco aggiornato delle configurazioni supportate, vedere link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^].
+A partire da ONTAP 9,6, NVMe/FC è supportato per Oracle Linux 7,7. L'host Oracle Linux 7,7 può eseguire traffico NVMe e SCSI tramite le stesse porte dell'adattatore iniziatore Fibre Channel. Consultare la link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] per un elenco di controller e adattatori FC supportati. Per l'elenco corrente delle configurazioni supportate, vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 
 
 NOTE: È possibile utilizzare le impostazioni di configurazione fornite in questo documento per configurare i client cloud connessi a. link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] e. link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX per ONTAP"^].
@@ -90,7 +90,7 @@ NOTE: Se le stringhe NQN host non corrispondono, utilizzare il comando vserver m
 
 == Configurazione di Broadcom FC Adapter per NVMe/FC
 
-. Verificare di utilizzare l'adattatore supportato. Per l'elenco più aggiornato degli adattatori supportati, consultare link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^].
+. Verificare che si stia utilizzando un adattatore supportato. Per l'elenco corrente delle schede di rete supportate, vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 +
 [listing]
 ----
@@ -112,7 +112,7 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 # rpm -ivh nvmefc-connect-12.4.65.0-1.noarch.rpm
 ----
 . Riavviare l'host.
-. Verificare di utilizzare il firmware Broadcom lpfc consigliato, il driver inbox nativo e le versioni dei pacchetti outbox con connessione automatica. Per un elenco delle versioni supportate, vedere link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^].
+. Verificare di utilizzare il firmware Broadcom lpfc consigliato, il driver inbox nativo e le versioni del pacchetto di connessione automatica outbox. Per un elenco delle versioni supportate, vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 +
 [listing]
 ----
@@ -251,7 +251,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . Eseguire il `dracut -f` comando e riavviare l'host.
-. Verificare che il valore previsto di `lpfc_sg_seg_cnt` sia 256:
+. Verificare che il valore per `lpfc_sg_seg_cnt` sia 256:
 +
 [listing]
 ----

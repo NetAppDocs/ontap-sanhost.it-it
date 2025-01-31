@@ -8,10 +8,7 @@ summary: 'Le note legali forniscono l"accesso a dichiarazioni di copyright, marc
 :allow-uri-read: 
 
 
-[role="lead"]
-Le note legali forniscono l'accesso a dichiarazioni di copyright, marchi, brevetti e altro ancora.
-
-[role="lead"]
+[role="lead lead"]
 Le note legali forniscono l'accesso a dichiarazioni di copyright, marchi, brevetti e altro ancora.
 
 
@@ -41,14 +38,6 @@ link:https://www.netapp.com/pdf.html?item=/media/11887-patentspage.pdf["https://
 == Direttiva sulla privacy
 
 link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.com/company/legal/privacy-policy/"^]
-
-
-
-== Open source
-
-I file di avviso forniscono informazioni sul copyright e sulle licenze di terze parti utilizzate nel software NetApp.
-
-Fornisce informazioni sul copyright e sulle licenze di terze parti utilizzate in questo prodotto.
 
 * link:./media/Notices-AIX61-2023.pdf["Avviso per AIX"^]
 * link:./media/Linux_Unified_Host_Utilities.pdf["Avviso per Linux"^]

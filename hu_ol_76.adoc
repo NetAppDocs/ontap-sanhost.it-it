@@ -20,16 +20,16 @@ summary: Descrive come utilizzare Oracle Linux 7.6 con ONTAP
 
 
 
-== Installare le utility host unificate Linux
+== Installare le utilità host Linux
 
-Il pacchetto software NetApp Linux Unified host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^]in un file .rpm a 32 e 64 bit. Se non si conosce il file adatto alla configurazione, utilizzare per verificare quale file è link:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità NetApp"^]necessario.
+Il pacchetto software NetApp Linux host Utilities è disponibile su link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^]in un file .rpm a 32 bit e a 64 bit. Se non si conosce il file adatto alla configurazione, utilizzare per verificare quale file è link:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^]necessario.
 
-NetApp consiglia vivamente di installare le utilità host unificate di Linux, ma non è obbligatorio. Le utility non modificano alcuna impostazione sul vostro host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
+NetApp consiglia vivamente di installare le utilità host Linux, ma non è obbligatorio. Le utility non modificano alcuna impostazione sul vostro host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
 
-Se Linux Unified host Utilities è attualmente installato, è necessario aggiornarlo alla versione più recente oppure rimuoverlo e seguire questa procedura per installare la versione più recente.
+Se avete installato Linux host Utilities, è necessario aggiornarlo alla versione più recente, oppure rimuoverlo e seguire questi passaggi per installare la versione più recente.
 
 .Fasi
-. Scaricare il pacchetto software di utilità host unificate Linux a 32 bit o 64 bit dal link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] al tuo host.
+. Scaricare il pacchetto software Linux host Utilities a 32 o 64 bit dal al proprio hostlink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^].
 . Installare il pacchetto software:
 +
 `rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_64`
@@ -68,8 +68,8 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 
 == Avvio SAN
 
-.Di cosa hai bisogno
-Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare link:https://mysupport.netapp.com/matrix/imt.jsp?components=86309;&solution=1&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] Per verificare che il sistema operativo, l'HBA, il firmware dell'HBA, il BIOS di avvio dell'HBA e la versione di ONTAP siano supportati.
+.Prima di iniziare
+Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare link:https://imt.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^]per verificare che il sistema operativo, l'HBA, il firmware dell'HBA e il BIOS di avvio dell'HBA e la versione ONTAP siano supportati.
 
 .Fasi
 . Mappare il LUN di avvio SAN sull'host.
@@ -274,5 +274,5 @@ Oracle Linux 7,6 con ONTAP presenta i seguenti problemi noti:
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246134["11246134"^] | Nessun progresso i/o su Oracle Linux 7.6 con kernel UEK5U2, eseguito con un HBA FC Emulex LPe16002B-M6 16G durante le operazioni di failover dello storage | Durante le operazioni di failover dello storage su Oracle Linux 7.6 con il kernel UEK5U2 in esecuzione con un HBA (host bus adapter) Fibre Channel 16G Emulex LPe16002B-M6, l'avanzamento dell'i/o potrebbe interrompersi a causa del blocco dei report. L'operazione di failover dello storage segnala il passaggio da uno stato "online" a uno "bloccato", causando un ritardo nelle operazioni di lettura e scrittura. Una volta completata correttamente l'operazione, i report non tornano allo stato "online" e continuano a rimanere nello stato "bloccato". 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246327["1246327"^] | Stato della porta remota sull'host QLogic QLE2672 16G bloccato durante le operazioni di failover dello storage | Le porte remote Fibre Channel (FC) potrebbero essere bloccate su Red Hat Enterprise Linux (RHEL) 7.6 con l'host QLogic QLE2672 16G durante le operazioni di failover dello storage. Poiché le interfacce logiche si bloccano quando un nodo di storage è inattivo, le porte remote impostano lo stato del nodo di storage su bloccato. Il progresso io potrebbe interrompersi a causa del blocco delle porte se si utilizzano sia un host QLogic QLE2672 16G che un HBA (host bus adapter) Fibre Channel QLE2742 da 32 GB. Quando il nodo di storage torna allo stato ottimale, vengono anche presentate le interfacce logiche e le porte remote devono essere in linea. Tuttavia, le porte remote potrebbero essere ancora bloccate. Questo stato bloccato viene registrato come guasto nelle LUN del layer multipath. Puoi verificare lo stato delle porte remote con il seguente comando: Cat /sys/class/fc_remote_ports/rport-*/port_stat dovresti visualizzare il seguente output: Blocked blocked blocked Online 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246327["1246327"^] | Stato della porta remota sull'host QLogic QLE2672 16G bloccato durante le operazioni di failover dello storage | Le porte remote Fibre Channel (FC) potrebbero essere bloccate su Red Hat Enterprise Linux (RHEL) 7.6 con l'host QLogic QLE2672 16G durante le operazioni di failover dello storage. Poiché le interfacce logiche si bloccano quando un nodo di storage è inattivo, le porte remote impostano lo stato del nodo di storage su bloccato. L'avanzamento dell'i/o potrebbe interrompersi a causa delle porte bloccate se si esegue sia un host QLogic QLE2672 16G che un HBA (host Bus Adapter) Fibre Channel (FC) da QLE2742 32GB GB. Quando il nodo di storage torna allo stato ottimale, vengono anche presentate le interfacce logiche e le porte remote devono essere in linea. Tuttavia, le porte remote potrebbero essere ancora bloccate. Questo stato bloccato viene registrato come guasto nelle LUN del layer multipath. Puoi verificare lo stato delle porte remote con il seguente comando: Cat /sys/class/fc_remote_ports/rport-*/port_stat dovresti visualizzare il seguente output: Blocked blocked blocked Online 
 |===

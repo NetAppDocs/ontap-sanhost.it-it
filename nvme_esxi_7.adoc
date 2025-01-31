@@ -31,7 +31,7 @@ summary: Descrive come configurare NVMe-of per ESXi 7.x con ONTAP
 
 == Caratteristiche
 
-* L'host ESXi Initiator può eseguire il traffico NVMe/FC e FCP attraverso le stesse porte dell'adattatore. Vedere link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] Per un elenco di controller e adattatori FC supportati. Vedere link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^] per l'elenco più aggiornato delle configurazioni e delle versioni supportate.
+* L'host ESXi Initiator può eseguire il traffico NVMe/FC e FCP attraverso le stesse porte dell'adattatore. Consultare la link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] per un elenco di controller e adattatori FC supportati. Consultare la link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^] per l'elenco aggiornato delle configurazioni e delle versioni supportate.
 * A partire da ONTAP 9.9.1 P3, la funzione NVMe/FC è supportata per ESXi 7.0 update 3.
 * Per ESXi 7.0 e versioni successive, HPP (plugin ad alte prestazioni) è il plug-in predefinito per i dispositivi NVMe.
 
@@ -68,7 +68,7 @@ Host NQN: nqn.2014-08.com.vmware:nvme:nvme-esx
 
 === Configurare Broadcom/Emulex
 
-. Verificare che la configurazione sia supportata con il driver/firmware richiesto facendo riferimento a. link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^].
+. Verificare se la configurazione è supportata con il driver/firmware richiesto facendo riferimento a link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 . Impostare il parametro lpfc driver `lpfc_enable_fc4_type=3` Per abilitare il supporto NVMe/FC in `lpfc` e riavviare l'host.
 
 
@@ -98,7 +98,7 @@ vmhba65   lpfc     link-up     fc.200000109b954570:100000109b954570             
 === Configurare Marvell/QLogic
 
 .Fasi
-. Verificare se la configurazione è supportata con il driver/firmware richiesto facendo riferimento a. link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^].
+. Verificare se la configurazione è supportata con il driver/firmware richiesto facendo riferimento a link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 . Impostare `qlnativefc` parametro driver `ql2xnvmesupport=1` Per abilitare il supporto NVMe/FC in `qlnativefc` e riavviare l'host.
 +
 `# esxcfg-module -s 'ql2xnvmesupport=1' qlnativefc`

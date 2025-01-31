@@ -16,9 +16,9 @@ summary: Descrive come configurare NVMe/FC per SUSE Linux Enterprise Server 15 S
 
 
 [role="lead"]
-NVMe/FC è supportato su ONTAP 9.6 e versioni successive con SUSE Linux Enterprise Server 15 SP2. L'host SUSE Linux Enterprise Server 15 SP2 può eseguire sia il traffico NVMe/FC, sia il traffico FCP tramite le stesse porte dell'adattatore iniziatore Fibre Channel. Consultare la link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] per un elenco di controller e adattatori FC supportati.
+NVMe/FC è supportato su ONTAP 9.6 e versioni successive con SUSE Linux Enterprise Server 15 SP2. L'host SUSE Linux Enterprise Server 15 SP2 può eseguire sia il traffico NVMe/FC che FCP tramite le stesse porte dell'adattatore iniziatore Fibre Channel. Consultare la link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] per un elenco di controller e adattatori FC supportati.
 
-Per l'elenco più aggiornato delle configurazioni e delle versioni supportate, vedere link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^].
+Per l'elenco aggiornato delle configurazioni e delle versioni supportate, vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 
 
 NOTE: È possibile utilizzare le impostazioni di configurazione fornite in questo documento per configurare i client cloud connessi a. link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] e. link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX per ONTAP"^].
@@ -77,7 +77,7 @@ nqn.2014-08.org.nvmexpress:uuid:c7b07b16-a22e-41a6-a1fd-cf8262c8713f
 
 == Configurare Broadcom FC Adapter per NVMe/FC
 
-. Verificare di utilizzare l'adattatore supportato. Per l'elenco più aggiornato degli adattatori supportati, consultare link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^].
+. Verificare di utilizzare l'adattatore supportato. Per l'elenco corrente delle schede di rete supportate, vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 +
 [listing]
 ----
@@ -257,7 +257,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . Eseguire il `dracut -f` comando e riavviare l'host.
-. Verificare che il valore previsto di `lpfc_sg_seg_cnt` sia 256:
+. Verificare che il valore per `lpfc_sg_seg_cnt` sia 256:
 +
 [listing]
 ----

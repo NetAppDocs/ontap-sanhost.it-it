@@ -30,7 +30,7 @@ Il comando cfgdev causa:
 +
 ** Gli iniziatori per accedere al fabric.
 ** Il sistema per verificare la presenza di nuovi dispositivi.
-** Il sistema per creare nuove voci di dispositivo in cui le nuove LUN vengono mappate come dispositivi MPIO utilizzando il PCM predefinito.
+** Il sistema consente di creare nuove voci di dispositivo in cui i nuovi LUN vengono mappati come dispositivi MPIO (Multipath i/o) Microsoft utilizzando il PCM predefinito.
 
 
 . Per verificare che i dispositivi Hdisk MPIO siano stati creati, immettere il seguente comando:
@@ -59,7 +59,7 @@ hdisk4   Available   MPIO NetApp FCP Default PCM Disk
 hdisk5   Available   MPIO NetApp FCP Default PCM Disk
 hdisk6   Available   MPIO NetApp FCP Default PCM Disk
 ----
-. Per ottenere informazioni sulla configurazione, immettere il seguente comando:
+. Recuperare le informazioni sulla configurazione:
 +
 `lsdev -dev hdisk_name -attr`
 
@@ -97,7 +97,7 @@ scsi_id         0xd10001                         SCSI ID                        
 start_timeout   60                               START unit time out value               True
 ww_name         0x500a0984994ae0e0               FC World Wide Name                      False
 ----
-. Se la configurazione non supporta ALUA, è necessario eseguire l'utility dotpaths per impostare le priorità del percorso. L'utility dotpaths viene installata quando si installano le Utility host. Non utilizzare l'utility dotpaths se ALUA è attivato. Passare a. `oem_setup_env` per eseguire i dotpath immettendo il seguente comando:
+. Se la configurazione non supporta ALUA, è necessario utilizzare l'utilità dotpath per impostare le priorità del percorso. L'utility dotpaths viene installata quando si installano le Utility host. Non utilizzare l'utility dotpaths se ALUA è attivato. Passare alla `oem_setup_env` modalità per eseguire i dotpath immettendo il seguente comando:
 +
 `oem_setup_env`
 
@@ -119,9 +119,9 @@ Quando si accede a. `oem_setup_env` il prompt della riga di comando passa da un 
 
 
 
-. Se la configurazione non supporta ALUA, è necessario eseguire l'utility dotpaths per impostare le priorità del percorso. L'utility dotpaths viene installata quando si installano le Utility host. Non utilizzare l'utility dotpaths se ALUA è attivato.
+. Se la configurazione non supporta ALUA, è necessario utilizzare l'utilità dotpath per impostare le priorità del percorso. L'utility dotpaths viene installata quando si installano le Utility host. Non utilizzare l'utility dotpaths se ALUA è attivato.
 +
-.. Per impostare la priorità per tutti i LUN Data ONTAP, immettere:
+.. Per impostare la priorità per tutti i LUN ONTAP, immettere:
 +
 `dotpaths`
 

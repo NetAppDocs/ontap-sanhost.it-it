@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_solaris_62.html 
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
-summary: Descrive come utilizzare le utility host unificate Linux 7.1 con ONTAP 
+summary: Viene descritto come utilizzare le utilità host Solaris 6,2 con ONTAP 
 ---
-= Installare le utilità host Solaris 6,2
+= Installare le utilità host Solaris 6,2 per l'archiviazione ONTAP
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,25 +16,25 @@ summary: Descrive come utilizzare le utility host unificate Linux 7.1 con ONTAP
 
 
 [role="lead"]
-Le utility host di Solaris consentono di gestire lo storage NetApp ONTAP collegato a un host Solaris.
+Le utilità host Solaris consentono di gestire lo storage ONTAP collegato a un host Solaris.
 
-Solaris host Utilities 6.2 supporta diversi ambienti Solaris e diversi protocolli. Gli ambienti principali delle utilità host sono:
+Solaris host Utilities 6.2 supporta diversi ambienti Solaris e diversi protocolli. Gli ambienti principali delle utility host sono:
 
 * Sistema operativo nativo con MPxIO con protocollo Fibre Channel (FC) o iSCSI su un sistema che utilizza un processore SPARC o x86/64.
 * Veritas Dynamic Multipathing (DMP) con il protocollo FC o iSCSI su un sistema che utilizza un processore SPARC o il protocollo iSCSI su un sistema che utilizza un processore x86/64.
 
 
-Solaris Unified host Utilities 6.2 continua a supportare le seguenti versioni di Solaris:
+Solaris host Utilities 6,2 continua a supportare le seguenti versioni di Solaris:
 
 * Solaris serie 11.x.
 * Solaris serie 10.x.
 
 
-.Di cosa hai bisogno
+.Prima di iniziare
 * Per un funzionamento affidabile, verificare che sia supportata l'intera configurazione iSCSI, FC o FCoE.
 
 
-È possibile utilizzare link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] per verificare la configurazione.
+È possibile utilizzare link:https://imt.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^]per verificare la configurazione.
 
 
 NOTE: Il pacchetto software NetApp Solaris host Utilities è disponibile sul sito link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["Sito di supporto NetApp"^] in un formato di file compresso per il processore. È possibile scaricare il pacchetto software Utility host per il proprio ambiente dal sito di supporto.
@@ -55,13 +55,16 @@ Al momento della preparazione di questa documentazione, i file compressi venivan
 +
 `# gunzip netapp_solaris_host_utilities_6_2_sparc.tar.gz`
 
-. Decomprimere il file. È possibile utilizzare `tar xvf` per eseguire questa operazione.
+. Decomprimere il file utilizzando il `tar xvf` comando:
 +
 `# tar xvf netapp_solaris_host_utilities_6_2_sparc.tar`
 
-. Aggiungere i pacchetti estratti dal file tar all'host. È possibile utilizzare `pkgadd` per eseguire questa operazione.
+. Aggiungere i pacchetti estratti dal file tar al proprio host utilizzando il `pkgadd` comando .
 +
-I pacchetti vengono aggiunti a. `/opt/NTAP/SANToolkit/bin` directory. Nell'esempio riportato di seguito viene utilizzato il `pkgadd` Comando per installare il pacchetto di installazione di Solaris:
+I pacchetti vengono aggiunti a. `/opt/NTAP/SANToolkit/bin` directory.
+
++
+Nell'esempio seguente viene utilizzato il `pkgadd` comando per installare il pacchetto di installazione di Solaris:
 
 +
 `# pkgadd -d ./NTAPSANTool.pkg`
@@ -126,4 +129,4 @@ data_vserver                     /vol/vol3/lun4     /dev/rdsk/c0t600A09803830443
 
 ----
 
-NOTE: Questo toolkit è comune a tutte le configurazioni e i protocolli delle utilità host. Di conseguenza, alcuni contenuti del toolkit potrebbero essere applicabili a una configurazione, ma non a un'altra. La presenza di componenti inutilizzati non influisce sulle prestazioni del sistema.
+NOTE: Questo toolkit è comune a tutte le configurazioni e i protocolli delle utilità host. Di conseguenza, tutti i componenti non si applicano a ogni configurazione. I componenti inutilizzati non influiscono sulle prestazioni del sistema. Il SAN Toolkit è supportato sulle versioni AIX e PowerVM/VIOS.

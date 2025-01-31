@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-Se si sceglie di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare lo strumento matrice di interoperabilità NetApp per verificare che il sistema operativo, l'HBA, il firmware dell'HBA, il BIOS di avvio dell'HBA e la versione di ONTAP siano supportati.
+Se si sceglie di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare lo strumento matrice di interoperabilità per verificare che il sistema operativo, l'HBA, il firmware dell'HBA e il BIOS di avvio dell'HBA e la versione ONTAP siano supportati.
 
 . Mappare il LUN di avvio SAN sull'host.
 . Verificare che siano disponibili più percorsi.

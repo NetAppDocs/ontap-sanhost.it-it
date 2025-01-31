@@ -20,11 +20,11 @@ NVMe over Fabrics (NVMe-of), incluso NVMe over Fibre Channel (NVMe/FC) e altri t
 
 È disponibile il seguente supporto per la configurazione host NVMe-of per SUSE Linux Enterprise Server 15 SP4 con ONTAP:
 
-* Il traffico NVMe e SCSI può essere eseguito sullo stesso host coesistente. Pertanto, per i LUN SCSI, è possibile configurare dm-multipath per i dispositivi SCSI mpath, mentre è possibile utilizzare NVMe multipath per configurare i dispositivi NVMe-of namespace sull'host.
+* Il traffico NVMe e SCSI può essere eseguito sullo stesso host. Pertanto, per i LUN SCSI, è possibile configurare dm-multipath per i dispositivi SCSI mpath, mentre è possibile utilizzare NVMe multipath per configurare i dispositivi NVMe-of namespace sull'host.
 * Supporto per NVMe su TCP (NVMe/TCP) oltre a NVMe/FC. Il plug-in NetApp nel pacchetto nvme-cli nativo visualizza i dettagli ONTAP per gli spazi dei nomi NVMe/FC e NVMe/TCP.
 
 
-Per ulteriori informazioni sulle configurazioni supportate, consultare link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità NetApp"^].
+Per ulteriori informazioni sulle configurazioni supportate, vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 
 
 
@@ -241,7 +241,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . Eseguire il `dracut -f` comando e riavviare l'host.
-. Verificare che il valore previsto di `lpfc_sg_seg_cnt` sia 256:
+. Verificare che il valore per `lpfc_sg_seg_cnt` sia 256:
 +
 [listing]
 ----

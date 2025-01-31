@@ -20,14 +20,14 @@ summary: Descrive come utilizzare Red Hat Enterprise Linux 9.2 con ONTAP
 
 
 
-== Installare le utility host unificate Linux
+== Installare le utilità host Linux
 
-È possibile scaricare il pacchetto software NetApp Linux Unified host Utilities come file 64-bit.rpm dal link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^].
+È possibile scaricare il pacchetto software Utilità host Linux NetApp come file 64-bit.rpm dal link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^].
 
-NetApp consiglia vivamente di installare le utility host unificate Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
+NetApp consiglia vivamente di installare le utilità host Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
 
 .Fasi
-. Scaricare il pacchetto software 64-bit Linux Unified host Utilities dal https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] al tuo host.
+. Scaricare il pacchetto software Linux host Utilities a 64 bit dal https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] al proprio host.
 . Installare il pacchetto software:
 +
 `rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_64`
@@ -36,7 +36,7 @@ NetApp consiglia vivamente di installare le utility host unificate Linux, ma non
 
 
 
-== Kit di strumenti SAN
+== Toolkit SAN
 
 Il toolkit viene installato automaticamente quando si installa il pacchetto NetApp host Utilities. Questo kit fornisce `sanlun` Utility che consente di gestire LUN e HBA. Il `sanlun` Il comando restituisce le informazioni relative alle LUN mappate all'host, al multipathing e alle informazioni necessarie per creare gruppi di iniziatori.
 
@@ -63,8 +63,8 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 
 == Avvio SAN
 
-.Di cosa hai bisogno
-Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] Per verificare che il sistema operativo, l'HBA, il firmware dell'HBA, il BIOS di avvio dell'HBA e la versione di ONTAP siano supportati.
+.Prima di iniziare
+Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare link:https://imt.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^]per verificare che il sistema operativo, l'HBA, il firmware dell'HBA e il BIOS di avvio dell'HBA e la versione ONTAP siano supportati.
 
 .Fasi
 . Mappare il LUN di avvio SAN sull'host.
@@ -293,7 +293,7 @@ La versione RHEL 9,2 con ONTAP presenta i seguenti problemi noti:
 | ID bug NetApp | Titolo | Descrizione 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | La CLI delle NetApp Linux host Utilities richiede dipendenze aggiuntive dei pacchetti di librerie per supportare il rilevamento dell'adattatore HBA Emulex | In RHEL 9.2, la CLI delle utility host SAN Linux di NetApp `sanlun fcp show adapter -v` Non riesce perché non è possibile trovare le dipendenze del pacchetto di libreria per supportare il rilevamento HBA. 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | La CLI delle NetApp Linux host Utilities richiede dipendenze aggiuntive dei pacchetti di librerie per supportare il rilevamento dell'adattatore HBA Emulex | In RHEL 9,2, la CLI delle utilità host SAN di NetApp Linux `sanlun fcp show adapter -v` non funziona perché non è possibile trovare le dipendenze del pacchetto della libreria per supportare il rilevamento HBA. 
 
 
 | link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1537359["1537359"^] | Un host RED Hat Linux 9.2 SAN avviato con Emulex HBA incontra task stallati che portano a un'interruzione del kernel | Durante un'operazione di giveback per il failover dello storage, un host RED Hat Linux 9.2 SAN avviato con un HBA (host bus adapeter) Emulex incontra task in stallo che portano a un'interruzione del kernel. L'interruzione del kernel causa il riavvio del sistema operativo e se `kdump` è configurato, genera `vmcore` file sotto `/var/crash/` directory. Il problema è in fase di verifica con `lpfc` ma non può essere riprodotto in modo coerente. 

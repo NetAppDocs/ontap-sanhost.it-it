@@ -22,12 +22,12 @@ summary: Descrive come utilizzare IBM AIX 7.1 con ONTAP
 
 == Installare le Utility host AIX
 
-È necessario installare il kit di utility host AIX mentre si utilizza MPIO AIX con lo storage NetApp ONTAP.
+È necessario installare il kit di utilità host AIX quando si utilizza AIX Microsoft Multipath i/o (MPIO) con l'archiviazione ONTAP.
 
-È possibile scaricare il file compresso contenente i pacchetti software di Utility host da link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["Sito di supporto NetApp"^]. Una volta ottenuto il file, è necessario estrarlo per ottenere i due pacchetti software necessari per installare le Utility host.
+È possibile scaricare il file compresso contenente i pacchetti software host Utilities dal link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["Sito di supporto NetApp"^]. Dopo aver scaricato il file, è necessario estrarlo per ottenere i due pacchetti software necessari per installare le utilità host.
 
 .Fasi
-. Accedere all'host.
+. Accedere al proprio host.
 +
 ** Su un host AIX, accedere come *root*.
 
@@ -76,8 +76,8 @@ data_vserver      /vol/vol4/lun4    hdisk14     fcs0       FCP       20g    C
 
 == Avvio SAN
 
-.Di cosa hai bisogno
-Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] Per verificare che il sistema operativo, l'HBA, il firmware dell'HBA, il BIOS di avvio dell'HBA e la versione di ONTAP siano supportati.
+.Prima di iniziare
+Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare link:https://imt.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^]per verificare che il sistema operativo, l'HBA, il firmware dell'HBA e il BIOS di avvio dell'HBA e la versione ONTAP siano supportati.
 
 L'avvio DELLA SAN è il processo di configurazione di un disco collegato ALLA SAN (un LUN) come dispositivo di avvio per un host AIX. È possibile impostare un LUN di avvio SAN per lavorare in un ambiente MPIO AIX che esegue le Utility host AIX con il protocollo FC o FCoE. Il metodo utilizzato per la creazione di UN LUN di avvio SAN e l'installazione di una nuova immagine del sistema operativo in un ambiente MPIO AIX può variare, a seconda del protocollo in uso.
 
@@ -155,7 +155,7 @@ up     primary  path3  fcs1    fc_aix_4     1
 
 == Impostazioni consigliate
 
-Di seguito sono riportate alcune impostazioni dei parametri consigliate per i LUN ONTAP.  I parametri critici per i LUN ONTAP vengono impostati automaticamente dopo l'installazione del kit di utility host NetApp.
+NetApp consiglia le seguenti impostazioni dei parametri per i LUN ONTAP. I parametri critici per i LUN ONTAP vengono impostati automaticamente dopo l'installazione del kit di utility host NetApp.
 
 [cols="4*"]
 |===

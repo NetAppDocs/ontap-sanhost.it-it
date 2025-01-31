@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_wuhu_repair_remove.html 
 keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
-summary: 'Le utility host unificate di Windows includono un programma di installazione che imposta i parametri HBA e di registro di Windows richiesti in modo che l"host Windows gestisca correttamente i comportamenti del sistema di storage per le piattaforme NetApp ONTAP ed e-Series.' 
+summary: 'Le utilità host Windows includono un programma di installazione che imposta i parametri richiesti del Registro di sistema e dell"HBA di Windows in modo che l"host Windows gestisca correttamente i comportamenti del sistema storage per le piattaforme ONTAP ed e-Series.' 
 ---
-= Riparare e rimuovere le utilità host di Windows Unified
+= Riparare e rimuovere le utilità host di Windows
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -29,7 +29,7 @@ L'opzione *Ripara* aggiorna il registro di sistema di Windows e gli HBA FC con l
 
 .Fasi
 . Aprire Windows *programmi e funzionalità* (Windows Server 2012 R2, Windows Server 2016, Windows Server 2019 e Windows 2022).
-. Selezionare *NetApp Windows Unified host Utilities*.
+. Selezionare *NetApp Utilità host Windows*.
 . Selezionare *Cambia*.
 . Selezionare *Repair* (Riparazione) o *Remove* (Rimuovi), in base alle necessità.
 . Seguire le istruzioni visualizzate.
@@ -41,7 +41,7 @@ L'opzione *Ripara* aggiorna il registro di sistema di Windows e gli HBA FC con l
 L'opzione *Ripara* aggiorna il registro di sistema di Windows e gli HBA FC con le impostazioni richieste. È inoltre possibile rimuovere completamente le utility host da una riga di comando di Windows.
 
 .Fasi
-. Immettere il seguente comando nella riga di comando di Windows per riparare le utilità host di Windows:
+. Ripristina utilità host Windows:
 +
 `msiexec /f installer.msi [/quiet]`
 

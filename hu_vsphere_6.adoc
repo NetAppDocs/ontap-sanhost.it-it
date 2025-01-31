@@ -22,8 +22,8 @@ summary: Descrive come utilizzare Veritas Infosscale 6.5 e 6.7 per Linux con ONT
 
 == Avvio DI hypervisor SAN
 
-.Di cosa hai bisogno
-Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] Per verificare che il sistema operativo, l'HBA, il firmware dell'HBA, il BIOS di avvio dell'HBA e la versione di ONTAP siano supportati.
+.Prima di iniziare
+Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare link:https://imt.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^]per verificare che il sistema operativo, l'HBA, il firmware dell'HBA e il BIOS di avvio dell'HBA e la versione ONTAP siano supportati.
 
 .Fasi
 . Mappare il LUN di avvio SAN sull'host.
@@ -43,9 +43,9 @@ Per informazioni su come attivare il BIOS HBA, consultare la documentazione spec
 
 == Multipathing
 
-ESXi fornisce un modulo multipathing estensibile chiamato NMP (Native Multipathing Plug-in) che gestisce i plugin secondari SATP (Storage Array Type Plugin) e PSP (Path Selection Plugin). Queste regole SATP sono disponibili per impostazione predefinita in ESXi.
+ESXi fornisce un modulo multipathing estensibile denominato Native Multipathing Plug-in (NMP) che gestisce i sub-plug-in, i plug-in di tipo di array di storage (SATP) e i plug-in di selezione del percorso (PSPs). Queste regole SATP sono disponibili per impostazione predefinita in ESXi.
 
-Per lo storage NetApp ONTAP, il plug-in VMW_SATP_ALUA viene utilizzato per impostazione predefinita con `VMW_PSP_RR` Come policy di selezione del percorso (PSP). Questo può essere confermato usando il comando seguente:
+Per lo storage ONTAP, il plugin "VMW_SATP_ALUA" viene utilizzato per impostazione predefinita con "VMW_PSP_RR" come criterio di selezione del percorso (PSP). Per confermare la PSP, puoi eseguire il seguente comando:
 
 *`esxcli storage nmp satp rule list -s VMW_SATP_ALUA`*
 
@@ -172,7 +172,7 @@ I volumi virtuali (vVol) sono un tipo di oggetto VMware che corrisponde a un dis
 
 Gli strumenti ONTAP per VMware vSphere includono il provider VASA per ONTAP, che fornisce il punto di integrazione per un VMware vCenter per sfruttare lo storage basato su vVol. Quando si implementa l'OVA degli strumenti ONTAP, questo viene automaticamente registrato con il server vCenter e attiva il provider VASA.
 
-Quando si crea un datastore vVols utilizzando l'interfaccia utente di vCenter, questo guida alla creazione di FlexVols come storage di backup per il datastore. Gli host ESXi accedono ai vVol all'interno di un datastore vVol utilizzando un endpoint del protocollo (PE). Negli ambienti SAN, viene creata una LUN da 4 MB su ogni FlexVol nel datastore per l'utilizzo come PE. Una SAN PE è un'unità logica amministrativa (ALU); i vVol sono unità logiche sussidiarie (SLU).
+Quando si crea un datastore vVol con l'interfaccia utente di vCenter, questa guida la creazione di FlexVol come storage di backup per il datastore, mentre gli host ESXi accedono ai vVol all'interno di un datastore vVol tramite un endpoint di protocollo (PE). Negli ambienti SAN, viene creata una LUN 4MB su ogni volume FlexVol volume nel datastore per l'utilizzo come PE. Una SAN PE è un'unità logica amministrativa (ALU); i vVol sono unità logiche sussidiarie (SLU).
 
 I requisiti standard e le Best practice per gli ambienti SAN si applicano quando si utilizza vVol, inclusi (a titolo esemplificativo) i seguenti:
 
@@ -185,11 +185,11 @@ I requisiti standard e le Best practice per gli ambienti SAN si applicano quando
 
 NOTE: È necessario implementare i tool ONTAP per VMware vSphere per abilitare il provider VASA. Il provider VASA gestirà tutte le impostazioni di igroup per te, quindi non è necessario creare o gestire iGroups in un ambiente vVol.
 
-NetApp sconsiglia di modificare le impostazioni vVol da quelle predefinite.
+Al momento, NetApp sconsiglia di modificare le impostazioni dei vVol da quelle predefinite.
 
-Fare riferimento a. https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] Per versioni specifiche dei tool ONTAP o per il provider VASA legacy per le versioni specifiche di vSphere e ONTAP.
+Per le versioni specifiche degli strumenti ONTAP, fare riferimento al oppure al https://imt.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^] provider VASA legacy per le versioni specifiche di vSphere e ONTAP.
 
-Per informazioni dettagliate sul provisioning e sulla gestione dei vVol, consultare anche la documentazione relativa ai tool ONTAP per VMware vSphere https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597"^] e. link:https://www.netapp.com/pdf.html?item=/media/13555-tr4400pdf.pdf["TR-4400."^]
+Per informazioni dettagliate sul provisioning e la gestione di vVol, fare riferimento alla documentazione relativa ai tool ONTAP per VMware vSphere, nonché https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597"^] a. link:https://www.netapp.com/pdf.html?item=/media/13555-tr4400pdf.pdf["TR-4400."^]
 
 
 
@@ -240,7 +240,7 @@ NOTE: Abilitare l'impostazione Space-Alloc per tutti i LUN mappati a VMware vSph
 |===
 
 
-=== Convalida di vSphere tunable
+=== Validare vSphere tunable
 
 Utilizzare il seguente comando per verificare `HardwareAcceleratedLocking` impostazione:
 
@@ -261,7 +261,7 @@ Utilizzare il seguente comando per verificare `HardwareAcceleratedLocking` impos
 ----
 
 
-=== Convalida dell'impostazione Disk IOPS
+=== Convalidare l'impostazione IOP del disco
 
 Utilizzare il seguente comando per verificare l'impostazione degli IOPS:
 
@@ -281,7 +281,7 @@ naa.600a098038304731783f506670553355
 ----
 
 
-=== Convalida di QFullSampleSize
+=== Validare QFullSampleSize
 
 Utilizzare il seguente comando per verificare QFullSampleSize:
 

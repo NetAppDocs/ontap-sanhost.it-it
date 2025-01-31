@@ -16,18 +16,18 @@ summary: Fornisce indicazioni sulle impostazioni di configurazione degli host SA
 
 
 [role="lead"]
-È possibile utilizzare le impostazioni di configurazione degli host SAN di ONTAP per la release 8 della serie Veritas Infosscale Storage Foundation per le piattaforme Red Hat Enterprise Linux e Oracle Linux (basate su RHCK) con protocolli FC, FCoE e iSCSI.
+È possibile utilizzare le impostazioni di configurazione degli host SAN di ONTAP per la release di Veritas Infoscale Storage Foundation serie 8 per le piattaforme basate su Red Hat Enterprise Linux e Oracle Linux (Red Hat Compatible kernel) con protocolli FC, FCoE e iSCSI.
 
 
 
-== Installare le utility host unificate Linux
+== Installare le utilità host Linux
 
-È possibile scaricare il pacchetto software NetApp Linux Unified host Utilities come file 64-bit.rpm dal link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^].
+È possibile scaricare il pacchetto software Utilità host Linux NetApp come file 64-bit.rpm dal link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^].
 
-NetApp consiglia vivamente di installare le utility host unificate Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
+NetApp consiglia vivamente di installare le utilità host Linux, ma non è obbligatorio. Le utility non modificano le impostazioni dell'host Linux. Le utility migliorano la gestione e assistono il supporto clienti NetApp nella raccolta di informazioni sulla configurazione.
 
 .Fasi
-. Scaricare il pacchetto software 64-bit Linux Unified host Utilities dal https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] al tuo host.
+. Scaricare il pacchetto software Linux host Utilities a 64 bit dal https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^] al proprio host.
 . Installare il pacchetto software:
 +
 `rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_64`
@@ -67,8 +67,8 @@ enabled     up      active/non-optimized sdas   13:0:1:0   lif_9      66:192
 
 == Avvio SAN
 
-.Di cosa hai bisogno
-Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["Tool di matrice di interoperabilità NetApp"^] Per verificare che il sistema operativo, l'HBA, il firmware dell'HBA, il BIOS di avvio dell'HBA e la versione di ONTAP siano supportati.
+.Prima di iniziare
+Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare link:https://imt.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^]per verificare che il sistema operativo, l'HBA, il firmware dell'HBA e il BIOS di avvio dell'HBA e la versione ONTAP siano supportati.
 
 Fare riferimento al portale di supporto Veritas (matrice dei prodotti, Platform Lookup, matrice HCL) per verificare la supportabilità della configurazione DI avvio SAN e le avvertenze note.
 
@@ -90,7 +90,7 @@ Per informazioni su come attivare il BIOS HBA, consultare la documentazione spec
 
 == Multipathing
 
-Verificare che la configurazione soddisfi i requisiti di sistema. Per ulteriori informazioni, consultare il tool NetApp Interoperability Matrix e Veritas HCL Matrix.
+Verificare che la configurazione soddisfi i requisiti di sistema. Per ulteriori informazioni, vedere Interoperability Matrix Tool e Veritas HCL Matrix.
 
 .Esempio
 Nell'esempio seguente, il `vxdmpadm` comando viene utilizzato per verificare che il multipath VxDMP disponga dell'array di destinazione ONTAP collegato.
@@ -180,7 +180,7 @@ NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non de
 
 ==== Impostazioni per Veritas multipath
 
-NetApp consiglia i seguenti tunable Veritas VxDMP per una configurazione ottimale del sistema nelle operazioni di failover dello storage.
+NetApp consiglia le seguenti funzionalità Veritas VxDMP per una configurazione ottimale del sistema nelle operazioni di failover dello storage.
 
 [cols="2*"]
 |===
@@ -270,7 +270,7 @@ NOTE: Per tutte le altre impostazioni specifiche di Veritas, fare riferimento al
 
 == Coesistenza multipath
 
-Se si dispone di un ambiente multipercorso eterogeneo, tra cui Veritas Infosscale, Linux Native Device Mapper e LVM Volume Manager, consultare la guida Veritas Product Administration per le impostazioni di configurazione.
+Se si dispone di un ambiente multipath eterogeneo che include Veritas Inoscale, Linux Native Device Mapper e LVM volume manager, consultare la documentazione Veritas Product Administration per le impostazioni di configurazione.
 
 
 

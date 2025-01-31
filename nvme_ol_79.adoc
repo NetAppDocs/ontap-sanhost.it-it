@@ -22,7 +22,7 @@ summary: Configurazione della configurazione host VME/FC per Oracle Linux 7.9 co
 
 == Supportabilità
 
-NVMe/FC è supportato su ONTAP 9.6 o versione successiva per Oracle Linux 7.9. L'host Oracle Linux 7,9 può eseguire traffico NVMe e SCSI tramite le stesse porte dell'adattatore iniziatore Fibre Channel (FC). Consultare la link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] per un elenco di controller e adattatori FC supportati. Per l'elenco aggiornato delle configurazioni supportate, vedere link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^].
+A partire da ONTAP 9,6, NVMe/FC è supportato per Oracle Linux 7,9. L'host Oracle Linux 7,9 può eseguire traffico NVMe e SCSI tramite le stesse porte dell'adattatore iniziatore Fibre Channel (FC). Consultare la link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] per un elenco di controller e adattatori FC supportati. Per l'elenco corrente delle configurazioni supportate, vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 
 
 NOTE: È possibile utilizzare le impostazioni di configurazione fornite in questo documento per configurare i client cloud connessi a. link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] e. link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX per ONTAP"^].
@@ -33,7 +33,7 @@ NOTE: È possibile utilizzare le impostazioni di configurazione fornite in quest
 
 * Gli script NVMe/FC di connessione automatica nativi non sono disponibili in `nvme-cli` pacchetto. Utilizzare gli script di connessione automatica esterni forniti dal vendor HBA.
 * Per impostazione predefinita, il bilanciamento del carico round-robin non è attivato in multipath NVMe. Per abilitare questa funzionalità, è necessario scrivere una regola udev. La procedura è illustrata nella sezione relativa all'abilitazione di NVMe/FC su Oracle Linux 7.9.
-* Non esiste alcun supporto sanlun per NVMe/FC e, di conseguenza, nessun supporto Linux Unified host Utilities (LUHU) per NVMe/FC su Oracle Linux 7.9. Utilizzare l'output del comando ONTAP disponibile come parte del plug-in NetApp incluso nella nvme-cli nativa.
+* Non c'è supporto snellun per NVMe/FC e, di conseguenza, nessun supporto per NVMe/FC su Oracle Linux 7,9. Utilizzare l'output del comando ONTAP disponibile come parte del plug-in NetApp incluso nella nvme-cli nativa.
 * L'avvio SAN che utilizza il protocollo NVMe-of non è attualmente supportato.
 
 
@@ -42,7 +42,7 @@ NOTE: È possibile utilizzare le impostazioni di configurazione fornite in quest
 == Abilitare NVMe/FC
 
 . Installare Oracle Linux 7.9 sul server.
-. Una volta completata l'installazione, verificare di eseguire il kernel Unbreakable Enterprise supportato. Vedere link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^].
+. Una volta completata l'installazione, verificare di eseguire il kernel Unbreakable Enterprise supportato. Consultare la link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 +
 [listing]
 ----
@@ -90,7 +90,7 @@ Se il `+hostnqn+` le stringhe non corrispondono, si consiglia di utilizzare il `
 
 == Configurare Broadcom FC Adapter per NVMe/FC
 
-. Verificare di utilizzare l'adattatore supportato. Per l'elenco aggiornato degli adattatori supportati, consultare link:https://mysupport.netapp.com/matrix/["Matrice di interoperabilità NetApp"^].
+. Verificare di utilizzare l'adattatore supportato. Per l'elenco corrente delle schede di rete supportate, vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 +
 [listing]
 ----
@@ -251,7 +251,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . Eseguire il `dracut -f` comando e riavviare l'host.
-. Verificare che il valore previsto di `lpfc_sg_seg_cnt` sia 256:
+. Verificare che il valore per `lpfc_sg_seg_cnt` sia 256:
 +
 [listing]
 ----
