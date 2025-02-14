@@ -67,7 +67,7 @@ Prima di installare le Utility host, verificare che la versione delle Utility ho
 . Controllare le correzioni rapide richieste per il rispettivo host su link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["Documentazione Windows per host SAN"].
 +
 
-NOTE: Il link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html["Utilizzo di Windows Server 2022 con ONTAP"] il documento fornisce le istruzioni su link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html#installing-windows-hotfixes["Installazione degli hotfix di Windows"] Per Windows Server 2022. Fare riferimento ai documenti Windows nella categoria configurazioni host per trovare le informazioni relative alle correzioni rapide per le versioni precedenti del server Windows.
+NOTE: Il link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html["Utilizzare Windows server 2022 con ONTAP"] documento fornisce istruzioni su link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html#installing-windows-hotfixes["Installazione degli hotfix di Windows"] per Windows Server 2022. Fare riferimento ai documenti Windows nella categoria configurazioni host per trovare le informazioni relative alla correzione rapida per le versioni precedenti del server Windows.
 
 . Aggiungere la licenza iSCSI o FCP e avviare il servizio di destinazione.
 +

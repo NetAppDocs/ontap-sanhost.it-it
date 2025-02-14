@@ -4,7 +4,7 @@ permalink: hu_windows_2022.html
 keywords: windows, enterprise 
 summary: Utilizzo di Windows Server 2022 con ONTAP 
 ---
-= Utilizzo di Windows Server 2022 con ONTAP
+= Utilizzare Windows Server 2022 con ONTAP
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,108 +16,123 @@ summary: Utilizzo di Windows Server 2022 con ONTAP
 
 
 [role="lead"]
-È possibile utilizzare le impostazioni di configurazione dell'host SAN ONTAP per configurare Windows server 2022 con ONTAP come destinazione.
+È possibile utilizzare le impostazioni di configurazione dell'host SAN ONTAP per configurare Windows Server 2022 per il funzionamento con lo storage ONTAP.
 
 
 
-== Avvio del sistema operativo
+== Avviare il sistema operativo Windows
 
-Sono disponibili due opzioni per l'avvio del sistema operativo: Mediante l'avvio locale o L'avvio SAN. Per l'avvio locale, installare il sistema operativo sul disco rigido locale (SSD, SATA, RAID e così via). Per l'avvio SAN, vedere le istruzioni riportate di seguito.
+È possibile avviare il sistema operativo Windows utilizzando un avvio locale o un avvio SAN. NetApp consiglia di utilizzare un avvio SAN se supportato dalla configurazione in uso.
 
+[role="tabbed-block"]
+====
+.Avvio locale
+--
+Eseguire un avvio locale installando il sistema operativo Windows sul disco rigido locale (SSD, SATA, RAID e così via).
 
+--
+.Boot SAN
+--
+Se si sceglie di utilizzare l'avvio SAN, questo deve essere supportato dalla propria configurazione.
 
-=== Avvio SAN
+.Prima di iniziare
+Utilizzare https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^] per verificare che il sistema operativo Windows in uso, l'HBA (host Bus Adapter), il firmware HBA, il BIOS di avvio HBA e la versione ONTAP supportino l'avvio SAN.
 
-Se si sceglie di utilizzare l'avvio SAN, questo deve essere supportato dalla configurazione. È possibile utilizzare lo strumento matrice di interoperabilità per verificare che il sistema operativo, l'HBA, il firmware dell'HBA e il BIOS di avvio dell'HBA e la versione ONTAP siano supportati.
-
+.Fasi
 . Mappare il LUN di avvio SAN sull'host.
++
+Vedere link:https://docs.netapp.com/us-en/ontap/san-management/index.html["Gestione dello storage SAN"^].
+
 . Verificare che siano disponibili più percorsi.
 +
 
 NOTE: I percorsi multipli diventano disponibili solo dopo che il sistema operativo host è attivo e in esecuzione sui percorsi.
 
-. Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN. Per informazioni su come attivare il BIOS HBA, consultare la documentazione specifica del vendor.
-. Riavviare l'host per verificare che l'avvio sia stato eseguito correttamente.
+. Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN.
++
+Per informazioni su come attivare il BIOS HBA, consultare la documentazione specifica del vendor.
+
+. Riavviare l'host per verificare che l'avvio sia stato eseguito correttamente
 
 
+--
+====
 
 
 == Installare gli aggiornamenti rapidi di Windows
 
-NetApp consiglia di installare l'aggiornamento cumulativo più recente* sul server.
+NetApp consiglia di installare l'aggiornamento cumulativo più recente* disponibile nel catalogo di Microsoft Update sul server host.
 
-
-NOTE: Accedere alla link:https://www.catalog.update.microsoft.com/Search.aspx?q=update%20%22windows%20server%202022%22["Catalogo di aggiornamenti Microsoft 2022"^] Sito Web per ottenere e installare gli hotfix Windows necessari per la versione di Windows in uso.
-
-. Scaricare gli hotfix dal sito del supporto Microsoft.
+.Fasi
+. Scaricare le correzioni rapide da link:https://www.catalog.update.microsoft.com/Search.aspx?q=update%20%22windows%20server%202022%22["Catalogo di aggiornamenti Microsoft 2022"^].
 
 
 
-NOTE: Alcune hotfix non sono disponibili per il download diretto. In questi casi, è necessario richiedere una data correzione rapida al personale di supporto Microsoft.
+NOTE: È necessario contattare il supporto Microsoft per le correzioni rapide che non sono disponibili per il download dal catalogo di Microsoft Update.
 
 . Seguire le istruzioni fornite da Microsoft per installare gli hotfix.
 
 
 
-TIP: Molti hotfix richiedono un riavvio dell'host Windows, ma è possibile scegliere di attendere il riavvio dell'host fino a quando _dopo_ non si installano o si aggiornano le utility host.
+TIP: Molte correzioni rapide richiedono il riavvio dell'host Windows. È possibile scegliere di attendere il riavvio dell'host fino a quando _dopo_ non si installano o aggiornano le utilità host.
 
 
 
 == Installare le utilità host di Windows
 
-Le utilità host di Windows sono un insieme di programmi software con documentazione che consente di collegare i computer host ai dischi virtuali (LUN) su una SAN NetApp. NetApp consiglia di scaricare e installare il kit di utilità più recente. Per informazioni e istruzioni sulla configurazione di WUHU, consultare link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Documentazione di Windows host Utilities"]e selezionare la procedura di installazione per la versione di Windows host Utilities.
+Le utilità host di Windows sono un insieme di programmi software con documentazione che consente di collegare i computer host ai dischi virtuali (LUN) su una SAN NetApp. NetApp consiglia di scaricare e installare il kit di utilità più recente. Per informazioni e istruzioni sulla configurazione delle utilità host Windows, consultare link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Documentazione di Windows host Utilities"]e selezionare la procedura di installazione per la versione di utilità host Windows in uso.
 
 
 
 == Multipathing
 
-È necessario installare il software Microsoft Multipath i/o (MPIO) e configurare il multipathing se l'host Windows dispone di più percorsi per il sistema storage. Senza il software MPIO, il sistema operativo potrebbe vedere ciascun percorso come un disco separato, con conseguente danneggiamento dei dati. Il software MPIO presenta un singolo disco al sistema operativo per tutti i percorsi e un modulo specifico del dispositivo (DSM) gestisce il failover del percorso.
+È necessario installare il software Microsoft Multipath i/o (MPIO) e abilitare il multipathing se l'host Windows ha più di un percorso verso il sistema storage. Quando si seleziona il supporto MPIO, le utilità host Windows attivano la funzione MPIO inclusa in Windows Server 2022. Se non si utilizzano le utilità host di Windows, è necessario abilitare il multipathing manualmente.
 
-Su un sistema Windows, i due componenti principali di qualsiasi soluzione MPIO sono DSM e MPIO di Windows. MPIO non è supportato per Windows XP o Windows Vista in esecuzione su una macchina virtuale Hyper-V.
+Il software MPIO presenta un singolo disco al sistema operativo Windows per tutti i percorsi, mentre un modulo DSM (Device Specific Module) gestisce il failover del percorso. In un sistema Windows, i due componenti principali di qualsiasi soluzione MPIO sono DSM e Windows MPIO.
 
 
-NOTE: Quando si seleziona il supporto MPIO, le utilità host Windows attiva la funzione MPIO inclusa di Windows Server 2022.
+CAUTION: Se non si installa il software MPIO, il sistema operativo Windows potrebbe vedere ciascun percorso come un disco separato. Questo può causare il danneggiamento dei dati.
+
+
+NOTE: Windows XP o Windows Vista in esecuzione su una macchina virtuale Hyper-V non supporta MPIO.
 
 
 
 == Configurazione SAN
 
+A seconda della configurazione SAN, l'host utilizza tutte le configurazioni ASA (SAN Array) o non ASA per accedere ai LUN ONTAP. Sia nelle configurazioni ASA che non ASA, non è necessario disporre di più di quattro percorsi per accedere a un singolo LUN ONTAP. Se si dispone di più di quattro percorsi, potrebbero verificarsi problemi con i percorsi durante un errore di storage.
+
+
+
+=== Configurazione di tutti gli array SAN
+
+Una configurazione ASA deve avere un gruppo di percorsi attivi/ottimizzati con singole priorità. Ciò significa che i percorsi vengono gestiti dal controller e l'i/o viene inviato su tutti i percorsi attivi.
+
+L'esempio seguente visualizza l'output corretto per una LUN ONTAP con percorsi attivi/ottimizzati.
+
+image::asa.png[Schermata di ONTAP LUN con percorsi attivi/ottimizzati]
+
 
 
 === Configurazione non ASA
 
-Per la configurazione non ASA, devono essere presenti due gruppi di percorsi con priorità diverse.
+Una configurazione non ASA deve avere due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono attivi/ottimizzati. In altre parole, i percorsi Active/Optimized vengono gestiti dal controller in cui si trova l'aggregato. I percorsi con priorità più basse sono attivi ma non ottimizzati perché sono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
 
-I percorsi con priorità più elevate sono Active/Optimized, ovvero gestiti dal controller in cui si trova l'aggregato.
-
-I percorsi con priorità più basse sono attivi ma non ottimizzati perché sono serviti da un controller diverso.
-
-
-NOTE: I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
-
-.Esempio
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati.
 
 image::nonasa.png[Schermata di una LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati]
 
 
 
-=== Configurazione di tutti gli array SAN
-
-Per la configurazione di tutti gli array SAN (ASA), deve essere presente un gruppo di percorsi con priorità singole. Tutti i percorsi sono attivi/ottimizzati, ovvero vengono serviti dal controller e l'i/o viene inviato su tutti i percorsi attivi.
-
-image::asa.png[Schermata di ONTAP LUN con percorsi attivi/ottimizzati]
-
-
-NOTE: Un singolo LUN non deve richiedere più di quattro percorsi. La presenza di più di quattro percorsi potrebbe causare problemi di percorso durante gli errori di storage.
-
-
-
 == Impostazioni consigliate
 
-Nei sistemi che utilizzano FC, sono necessari i seguenti valori di timeout per gli HBA FC Emulex e QLogic quando si seleziona MPIO.
+Quando si seleziona MPIO sui sistemi che utilizzano FC, il programma di installazione di host Utilities imposta i valori di timeout richiesti per gli HBA FC Emulex e QLogic.
 
-Per HBA Fibre Channel Emulex:
+[role="tabbed-block"]
+====
+.Emulex FC
+--
+I valori di timeout per gli HBA FC Emulex:
 
 [cols="2*"]
 |===
@@ -129,7 +144,10 @@ Per HBA Fibre Channel Emulex:
 
 | NodeTimeOut | 10 
 |===
-Per gli HBA Fibre Channel QLogic:
+--
+.FC QLogic
+--
+I valori di timeout per gli HBA FC QLogic:
 
 [cols="2*"]
 |===
@@ -141,8 +159,10 @@ Per gli HBA Fibre Channel QLogic:
 
 | PortDownRetryCount | 10 
 |===
+--
+====
 
-NOTE: Utilità host di Windows imposta questi valori. Per informazioni dettagliate sulle impostazioni consigliate, consultare link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Documentazione di Windows host Utilities"]e selezionare la procedura di installazione per la versione delle utilità host Windows in uso.
+NOTE: Per ulteriori informazioni sulle impostazioni consigliate, vedere link:hu_wuhu_hba_settings.html["Configurare le impostazioni del Registro di sistema per le utilità host di Windows"].
 
 
 

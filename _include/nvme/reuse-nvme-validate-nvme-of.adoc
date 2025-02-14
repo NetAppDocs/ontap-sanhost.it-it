@@ -2,4 +2,4 @@
 :allow-uri-read: 
 
 
-Per supportare il corretto funzionamento dei LUN ONTAP, verificare che lo stato di multipath NVMe in-kernel, lo stato ANA e i namespace ONTAP siano corretti per la configurazione NVMe-of.
+Verificare che lo stato multipath NVMe in-kernel, lo stato ANA e i namespace ONTAP siano corretti per la configurazione NVMe-of.

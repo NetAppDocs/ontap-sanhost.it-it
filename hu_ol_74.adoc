@@ -37,7 +37,7 @@ Se avete installato Linux host Utilities, è necessario aggiornarlo alla version
 
 
 
-NOTE: È possibile utilizzare le impostazioni di configurazione fornite in questo documento per configurare i client cloud connessi a. link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] e. link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX per ONTAP"^].
+NOTE: È possibile utilizzare le impostazioni di configurazione fornite in questa procedura per configurare i client cloud connessi a link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] e link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX per ONTAP"^].
 
 
 
@@ -76,7 +76,7 @@ Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla conf
 . Verificare che siano disponibili più percorsi.
 +
 
-NOTE: Più percorsi diventano disponibili dopo che il sistema operativo host è attivo e in esecuzione sui percorsi.
+NOTE: Una volta attivato il sistema operativo host e eseguito sui percorsi, diventano disponibili più percorsi.
 
 . Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN.
 +
@@ -91,7 +91,7 @@ Per informazioni su come attivare il BIOS HBA, consultare la documentazione spec
 
 Per Oracle Linux 7.4 il file /etc/multipath.conf deve esistere, ma non è necessario apportare modifiche specifiche al file. Oracle Linux 7.4 è compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente le LUN ONTAP.
 
-Il `multipath -ll` comando consente di verificare le impostazioni dei LUN di ONTAP. Ci dovrebbero essere due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, il che significa che vengono gestiti dal controller in cui si trova l'aggregato. I percorsi con priorità più basse sono attivi ma non ottimizzati perché sono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
+Il `multipath -ll` comando consente di verificare le impostazioni dei LUN di ONTAP. Ci dovrebbero essere due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono attivi/ottimizzati. Ciò significa che vengono gestite dal controller in cui si trova l'aggregato. I percorsi con priorità più basse sono attivi ma non ottimizzati perché sono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
 
 .Esempio
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:

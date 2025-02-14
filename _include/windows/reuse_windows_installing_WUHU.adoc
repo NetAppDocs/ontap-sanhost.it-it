@@ -2,4 +2,4 @@
 :allow-uri-read: 
 
 
-Le utilità host di Windows sono un insieme di programmi software con documentazione che consente di collegare i computer host ai dischi virtuali (LUN) su una SAN NetApp. NetApp consiglia di scaricare e installare il kit di utilità più recente. Per informazioni e istruzioni sulla configurazione di WUHU, consultare link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Documentazione di Windows host Utilities"]e selezionare la procedura di installazione per la versione di Windows host Utilities.
+Le utilità host di Windows sono un insieme di programmi software con documentazione che consente di collegare i computer host ai dischi virtuali (LUN) su una SAN NetApp. NetApp consiglia di scaricare e installare il kit di utilità più recente. Per informazioni e istruzioni sulla configurazione delle utilità host Windows, consultare link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Documentazione di Windows host Utilities"]e selezionare la procedura di installazione per la versione di utilità host Windows in uso.

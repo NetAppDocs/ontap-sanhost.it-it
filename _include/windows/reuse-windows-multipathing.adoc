@@ -1,0 +1,11 @@
+= 
+:allow-uri-read: 
+
+
+Il software MPIO presenta un singolo disco al sistema operativo Windows per tutti i percorsi, mentre un modulo DSM (Device Specific Module) gestisce il failover del percorso. In un sistema Windows, i due componenti principali di qualsiasi soluzione MPIO sono DSM e Windows MPIO.
+
+
+CAUTION: Se non si installa il software MPIO, il sistema operativo Windows potrebbe vedere ciascun percorso come un disco separato. Questo può causare il danneggiamento dei dati.
+
+
+NOTE: Windows XP o Windows Vista in esecuzione su una macchina virtuale Hyper-V non supporta MPIO.

@@ -425,7 +425,7 @@ NOTE: NetApp consiglia di impostare l' `ctrl-loss-tmo`opzione su "-1" in modo ch
 
 == Validare NVMe-of
 
-Per supportare il corretto funzionamento dei LUN ONTAP, verificare che lo stato di multipath NVMe in-kernel, lo stato ANA e i namespace ONTAP siano corretti per la configurazione NVMe-of.
+Verificare che lo stato multipath NVMe in-kernel, lo stato ANA e i namespace ONTAP siano corretti per la configurazione NVMe-of.
 
 .Fasi
 . Verifica che il multipath NVMe in-kernel sia abilitato:

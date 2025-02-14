@@ -25,7 +25,7 @@ summary: Configurazione della configurazione host VME/FC per Oracle Linux 8.1 co
 A partire da ONTAP 9,6, NVMe/FC è supportato per Oracle Linux 8,1. L'host Oracle Linux 8,1 può eseguire traffico NVMe e SCSI tramite le stesse porte dell'adattatore iniziatore Fibre Channel (FC). Si noti che Broadcom Initiator è in grado di gestire il traffico NVMe/FC e FCP attraverso le stesse porte della scheda FC. Consultare la link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] per un elenco di controller e adattatori FC supportati. Per l'elenco corrente delle configurazioni supportate, vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 
 
-NOTE: È possibile utilizzare le impostazioni di configurazione fornite in questo documento per configurare i client cloud connessi a. link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] e. link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX per ONTAP"^].
+NOTE: È possibile utilizzare le impostazioni di configurazione fornite in questa procedura per configurare i client cloud connessi a link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] e link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX per ONTAP"^].
 
 
 

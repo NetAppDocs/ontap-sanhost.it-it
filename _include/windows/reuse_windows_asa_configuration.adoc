@@ -1,10 +1,15 @@
-= 
+= Configurazione di tutti gli array SAN
 :allow-uri-read: 
 
 
-Per la configurazione di tutti gli array SAN (ASA), deve essere presente un gruppo di percorsi con priorità singole. Tutti i percorsi sono attivi/ottimizzati, ovvero vengono serviti dal controller e l'i/o viene inviato su tutti i percorsi attivi.
+A seconda della configurazione SAN, l'host utilizza tutte le configurazioni ASA (SAN Array) o non ASA per accedere ai LUN ONTAP. Sia nelle configurazioni ASA che non ASA, non è necessario disporre di più di quattro percorsi per accedere a un singolo LUN ONTAP. Se si dispone di più di quattro percorsi, potrebbero verificarsi problemi con i percorsi durante un errore di storage.
+
+
+
+=== Configurazione di tutti gli array SAN
+
+Una configurazione ASA deve avere un gruppo di percorsi attivi/ottimizzati con singole priorità. Ciò significa che i percorsi vengono gestiti dal controller e l'i/o viene inviato su tutti i percorsi attivi.
+
+L'esempio seguente visualizza l'output corretto per una LUN ONTAP con percorsi attivi/ottimizzati.
 
 image::asa.png[Schermata di ONTAP LUN con percorsi attivi/ottimizzati]
-
-
-NOTE: Un singolo LUN non deve richiedere più di quattro percorsi. La presenza di più di quattro percorsi potrebbe causare problemi di percorso durante gli errori di storage.

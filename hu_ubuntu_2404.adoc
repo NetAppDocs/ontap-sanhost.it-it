@@ -38,7 +38,7 @@ Utilizzare link:https://imt.netapp.com/matrix/#welcome["Tool di matrice di inter
 . Verificare che siano disponibili più percorsi.
 +
 
-NOTE: Più percorsi diventano disponibili dopo che il sistema operativo host è attivo e in esecuzione sui percorsi.
+NOTE: Una volta attivato il sistema operativo host e eseguito sui percorsi, diventano disponibili più percorsi.
 
 . Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN.
 +

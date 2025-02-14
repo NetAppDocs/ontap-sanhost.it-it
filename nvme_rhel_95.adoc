@@ -597,7 +597,7 @@ NOTE: A partire da RHEL 9,5, l'impostazione predefinita per il timeout NVMe/TCP 
 
 == Validare NVMe-of
 
-Per supportare il corretto funzionamento dei LUN ONTAP, verificare che lo stato di multipath NVMe in-kernel, lo stato ANA e i namespace ONTAP siano corretti per la configurazione NVMe-of.
+Verificare che lo stato multipath NVMe in-kernel, lo stato ANA e i namespace ONTAP siano corretti per la configurazione NVMe-of.
 
 .Fasi
 . Verificare che il multipath NVMe nel kernel sia attivato:

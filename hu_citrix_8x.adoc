@@ -30,7 +30,7 @@ Se si decide di utilizzare l'avvio SAN, questo deve essere supportato dalla conf
 . Verificare che siano disponibili più percorsi.
 +
 
-NOTE: Più percorsi diventano disponibili dopo che il sistema operativo host è attivo e in esecuzione sui percorsi.
+NOTE: Una volta attivato il sistema operativo host e eseguito sui percorsi, diventano disponibili più percorsi.
 
 . Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN.
 +
@@ -49,7 +49,7 @@ Per Citrix Hypervisor (CH) 8.x il `/etc/multipath.conf` file deve esistere, ma n
 
 === Configurazione di tutti gli array SAN (ASA)
 
-Per la configurazione di tutti gli array SAN (ASA) deve essere presente un gruppo di percorsi con priorità singole. Tutti i percorsi sono attivi/ottimizzati, il che significa che sono serviti dal controller e l'i/o viene inviato su tutti i percorsi attivi.
+Per la configurazione di tutti gli array SAN (ASA) deve essere presente un gruppo di percorsi con priorità singole. Tutti i percorsi sono attivi/ottimizzati. Ciò significa che vengono serviti dal controller e l'i/o viene inviato su tutti i percorsi attivi.
 
 .Esempio
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con quattro percorsi attivi/ottimizzati:
@@ -71,7 +71,7 @@ NOTE: Non utilizzare un numero eccessivo di percorsi per una singola LUN. Non de
 
 === Configurazioni non ASA
 
-Per le configurazioni non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono Active/Optimized, ovvero gestiti dal controller in cui si trova l'aggregato. I percorsi con priorità più basse sono attivi ma non ottimizzati perché sono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
+Per le configurazioni non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono attivi/ottimizzati. Ciò significa che vengono gestite dal controller in cui si trova l'aggregato. I percorsi con priorità più basse sono attivi ma non ottimizzati perché sono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
 
 .Esempio
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati.

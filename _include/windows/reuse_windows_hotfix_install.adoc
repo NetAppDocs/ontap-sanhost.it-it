@@ -2,14 +2,11 @@
 :allow-uri-read: 
 
 
-. Scaricare gli hotfix dal sito del supporto Microsoft.
 
-
-
-NOTE: Alcune hotfix non sono disponibili per il download diretto. In questi casi, è necessario richiedere una data correzione rapida al personale di supporto Microsoft.
+NOTE: È necessario contattare il supporto Microsoft per le correzioni rapide che non sono disponibili per il download dal catalogo di Microsoft Update.
 
 . Seguire le istruzioni fornite da Microsoft per installare gli hotfix.
 
 
 
-TIP: Molti hotfix richiedono un riavvio dell'host Windows, ma è possibile scegliere di attendere il riavvio dell'host fino a quando _dopo_ non si installano o si aggiornano le utility host.
+TIP: Molte correzioni rapide richiedono il riavvio dell'host Windows. È possibile scegliere di attendere il riavvio dell'host fino a quando _dopo_ non si installano o aggiornano le utilità host.

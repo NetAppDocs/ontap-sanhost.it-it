@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_windows_2012r2.html 
+permalink: hu-windows-2025.html 
 keywords: windows, enterprise 
-summary: Utilizzo di Windows Server 2012 R2 con ONTAP 
+summary: 'È possibile utilizzare le impostazioni di configurazione dell"host SAN ONTAP per configurare Windows Server 2025 per il funzionamento con lo storage ONTAP.' 
 ---
-= Utilizzare Windows Server 2012 R2 con ONTAP
+= Configurare Windows Server 2025 per lo storage ONTAP
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: Utilizzo di Windows Server 2012 R2 con ONTAP
 
 
 [role="lead"]
-È possibile utilizzare le impostazioni di configurazione dell'host SAN ONTAP per configurare Windows server 2012 R2 per il funzionamento con lo storage ONTAP.
+È possibile utilizzare le impostazioni di configurazione dell'host SAN ONTAP per configurare Windows Server 2025 per il funzionamento con lo storage ONTAP.
 
 
 
@@ -34,9 +34,6 @@ Eseguire un avvio locale installando il sistema operativo Windows sul disco rigi
 .Boot SAN
 --
 Se si sceglie di utilizzare l'avvio SAN, questo deve essere supportato dalla propria configurazione.
-
-
-NOTE: È possibile utilizzare le impostazioni di configurazione fornite in questa procedura per configurare i client cloud connessi a link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] e link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX per ONTAP"^].
 
 .Prima di iniziare
 Utilizzare https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^] per verificare che il sistema operativo Windows in uso, l'HBA (host Bus Adapter), il firmware HBA, il BIOS di avvio HBA e la versione ONTAP supportino l'avvio SAN.
@@ -67,7 +64,7 @@ Per informazioni su come attivare il BIOS HBA, consultare la documentazione spec
 NetApp consiglia di installare l'aggiornamento cumulativo più recente* disponibile nel catalogo di Microsoft Update sul server host.
 
 .Fasi
-. Scaricare le correzioni rapide da link:https://www.catalog.update.microsoft.com/Search.aspx?q=Update+Windows+Server+2012_R2["Microsoft Update Catalog 2012 R2"^].
+. Scaricare le correzioni rapide da link:https://www.catalog.update.microsoft.com/Search.aspx?q=update%20%22windows%20server%202025%22["Catalogo di aggiornamenti Microsoft 2025"^].
 
 
 
@@ -89,7 +86,7 @@ Le utilità host di Windows sono un insieme di programmi software con documentaz
 
 == Multipathing
 
-È necessario installare il software Microsoft Multipath i/o (MPIO) e abilitare il multipathing se l'host Windows ha più di un percorso verso il sistema storage. Quando si seleziona il supporto MPIO, le utilità host Windows attivano la funzione MPIO inclusa in Windows Server 2012 R2. Se non si utilizzano le utilità host di Windows, è necessario abilitare il multipathing manualmente.
+È necessario installare il software Microsoft Multipath i/o (MPIO) e abilitare il multipathing se l'host Windows ha più di un percorso verso il sistema storage.
 
 Il software MPIO presenta un singolo disco al sistema operativo Windows per tutti i percorsi, mentre un modulo DSM (Device Specific Module) gestisce il failover del percorso. In un sistema Windows, i due componenti principali di qualsiasi soluzione MPIO sono DSM e Windows MPIO.
 
@@ -124,82 +121,6 @@ Una configurazione non ASA deve avere due gruppi di percorsi con priorità diver
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati.
 
 image::nonasa.png[Schermata di una LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati]
-
-
-
-== Hyper-V VHD richiede l'allineamento per ottenere le migliori prestazioni
-
-Se i confini dei blocchi di dati di una partizione del disco non si allineano ai confini dei blocchi del LUN sottostante, il sistema di storage deve spesso completare due letture o scritture dei blocchi per ogni lettura o scrittura dei blocchi del sistema operativo. Le letture e le scritture di blocchi aggiuntive causate dal disallineamento potrebbero creare seri problemi di performance.
-
-La posizione del settore di partenza per ciascuna partizione definita dal record di avvio principale causa un disallineamento.
-
-
-NOTE: Le partizioni create da Windows Server 2016 devono essere allineate per impostazione predefinita.
-
-Utilizzare il `Get-NaVirtualDiskAlignment` cmdlet all'interno del toolkit PowerShell di ONTAP per verificare se le partizioni sono allineate con i LUN sottostanti. Se le partizioni non sono allineate correttamente, utilizzare il `Repair-NaVirtualDiskAlignment` cmdlet per creare un nuovo file VHD con l'allineamento corretto. Questo cmdlet copia tutte le partizioni nel nuovo file. Il file VHD originale non viene modificato o eliminato. La macchina virtuale deve essere spenta durante la copia dei dati.
-
-È possibile scaricare il toolkit PowerShell di ONTAP presso le community NetApp. È necessario decomprimere il `DataONTAP.zip` file nella posizione specificata dalla variabile di ambiente `%PSModulePath%` (o utilizzare `Install.ps1` lo script per farlo). Una volta completata l'installazione, utilizzare il `Show-NaHelp` cmdlet per ottenere assistenza per i cmdlet.
-
-PowerShell Toolkit supporta solo file VHD di dimensioni fisse con partizioni di tipo MBR. I VHD che utilizzano dischi dinamici di Windows o partizioni GPT non sono supportati. Inoltre, PowerShell Toolkit richiede una partizione di dimensioni minime di 4 GB. Le partizioni più piccole non possono essere allineate correttamente.
-
-
-NOTE: Per le macchine virtuali Linux che utilizzano il boot loader GRUB su un VHD, è necessario aggiornare la configurazione di boot dopo aver eseguito PowerShell Toolkit.
-
-
-
-=== Reinstallare GRUB per i guest Linux dopo aver corretto l'allineamento di MBR con PowerShell Toolkit
-
-Dopo l'esecuzione `mbralign` Sui dischi per la correzione dell'allineamento MBR con PowerShell Toolkit sui sistemi operativi guest Linux che utilizzano GRUB boot loader, è necessario reinstallare GRUB per garantire che il sistema operativo guest venga avviato correttamente.
-
-.A proposito di questa attività
-Il cmdlet PowerShell Toolkit è stato completato sul file VHD per la macchina virtuale. Questa procedura si applica solo ai sistemi operativi guest Linux che utilizzano GRUB boot Loader e `SystemRescueCd`.
-
-.Fasi
-. Montare l'immagine ISO del disco 1 dei CD di installazione per la versione corretta di Linux per la macchina virtuale.
-. Aprire la console della macchina virtuale in Hyper-V Manager.
-. Se la VM è in esecuzione e bloccata nella schermata di GRUB, fare clic nell'area di visualizzazione per assicurarsi che sia attiva, quindi selezionare l'icona della barra degli strumenti *Ctrl-Alt-Canc* per riavviare la VM. Se la macchina virtuale non è in esecuzione, avviarla e fare immediatamente clic nell'area di visualizzazione per assicurarsi che sia attiva.
-. Non appena viene visualizzata la schermata iniziale del BIOS VMware, premere una volta il tasto *Esc*. Viene visualizzato il menu di avvio.
-. Dal menu di boot, selezionare *CD-ROM*.
-. Nella schermata di avvio di Linux, immettere: `linux rescue`
-. Prendere le impostazioni predefinite per Anaconda (le schermate di configurazione blu/rosse). La rete è opzionale.
-. Avviare GRUB immettendo: `grub`
-. Se in questa macchina virtuale è presente un solo disco virtuale o se sono presenti più dischi e il primo è il disco di avvio, eseguire i seguenti comandi di GRUB:
-+
-[listing]
-----
-root (hd0,0)
-setup (hd0)
-quit
-----
-+
-Se nella VM sono presenti più dischi virtuali e il disco di avvio non è il primo disco, o se si sta correggendo GRUB avviando dal VHD di backup disallineato, immettere il seguente comando per identificare il disco di avvio:
-
-+
-[listing]
-----
-find /boot/grub/stage1
-----
-+
-Quindi eseguire i seguenti comandi:
-
-+
-[listing]
-----
-root (boot_disk,0)
-setup (boot_disk)
-quit
-----
-+
-
-NOTE: In `setup (boot_disk)`, `boot_disk` è un segnaposto per l'identificatore effettivo del disco di avvio.
-
-
-
-. Premere *Ctrl-D* per disconnettersi.
-+
-Linux rescue si spegne e poi si riavvia.
-
-
 
 
 
@@ -247,4 +168,4 @@ NOTE: Per ulteriori informazioni sulle impostazioni consigliate, vedere link:hu_
 
 == Problemi noti
 
-Non esistono problemi noti per Windows Server 2012 R2 con ONTAP.
+Non esistono problemi noti per Windows Server 2025 con ONTAP.

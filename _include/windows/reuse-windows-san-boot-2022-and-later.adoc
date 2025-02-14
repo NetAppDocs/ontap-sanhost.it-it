@@ -1,0 +1,39 @@
+= 
+:allow-uri-read: 
+
+
+È possibile avviare il sistema operativo Windows utilizzando un avvio locale o un avvio SAN. NetApp consiglia di utilizzare un avvio SAN se supportato dalla configurazione in uso.
+
+[role="tabbed-block"]
+====
+.Avvio locale
+--
+Eseguire un avvio locale installando il sistema operativo Windows sul disco rigido locale (SSD, SATA, RAID e così via).
+
+--
+.Boot SAN
+--
+Se si sceglie di utilizzare l'avvio SAN, questo deve essere supportato dalla propria configurazione.
+
+.Prima di iniziare
+Utilizzare https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^] per verificare che il sistema operativo Windows in uso, l'HBA (host Bus Adapter), il firmware HBA, il BIOS di avvio HBA e la versione ONTAP supportino l'avvio SAN.
+
+.Fasi
+. Mappare il LUN di avvio SAN sull'host.
++
+Vedere link:https://docs.netapp.com/us-en/ontap/san-management/index.html["Gestione dello storage SAN"^].
+
+. Verificare che siano disponibili più percorsi.
++
+
+NOTE: I percorsi multipli diventano disponibili solo dopo che il sistema operativo host è attivo e in esecuzione sui percorsi.
+
+. Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN.
++
+Per informazioni su come attivare il BIOS HBA, consultare la documentazione specifica del vendor.
+
+. Riavviare l'host per verificare che l'avvio sia stato eseguito correttamente
+
+
+--
+====

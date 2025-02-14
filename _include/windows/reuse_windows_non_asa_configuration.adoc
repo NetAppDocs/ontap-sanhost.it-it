@@ -2,16 +2,8 @@
 :allow-uri-read: 
 
 
-Per la configurazione non ASA, devono essere presenti due gruppi di percorsi con priorità diverse.
+Una configurazione non ASA deve avere due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono attivi/ottimizzati. In altre parole, i percorsi Active/Optimized vengono gestiti dal controller in cui si trova l'aggregato. I percorsi con priorità più basse sono attivi ma non ottimizzati perché sono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
 
-I percorsi con priorità più elevate sono Active/Optimized, ovvero gestiti dal controller in cui si trova l'aggregato.
-
-I percorsi con priorità più basse sono attivi ma non ottimizzati perché sono serviti da un controller diverso.
-
-
-NOTE: I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
-
-.Esempio
 Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati.
 
 image::nonasa.png[Schermata di una LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati]

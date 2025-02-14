@@ -4,43 +4,52 @@
 
 Dopo l'esecuzione `mbralign` Sui dischi per la correzione dell'allineamento MBR con PowerShell Toolkit sui sistemi operativi guest Linux che utilizzano GRUB boot loader, è necessario reinstallare GRUB per garantire che il sistema operativo guest venga avviato correttamente.
 
-Il cmdlet PowerShell Toolkit è stato completato sul file VHD per la macchina virtuale. Questo argomento riguarda solo i sistemi operativi guest Linux che utilizzano il boot loader GRUB e. `SystemRescueCd`.
+.A proposito di questa attività
+Il cmdlet PowerShell Toolkit è stato completato sul file VHD per la macchina virtuale. Questa procedura si applica solo ai sistemi operativi guest Linux che utilizzano GRUB boot Loader e `SystemRescueCd`.
 
+.Fasi
 . Montare l'immagine ISO del disco 1 dei CD di installazione per la versione corretta di Linux per la macchina virtuale.
 . Aprire la console della macchina virtuale in Hyper-V Manager.
-. Se la macchina virtuale è in esecuzione e si blocca nella schermata di GRUB, fare clic nell'area di visualizzazione per assicurarsi che sia attiva, quindi fare clic sull'icona della barra degli strumenti *Ctrl-Alt-Delete* per riavviare la macchina virtuale. Se la macchina virtuale non è in esecuzione, avviarla e fare immediatamente clic nell'area di visualizzazione per assicurarsi che sia attiva.
+. Se la VM è in esecuzione e bloccata nella schermata di GRUB, fare clic nell'area di visualizzazione per assicurarsi che sia attiva, quindi selezionare l'icona della barra degli strumenti *Ctrl-Alt-Canc* per riavviare la VM. Se la macchina virtuale non è in esecuzione, avviarla e fare immediatamente clic nell'area di visualizzazione per assicurarsi che sia attiva.
 . Non appena viene visualizzata la schermata iniziale del BIOS VMware, premere una volta il tasto *Esc*. Viene visualizzato il menu di avvio.
 . Dal menu di boot, selezionare *CD-ROM*.
 . Nella schermata di avvio di Linux, immettere: `linux rescue`
 . Prendere le impostazioni predefinite per Anaconda (le schermate di configurazione blu/rosse). La rete è opzionale.
 . Avviare GRUB immettendo: `grub`
-. Se in questa macchina virtuale è presente un solo disco virtuale o se sono presenti più dischi, ma il primo è il disco di avvio, eseguire i seguenti comandi GRUB:
-
-
+. Se in questa macchina virtuale è presente un solo disco virtuale o se sono presenti più dischi e il primo è il disco di avvio, eseguire i seguenti comandi di GRUB:
++
 [listing]
 ----
 root (hd0,0)
 setup (hd0)
 quit
 ----
-Se nella macchina virtuale sono presenti più dischi virtuali e il disco di boot non è il primo disco, o si sta correggendo GRUB eseguendo l'avvio dal VHD di backup disallineato, immettere il seguente comando per identificare il disco di boot:
++
+Se nella VM sono presenti più dischi virtuali e il disco di avvio non è il primo disco, o se si sta correggendo GRUB avviando dal VHD di backup disallineato, immettere il seguente comando per identificare il disco di avvio:
 
++
 [listing]
 ----
 find /boot/grub/stage1
 ----
++
 Quindi eseguire i seguenti comandi:
 
++
 [listing]
 ----
 root (boot_disk,0)
 setup (boot_disk)
 quit
 ----
++
 
-NOTE: Notare che `boot_disk`, sopra, è un segnaposto per l'identificativo effettivo del disco di boot.
+NOTE: In `setup (boot_disk)`, `boot_disk` è un segnaposto per l'identificatore effettivo del disco di avvio.
+
+
 
 . Premere *Ctrl-D* per disconnettersi.
-
-
++
 Linux rescue si spegne e poi si riavvia.
+
+
