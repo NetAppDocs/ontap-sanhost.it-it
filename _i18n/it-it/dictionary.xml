@@ -389,7 +389,6 @@
   <block id="4b1a408f9163a3e5b5c1815fd26b6b6e" category="paragraph">Per SUSE Linux Enterprise Server 15 il file /etc/multipath.conf deve esistere, ma non è necessario apportare modifiche specifiche al file. SUSE Linux Enterprise Server 15 è compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente le LUN ONTAP.</block>
   <block id="880612d7054085e9af1cd3802ce4127d" category="summary">Descrive come utilizzare Oracle Linux 7.4 con ONTAP</block>
   <block id="491bbe882aaf63711fd558642fdb4958" category="paragraph">Per Oracle Linux 7.4 il file /etc/multipath.conf deve esistere, ma non è necessario apportare modifiche specifiche al file. Oracle Linux 7.4 è compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente le LUN ONTAP.</block>
-  <block id="410517e1f795e6fa809a7ff5630e2bdd" category="list-text">Installare l'utility OneCommand Manager sull'host Windows.</block>
   <block id="7d182740e5fe1d15ec7f97f69178b4a8" category="list-text">Su ciascuna porta HBA Initiator, impostare i seguenti parametri del driver HBA:</block>
   <block id="1d71ea83cceb2b7470e1c54838adb506" category="list-text">EnableNVMe = 1</block>
   <block id="814e9f528f5fa391cd6774e57a5c651c" category="list-text">NVMEMode = 0</block>
@@ -3728,4 +3727,5 @@ Per ulteriori informazioni e per le modifiche consigliate alle impostazioni pred
   <block id="446a12d919c8ace091d69571c8964509" category="paragraph">A partire da ONTAP 9,7, NVMe/FC è supportato per Windows Server 2022.</block>
   <block id="d26e08171a5072e33fe155b7ad5a5659" category="doc">Informazioni sulle configurazioni degli host SAN</block>
   <block id="312351bff07989769097660a56395065" category="sidebar">2025</block>
+  <block id="439a17362d8592514caf19c7e8ec2147" category="list-text">Installare l'utilità Emulex HBA Manager sull'host Windows.</block>
 </blocks>
