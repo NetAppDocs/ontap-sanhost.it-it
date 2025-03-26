@@ -189,7 +189,7 @@ Al momento, NetApp sconsiglia di modificare le impostazioni dei vVol da quelle p
 
 Per le versioni specifiche degli strumenti ONTAP, fare riferimento al oppure al https://imt.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^] provider VASA legacy per le versioni specifiche di vSphere e ONTAP.
 
-Per informazioni dettagliate sul provisioning e la gestione di vVol, fare riferimento alla documentazione relativa ai tool ONTAP per VMware vSphere, nonché https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597"^] a. link:https://www.netapp.com/pdf.html?item=/media/13555-tr4400pdf.pdf["TR-4400."^]
+Per informazioni dettagliate sul provisioning e la gestione di vVol, fare riferimento alla documentazione relativa agli strumenti ONTAP per VMware vSphere nonché https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["VMware vSphere con ONTAP"^]link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vvols-overview.html["Volumi virtuali (vVol) con strumenti ONTAP 10"^] a e .
 
 
 
@@ -317,7 +317,7 @@ VMware vSphere 6,5 e 6,7 con ONTAP presentano i seguenti problemi noti:
 | ESXi 6.5.x e ESXi 6.7.x | 1256473 | Problema di PLOGI riscontrato durante il test sugli adattatori Emulex |  
 |===
 .Informazioni correlate
-* link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597-VMware vSphere con ONTAP"^]
+* link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["VMware vSphere con ONTAP"^]
 * link:https://kb.vmware.com/s/article/2031038["Supporto di VMware vSphere 5.x, 6.x e 7.x con NetApp MetroCluster (2031038)"^]
 * link:https://kb.vmware.com/s/article/83370["NetApp ONTAP con sincronizzazione attiva SnapMirror NetApp con VMware vSphere Metro Storage Cluster (vMSC)"^]
 

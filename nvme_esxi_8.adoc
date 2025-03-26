@@ -320,6 +320,4 @@ Le macchine virtuali Linux che eseguono vSphere 8.x e versioni successive e che 
 
 |===
 .Informazioni correlate
-link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597-VMware vSphere con ONTAP"^]
-link:https://kb.vmware.com/s/article/2031038["Supporto di VMware vSphere 5.x, 6.x e 7.x con NetApp MetroCluster (2031038)"^]
-link:https://kb.vmware.com/s/article/83370["Supporto di VMware vSphere 6.x e 7.x con sincronizzazione attiva NetApp SnapMirror"^]
+link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["VMware vSphere con ONTAP"^] link:https://kb.vmware.com/s/article/2031038["Supporto di VMware vSphere 5.x, 6.x e 7.x con NetApp MetroCluster (2031038)"^] link:https://kb.vmware.com/s/article/83370["Supporto di VMware vSphere 6.x e 7.x con sincronizzazione attiva NetApp SnapMirror"^]
