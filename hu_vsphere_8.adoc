@@ -233,7 +233,7 @@ NetApp sconsiglia di modificare le impostazioni vVol da quelle predefinite.
 
 Per le versioni specifiche degli strumenti ONTAP, fare riferimento al oppure al https://imt.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^] provider VASA legacy per le versioni specifiche di vSphere e ONTAP.
 
-Per informazioni dettagliate sul provisioning e la gestione di vVol, fare riferimento alla documentazione relativa agli strumenti ONTAP per VMware vSphere link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["VMware vSphere con ONTAP"^], e link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vvols-overview.html["Volumi virtuali (vVol) con strumenti ONTAP 10"^].
+Per informazioni dettagliate sul provisioning e la gestione dei vVol, fare riferimento alla documentazione relativa agli strumenti ONTAP per VMware vSphere link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["VMware vSphere con ONTAP"^], e link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vvols-overview.html["Volumi virtuali (vVol) con strumenti ONTAP 10"^].
 
 
 
