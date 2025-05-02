@@ -55,7 +55,7 @@ NOTE: L'installazione di Linux host Utilities non modifica le impostazioni di ti
 
 
 
-== Fase 2: Verificare la configurazione multipath per l'host
+== Fase 3: Verificare la configurazione multipath per l'host
 
 È possibile utilizzare multipathing con RHEL 9,5 per gestire i LUN di ONTAP.
 
