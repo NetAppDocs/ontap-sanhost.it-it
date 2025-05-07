@@ -1023,7 +1023,6 @@
   <block id="6b83d866c4dfa9b95b03b5a6ede846f7" category="summary">Utilizzo di Windows Server 2019 con ONTAP</block>
   <block id="51da3f0f90428027f2a496d366e696eb" category="inline-link-macro">Catalogo di aggiornamenti Microsoft 2019</block>
   <block id="c345c92c1db74865c1b5cb8dad478651" category="summary">Questo contenuto fornisce una guida specifica per la distribuzione su come configurare i client SAN connessi allo storage ONTAP.</block>
-  <block id="d1c811acf82829db30f1d8b3e6c940d6" category="doc">Host SAN e client cloud</block>
   <block id="e5bb15bb11bc9d2f4a5298c657566227" category="summary">Descrive come utilizzare Oracle Linux 9.0 con ONTAP</block>
   <block id="ae8e81252a704349cea5f061e9fb652e" category="paragraph">Per Oracle Linux (OL) 9.0<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> il file deve esistere, ma non è necessario apportare modifiche specifiche al file. OL 9.0 viene compilato con tutte le impostazioni necessarie per riconoscere e gestire correttamente le LUN ONTAP.</block>
   <block id="2722dd408e2c6dddce120893d4c5c0a7" category="paragraph">Il sistema operativo Oracle Linux 9.0 viene compilato per riconoscere le LUN ONTAP e impostare automaticamente tutti i parametri di configurazione correttamente per la configurazione ASA e non ASA.</block>
@@ -1165,7 +1164,6 @@
   <block id="280cb64ee585254458755a354d77aefc" category="cell">1256473</block>
   <block id="b9204431a0ed79e40e8c590858bc11e4" category="cell">Problema di PLOGI riscontrato durante il test sugli adattatori Emulex</block>
   <block id="dbc044c0fb6f7e335a20801bfc0f48d4" category="cell">Utilizzato dal programma di installazione per impostare i parametri HBA.</block>
-  <block id="700f2514d3d4cc2ed02cb06d8b922b2d" category="paragraph">Prima di installare le Utility host, verificare che la versione delle Utility host supporti la configurazione del sistema host e storage in modo che il software venga installato correttamente.</block>
   <block id="6edf97e112927c25a9a1571ba78c02f9" category="list-text">Controllare le correzioni rapide richieste per il rispettivo host su <block ref="d639dff184f4bf79d87dbc978d26f542" category="inline-link-macro-rx"></block>.</block>
   <block id="29cd26a0b6469ed25fabeac1805eb8a6" category="list-text">Aggiungere la licenza iSCSI o FCP e avviare il servizio di destinazione.</block>
   <block id="dafd8a261adaf4e33c8e8c74baa71755" category="list-text">Verificare il cablaggio</block>
@@ -1415,7 +1413,6 @@
   <block id="dfcc398099d6a64026e51ab282e16253" category="sidebar">Più risorse</block>
   <block id="8f631f7b4d000947dcf86232c51cf147" category="sidebar">Configurazione di tutto il software SAN Array</block>
   <block id="587c9aa3c6003c9a9fa1fc9c2ceb2eaa" category="sidebar">Amministrazione SAN</block>
-  <block id="2275d26c218f9babebe06ed5dcc73dab" category="sidebar">Configurare gli host SAN e i client cloud</block>
   <block id="3b878279a04dc47d60932cb294d96259" category="sidebar">Panoramica</block>
   <block id="2ee1fba4400a50245e66ef649b54d588" category="sidebar">Installare AIX HU 6.1</block>
   <block id="7d0ee6fed10d3d4e5c9ee496729ab519" category="sidebar">Note di rilascio</block>
@@ -3228,7 +3225,6 @@ Per ulteriori informazioni e per le modifiche consigliate alle impostazioni pred
   <block id="550d5f0555aa2a5e59269c14de819e78" category="summary">Le utilità host Windows includono un programma di installazione che imposta i parametri richiesti del Registro di sistema e dell'HBA di Windows in modo che l'host Windows gestisca correttamente i comportamenti del sistema storage per le piattaforme ONTAP ed e-Series.</block>
   <block id="6896363d719a238fdc4b6d2ef8ef5a78" category="doc">Installare le utilità host Windows 7,1</block>
   <block id="f0ed46888b875cc5c73315cc1272f90b" category="paragraph">Le utilità host di Windows consentono di collegare un computer host di Windows ai sistemi di archiviazione NetApp.</block>
-  <block id="fd0cfddf11b707411ea1c87986350b1a" category="paragraph">Le utilità host di Windows supportano le seguenti versioni di Windows:</block>
   <block id="0652c88686b5ecfc5bf453239b43dbd5" category="paragraph">Le utilità host Windows includono un programma di installazione che imposta i parametri richiesti del Registro di sistema di Windows e dell'HBA (host Bus Adapter) in modo che un host Windows possa gestire correttamente i comportamenti del sistema storage per le piattaforme ONTAP ed e-Series.</block>
   <block id="2a1a96da7bfe08f1d385743c49246a17" category="paragraph">Le utilità host supportano diverse configurazioni host di Windows, protocolli e opzioni di multipathing. Consultare la<block ref="e29293ebfe5b9174e3113da62e6426ca" category="inline-link-rx"></block> per l'elenco aggiornato delle configurazioni supportate.</block>
   <block id="440a0a613ea9d79644732dd469b879c6" category="list-text">Verificare la configurazione supportata in<block ref="8202e2d9ff186d084c29140284f981f1" category="inline-link-rx"></block> .</block>
@@ -3653,7 +3649,6 @@ Per ulteriori informazioni e per le modifiche consigliate alle impostazioni pred
   <block id="f3f5e5774254d60ece67c2757e73c5fe" category="summary">Installare le utilità host Linux su un host RHEL 9,5 per gestire le operazioni dei protocolli FCP e iSCSI con i LUN ONTAP.</block>
   <block id="bf2e2850028a550db4d4777a6c320006" category="doc">Configurare RHEL 9,5 per FCP e iSCSI con storage ONTAP</block>
   <block id="9c2f294f2ce9dacd34475fe6a3fa5c52" category="paragraph">Il software Linux host Utilities fornisce strumenti di gestione e diagnostica per gli host Linux connessi allo storage ONTAP. Quando si installano le utilità host Linux su un host Red Hat Enterprise Linux (RHEL) 9,5, è possibile utilizzare le utilità host per gestire le operazioni dei protocolli FCP e iSCSI con i LUN ONTAP.</block>
-  <block id="dd8d9457c96c61b509341e8fc9c06a5a" category="section-title">Fase 2: Verificare la configurazione multipath per l'host</block>
   <block id="0f1de05675767624511aae207e8e0251" category="paragraph">È possibile utilizzare multipathing con RHEL 9,5 per gestire i LUN di ONTAP.</block>
   <block id="df703c7c915219367c5e3f921d60e7af" category="summary">Installare le utilità host Linux su SUSE Linux Enterprise Server 12 per gestire le operazioni dei protocolli FCP e iSCSI con i LUN ONTAP.</block>
   <block id="43d4d647f16dbd3d230e0439558b88db" category="doc">Configurare SUSE Linux Enterprise Server 12 per FCP e iSCSI con lo storage ONTAP</block>
@@ -3716,4 +3711,10 @@ Per ulteriori informazioni e per le modifiche consigliate alle impostazioni pred
   <block id="d29ad9efbcae6053e82420f1cc871c51" category="paragraph">Per informazioni dettagliate sul provisioning e la gestione di vVol, fare riferimento alla documentazione relativa agli strumenti ONTAP per VMware vSphere nonché<block ref="c45840700e4ab6d55371aa3a3251b306" category="inline-link-rx"></block><block ref="506dc68919d50d1567e18d25faf7ae58" category="inline-link-macro-rx"></block> a e .</block>
   <block id="764c3360f3f7d6cb07c2ff1a79f2cf58" category="paragraph">Per informazioni dettagliate sul provisioning e la gestione di vVol, fare riferimento alla documentazione relativa agli strumenti ONTAP per VMware vSphere nonché <block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block><block ref="506dc68919d50d1567e18d25faf7ae58" category="inline-link-macro-rx"></block>a e .</block>
   <block id="d04eb85f6d5ba5f0fcd2c894dea16fe5" category="paragraph">Per informazioni dettagliate sul provisioning e la gestione dei vVol, fare riferimento alla documentazione relativa agli strumenti ONTAP per VMware vSphere <block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block>, e <block ref="506dc68919d50d1567e18d25faf7ae58" category="inline-link-macro-rx"></block>.</block>
+  <block id="db3880822387ba5ff86b2e765ae8e03d" category="paragraph">Le utilità host di Windows supportano le seguenti versioni di Windows:</block>
+  <block id="6338107550646e4da84ebb66cf1e3b7e" category="inline-xref">Versione di Windows supportata</block>
+  <block id="14aa8f54a503ff6089f17bed95d65cb6" category="paragraph">Prima di installare le utilità host di Windows per <block ref="e07b0c094759647153725a704df4b0de" category="inline-xref-macro-rx"></block>, verificare che la configurazione del sistema host e del sistema di archiviazione siano supportate.</block>
+  <block id="74464dd5db6f61c62453cee626aca30f" category="paragraph">Prima di installare le utilità host di Windows per <block ref="fa2ff82d2dc57012eed1f266cf01842e" category="inline-xref-macro-rx"></block>, verificare che la configurazione del sistema host e del sistema di archiviazione siano supportate.</block>
+  <block id="a85fe49c4f48d905593c7bce3b551763" category="sidebar">Host SAN e client cloud di ONTAP</block>
+  <block id="6fbaf2334ca5f8d82bd9bd67bc534670" category="sidebar">Configurare gli host SAN ONTAP e i client cloud</block>
 </blocks>

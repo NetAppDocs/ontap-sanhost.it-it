@@ -60,7 +60,7 @@ Le utilità host supportano diverse configurazioni host di Windows, protocolli e
 
 == Verifica delle configurazioni dell'host e del sistema di storage
 
-Prima di installare le Utility host, verificare che la versione delle Utility host supporti la configurazione del sistema host e storage in modo che il software venga installato correttamente.
+Prima di installare le utilità host di Windows per <<supported-windows-versions-71,Versione di Windows supportata>>, verificare che la configurazione del sistema host e del sistema di archiviazione siano supportate.
 
 .Fasi
 . Verificare la configurazione supportata in http://mysupport.netapp.com/matrix["Tool di matrice di interoperabilità"^] .
