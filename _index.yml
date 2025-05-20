@@ -1,6 +1,6 @@
 ---
 indexpage:
-  title: Host SAN e client cloud di ONTAP
+  title: Utilità host SAN ONTAP
   summary: Questo contenuto fornisce una guida specifica per la distribuzione su come
     configurare i client SAN connessi allo storage ONTAP.
   keywords: ontap, san, host, rhel, red, hat, linux, sles, suse, esxi, nvme, oracle,

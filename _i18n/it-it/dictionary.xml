@@ -3707,8 +3707,6 @@ Per ulteriori informazioni e per le modifiche consigliate alle impostazioni pred
   <block id="6338107550646e4da84ebb66cf1e3b7e" category="inline-xref">Versione di Windows supportata</block>
   <block id="14aa8f54a503ff6089f17bed95d65cb6" category="paragraph">Prima di installare le utilità host di Windows per <block ref="e07b0c094759647153725a704df4b0de" category="inline-xref-macro-rx"></block>, verificare che la configurazione del sistema host e del sistema di archiviazione siano supportate.</block>
   <block id="74464dd5db6f61c62453cee626aca30f" category="paragraph">Prima di installare le utilità host di Windows per <block ref="fa2ff82d2dc57012eed1f266cf01842e" category="inline-xref-macro-rx"></block>, verificare che la configurazione del sistema host e del sistema di archiviazione siano supportate.</block>
-  <block id="a85fe49c4f48d905593c7bce3b551763" category="sidebar">Host SAN e client cloud di ONTAP</block>
-  <block id="6fbaf2334ca5f8d82bd9bd67bc534670" category="sidebar">Configurare gli host SAN ONTAP e i client cloud</block>
   <block id="c6c1a6259bdf26d263bd4a9472d66719" category="section-title">Disallocare NVMe</block>
   <block id="f384bde747b94f669a3fa94059005a05" category="paragraph">Il comando NVMe disallocare è supportato per ESXi 8.0u2 e versioni successive con ONTAP 9.16.1 e versioni successive.</block>
   <block id="098d6b2a9e23cc2be9c1426e0cde97a4" category="paragraph">Il supporto disallocare è sempre abilitato per gli namespace NVMe. Disallocare consente inoltre al sistema operativo guest di eseguire operazioni 'UNMAP' (talvolta chiamate 'TRIM') sugli archivi dati VMFS. Le operazioni di disallocare consentono a un host di identificare blocchi di dati non più necessari perché non contengono più dati validi. Il sistema storage può quindi rimuovere quei blocchi di dati in modo che lo spazio possa essere consumato altrove.</block>
@@ -3717,4 +3715,6 @@ Per ulteriori informazioni e per le modifiche consigliate alle impostazioni pred
   <block id="6026c444a91983a6b5a6dcb031503f89" category="list-text">Verificare che l'impostazione per DSM disallocare con supporto TP4040 sia abilitata:</block>
   <block id="b666f1fcf3d24bdf8d1596c592783e04" category="inline-link">Recupero dello spazio di storage in vSphere</block>
   <block id="e2b29f49797a2325ae454b80e6aecf4a" category="paragraph">Per ulteriori informazioni su NVMe disallocare in VMware vSphere, fare riferimento a.<block ref="c446d1e3b484512e9ba1bbe8eab259bf" category="inline-link-rx"></block></block>
+  <block id="e99f28bee3ac5bad6e5414411cd5ffa0" category="sidebar">Utilità host SAN ONTAP</block>
+  <block id="2275d26c218f9babebe06ed5dcc73dab" category="sidebar">Configurare gli host SAN e i client cloud</block>
 </blocks>
