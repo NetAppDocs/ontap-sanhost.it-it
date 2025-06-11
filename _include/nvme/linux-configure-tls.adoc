@@ -1,0 +1,12 @@
+= Configurare Transport Layer Security
+:allow-uri-read: 
+
+
+
+
+== Configurare Transport Layer Security
+
+Transport Layer Security (TLS) fornisce una crittografia end-to-end sicura per le connessioni NVMe tra host NVMe-of e un array ONTAP. A partire da ONTAP 9.16,1, è possibile configurare TLS 1,3 utilizzando l'interfaccia CLI e una chiave precondivisa (PSK) configurata.
+
+.A proposito di questa attività
+Eseguire i passaggi descritti in questa procedura sull'host SUSE Linux Enterprise Server, tranne nei casi in cui è specificato che un passaggio deve essere eseguito sul controller ONTAP.
