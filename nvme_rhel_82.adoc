@@ -40,6 +40,27 @@ Consultare la link:https://mysupport.netapp.com/matrix/["Tool di matrice di inte
 
 
 
+== Attivare l'avvio SAN
+
+È possibile configurare l'host in modo che utilizzi l'avvio SAN per semplificare l'installazione e migliorare la scalabilità.
+
+.Prima di iniziare
+Utilizzare link:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^]per verificare che il sistema operativo Linux, l'HBA (host Bus Adapter), il firmware HBA, il BIOS di avvio HBA e la versione ONTAP supportino l'avvio SAN.
+
+.Fasi
+. Creare uno spazio dei nomi di avvio SAN e mapparlo all'host.
++
+Vedere https://docs.netapp.com/us-en/ontap/san-admin/create-nvme-namespace-subsystem-task.html["Eseguire il provisioning dello storage NVMe"^].
+
+. Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN.
++
+Per informazioni su come attivare il BIOS HBA, consultare la documentazione specifica del vendor.
+
+. Verificare che la configurazione sia stata eseguita correttamente riavviando l'host e verificando che il sistema operativo sia attivo e funzionante.
+
+
+
+
 == Abilitare NVMe/FC
 
 Puoi usare la seguente procedura per attivare NVMe/FC.

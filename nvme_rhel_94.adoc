@@ -42,6 +42,27 @@ Non esistono limitazioni note.
 
 
 
+== Attivare l'avvio SAN
+
+È possibile configurare l'host in modo che utilizzi l'avvio SAN per semplificare l'installazione e migliorare la scalabilità.
+
+.Prima di iniziare
+Utilizzare link:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^]per verificare che il sistema operativo Linux, l'HBA (host Bus Adapter), il firmware HBA, il BIOS di avvio HBA e la versione ONTAP supportino l'avvio SAN.
+
+.Fasi
+. Creare uno spazio dei nomi di avvio SAN e mapparlo all'host.
++
+Vedere https://docs.netapp.com/us-en/ontap/san-admin/create-nvme-namespace-subsystem-task.html["Eseguire il provisioning dello storage NVMe"^].
+
+. Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN.
++
+Per informazioni su come attivare il BIOS HBA, consultare la documentazione specifica del vendor.
+
+. Verificare che la configurazione sia stata eseguita correttamente riavviando l'host e verificando che il sistema operativo sia attivo e funzionante.
+
+
+
+
 == Convalidare le versioni software
 
 È possibile utilizzare la seguente procedura per convalidare le versioni minime del software RHEL 9,4 supportate.
@@ -278,10 +299,13 @@ NOTE: Questi passaggi non si applicano agli host Qlogic NVMe/FC.
 .Fasi
 . Impostare il `lpfc_sg_seg_cnt` parametro su 256:
 +
-[listing]
+[source, cli]
 ----
 cat /etc/modprobe.d/lpfc.conf
 ----
++
+Dovresti vedere un output simile al seguente esempio:
+
 +
 [listing]
 ----
@@ -290,7 +314,7 @@ options lpfc lpfc_sg_seg_cnt=256
 . Eseguire il `dracut -f` comando e riavviare l'host.
 . Verificare che il valore per `lpfc_sg_seg_cnt` sia 256:
 +
-[listing]
+[source, cli]
 ----
 cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 ----
