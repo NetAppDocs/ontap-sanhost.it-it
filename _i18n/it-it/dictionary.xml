@@ -3771,4 +3771,22 @@ Per ulteriori informazioni e per le modifiche consigliate alle impostazioni pred
   <block id="b4da3417a3bbac7760c5f326458d9927" category="sidebar">RHEL 10</block>
   <block id="63da114c28add40c319de84e3a92a8ed" category="sidebar">RHEL-10-FCP</block>
   <block id="43a1437f7f656cd8be7c996c58719e0a" category="sidebar">10,0</block>
+  <block id="282e82c820d3f500a969ebb9a9054584" category="summary">Installare le utilità host Linux su un host RHEL 9,6 per gestire le operazioni dei protocolli FCP e iSCSI con i LUN ONTAP.</block>
+  <block id="f4e7617d1cef5f8ab23add41d40625fb" category="doc">Configurare RHEL 9,6 per FCP e iSCSI con storage ONTAP</block>
+  <block id="5cecbf0e006813819e7ea0d92ccca8df" category="paragraph">Il software Linux host Utilities fornisce strumenti di gestione e diagnostica per gli host Linux connessi allo storage ONTAP. Quando si installano le utilità host Linux su un host Red Hat Enterprise Linux (RHEL) 9,6, è possibile utilizzare le utilità host per gestire le operazioni dei protocolli FCP e iSCSI con i LUN ONTAP.</block>
+  <block id="c655b9821bde0a911428a133bb7ef67f" category="paragraph">È possibile utilizzare multipathing con RHEL 9,6 per gestire i LUN di ONTAP.</block>
+  <block id="6cbcd68038ece1dbafa173add2c90697" category="summary">Come configurare NVMe-of host per RHEL 9,6 con ONTAP</block>
+  <block id="3dff0e4b77025c9e0739e3b02b3ff268" category="doc">Configurazione host NVMe-of per RHEL 9,6 con ONTAP</block>
+  <block id="fdee72360607bede29fc52844f306e62" category="paragraph">Con la configurazione host NVMe-of per Red Hat Enterprise Linux (RHEL) 9,6 puoi utilizzare il seguente supporto e funzionalità. Prima di avviare il processo di configurazione, è inoltre necessario esaminare le limitazioni note.</block>
+  <block id="770bddea589c1a8e5b2541551754b4e4" category="list-text">RHEL 9,6 abilita la multipath NVMe in-kernel per namespace NVMe per default, eliminando la necessità di impostazioni esplicite.</block>
+  <block id="e118d7e4742cf0454d407a22991c4f23" category="list-text">A partire da ONTAP 9.12.1, viene introdotto il supporto per l'autenticazione sicura in-band per NVMe/TCP. È possibile utilizzare l'autenticazione sicura in-band per NVMe/TCP con RHEL 9,6.</block>
+  <block id="027d24fe581a1889d6b5752e3886e380" category="list-text">Non ci sono nuove funzionalità disponibili.</block>
+  <block id="3b6f23fb41215bfbde13af4b92268902" category="paragraph">Utilizzare la seguente procedura per convalidare le versioni minime supportate del software RHEL 9,6.</block>
+  <block id="61e91ca529ce5516397f8af4ff223ab0" category="list-text">Installare RHEL 9,6 sul server. Una volta completata l'installazione, verificare che il kernel RHEL 9,6 specificato sia in esecuzione:</block>
+  <block id="deeefe26777fb24a155fd5e2eac9f23b" category="paragraph">L'esempio seguente mostra una versione del pacchetto nvme-cli:</block>
+  <block id="a33245ebb2f380b62ab218a312110f3a" category="list-text">Sull'host RHEL 9,6, controllare la stringa hostnqn all'indirizzo<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block>:</block>
+  <block id="844df812cde8ebcaf9f2cc35022248c6" category="paragraph">Con RHEL 9.6, il <block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> E <block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> servizi di avvio inclusi in NVMe/FC <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> I pacchetti vengono automaticamente abilitati per l'avvio durante l'avvio del sistema. Al termine dell'avvio del sistema, verificare che i servizi di avvio siano abilitati.</block>
+  <block id="103bbc9741f09ef806d7d9f1ff8e4957" category="paragraph">A partire da ONTAP 9.12.1, l'autenticazione in-band sicura è supportata tramite NVMe/TCP tra un host RHEL 9,6 e un controller ONTAP.</block>
+  <block id="c76dae5432bc09fa983706505086692e" category="list-text">Generare la chiave dhCHAP per l'host RHEL 9,6.</block>
+  <block id="eaf2f97729e8d5e4d205672da8afc9a5" category="sidebar">9,6</block>
 </blocks>

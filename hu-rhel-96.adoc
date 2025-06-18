@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_rhel_75.html 
-keywords: host utilities, red hat, rhel, linux, 7.5, netapp, ontap 
-summary: Descrive come utilizzare Red Hat Enterprise Linux 7.5 con ONTAP 
+permalink: hu-rhel-96.html 
+keywords: host utilities, red hat, rhel, linux, 9.6, netapp, ontap, rhel 
+summary: Installare le utilità host Linux su un host RHEL 9,6 per gestire le operazioni dei protocolli FCP e iSCSI con i LUN ONTAP. 
 ---
-= Configurare RHEL 7,5 per FCP e iSCSI con storage ONTAP
+= Configurare RHEL 9,6 per FCP e iSCSI con storage ONTAP
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: Descrive come utilizzare Red Hat Enterprise Linux 7.5 con ONTAP
 
 
 [role="lead"]
-Il software Linux host Utilities fornisce strumenti di gestione e diagnostica per gli host Linux connessi allo storage ONTAP. Quando si installano le utilità host Linux su un host Red Hat Enterprise Linux (RHEL) 7,5, è possibile utilizzare le utilità host per gestire le operazioni dei protocolli FCP e iSCSI con i LUN ONTAP.
+Il software Linux host Utilities fornisce strumenti di gestione e diagnostica per gli host Linux connessi allo storage ONTAP. Quando si installano le utilità host Linux su un host Red Hat Enterprise Linux (RHEL) 9,6, è possibile utilizzare le utilità host per gestire le operazioni dei protocolli FCP e iSCSI con i LUN ONTAP.
 
 
 NOTE: Non è necessario configurare manualmente le impostazioni della macchina virtuale basata sul kernel (KVM) perché le LUN ONTAP vengono automaticamente mappate sull'hypervisor.
@@ -57,20 +57,12 @@ NOTE: L'installazione di Linux host Utilities non modifica le impostazioni di ti
 
 == Fase 3: Verificare la configurazione multipath per l'host
 
-È possibile utilizzare multipathing con RHEL 7,5 per gestire i LUN di ONTAP.
+È possibile utilizzare multipathing con RHEL 9,6 per gestire i LUN di ONTAP.
 
 Per verificare che il multipathing sia configurato correttamente per l'host, verificare che il `/etc/multipath.conf` file sia definito e che siano configurate le impostazioni consigliate da NetApp per i LUN ONTAP.
 
 .Fasi
-. Verificare che il `/etc/multipath.conf` file esista:
-+
-[source, cli]
-----
-ls /etc/multipath.conf
-----
-+
-Se il file non esiste, creare un file vuoto a zero byte:
-
+. Verificare che il `/etc/multipath.conf` file venga chiuso. Se il file non esiste, creare un file vuoto a zero byte:
 +
 [source, cli]
 ----
@@ -87,9 +79,9 @@ systemctl enable multipathd
 ----
 systemctl start multipathd
 ----
-. Ogni volta che si avvia l'host, il file vuoto `/etc/multipath.conf` con zero byte carica automaticamente i parametri multipath dell'host raccomandati da NetApp come impostazioni predefinite. Non è necessario apportare modifiche al `/etc/multipath.conf` file per l'host perché il sistema operativo host è compilato con i parametri multipath che riconoscono e gestiscono correttamente i LUN ONTAP.
+. Ogni volta che si avvia l'host, il file vuoto `/etc/multipath.conf` con zero byte carica automaticamente i parametri multipath dell'host raccomandati da NetApp come impostazioni predefinite. Non è necessario apportare modifiche al `/etc/multipath.conf` file per l'host perché il sistema operativo è compilato con i parametri multipath che riconoscono e gestiscono correttamente i LUN ONTAP.
 +
-La tabella seguente mostra le impostazioni dei parametri multipercorso compilati dal sistema operativo Linux nativo per i LUN ONTAP.
+La tabella seguente mostra le impostazioni dei parametri multipercorso compilati nativi del sistema operativo Linux per i LUN ONTAP.
 
 +
 .Mostra impostazioni parametri
@@ -112,7 +104,7 @@ La tabella seguente mostra le impostazioni dei parametri multipercorso compilati
 | fast_io_fail_tmo | 5 
 
 
-| caratteristiche | "3 queue_if_no_path pg_init_retries 50" 
+| caratteristiche | "2 pg_init_retries 50" 
 
 
 | flush_on_last_del | "sì" 
@@ -139,7 +131,7 @@ La tabella seguente mostra le impostazioni dei parametri multipercorso compilati
 | prio | "ONTAP" 
 
 
-| prodotto | LUN.* 
+| prodotto | LUN 
 
 
 | retain_attached_hw_handler | sì 
@@ -175,14 +167,14 @@ Una configurazione ASA ottimizza tutti i percorsi verso una determinata LUN, man
 
 [listing]
 ----
-# multipath -ll
-3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
-size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+multipath -ll
+3600a098038314c4a433f577471797958 dm-2 NETAPP,LUN C-Mode
+size=180G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 `-+- policy='service-time 0' prio=50 status=active
-  |- 3:0:7:9    sdco 69:192  active ready running
-  |- 3:0:8:9    sddi 71:0    active ready running
-  |- 14:0:8:9   sdjq 65:320  active ready running
-  `- 14:0:7:9   sdiw 8:256   active ready running
+  |- 14:0:0:0  sdc  8:32   active ready running
+  |- 17:0:0:0  sdas 66:192 active ready running
+  |- 14:0:3:0  sdar 66:176 active ready running
+  `- 17:0:3:0  sdch 69:80  active ready running
 ----
 --
 .Configurazione AFF o FAS
@@ -193,15 +185,15 @@ L'esempio seguente visualizza l'output per una LUN ONTAP con due percorsi attivi
 
 [listing]
 ----
-# multipath -ll
-3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
-size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+multipath -ll
+3600a0980383149764b5d567257516273 dm-0 NETAPP,LUN C-Mode
+size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
-| |- 3:0:3:0    sdd  8:48    active ready running
-| |- 3:0:4:0    sdx  65:112  active ready running
+| |- 16:0:3:0  sdcg 69:64  active ready running
+| `- 10:0:0:0  sdb  8:16   active ready running
 `-+- policy='service-time 0' prio=10 status=enabled
-  |- 14:0:2:0   sdfk 130:96  active ready running
-  `- 14:0:5:0   sdgz 132:240 active ready running
+  |- 10:0:1:0  sdc  8:32   active ready running
+  `- 16:0:2:0  sdcf 69:48  active ready running
 ----
 --
 ====
@@ -262,7 +254,7 @@ defaults {
 devices {
    device {
       vendor          "NETAPP"
-      product         "LUN.*"
+      product         "LUN"
       no_path_retry   *queue*
       path_checker    *tur*
    }
@@ -272,27 +264,8 @@ devices {
 
 == Fase 6: Esaminare i problemi noti
 
-La versione RHEL 7,5 con storage ONTAP presenta i seguenti problemi noti:
+Non ci sono problemi noti.
 
-[cols="3*"]
-|===
-| ID bug NetApp | Titolo | Descrizione 
-
-
-| 1440718 | Se si dismappa o si mappa un LUN senza eseguire una nuova scansione SCSI, i dati sull'host potrebbero danneggiarsi. | Quando si imposta il parametro di configurazione multipath 'disable_changed_wids' su YES, l'accesso al path device viene disattivato in caso di modifica dell'ID WWID. Multipath disattiva l'accesso al dispositivo di percorso fino a quando l'ID WWID del percorso non viene ripristinato all'ID WWID del dispositivo multipath. Per ulteriori informazioni, vedere link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["Knowledge base di NetApp: La corruzione del file system sul LUN iSCSI su Oracle Linux 7"^]. 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1139053["1139053"^] | L'interruzione del kernel si verifica su RHEL7.5 con QLogic QLE2672 16 GB FC durante le operazioni di failover dello storage | Durante le operazioni di failover dello storage sul kernel RHEL7U5 con adattatore bus host Fibre Channel QLogic QLE2672 da 16 GB, il kernel si disgregazione a causa di un panico nel kernel. Il kernel panic causa il riavvio di RHEL 7.5, con conseguente interruzione dell'applicazione. Il kernel panic genera il file vmcore nella directory /var/crash/se kdump è configurato. Il file vmcore viene utilizzato per comprendere la causa dell'errore. In questo caso, il panico è stato osservato nel modulo "get_next_timer_interrupt+440" che viene registrato nel file vmcore con la seguente stringa: " [Exception RIP: Get_next_timer_interrupt+440]" dopo l'interruzione del kernel, è possibile ripristinare il sistema operativo riavviando il sistema operativo host e riavviando l'applicazione secondo necessità. 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1138536["1138536"^] | L'interruzione del kernel si verifica su RHEL7U5 con QLogic QLE2742 32 GB FC durante le operazioni di failover dello storage | Durante le operazioni di failover dello storage sul kernel Red Hat Enterprise Linux (RHEL) RHEL7U5 con QLogic QLE2742 HBA, il kernel si disgregazione a causa di un panico nel kernel. Il kernel panic causa il riavvio del sistema operativo, causando un'interruzione dell'applicazione. Il kernel panic genera il file vmcore nella directory /var/crash/ se kdump è configurato. Quando il kernel panica, è possibile utilizzare il file vmcore per esaminare il motivo del guasto. L'esempio seguente mostra un panic nel modulo bget_next_timer_interrupt+440b. Il panic viene registrato nel file vmcore con la seguente stringa: " [Exception RIP: Get_next_timer_interrupt+440]" Potete ripristinare il sistema operativo riavviando il sistema operativo host e riavviando l'applicazione secondo necessità. 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1148090["1148090"^] | L'interruzione del kernel si verifica su RHEL 7.5 con QLogic QLE2742 32 GB FC HBA durante le operazioni di failover dello storage | Durante le operazioni di failover dello storage sul kernel Red Hat Enterprise Linux (RHEL) 7.5 con un HBA (host bus adapter) QLogic QLE2742 Fibre Channel (FC), si verifica un'interruzione del kernel a causa di un panico nel kernel. Il kernel panic causa il riavvio di RHEL 7.5, con conseguente interruzione dell'applicazione. Se il meccanismo kdump è attivato, il kernel panic genera un file vmcore che si trova nella directory /var/crash/. È possibile analizzare il file vmcore per determinare la causa del panico. In questo caso, quando si verifica il failover dello storage con l'evento QLogic QLE2742 HBA, il modulo "native_queed_spin_lock_slowpath+464" è interessato. È possibile individuare l'evento nel file vmcore individuando la seguente stringa: " [Exception RIP: Native_queed_spin_lock_slowpath+464]" dopo l'interruzione del kernel, è possibile riavviare il sistema operativo host e ripristinare il sistema operativo, quindi riavviare le applicazioni secondo necessità. 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1146898["1146898"^] | L'interruzione del kernel si verifica su RHEL 7.5 con HBA Emulex durante le operazioni di failover dello storage | Durante le operazioni di failover dello storage su un sistema Red Hat Enterprise Linux (RHEL) 7.5 con HBA (host bus adapter) FC Emulex LPe32002-M2 da 32 GB, si verifica un'interruzione nel kernel. L'interruzione del kernel causa un riavvio del sistema operativo, che a sua volta causa un'interruzione dell'applicazione. Se si configura kdump, l'interruzione del kernel genera il file vmcore nella directory /var/crash/. È possibile utilizzare il file vmcore per determinare la causa dell'errore. Nell'esempio seguente, è possibile vedere l'interruzione nel modulo "lpfc_hba_clean_txcmplq+368". Questa interruzione viene registrata nel file vmcore con la seguente stringa: " [Exception RIP: Lpfc_hba_clean_txcmplq+368]" dopo l'interruzione del kernel, riavviare il sistema operativo host per ripristinare il sistema operativo. Riavviare l'applicazione secondo necessità. 
-|===
 
 
 == Quali sono le prossime novità?

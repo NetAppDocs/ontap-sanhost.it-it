@@ -210,7 +210,7 @@ Se necessario, è possibile escludere un dispositivo dal multipathing aggiungend
 +
 [source, cli]
 ----
-# /lib/udev/scsi_id -gud /dev/sda
+/lib/udev/scsi_id -gud /dev/sda
 ----
 +
 "sda" è il disco SCSI locale che si desidera aggiungere alla blacklist.
