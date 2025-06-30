@@ -225,7 +225,7 @@ Un esempio di WWID è `360030057024d0730239134810c0cb833`.
 
 . Aggiungere il WWID alla "blacklist" stanza:
 +
-[listing]
+[source, cli]
 ----
 blacklist {
 	     wwid   360030057024d0730239134810c0cb833
