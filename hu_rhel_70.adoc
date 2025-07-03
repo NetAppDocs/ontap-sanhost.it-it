@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_rhel_70.html 
 keywords: host utilities, red hat, rhel, linux, 7.0, netapp, ontap 
-summary: Descrive come utilizzare Red Hat Enterprise Linux 7.0 con ONTAP 
+summary: Installare Linux Host Utilities su un host RHEL 7.0 per gestire le operazioni del protocollo FCP e iSCSI con LUN ONTAP. 
 ---
 = Configurare RHEL 7,0 per FCP e iSCSI con storage ONTAP
 :hardbreaks:
@@ -249,6 +249,9 @@ CAUTION: Non sovrascrivere le impostazioni dei parametri consigliate per i LUN O
 
 Nell'esempio seguente viene illustrato come correggere un valore predefinito sovrascritto. In questo esempio, il `multipath.conf` file definisce i valori per `path_checker` e `no_path_retry` che non sono compatibili con i LUN ONTAP e non è possibile rimuovere questi parametri perché gli array di storage ONTAP sono ancora collegati all'host. È invece possibile correggere i valori per `path_checker` e `no_path_retry` aggiungendo una stanza di dispositivo al `multipath.conf` file che si applica specificamente ai LUN di ONTAP.
 
+.Mostra esempio
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 defaults {
@@ -265,6 +268,7 @@ devices {
    }
 }
 ----
+====
 
 
 == Fase 6: Esaminare i problemi noti

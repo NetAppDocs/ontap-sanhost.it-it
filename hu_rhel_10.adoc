@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_rhel_10.html 
 keywords: host utilities, red hat, rhel, linux, 10, netapp, ontap, rhel 
-summary: Installare le utilità host Linux su un host RHEL 10 per gestire le operazioni dei protocolli FCP e iSCSI con i LUN ONTAP. 
+summary: Installare Linux Host Utilities su un host RHEL 10 per gestire le operazioni del protocollo FCP e iSCSI con LUN ONTAP. 
 ---
 = Configurare RHEL 10 per FCP e iSCSI con storage ONTAP
 :hardbreaks:

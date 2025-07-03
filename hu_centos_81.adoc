@@ -241,6 +241,9 @@ CAUTION: Non sovrascrivere le impostazioni dei parametri consigliate per i LUN O
 
 Nell'esempio seguente viene illustrato come correggere un valore predefinito sovrascritto. In questo esempio, il `multipath.conf` file definisce i valori per `path_checker` e `no_path_retry` che non sono compatibili con i LUN ONTAP e non è possibile rimuovere questi parametri perché gli array di storage ONTAP sono ancora collegati all'host. È invece possibile correggere i valori per `path_checker` e `no_path_retry` aggiungendo una stanza di dispositivo al `multipath.conf` file che si applica specificamente ai LUN di ONTAP.
 
+.Mostra esempio
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 defaults {
@@ -257,6 +260,7 @@ devices {
    }
 }
 ----
+====
 
 
 == Fase 6: Esaminare i problemi noti

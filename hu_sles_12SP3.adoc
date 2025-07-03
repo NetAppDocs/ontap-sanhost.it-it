@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_sles_12SP3.html 
 keywords: host utilities, suse linux enterprise server 12 SP3, suse, linux, 12 SP3, netapp, ontap 
-summary: Installare le utilità host Linux su SUSE Linux Enterprise Server 12 SP3 per gestire le operazioni dei protocolli FCP e iSCSI con i LUN ONTAP. 
+summary: Installare Linux Host Utilities su un SUSE Linux Enterprise Server 12 SP3 per gestire le operazioni del protocollo FCP e iSCSI con LUN ONTAP. 
 ---
 = Configurare SUSE Linux Enterprise Server 12 SP3 per FCP e iSCSI con lo storage ONTAP
 :hardbreaks:
@@ -249,6 +249,9 @@ CAUTION: Non sovrascrivere le impostazioni dei parametri consigliate per i LUN O
 
 Nell'esempio seguente viene illustrato come correggere un valore predefinito sovrascritto. In questo esempio, il `multipath.conf` file definisce i valori per `path_checker` e `no_path_retry` che non sono compatibili con i LUN ONTAP e non è possibile rimuovere questi parametri perché gli array di storage ONTAP sono ancora collegati all'host. È invece possibile correggere i valori per `path_checker` e `no_path_retry` aggiungendo una stanza di dispositivo al `multipath.conf` file che si applica specificamente ai LUN di ONTAP.
 
+.Mostra esempio
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 defaults {
@@ -265,6 +268,7 @@ devices {
    }
 }
 ----
+====
 
 
 == Fase 6: Esaminare i problemi noti
