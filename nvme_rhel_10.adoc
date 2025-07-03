@@ -167,6 +167,8 @@ NOTE: Se il `hostnqn` le stringhe non corrispondono, utilizzare `vserver modify`
 ====
 .Broadcom/Emulex
 --
+Configurare NVMe/FC per un adattatore Broadcom/Emulex.
+
 .Fasi
 . Verificare di utilizzare il modello di adattatore supportato:
 +

@@ -164,6 +164,8 @@ NOTE: Se il `hostnqn` le stringhe non corrispondono, utilizzare `vserver modify`
 [role="tabbed-block"]
 ====
 .Broadcom/Emulex
+Configurare NVMe/FC per un adattatore Broadcom/Emulex.
+
 --
 .Fasi
 . Verificare di utilizzare il modello di adattatore supportato:
@@ -796,8 +798,7 @@ src_addr=192.168.1.31 *live non-optimized*
 --
 ====
 . Verificare che il plug-in NetApp visualizzi i valori corretti per ciascun dispositivo dello spazio dei nomi ONTAP:
-
-
++
 [role="tabbed-block"]
 ====
 .Colonna
@@ -851,6 +852,8 @@ nvme netapp ontapdevices -o json
 =====
 --
 ====
+
+
 
 
 == Passaggio 7: impostare l'autenticazione in-band sicura
