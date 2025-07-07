@@ -604,17 +604,24 @@ nvme connect-all -t tcp -w host-traddr -a traddr
 ====
 [listing, subs="+quotes"]
 ----
-nvme	connect-all	-t	tcp	-w	192.168.1.31	-a	192.168.1.24
-nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.24
-nvme	connect-all	-t	tcp	-w	192.168.1.31	-a	192.168.1.25
-nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.25
+nvme connect-all -t	tcp	-w 192.168.1.31	-a 192.168.1.24
+nvme connect-all -t	tcp	-w 192.168.2.31	-a 192.168.2.24
+nvme connect-all -t	tcp	-w 192.168.1.31	-a 192.168.1.25
+nvme connect-all -t	tcp	-w 192.168.2.31	-a 192.168.2.25
 ----
 ====
 
 
+[NOTE]
+====
+A partire da RHEL 9.4, l'impostazione per NVMe/TCP  `ctrl_loss_tmo timeout` viene automaticamente impostato su "off". Di conseguenza:
 
-NOTE: A partire da RHEL 9,5, l'impostazione predefinita per il timeout NVMe/TCP `ctrl_loss_tmo` è disattivata. Ciò significa che non vi è alcun limite al numero di tentativi (tentativi indefiniti). Di conseguenza, non è necessario configurare manualmente una durata di timeout specifica `ctrl_loss_tmo` quando si utilizzano i `nvme connect` comandi o `nvme connect-all` (opzione -l ). Con questo comportamento predefinito, i controller NVMe/TCP non riscontrano timeout in caso di errore di percorso e rimangono connessi a tempo indeterminato.
+* Non ci sono limiti al numero di tentativi (tentativi illimitati).
+* Non è necessario configurare manualmente uno specifico  `ctrl_loss_tmo timeout` durata quando si utilizza il  `nvme connect` O  `nvme connect-all` comandi (opzione -l ).
+* I controller NVMe/TCP non subiscono timeout in caso di errore del percorso e rimangono connessi indefinitamente.
 
+
+====
 
 
 == Validare NVMe-of

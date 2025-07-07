@@ -27,19 +27,19 @@ Le configurazioni host SAN di NetApp supportano il protocollo NVMe over Fabrics 
 ** Esecuzione di traffico NVMe e SCSI sullo stesso host. Ad esempio, è possibile configurare dm-multipath per i dispositivi SCSI mpath per i LUN SCSI e utilizzare NVMe Multipath per configurare i dispositivi con namespace NVMe-of sull'host.
 ** Rocky Linux 9.6 abilita per impostazione predefinita il multipath NVMe nel kernel per gli spazi dei nomi NVMe, eliminando la necessità di impostazioni esplicite.
 ** A partire da ONTAP 9.12.1, viene introdotto il supporto per l'autenticazione sicura in-band per NVMe/TCP. Con Rocky Linux 9.6 è possibile utilizzare l'autenticazione in-band sicura per NVMe/TCP.
+
+
 +
 Per ulteriori informazioni sulle configurazioni supportate, vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].
 
-
-
 * Funzioni disponibili:
 +
-** Non ci sono nuove funzionalità disponibili.
+** Non sono disponibili nuove funzionalità in questa versione.
 
 
 * Limitazioni note:
 +
-** Evitare di emettere il  `nvme disconnect-all` comando sui sistemi che si avviano da SAN tramite namespace NVMe-TCP o NVMe-FC, poiché disconnette sia i file system root che quelli dati e può causare instabilità del sistema.
+** Evitare di emettere il  `nvme disconnect-all` comando sui sistemi che si avviano da SAN tramite namespace NVMe-TCP o NVMe-FC perché disconnette sia i file system root che quelli dati e potrebbe causare instabilità del sistema.
 
 
 
@@ -418,7 +418,9 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 == Passaggio 5: verificare i servizi di avvio NVMe
 
-Con Rocky Linux 9.6, il  `nvmefc-boot-connections.service` E  `nvmf-autoconnect.service` servizi di avvio inclusi in NVMe/FC  `nvme-cli` i pacchetti vengono abilitati automaticamente all'avvio del sistema. Al termine dell'avvio, verificare che i servizi siano abilitati.
+Con Rocky Linux 9.6, il  `nvmefc-boot-connections.service` E  `nvmf-autoconnect.service` servizi di avvio inclusi in NVMe/FC  `nvme-cli` i pacchetti vengono abilitati automaticamente all'avvio del sistema.
+
+Dopo aver completato l'avvio, verificare che  `nvmefc-boot-connections.service` E  `nvmf-autoconnect.service` i servizi di avvio sono abilitati.
 
 .Fasi
 . Verificare che `nvmf-autoconnect.service` sia attivato:
@@ -749,9 +751,16 @@ nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.25
 ====
 
 
+[NOTE]
+====
+A partire da Rocky Linux 9.4, l'impostazione per NVMe/TCP  `ctrl_loss_tmo timeout` viene automaticamente impostato su "off". Di conseguenza:
 
-NOTE: A partire da Rocky Linux 9.5, l'impostazione predefinita per NVMe/TCP  `ctrl_loss_tmo` il timeout è disattivato. Ciò significa che non vi è alcun limite al numero di tentativi (tentativi indefiniti). Di conseguenza, non è necessario configurare manualmente una durata di timeout specifica `ctrl_loss_tmo` quando si utilizzano i `nvme connect` comandi o `nvme connect-all` (opzione -l ). Con questo comportamento predefinito, i controller NVMe/TCP non riscontrano timeout in caso di errore di percorso e rimangono connessi a tempo indeterminato.
+* Non ci sono limiti al numero di tentativi (tentativi illimitati).
+* Non è necessario configurare manualmente uno specifico  `ctrl_loss_tmo timeout` durata quando si utilizza il  `nvme connect` O  `nvme connect-all` comandi (opzione -l ).
+* I controller NVMe/TCP non subiscono timeout in caso di errore del percorso e rimangono connessi indefinitamente.
 
+
+====
 
 
 == Passaggio 7: convalida NVMe-oF

@@ -32,7 +32,7 @@ Per ulteriori informazioni sulle configurazioni supportate, vedere link:https://
 
 * Funzioni disponibili:
 +
-** A partire da ONTAP 9.12.1, è introdotto il supporto per l'autenticazione sicura in-band per NVMe-of. Puoi utilizzare l'autenticazione sicura in-band per NVMe-of con Oracle Linux 9,4
+** A partire da ONTAP 9.12.1, viene introdotto il supporto per l'autenticazione sicura in-band per NVMe/TCP. È possibile utilizzare l'autenticazione in-band sicura per NVMe/TCP con Oracle Linux 9.4
 ** Supporto per multipath NVMe in-kernel abilitato per namespace NVMe per impostazione predefinita, pertanto non sono necessarie impostazioni esplicite.
 
 
@@ -397,9 +397,16 @@ nvme connect-all -t tcp -w 192.168.166.4 -a 192.168.166.56
 nvme connect-all -t tcp -w 192.168.165.3 -a 192.168.165.56
 ----
 +
+[NOTE]
+====
+A partire da Oracle Linux 9.4, l'impostazione per NVMe/TCP  `ctrl_loss_tmo timeout` viene automaticamente impostato su "off". Di conseguenza:
 
-NOTE: A partire da Oracle Linux 9,4, l'impostazione predefinita per NVMe/TCP `ctrl_loss_tmo timeout` è disattivata e non sono previsti limiti per il numero di tentativi (tentativi indefiniti). Non è necessario configurare manualmente una durata specifica `ctrl_loss_tmo timeout` quando si utilizzano i `nvme connect` comandi o `nvme connect-all` (opzione -l ). Con questo comportamento predefinito, i controller NVMe/TCP non riscontrano timeout in caso di errore di percorso e rimangono connessi a tempo indeterminato.
+** Non ci sono limiti al numero di tentativi (tentativi illimitati).
+** Non è necessario configurare manualmente uno specifico  `ctrl_loss_tmo timeout` durata quando si utilizza il  `nvme connect` O  `nvme connect-all` comandi (opzione -l ).
+** I controller NVMe/TCP non subiscono timeout in caso di errore del percorso e rimangono connessi indefinitamente.
 
+
+====
 
 
 
@@ -594,7 +601,7 @@ nvme netapp ontapdevices -o json
 
 == Configurare l'autenticazione in banda protetta
 
-A partire da ONTAP 9.12.1, l'autenticazione sicura in-band è supportata su NVMe/TCP e NVMe/FC tra un host Oracle Linux 9,4 e un controller ONTAP.
+A partire da ONTAP 9.12.1, l'autenticazione in-band sicura è supportata tramite NVMe/TCP tra un host Oracle Linux 9.4 e un controller ONTAP.
 
 Per impostare l'autenticazione protetta, ogni host o controller deve essere associato a un `DH-HMAC-CHAP` Key, ossia una combinazione del NQN dell'host o controller NVMe e di un segreto di autenticazione configurato dall'amministratore. Per autenticare il proprio peer, un host o un controller NVMe deve riconoscere la chiave associata al peer.
 
