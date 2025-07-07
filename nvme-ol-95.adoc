@@ -24,9 +24,9 @@ Il supporto e le funzionalità seguenti sono disponibili con la configurazione h
 * Supporto disponibile:
 +
 ** Supporto di NVMe over TCP (NVMe/TCP) oltre a NVMe over Fibre Channel (NVMe/FC). Il plug-in NetApp nel pacchetto nvme-cli nativo visualizza i dettagli ONTAP per gli spazi dei nomi NVMe/FC e NVMe/TCP.
-** Esecuzione di traffico NVMe e SCSI sullo stesso host. Ad esempio, è possibile configurare dm-multipath per i dispositivi SCSI mpath per i LUN SCSI e utilizzare NVMe Multipath per configurare i dispositivi con namespace NVMe-of sull'host.
+** Esecuzione di traffico NVMe e SCSI sullo stesso host. Ad esempio, è possibile configurare dm-multipath sui dispositivi SCSI mpath per LUN SCSI e utilizzare NVMe multipath per configurare i dispositivi dello spazio dei nomi NVMe-oF sull'host.
 ** Oracle Linux 9.5 abilita per impostazione predefinita il multipath NVMe nel kernel per gli spazi dei nomi NVMe, eliminando la necessità di impostazioni esplicite.
-** A partire da ONTAP 9.12.1, viene introdotto il supporto per l'autenticazione sicura in-band per NVMe/TCP. È possibile utilizzare l'autenticazione in-band sicura per NVMe/TCP con Oracle Linux 9.5
+** A partire da ONTAP 9.12.1, viene introdotto il supporto per l'autenticazione sicura in-band per NVMe/TCP. È possibile utilizzare l'autenticazione in-band sicura per NVMe/TCP con Oracle Linux 9.5.
 
 
 +
@@ -44,7 +44,7 @@ Per ulteriori informazioni sulle configurazioni supportate, vedere link:https://
 
 * Limitazioni note:
 +
-** Evitare di emettere il  `nvme disconnect-all` comando sui sistemi che si avviano da SAN tramite namespace NVMe-TCP o NVMe-FC, poiché disconnette sia i file system root che quelli dati e potrebbe causare instabilità del sistema.
+** Evitare di emettere il  `nvme disconnect-all` comando sui sistemi che si avviano da SAN tramite namespace NVMe-TCP o NVMe-FC perché disconnette sia i file system root che quelli dati e potrebbe causare instabilità del sistema.
 
 
 
@@ -175,7 +175,7 @@ Configurare NVMe/FC con adattatori Broadcom/Emulex FC o Marvell/Qlogic FC.
 Configurare NVMe/FC per un adattatore Broadcom/Emulex.
 
 .Fasi
-. Verificare di utilizzare il modello di adattatore supportato:
+. Verificare che si stia utilizzando il modello di scheda supportato:
 +
 .. Visualizza i nomi dei modelli:
 +

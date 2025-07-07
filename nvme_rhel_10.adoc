@@ -24,7 +24,7 @@ Con la configurazione host NVMe-of per Red Hat Enterprise Linux (RHEL) 10 puoi u
 * Supporto disponibile:
 +
 ** Supporto di NVMe over TCP (NVMe/TCP) oltre a NVMe over Fibre Channel (NVMe/FC). Il plug-in NetApp nel pacchetto nativo `nvme-cli` mostra i dettagli ONTAP per i namespace NVMe/FC e NVMe/TCP.
-** Esecuzione di traffico NVMe e SCSI sullo stesso host. Ad esempio, è possibile configurare dm-multipath per i dispositivi SCSI mpath per i LUN SCSI e utilizzare NVMe Multipath per configurare i dispositivi con namespace NVMe-of sull'host.
+** Esecuzione di traffico NVMe e SCSI sullo stesso host. Ad esempio, è possibile configurare dm-multipath per i dispositivi SCSI mpath su LUN SCSI e utilizzare NVMe multipath per configurare i dispositivi dello spazio dei nomi NVMe-oF sull'host.
 ** A partire da ONTAP 9.12.1, viene introdotto il supporto per l'autenticazione sicura in-band per NVMe/TCP. È possibile utilizzare l'autenticazione sicura in-band per NVMe/TCP con RHEL 10.
 
 
