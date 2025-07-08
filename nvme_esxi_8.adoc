@@ -280,7 +280,7 @@ Il supporto disallocare è sempre abilitato per gli namespace NVMe. Disallocare 
 .Fasi
 . Sull'host ESXi, verificare l'impostazione per DSM disallocare con il supporto TP4040:
 +
-`esxcfg-advcfg -g /SCSi/NVmeUseDsmTp4040`
+`esxcfg-advcfg -g /Scsi/NVmeUseDsmTp4040`
 
 +
 Il valore previsto è 0.
@@ -291,7 +291,7 @@ Il valore previsto è 0.
 
 . Verificare che l'impostazione per DSM disallocare con supporto TP4040 sia abilitata:
 +
-`esxcfg-advcfg -g /SCSi/NVmeUseDsmTp4040`
+`esxcfg-advcfg -g /Scsi/NVmeUseDsmTp4040`
 
 +
 Il valore previsto è 1.
