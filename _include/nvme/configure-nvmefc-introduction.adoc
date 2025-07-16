@@ -1,0 +1,5 @@
+= 
+:allow-uri-read: 
+
+
+È possibile configurare NVMe/FC con adattatori FC Broadcom/Emulex FC o Marvell/Qlogic. È inoltre necessario rilevare manualmente i sottosistemi e gli spazi dei nomi NVMe/TCP.

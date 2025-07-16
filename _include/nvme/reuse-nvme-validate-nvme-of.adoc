@@ -1,5 +1,0 @@
-= 
-:allow-uri-read: 
-
-
-Verificare che lo stato multipath NVMe in-kernel, lo stato ANA e i namespace ONTAP siano corretti per la configurazione NVMe-of.

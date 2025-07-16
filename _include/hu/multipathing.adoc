@@ -82,7 +82,7 @@ La tabella seguente mostra le impostazioni dei parametri multipercorso compilati
 | prio | "ONTAP" 
 
 
-| prodotto | LUN.* 
+| prodotto | LUN 
 
 
 | retain_attached_hw_handler | sì 
