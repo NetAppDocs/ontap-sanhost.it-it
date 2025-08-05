@@ -80,7 +80,7 @@ TIP: Molte correzioni rapide richiedono il riavvio dell'host Windows. È possibi
 
 == Installare le utilità host di Windows
 
-Le utilità host di Windows sono un insieme di programmi software con documentazione che consente di collegare i computer host ai dischi virtuali (LUN) su una SAN NetApp. NetApp consiglia di scaricare e installare il kit di utilità più recente. Per informazioni e istruzioni sulla configurazione delle utilità host Windows, consultare link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Documentazione di Windows host Utilities"]e selezionare la procedura di installazione per la versione di utilità host Windows in uso.
+Le Windows Host Utilities sono un set di programmi software con documentazione che consentono di connettere i computer host ai dischi virtuali (LUN) su una SAN NetApp .  NetApp consiglia di scaricare e installare l'ultimo kit di utilità.  Per informazioni e istruzioni sulla configurazione di Windows Host Utilities, vederelink:https://docs.netapp.com/us-en/ontap-sanhost/hu-wuhu-release-notes.html["Documentazione di Windows host Utilities"] e seleziona la procedura di installazione per la tua versione di Windows Host Utilities.
 
 
 
@@ -93,9 +93,13 @@ Il software MPIO presenta un singolo disco al sistema operativo Windows per tutt
 
 CAUTION: Se non si installa il software MPIO, il sistema operativo Windows potrebbe vedere ciascun percorso come un disco separato. Questo può causare il danneggiamento dei dati.
 
+[NOTE]
+====
+* Per Windows Host Utilities 8.0, la funzionalità MPIO viene abilitata automaticamente quando si seleziona il supporto MPIO.
+* Windows XP o Windows Vista in esecuzione su una macchina virtuale Hyper-V non supportano MPIO.
 
-NOTE: Windows XP o Windows Vista in esecuzione su una macchina virtuale Hyper-V non supporta MPIO.
 
+====
 
 
 == Configurazione SAN

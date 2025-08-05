@@ -2,5 +2,5 @@
 :allow-uri-read: 
 
 
-* link:hu_luhu_71_cmd.html["Informazioni sull'utilizzo dello strumento Linux host Utilities"].
+* link:hu-luhu-command-reference.html["Informazioni sull'utilizzo dello strumento Linux host Utilities"] .
 

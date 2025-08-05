@@ -1,0 +1,46 @@
+---
+sidebar: sidebar 
+permalink: hu-solaris-san-toolkit.html 
+keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
+summary: Descrive come utilizzare Solaris Host Utilities 8.0 con ONTAP 
+---
+= Scopri di più sul SAN Toolkit per l'archiviazione ONTAP
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Solaris host Utilities è un software host NetApp che fornisce un toolkit della riga di comando sull'host Oracle Solaris. Il toolkit viene installato quando si installa il pacchetto NetApp host Utilities. Questo kit fornisce `sanlun` Utility che consente di gestire LUN e HBA (host Bus Adapter). Il `sanlun` Il comando restituisce le informazioni relative alle LUN mappate all'host, al multipathing e alle informazioni necessarie per creare gruppi di iniziatori.
+
+L'output di esempio seguente mostra le informazioni ONTAP LUN restituite per `sanlun lun show` comando:
+
+.Mostra output di esempio
+[%collapsible]
+====
+[listing]
+----
+#sanlun lun show all
+controller(7mode)/ device host lun
+vserver(Cmode)                     lun-pathname       filename                                       adapter protocol size mode
+-----------------------------------------------------------------------------------------------------------------------------------
+data_vserver                     /vol/vol1/lun1     /dev/rdsk/c0t600A098038304437522B4E694E49792Dd0s2 qlc3   FCP       10g cDOT
+data_vserver                     /vol/vol0/lun2     /dev/rdsk/c0t600A098038304437522B4E694E497938d0s2 qlc3   FCP       10g cDOT
+data_vserver                     /vol/vol2/lun3     /dev/rdsk/c0t600A098038304437522B4E694E497939d0s2 qlc3   FCP       10g cDOT
+data_vserver                     /vol/vol3/lun4     /dev/rdsk/c0t600A098038304437522B4E694E497941d0s2 qlc3   FCP       10g cDOT
+
+----
+====
+
+NOTE: Questo toolkit è comune a tutte le configurazioni e i protocolli di Host Utilities.  Di conseguenza, non tutti i componenti sono validi per ogni configurazione.  I componenti inutilizzati non influiscono sulle prestazioni del sistema.
+
+
+
+== Quali sono le prossime novità?
+
+link:hu-solaris-command-reference.html["Scopri come utilizzare lo strumento Solaris Host Utilities"] .

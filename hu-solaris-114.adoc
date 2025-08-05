@@ -1,0 +1,450 @@
+---
+sidebar: sidebar 
+permalink: hu-solaris-114.html 
+keywords: host utilities, solaris, 114, netapp, ontap 
+summary: Descrive come utilizzare IBM AIX 7.2 e/o PowerVM VIOS 3.1 con ONTAP 
+---
+= Configurare Solaris 11.4 per FCP e iSCSI con storage ONTAP
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Il software Solaris Host Utilities fornisce strumenti di gestione e diagnostica per gli host Solaris connessi allo storage ONTAP .  Quando si installa Solaris Host Utilities su un host Solaris 11.4, è possibile utilizzare Host Utilities per gestire le operazioni del protocollo FCP e iSCSI con LUN ONTAP .
+
+
+
+== Passaggio 1: Se lo si desidera, attivare l'avvio SAN
+
+È possibile configurare l'host per utilizzare l'avvio SAN per semplificare la distribuzione e migliorare la scalabilità.  Se la configurazione non supporta l'avvio SAN, è possibile utilizzare un avvio locale.
+
+[role="tabbed-block"]
+====
+.Boot SAN
+--
+L'avvio SAN è il processo di configurazione di un disco collegato a SAN (un LUN) come dispositivo di avvio per un host Solaris.  È possibile configurare un LUN di avvio SAN per funzionare in un ambiente Solaris MPxIO che utilizza il protocollo FC ed esegue Solaris Host Utilities.  Il metodo utilizzato per configurare un LUN di avvio SAN dipende dal gestore dei volumi e dal file system.
+
+.Fasi
+. Utilizzare illink:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^] per verificare che il sistema operativo Solaris, il protocollo e la versione ONTAP supportino l'avvio SAN.
+. Seguire le procedure consigliate per la configurazione di un avvio SAN nella documentazione del fornitore Solaris.
+
+
+--
+.Avvio locale
+--
+Eseguire un avvio locale installando il sistema operativo Solaris sul disco rigido locale, ad esempio installandolo su un SSD, SATA o RAID.
+
+--
+====
+
+
+== Passaggio 2: installare le utilità host Solaris
+
+NetApp consiglia vivamente di installare Solaris Host Utilities per supportare la gestione ONTAP LUN e assistere il supporto tecnico nella raccolta dei dati di configurazione.
+
+
+NOTE: L'installazione di Solaris Host Utilities modifica alcune impostazioni di timeout sull'host Solaris.
+
+link:hu-solaris-80.html["Installa Solaris Host Utilities 8.0"] .
+
+
+
+== Fase 3: Verificare la configurazione multipath per l'host
+
+Con Solaris 11.4 è possibile utilizzare il multipathing per gestire le LUN ONTAP .
+
+Il multipathing consente di configurare più percorsi di rete tra l'host e i sistemi di archiviazione.  Se un percorso fallisce, il traffico prosegue sui percorsi rimanenti.  Oracle Solaris I/O Multipathing (MPxIO) è abilitato per impostazione predefinita sui sistemi Solaris 11.4 e SPARC.
+
+Per garantire che il multipathing e i parametri di timeout consigliati siano configurati correttamente per l'host, verificare di utilizzare le impostazioni consigliate da NetApp per i LUN ONTAP .
+
+.Fasi
+. Se l'host è configurato per FC, verificare che l'impostazione predefinita in `/kernel/drv/fp.conf` è impostato su `mpxio-disable="no"` .
+. Le Solaris Host Utilities caricano le impostazioni dei parametri consigliate da NetApp per i processori SPARC e x86_64.
++
+.Mostra impostazioni parametri
+[%collapsible]
+====
+[cols="2*"]
+|===
+| Parametro | Valore 
+
+
+| throttle_max | 8 
+
+
+| not_ready_retries | 300 
+
+
+| busy_retrees | 30 
+
+
+| reset_retrees | 30 
+
+
+| throttle_min | 2 
+
+
+| timeout_retries | 10 
+
+
+| dimensioni_blocco_fisico | 4096 
+
+
+| ordinamento dei dischi | falso 
+
+
+| cache-non volatile | VERO 
+|===
+====
++
+Per ulteriori informazioni sulle impostazioni di sistema di Solaris 11.4, vedere l'ID DOC del supporto Oracle: 2595926.1.
+
+. Se la configurazione di archiviazione include MetroCluster, la virtualizzazione Oracle Solaris o SnapMirror ActiveSync, modificare le impostazioni predefinite:
++
+[role="tabbed-block"]
+====
+.MetroCluster
+--
+Per impostazione predefinita, il sistema operativo Solaris non riesce a eseguire le operazioni di I/O dopo *20s* se tutti i percorsi verso una LUN vengono persi.  Questo è controllato dal `fcp_offline_delay` parametro.  Il valore predefinito per `fcp_offline_delay` è appropriato per i cluster ONTAP standard.  Tuttavia, nelle configurazioni MetroCluster , è necessario aumentare il valore di `fcp_offline_delay` a *120s* per garantire che l'I/O non si interrompa prematuramente durante le operazioni, compresi i failover non pianificati.
+
+Per ulteriori informazioni e modifiche consigliate alle impostazioni predefinite per MetroCluster, consultare l'articolo della Knowledge Base https://kb.netapp.com/onprem/ontap/metrocluster/Solaris_host_support_considerations_in_a_MetroCluster_configuration["Considerazioni sul supporto degli host Solaris in una configurazione MetroCluster"^] .
+
+--
+.Virtualizzazione Oracle Solaris
+--
+** Le opzioni di virtualizzazione Solaris includono Solaris Logical Domains (chiamati anche LDOM o Oracle VM Server per SPARC), Solaris Dynamic Domains, Solaris Zones e Solaris Containers.  Queste tecnologie sono anche chiamate "Oracle Virtual Machines".
+** È possibile utilizzare più opzioni contemporaneamente, ad esempio un contenitore Solaris all'interno di un particolare dominio logico Solaris.
+** NetApp supporta l'uso delle tecnologie di virtualizzazione Solaris in cui la configurazione complessiva è supportata da Oracle e qualsiasi partizione con accesso diretto ai LUN è elencata sulink:https://imt.netapp.com/matrix/#welcome["IMT"] in una configurazione supportata.  Ciò include contenitori root, domini I/O LDOM e LDOM che utilizza NPIV per accedere ai LUN.
+** Partizioni o macchine virtuali che utilizzano solo risorse di archiviazione virtualizzate, come ad esempio `vdsk` , non necessitano di qualifiche specifiche perché non hanno accesso diretto alle LUN ONTAP .  È necessario verificare solo che la partizione o la macchina virtuale che ha accesso diretto al LUN sottostante, ad esempio un dominio I/O LDOM, sia elencata sulink:https://imt.netapp.com/matrix/#welcome["IMT"^] .
+
+
+.Fasi
+Quando le LUN vengono utilizzate come dispositivi disco virtuali all'interno di un LDOM, l'origine della LUN viene mascherata dalla virtualizzazione e l'LDOM non rileva correttamente le dimensioni dei blocchi.  Per prevenire questo problema:
+
+.. Correggi il sistema operativo LDOM per _Oracle Bug 15824910_
+.. Crea un `vdc.conf` file che imposta la dimensione del blocco del disco virtuale su `4096` .  Per ulteriori informazioni, vedere Oracle DOC: 2157669.1.
+.. Verificare l'installazione della patch per assicurarsi che le impostazioni consigliate siano state configurate correttamente:
++
+... Crea uno zpool:
++
+[source, cli]
+----
+zpool create zpool_name disk_list
+----
+... Eseguire `zdb -C` contro lo zpool e verificare che il valore di *ashift* sia `12`.
++
+Se il valore di *ashift* non è `12` , rieseguire `zdb -C11` e verificare che sia stata installata la patch corretta e ricontrollare il contenuto di `vdc.conf` .
+
++
+Non procedere finché *ashift* non mostra un valore di `12` .
+
+
+
+
+
+
+NOTE: Sono disponibili patch per il bug Oracle 15824910 su diverse versioni di Solaris.  Contatta Oracle se hai bisogno di assistenza per determinare la migliore patch del kernel.
+
+--
+.Sincronizzazione attiva SnapMirror
+--
+A partire da ONTAP 9.9.1, le configurazioni delle impostazioni di sincronizzazione attiva SnapMirror sono supportate nell'host Solaris.  Per verificare che le applicazioni client Solaris non siano discontinue quando si verifica un passaggio di failover del sito non pianificato in un ambiente di sincronizzazione attiva SnapMirror , è necessario configurare `scsi-vhci-failover-override` impostazione sull'host Solaris.  Questa impostazione sovrascrive il modulo di failover `f_tpgs` per impedire l'esecuzione del percorso di codice che rileva la contraddizione.
+
+.Fasi
+.. Creare il file di configurazione `/etc/driver/drv/scsi_vhci.conf` con una voce simile al seguente esempio per il tipo di storage NetApp connesso all'host:
++
+[listing]
+----
+scsi-vhci-failover-override =
+"NETAPP  LUN","f_tpgs"
+----
+.. Verificare che il parametro override sia stato applicato correttamente:
++
+[source, cli]
+----
+devprop
+----
++
+[source, cli]
+----
+mdb
+----
++
+.Mostra esempi
+[%collapsible]
+=====
+[listing]
+----
+root@host-A:~# devprop -v -n /scsi_vhci scsi-vhci-failover-override      scsi-vhci-failover-override=NETAPP  LUN + f_tpgs
+root@host-A:~# echo "*scsi_vhci_dip::print -x struct dev_info devi_child | ::list struct dev_info devi_sibling| ::print struct dev_info devi_mdi_client| ::print mdi_client_t ct_vprivate| ::print struct scsi_vhci_lun svl_lun_wwn svl_fops_name"| mdb -k
+----
+[listing]
+----
+svl_lun_wwn = 0xa002a1c8960 "600a098038313477543f524539787938"
+svl_fops_name = 0xa00298d69e0 "conf f_tpgs"
+----
+=====
+
+
+
+NOTE: Dopo `scsi-vhci-failover-override` è stato applicato, `conf` viene aggiunto a. `svl_fops_name`. Per ulteriori informazioni e per le modifiche consigliate alle impostazioni predefinite, consultare l'articolo della Knowledge base di NetApp https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Supporto host Solaris impostazioni consigliate nella configurazione di sincronizzazione attiva di SnapMirror"^].
+
+--
+====
+. Verificare che sia supportato l'I/O allineato a 4 KB con zpool utilizzando LUN ONTAP :
++
+.. Verificare che l'host Solaris sia installato con l'ultimo Support Repository Update (SRU):
++
+[source, cli]
+----
+pkg info entire`
+----
+.. Verificare che l' ONTAP LUN abbia `ostype` come "Solaris", indipendentemente dalla dimensione LUN:
++
+[source, cli]
+----
+lun show -vserver` <vsersver_name>
+----
++
+.Mostra esempio
+[%collapsible]
+====
+[listing]
+----
+chat-a800-31-33-35-37::*> lun show -vserver solaris_fcp -path /vol/sol_195_zpool_vol_9/lun -fields ostype
+vserver     path                         ostype
+----------- ---------------------------- -------
+solaris_fcp /vol/sol_195_zpool_vol_9/lun solaris
+----
+====
+
+
+. Verificare l'output per i LUN ONTAP :
++
+[source, cli]
+----
+sanlun lun show
+----
++
+Dovresti vedere un output simile al seguente esempio per una configurazione ASA, AFF o FAS :
+
++
+.Mostra esempio
+[%collapsible]
+====
+[listing]
+----
+root@sparc-s7-55-148:~# sanlun lun show -pv
+
+                    ONTAP Path: Solaris_148_siteA:/vol/Triage/lun
+                           LUN: 0
+                      LUN Size: 20g
+                   Host Device: /dev/rdsk/c0t600A098038314B32685D573064776172d0s2
+                          Mode: C
+            Multipath Provider: Sun Microsystems
+              Multipath Policy: Native
+----
+====
+. Verificare lo stato del percorso per i LUN ONTAP :
++
+[source, cli]
+----
+mpathadm show lu <LUN>`
+----
++
+Gli output di esempio seguenti mostrano lo stato del percorso corretto per le LUN ONTAP in una configurazione ASA, AFF o FAS .  Le priorità del percorso vengono visualizzate in base allo "Stato di accesso" per ogni LUN nell'output.
+
++
+[role="tabbed-block"]
+====
+.Configurazioni ASA
+--
+Una configurazione ASA ottimizza tutti i percorsi verso una determinata LUN, mantenendoli attivi. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
+
+.Mostra esempio
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+root@sparc-s7-55-82:~# mpathadm show lu /dev/rdsk/c0t600A098038313953495D58674777794Bd0s2
+Logical Unit:  /dev/rdsk/c0t600A098038313953495D58674777794Bd0s2
+        mpath-support:  libmpscsi_vhci.so
+        Vendor:  NETAPP
+        Product:  LUN C-Mode
+        Revision:  9171
+        Name Type:  unknown type
+        Name:  600a098038313953495d58674777794b
+        Asymmetric:  yes
+        Current Load Balance:  round-robin
+        Logical Unit Group ID:  NA
+        Auto Failback:  on
+        Auto Probing:  NA
+
+        Paths:
+                Initiator Port Name:  100000109bd30070
+                Target Port Name:  20b9d039ea593393
+                Logical Unit Number:  0
+                Override Path:  NA
+                Path State:  OK
+                Disabled:  no
+
+                Initiator Port Name:  100000109bd30070
+                Target Port Name:  20b8d039ea593393
+                Logical Unit Number:  0
+                Override Path:  NA
+                Path State:  OK
+                Disabled:  no
+
+                Initiator Port Name:  100000109bd3006f
+                Target Port Name:  20b3d039ea593393
+                Logical Unit Number:  0
+                Override Path:  NA
+                Path State:  OK
+                Disabled:  no
+
+                Initiator Port Name:  100000109bd3006f
+                Target Port Name:  20b4d039ea593393
+                Logical Unit Number:  0
+                Override Path:  NA
+                Path State:  OK
+                Disabled:  no
+
+        Target Port Groups:
+                ID:  1003
+                Explicit Failover:  no
+                Access State:  *active optimized*
+                Target Ports:
+                        Name:  20b9d039ea593393
+                        Relative ID:  8
+
+                        Name:  20b4d039ea593393
+                        Relative ID:  3
+
+                ID:  1002
+                Explicit Failover:  no
+                Access State:  *active optimized*
+                Target Ports:
+                        Name:  20b8d039ea593393
+                        Relative ID:  7
+
+                        Name:  20b3d039ea593393
+                        Relative ID:  2
+----
+=====
+--
+.Configurazione AFF o FAS
+--
+Una configurazione AFF o FAS deve avere due gruppi di percorsi con priorità maggiore e minore. I percorsi Active/Optimized di priorità più elevata sono serviti dal controller in cui si trova l'aggregato. I percorsi a priorità inferiore sono attivi ma non ottimizzati perché serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando non sono disponibili percorsi ottimizzati.
+
+Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:
+
+.Mostra esempio
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+root@chatsol-54-195:~# mpathadm show lu /dev/rdsk/c0t600A0980383044376C3F4E694E506E44d0s2
+Logical Unit:  /dev/rdsk/c0t600A0980383044376C3F4E694E506E44d0s2
+        mpath-support:  libmpscsi_vhci.so
+        Vendor:  NETAPP
+        Product:  LUN C-Mode
+        Revision:  9171
+        Name Type:  unknown type
+        Name:  600a0980383044376c3f4e694e506e44
+        Asymmetric:  yes
+        Current Load Balance:  round-robin
+        Logical Unit Group ID:  NA
+        Auto Failback:  on
+        Auto Probing:  NA
+
+        Paths:
+
+                Initiator Port Name:  100000109b56c5fb
+                Target Port Name:  205200a098ba7afe
+                Logical Unit Number:  1
+                Override Path:  NA
+                Path State:  OK
+                Disabled:  no
+
+                Initiator Port Name:  100000109b56c5fb
+                Target Port Name:  205000a098ba7afe
+                Logical Unit Number:  1
+                Override Path:  NA
+                Path State:  OK
+                Demoted:  yes
+                Disabled:  no
+
+                Initiator Port Name:  100000109b56c5fa
+                Target Port Name:  204f00a098ba7afe
+                Logical Unit Number:  1
+                Override Path:  NA
+                Path State:  OK
+                Demoted:  yes
+                Disabled:  no
+
+                Initiator Port Name:  100000109b56c5fa
+                Target Port Name:  205100a098ba7afe
+                Logical Unit Number:  1
+                Override Path:  NA
+                Path State:  OK
+                Disabled:  no
+
+        Target Port Groups:
+                ID:  1001
+                Explicit Failover:  no
+                Access State:  *active not optimized*
+                Target Ports:
+                        Name:  205200a098ba7afe
+                        Relative ID:  8
+
+                        Name:  205100a098ba7afe
+                        Relative ID:  7
+
+                ID:  1000
+                Explicit Failover:  no
+                Access State:  *active optimized*
+                Target Ports:
+                        Name:  205000a098ba7afe
+                        Relative ID:  6
+
+                        Name:  204f00a098ba7afe
+                        Relative ID:  5
+----
+=====
+--
+====
+
+
+
+
+== Passaggio 4: rivedere i problemi noti
+
+La versione Solaris 11.4 per FCP e iSCSI con storage ONTAP presenta i seguenti problemi noti:
+
+[cols="4*"]
+|===
+| ID bug NetApp | Titolo | Descrizione | ID Oracle 
+
+
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1362435["1362435"^] | Modifiche al binding del driver FC HUK 6.2 e Solaris_11.4 | Fare riferimento alle raccomandazioni per Solaris 11,4 e HUK. Il binding del driver FC viene modificato da `ssd (4D)` a. `sd (4D)`. Sposta la configurazione esistente da `ssd.conf` a. `sd.conf` Come menzionato in Oracle DOC: 2595926,1). Il comportamento varia a seconda dei sistemi Solaris 11,4 appena installati e dei sistemi aggiornati da Solaris 11,3 o versioni precedenti. | (DOC ID 2595926.1) 
+
+
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1366780["1366780"^] | Problema LIF di Solaris riscontrato durante l'operazione di giveback SFO (Storage failover) con HBA (host Bus Adapter) Emulex 32G su x86 Arch | Problema della LIF di Solaris riscontrato con la versione firmware Emulex 12,6.x e successive sulla piattaforma x86_64. | SR 3-24746803021 
+
+
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1368957["1368957"^] | Solaris 11.x `cfgadm -c configure` Si è verificato un errore i/o con la configurazione Emulex end-to-end | In esecuzione `cfgadm -c configure` Nella configurazione end-to-end Emulex si verifica un errore i/O. Questo problema è stato risolto in ONTAP 9.5P17, 9.6P14 , 9.7P13 e 9.8P2 | Non applicabile 
+
+
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1345622["1345622"^] | Report di percorsi anomali su host Solaris con ASA/PPorts utilizzando i comandi nativi del sistema operativo | I problemi di segnalazione di percorsi intermittenti si verificano su Solaris 11,4 con All SAN Array (ASA). | Non applicabile 
+|===
+
+
+== Quali sono le prossime novità?
+
+link:hu-solaris-command-reference.html["Scopri come utilizzare lo strumento Solaris Host Utilities"] .

@@ -1,0 +1,54 @@
+---
+sidebar: sidebar 
+permalink: hu-wuhu-release-notes.html 
+keywords: host utilities, linux, 7.1, 7.2, netapp, ontap, release, notes 
+summary: Note sulla versione per le utilità host di Windows 
+---
+= Note sulla versione delle utilità host di Windows
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Le note di rilascio descrivono nuove funzionalità, miglioramenti, problemi noti, limitazioni e importanti avvertenze relative alla configurazione e alla gestione del tuo specifico host Windows con il tuo sistema di archiviazione ONTAP .
+
+Per informazioni specifiche sulle versioni e gli aggiornamenti del sistema operativo supportati dalle utilità host, consultare link:https://imt.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^].
+
+
+
+== Novità di Windows Host Utilities 8.0
+
+Windows Host Utilities 8.0 include impostazioni di parametri aggiuntivi per i driver NVMe/FC.  Questi parametri vengono caricati automaticamente quando si installa Windows Host Utilities 8.0.
+
+
+
+== Novità di Windows Host Utilities 7.2
+
+Windows host Utilities 7,2 include il supporto per le impostazioni dei parametri del driver NVMe/FC e le correzioni dei bug per le nuove schede del fornitore.
+
+
+
+== Novità di Windows Host Utilities 7.1
+
+Windows Host Utilities 7.1 include il supporto per i sistemi di archiviazione E-Series, il software ONTAP 9 e timeout iSCSI migliorati per un failover più rapido.
+
+
+
+== Problemi noti e limitazioni
+
+È opportuno essere a conoscenza dei seguenti problemi e limitazioni noti che potrebbero influire sulle prestazioni del proprio host specifico.
+
+[cols="30, 15, 30, 30"]
+|===
+| Titolo | Versione interessata | Descrizione | Soluzione alternativa 
+
+
+| Esecuzione di `linux_gos_timeout-install.sh` Lo script non è più necessario per i guest Hyper-V che eseguono Red Hat Enterprise Linux o SUSE Linux Enterprise Server | 7.1 | Non è più necessario eseguire `linux_gos_timeout-install.sh` lo script per modificare i timeout del disco su guest Red Hat Enterprise Linux 5, Red Hat Enterprise Linux 6 o SUSE Linux Enterprise Server 11 Hyper-V perché vengono utilizzate le impostazioni di timeout predefinite.  `linux_gos_timeout-install.sh`Lo script incluso nelle versioni precedenti delle utilità host non è più incluso nella versione 7,1 delle utilità host di Windows. Utilità host di Windows 7,1 utilizza le impostazioni predefinite di timeout del disco. | Non applicabile 
+|===
+link:https://mysupport.netapp.com/site/bugs-online/product["NetApp Bugs Online"^] fornisce informazioni complete sui problemi più noti, incluse le soluzioni consigliate, se possibile.

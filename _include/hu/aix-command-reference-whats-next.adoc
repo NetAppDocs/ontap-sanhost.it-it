@@ -1,0 +1,9 @@
+= Cosa succederà adesso?
+:allow-uri-read: 
+
+
+
+
+== Quali sono le prossime novità?
+
+link:hu-aix-command-reference.html["Scopri come utilizzare lo strumento AIX Host Utilities"] .

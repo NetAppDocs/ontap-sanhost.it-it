@@ -1,0 +1,12 @@
+= Passaggio 2: installare le utilità host Solaris
+:allow-uri-read: 
+
+
+
+
+== Passaggio 2: installare le utilità host Solaris
+
+NetApp consiglia vivamente di installare Solaris Host Utilities per supportare la gestione ONTAP LUN e assistere il supporto tecnico nella raccolta dei dati di configurazione.
+
+
+NOTE: L'installazione di Solaris Host Utilities modifica alcune impostazioni di timeout sull'host Solaris.

@@ -16,40 +16,35 @@ summary: 'Viene descritto come utilizzare le utilità host HP-UX 6,0 con l"archi
 
 
 [role="lead"]
-Le utilità host HP-UX di NetApp consentono di collegare un host HP-UX allo storage ONTAP.
+Le utility host HP-UX consentono di gestire lo storage ONTAP collegato a un host HP-UX.  NetApp consiglia vivamente di installare HP-UX Host Utilities, ma non è obbligatorio.  Le utilità migliorano la gestione e aiutano l'assistenza clienti NetApp a raccogliere informazioni sulla configurazione.
 
-Le utilità host HP-UX supportano più protocolli e i seguenti ambienti:
+Le utility host HP-UX supportano i seguenti ambienti:
 
 * Multipath i/o Microsoft nativo (MPIO)
 * Veritas Dynamic Multipathing (DMP)
 
 
-
-NOTE: Per indicare l'ambiente utilizzato, in questo documento vengono talvolta specificati "DMP" per l'ambiente Veritas DMP e "MPIO" per l'ambiente nativo HP-UX. In alcuni casi, i comandi utilizzati potrebbero variare a seconda dei driver utilizzati. In questi casi, vengono specificati sia l'ambiente che i tipi di driver.
-
 .Prima di iniziare
-* Per un funzionamento affidabile, verificare che sia supportata l'intera configurazione iSCSI, FC o FCoE.
-
-
-È possibile utilizzare link:https://imt.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^]per verificare la configurazione.
-
-.A proposito di questa attività
-Il pacchetto software NetApp HP-UX host Utilities è disponibile sul sito link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.0/downloads["Sito di supporto NetApp"^] in un file compresso. Dopo aver scaricato il file, è necessario decomprimerlo prima dell'installazione.
+Per un funzionamento affidabile, utilizzare il https://imt.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^] per verificare che la configurazione iSCSI, FC o FCoE sia supportata.
 
 .Fasi
-. Accedere al proprio host.
+. Accedi al tuo host HP-UX.
 . Scaricare il file HP-UX host Utilities `netapp_hpux_host_utilities_6.0_ia_pa.depot.gz` dal link:https://mysupport.netapp.com/site/["Sito di supporto NetApp"^] All'host HP-UX.
 . Decomprimere `netapp_hpux_host_utilities_6.0_ia_pa.depot.gz` file:
 +
-`# gunzip netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`
-
+[source, cli]
+----
+gunzip netapp_hpux_host_utilities_6.0_ia_pa.depot.gz
+----
 +
 Il sistema inserisce il software estratto nella directory in cui è stato decompresso il file di depot.
 
 . Installare il software:
 +
-`# swinstall -s /depot_path`
-
+[source, cli]
+----
+swinstall -s /depot_path
+----
 +
 `depot_path` fornisce il percorso e il nome del file di deposito.
 
@@ -58,31 +53,14 @@ Il `swinstall` Command esegue uno script di installazione che verifica lo stato 
 
 . Verificare l'installazione:
 +
-`sanlun version`
-
-
-
-
-
-== Toolkit SAN
-
-HP-UX host Utilities è un software host NetApp che fornisce un toolkit della riga di comando sull'host HP-UX. Il toolkit viene installato quando si installa il pacchetto NetApp host Utilities. Questo kit fornisce l' `sanlun`utility che consente di gestire i LUN e gli adattatori bus host. (HBA). Il `sanlun` comando restituisce informazioni sui LUN mappati all'host, sul multipathing e sulle informazioni necessarie per creare gruppi iniziatori.
-
-.Esempio
-Nell'esempio seguente, il `sanlun lun show` Il comando restituisce le informazioni del LUN.
-
-[listing]
+[source, cli]
 ----
-# sanlun lun show all
-
-controller(7mode)/ device host lun
-vserver(Cmode)           lun-pathname                   filename          adapter    protocol   size   mode
-------------------------------------------------------------------------------------------------------------
-sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c34t0d0  fclp1      FCP        150g    C
-sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c23t0d0  fclp1      FCP        150g    C
-sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c12t0d0  fclp0      FCP        150g    C
-sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c81t0d0  fclp0      FCP        150g    C
-
+sanlun version
 ----
 
-NOTE: Questo toolkit è comune a tutte le configurazioni e i protocolli delle utilità host. Di conseguenza, tutti i componenti non si applicano a ogni configurazione. I componenti inutilizzati non influiscono sulle prestazioni del sistema. Il SAN Toolkit è supportato sulle versioni AIX e PowerVM/VIOS.
+
+
+
+== Quali sono le prossime novità?
+
+link:hu-hpux-sanlun-toolkit.html["Scopri di più sul SAN Toolkit"] .

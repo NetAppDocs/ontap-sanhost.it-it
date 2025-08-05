@@ -1,0 +1,29 @@
+= Passaggio 2: configurare gli HBA e gli switch FC
+:allow-uri-read: 
+
+
+. Avviare il servizio di destinazione.
+. Verificare il cablaggio.
++
+Fare riferimento al https://docs.netapp.com/us-en/ontap/san-config/index.html["Riferimento alla configurazione SAN"^] per informazioni dettagliate sul cablaggio e sulla configurazione.
+
+
+
+
+
+== Passaggio 2: configurare gli HBA e gli switch FC
+
+Installare e configurare uno o più HBA (host bus adapter) FC supportati per le connessioni FC al sistema storage.
+
+Il programma di installazione delle utility host di Windows imposta le impostazioni HBA FC richieste.
+
+
+CAUTION: Si consiglia di consentire solo al programma di installazione di Windows Host Utilities di impostare i parametri HBA.  Ciò garantisce che l'host Windows possa gestire correttamente i comportamenti del sistema di archiviazione per le piattaforme ONTAP .
+
+.Fasi
+. Installare uno o più HBA FC supportati seguendo le istruzioni fornite dal fornitore dell'HBA.
+. Ottenere i driver HBA supportati e le utility di gestione e installarli in base alle istruzioni fornite dal fornitore HBA.
+. https://docs.netapp.com/us-en/ontap/san-management/index.html["Collegare gli HBA agli switch FC o direttamente al sistema di storage"^] .
+. https://docs.netapp.com/us-en/ontap/san-config/fibre-channel-fcoe-zoning-concept.html["Crea zone sullo switch FC in base alla documentazione dello switch FC"^] .
+. Per ONTAP, suddividere in zone lo switch in base al WWPN.  Assicurarsi di utilizzare il WWPN delle interfacce logiche (LIF) e non il WWPN delle porte fisiche sui controller di archiviazione. Fare riferimento al  https://docs.netapp.com/us-en/ontap/san-config/index.html["Riferimento alla configurazione SAN"^] per maggiori informazioni.
+

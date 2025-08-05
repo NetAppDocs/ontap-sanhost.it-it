@@ -1,0 +1,14 @@
+= Cosa succederà adesso?
+:allow-uri-read: 
+
+
+
+
+== Quali sono le prossime novità?
+
+* Impostazioni consigliate per i driver con kernel Linux
++
+Quando si configura un ambiente FC che utilizza driver nativi della posta in arrivo forniti con il kernel Linux, è possibile utilizzare i valori predefiniti per i driver.
+
+* link:hu-luhu-sanlun-utility.html["Scopri di più sull'utilità "sanlun""] .
+

@@ -1,0 +1,28 @@
+= Passaggio 1: Se lo si desidera, attivare l'avvio SAN
+:allow-uri-read: 
+
+
+
+
+== Passaggio 1: Se lo si desidera, attivare l'avvio SAN
+
+È possibile configurare l'host per utilizzare l'avvio SAN per semplificare la distribuzione e migliorare la scalabilità.  Se la configurazione non supporta l'avvio SAN, è possibile utilizzare un avvio locale.
+
+[role="tabbed-block"]
+====
+.Boot SAN
+--
+L'avvio SAN è il processo di configurazione di un disco collegato a SAN (un LUN) come dispositivo di avvio per un host AIX/PowerVM.  È possibile configurare un LUN di avvio SAN per funzionare in un ambiente AIX Multipath I/O (MPIO) che utilizza il protocollo FC ed esegue AIX Host Utilities con il protocollo FC o FCoE.  Il metodo utilizzato per creare un LUN di avvio SAN e installare una nuova immagine del sistema operativo in un ambiente AIX MPIO dipende dal protocollo utilizzato.
+
+.Fasi
+. Utilizzare illink:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^] per verificare che il sistema operativo AIX, il protocollo e la versione ONTAP supportino l'avvio SAN.
+. Seguire le best practice per la configurazione di un avvio SAN riportate nella documentazione del fornitore.
+
+
+--
+.Avvio locale
+--
+Eseguire un avvio locale installando il sistema operativo AIX sul disco rigido locale, ad esempio su un SSD, SATA o RAID.
+
+--
+====

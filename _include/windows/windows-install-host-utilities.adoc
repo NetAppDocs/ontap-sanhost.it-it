@@ -1,0 +1,29 @@
+= Passaggio 3: installare le utilità host di Windows
+:allow-uri-read: 
+
+
+
+
+== Passaggio 3: installare le utilità host di Windows
+
+Il programma di installazione installa il pacchetto Windows Host Utilities e imposta il registro di Windows e le impostazioni HBA.
+
+.A proposito di questa attività
+Facoltativamente, è possibile includere il supporto multipathing quando si installa il pacchetto software Windows Host Utilities.  Il programma di installazione richiede le seguenti opzioni:
+
+* Scegliere `MPIO` Se si dispone di più percorsi dall'host o dalla macchina virtuale di Windows al sistema di storage.
+* Scegliere `no MPIO` solo se si utilizza un singolo percorso verso il sistema di archiviazione.
+
+
+È anche possibile scegliere il supporto multipathing tramite un prompt della riga di comando di Windows.
+
+Per i guest Hyper-V, i dischi raw (pass-through) non vengono visualizzati nel sistema operativo guest se si sceglie il supporto multipathing.  È possibile utilizzare dischi raw o MPIO, ma non è possibile utilizzare entrambi nel sistema operativo guest.
+
+
+CAUTION: Se non si installa il software MPIO, il sistema operativo Windows potrebbe vedere ciascun percorso come un disco separato. Questo può causare il danneggiamento dei dati.
+
+
+NOTE: Windows XP o Windows Vista in esecuzione su una macchina virtuale Hyper-V non supporta MPIO.
+
+.Fasi
+È possibile installare Host Utilities in modo interattivo oppure tramite la riga di comando di Windows.  Il nuovo pacchetto di installazione di Host Utilities deve trovarsi in un percorso accessibile all'host Windows.

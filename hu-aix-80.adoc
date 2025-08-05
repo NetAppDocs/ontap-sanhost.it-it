@@ -1,0 +1,160 @@
+---
+sidebar: sidebar 
+permalink: hu-aix-80.html 
+keywords: host utilities, aix, powervm, vios, 3.1, 7.0, netapp, ontap 
+summary: 'Le utilità host AIX aiutano a gestire l"archiviazione ONTAP collegata a un host AIX.' 
+---
+= Installa AIX Host Utilities 8.0 per l'archiviazione ONTAP
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Le utilità host AIX consentono di gestire lo storage ONTAP collegato a un host AIX.  NetApp consiglia vivamente di installare AIX Host Utilities per migliorare la gestione dello storage ONTAP e aiutare il supporto NetApp a raccogliere informazioni sulla configurazione.
+
+AIX Host Utilities 8.0 supporta i seguenti protocolli di trasporto e ambienti AIX:
+
+* FC, FCoE e iSCSI
+* I/O multipercorso AIX (MPIO)
+* PowerVM
++
+Per informazioni su PowerVM, consultare IBM PowerVM Live Partition Mobility Red Book.
+
+
+
+.A proposito di questa attività
+* Per gestire l'archiviazione ONTAP collegata a un host AIX, è necessario installare AIX Host Utilities SAN Toolkit con AIX MPIO.
+* Quando installi AIX Host Utilities, non viene modificata alcuna impostazione sul tuo host AIX.
+
+
+.Prima di iniziare
+* Utilizzare illink:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^] per verificare che il sistema operativo AIX, il protocollo e la versione ONTAP supportino l'avvio SAN.
+* Abilita il tracciamento dinamico per tutti gli iniziatori FC e FCoE eseguendo il `chdev -l <fscsi_device> -a dyntrk=ye` comando sull'host AIX.
+
+
+.Fasi
+. Accedi al tuo host:
++
+[role="tabbed-block"]
+====
+.AIX
+--
+Su un host AIX, accedere come *root*.
+
+--
+.PowerVM
+--
+Su un host PowerVM:
+
+.. Accedi come *padmin*.
+.. Diventa un utente root:
++
+[source, cli]
+----
+oem_setup_env
+----
+
+
+--
+====
+. Accedere a https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.0["Sito di supporto NetApp"^] e scaricare il file compresso contenente le utilità host in una directory dell'host.
+. Accedere alla directory contenente il download.
+. Decomprimere il file ed estrarre il pacchetto software di SAN Toolkit:
++
+[source, cli]
+----
+tar -xvf ntap_aix_host_utilities_8.0.tar.gz
+----
++
+IL `ntap_aix_host_utilities_8.0.` La directory viene creata quando si decomprime il file.  Questa directory contiene una delle seguenti sottodirectory: MPIO, NON_MPIO o SAN_Tool_Kit.
+
+. Installa AIX MPIO:
++
+[source, cli]
+----
+installp -aXYd /var/tmp/ntap_aix_host_utilities_8.0/MPIO NetApp.MPIO_Host_Utilities_Kit
+----
+. Installare IL kit di strumenti SAN:
++
+[source, cli]
+----
+installp -aXYd /var/tmp/ntap_aix_host_utilities_8.0/ NetApp.SAN_toolkit
+----
+. Riavviare l'host.
+. Verificare l'installazione:
++
+[source, cli]
+----
+lslpp -l |grep -i netapp
+----
++
+.Mostra output di esempio
+[%collapsible]
+====
+[listing]
+----
+NetApp.MPIO_Host_Utilities_Kit.config
+                             8.0.0.0  COMMITTED  NetApp MPIO PCM Host Utilities
+  NetApp.MPIO_Host_Utilities_Kit.fcp
+                             8.0.0.0  COMMITTED  NetApp MPIO PCM Host Utilities
+  NetApp.MPIO_Host_Utilities_Kit.iscsi
+                             8.0.0.0  COMMITTED  NetApp MPIO PCM Host Utilities
+  NetApp.MPIO_Host_Utilities_Kit.pcmodm
+                             8.0.0.0 COMMITTED  NetApp MPIO PCM Host Utilities
+NetApp.SAN_toolkit.sanlun  8.0.0.0 COMMITTED NetApp SAN Toolkit sanlun
+----
+====
+. Verificare che la versione del software sia 8.0.1f0fc74c:
++
+[source, cli]
+----
+sanlun version
+----
+. Verificare che SCSI UNMAP `lbp_enabled` è stato aggiunto un parametro all'ODM:
++
+[source, cli]
+----
+odmget -q "uniquetype=disk/fcp/NetAppMPIO" PdAt |grep  "lbp_enabled"
+----
++
+.Esempio di output
+[listing]
+----
+attribute = "lbp_enabled"
+----
++
+[source, cli]
+----
+odmget -q "uniquetype=disk/fcp/NetAppMPIO and attribute=lbp_enabled" PdAt`
+----
++
+.Mostra output di esempio
+[%collapsible]
+====
+[listing]
+----
+PdAt:
+        uniquetype = "disk/fcp/NetAppMPIO"
+        attribute = "lbp_enabled"
+        deflt = "true"
+        values = "true,false"
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "s"
+        nls_index = 18
+----
+====
+
+
+
+
+== Quali sono le prossime novità?
+
+link:hu-aix-san-toolkit.html["Scopri di più su AIX SAN Toolkit"] .

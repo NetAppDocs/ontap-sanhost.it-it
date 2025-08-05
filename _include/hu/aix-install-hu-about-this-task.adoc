@@ -1,0 +1,13 @@
+= 
+:allow-uri-read: 
+
+
+.A proposito di questa attività
+* Per gestire l'archiviazione ONTAP collegata a un host AIX, è necessario installare AIX Host Utilities SAN Toolkit con AIX MPIO.
+* Quando installi AIX Host Utilities, non viene modificata alcuna impostazione sul tuo host AIX.
+
+
+.Prima di iniziare
+* Utilizzare illink:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^] per verificare che il sistema operativo AIX, il protocollo e la versione ONTAP supportino l'avvio SAN.
+* Abilita il tracciamento dinamico per tutti gli iniziatori FC e FCoE eseguendo il `chdev -l <fscsi_device> -a dyntrk=ye` comando sull'host AIX.
+

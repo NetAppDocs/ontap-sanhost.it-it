@@ -4,7 +4,7 @@ permalink: hu_aix_72_sanbooting_powervm_vscsi.html
 keywords: host utilities, aix, powervm, 7.2 netapp, ontap, luns, configure, discover, configuring, discovering 
 summary: Descrive come utilizzare Discover e configurare LUN con PowerVM vSCSI 
 ---
-= (PowerVM vSCSI) rilevamento e configurazione dei LUN
+= Utilizzare PowerVM vSCSI per scoprire e configurare le LUN ONTAP
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,16 +16,18 @@ summary: Descrive come utilizzare Discover e configurare LUN con PowerVM vSCSI
 
 
 [role="lead"]
-Quando si utilizzano i server PowerVM vSCSI e VIO, è necessario utilizzare il login padmin e i comandi appropriati per configurare e rilevare le LUN.
+Quando si utilizzano server PowerVM vSCSI e VIO, è necessario utilizzare l'accesso padmin e i comandi padmin appropriati per configurare e rilevare i LUN.
 
 .Fasi
 . Accedere all'host come padmin.
-. Sull'host AIX, immettere il seguente comando per rilevare i LUN appena creati:
+. Sull'host AIX, scopri i LUN appena creati:
 +
-`cfgdev`
-
+[source, cli]
+----
+cfgdev
+----
 +
-Il comando cfgdev causa:
+IL `cfgdev` il comando causa:
 
 +
 ** Gli iniziatori per accedere al fabric.
@@ -33,10 +35,12 @@ Il comando cfgdev causa:
 ** Il sistema consente di creare nuove voci di dispositivo in cui i nuovi LUN vengono mappati come dispositivi MPIO (Multipath i/o) Microsoft utilizzando il PCM predefinito.
 
 
-. Per verificare che i dispositivi Hdisk MPIO siano stati creati, immettere il seguente comando:
+. Verificare che i dispositivi MPIO hdisk siano stati creati:
 +
-`lsdev -type disk`
-
+[source, cli]
+----
+lsdev -type disk
+----
 +
 I LUN vengono visualizzati sull'host come dischi. È possibile utilizzare questi dischi nello stesso modo in cui si utilizzano i dischi locali sull'host.
 
@@ -47,6 +51,9 @@ Annotare i numeri delle istanze di hdisk. Li si utilizza quando si esegue la con
 Il `lsdev -type disk` comando produce il seguente tipo di output. L'output nell'esempio seguente è troncato.
 
 +
+.Mostra output di esempio
+[%collapsible]
+====
 [listing]
 ----
 vioserver$ lsdev -type disk NetApp
@@ -59,14 +66,20 @@ hdisk4   Available   MPIO NetApp FCP Default PCM Disk
 hdisk5   Available   MPIO NetApp FCP Default PCM Disk
 hdisk6   Available   MPIO NetApp FCP Default PCM Disk
 ----
+====
 . Recuperare le informazioni sulla configurazione:
 +
-`lsdev -dev hdisk_name -attr`
-
+[source, cli]
+----
+lsdev -dev hdisk_name -attr
+----
 +
 Il `lsdev -dev hdisk_name -attr` il comando produce il seguente output:
 
 +
+.Mostra output di esempio
+[%collapsible]
+====
 [listing]
 ----
 vioserver$ lsdev -dev hdisk2 -attr
@@ -97,38 +110,49 @@ scsi_id         0xd10001                         SCSI ID                        
 start_timeout   60                               START unit time out value               True
 ww_name         0x500a0984994ae0e0               FC World Wide Name                      False
 ----
+====
 . Se la configurazione non supporta ALUA, è necessario utilizzare l'utilità dotpath per impostare le priorità del percorso. L'utility dotpaths viene installata quando si installano le Utility host. Non utilizzare l'utility dotpaths se ALUA è attivato. Passare alla `oem_setup_env` modalità per eseguire i dotpath immettendo il seguente comando:
 +
-`oem_setup_env`
-
+[source, cli]
+----
+oem_setup_env
+----
 +
 Quando si accede a. `oem_setup_env` il prompt della riga di comando passa da un simbolo del dollaro a un simbolo del cancelletto e rimane attivo `oem_setup_env` fino a quando non si arresta immettendo un comando come exit.
 
 +
 .Esempio
-``# vioserver$ oem_setup_env`
+`# vioserver$ oem_setup_env`
 
-. Se la configurazione supporta ALUA, è possibile utilizzarla per impostare la priorità del percorso. Verificare che ALUA sia abilitato:
+. Se la configurazione supporta ALUA, è possibile utilizzarla per impostare la priorità del percorso. Verificare che ALUA sia attivato:
 +
-`lun igroup show -instance igroup_name`
-
+[source, cli]
+----
+lun igroup show -instance igroup_name
+----
 +
 .. Se ALUA non è abilitato, abilitarlo:
 +
-`igroup set igroup_name alua yes`
-
+[source, cli]
+----
+igroup set igroup_name alua yes
+----
 
 
 . Se la configurazione non supporta ALUA, è necessario utilizzare l'utilità dotpath per impostare le priorità del percorso. L'utility dotpaths viene installata quando si installano le Utility host. Non utilizzare l'utility dotpaths se ALUA è attivato.
 +
 .. Per impostare la priorità per tutti i LUN ONTAP, immettere:
 +
-`dotpaths`
-
+[source, cli]
+----
+dotpaths
+----
 .. Per impostare la priorità per un set specifico di dischi, digitare:
 +
-`dotpaths [-hqv] [hdiskN ...]`
-
+[source, cli]
+----
+dotpaths [-hqv] [hdiskN ...]
+----
 +
 Utilizzare `-v` opzione per attivare la modalità dettagliata e visualizzare tutte le priorità. Utilizzare `-q` opzione per eseguire query su tutte le priorità dei dischi o su singole priorità.
 
@@ -136,6 +160,9 @@ Utilizzare `-v` opzione per attivare la modalità dettagliata e visualizzare tut
 Di seguito viene riportato un esempio di utilizzo dell'utilità dotpaths:
 
 +
+.Mostra output di esempio
+[%collapsible]
+====
 [listing]
 ----
 vioserver# dotpaths -v
@@ -147,17 +174,22 @@ hdisk2 (path 3): Unoptimized path - Current priority of 1 is correct
 Path priority set and/or verified for 22 disks, 86 total paths.
 vioserver#
 ----
+====
 
 
 . Per verificare che l'host abbia rilevato i LUN, immettere il seguente comando:
 +
-`# sanlun lun show -p`
+[source, cli]
+----
+sanlun lun show -p
+----
++
+L'esempio seguente mostra l'output tipico del `sanlun lun show -p` comando per una configurazione collegata direttamente.  Include anche il `sanlun lun show -d hdisk9 -v` comando per visualizzare informazioni su hdisk9.  L'output di questo comando è stato troncato.
 
 +
-.Esempio
-Questo esempio mostra l'output tipico di `sanlun lun show -p` comando per una configurazione direct-attached. Include anche il `sanlun lun show -d hdisk9 -v` comando per visualizzare le informazioni su hdisk9. L'output di questo comando è stato troncato.
-
-+
+.Mostra output di esempio
+[%collapsible]
+====
 [listing]
 ----
 sanlun lun show -p
@@ -193,7 +225,11 @@ up        secondary   path13 fcs1    4a              1
 up        primary     path14 fcs1    4b              1
 up        primary     path15 fcs1    4a              1
 ----
+====
 +
+.Mostra output di esempio
+[%collapsible]
+====
 [listing]
 ----
 sanlun lun show -vd hdisk10
@@ -210,4 +246,5 @@ GPFS_p520_FC         /vol/GPFS_p520_FC_FlexVol_2/GPFS_p520_FC_LUN_2_4 hdisk10   
            Vserver volume name: GPFS_p520_FC_FlexVol_2  MSID::0x00000000000000000000000080000420
          Vserver snapshot name:
 ----
+====
 

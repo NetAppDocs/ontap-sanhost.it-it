@@ -4,7 +4,7 @@ permalink: hu_wuhu_repair_remove.html
 keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
 summary: 'Le utilità host Windows includono un programma di installazione che imposta i parametri richiesti del Registro di sistema e dell"HBA di Windows in modo che l"host Windows gestisca correttamente i comportamenti del sistema storage per le piattaforme ONTAP ed e-Series.' 
 ---
-= Riparare e rimuovere le utilità host di Windows
+= Riparare e rimuovere le utilità host di Windows per l'archiviazione ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -19,7 +19,7 @@ summary: 'Le utilità host Windows includono un programma di installazione che i
 
 
 [role="lead"]
-È possibile utilizzare l'opzione *Repair* del programma di installazione di host Utilities per aggiornare le impostazioni dell'adattatore bus host (HBA) e del Registro di sistema di Windows. È inoltre possibile rimuovere completamente le utilità host, in modo interattivo o dalla riga di comando di Windows.
+Utilizzare l'opzione *Ripara* nel programma di installazione Host Utilities per aggiornare le impostazioni dell'adattatore bus host (HBA) e del registro di sistema di Windows.  È anche possibile rimuovere completamente Host Utilities, in modo interattivo o dalla riga di comando di Windows.
 
 [role="tabbed-block"]
 ====
@@ -36,15 +36,17 @@ L'opzione *Ripara* aggiorna il registro di sistema di Windows e gli HBA FC con l
 
 
 --
-.Riparare o rimuovere dalla riga di comando
+.Riparare o rimuovere in modo non interattivo
 --
 L'opzione *Ripara* aggiorna il registro di sistema di Windows e gli HBA FC con le impostazioni richieste. È inoltre possibile rimuovere completamente le utility host da una riga di comando di Windows.
 
 .Fasi
 . Ripristina utilità host Windows:
 +
-`msiexec /f installer.msi [/quiet]`
-
+[source, cli]
+----
+msiexec /f installer.msi [/quiet]
+----
 +
 ** `/f` ripara l'installazione.
 ** `installer.msi` È il nome del programma di installazione di Windows host Utilities sul sistema.

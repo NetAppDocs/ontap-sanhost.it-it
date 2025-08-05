@@ -1,0 +1,9 @@
+= 
+:allow-uri-read: 
+
+
+Il multipathing consente di configurare più percorsi di rete tra l'host e il sistema di archiviazione.  Se un percorso fallisce, il traffico prosegue sui percorsi rimanenti.  Gli ambienti AIX e PowerVM di Host Utilities utilizzano la soluzione multipathing nativa di AIX (MPIO).
+
+Il Path Control Module (PCM) è responsabile del controllo di più percorsi per un host AIX.  Il PCM è un codice fornito dal fornitore di storage che gestisce la gestione dei percorsi e viene installato e abilitato durante l'installazione di Host Utilities.
+
+Per garantire che il multipathing sia configurato correttamente per l'host, verificare di aver configurato le impostazioni consigliate da NetApp per i LUN ONTAP .

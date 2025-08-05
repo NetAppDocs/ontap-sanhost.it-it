@@ -1,0 +1,97 @@
+= 
+:allow-uri-read: 
+
+
+. Se la configurazione di archiviazione include MetroCluster, la virtualizzazione Oracle Solaris o SnapMirror ActiveSync, modificare le impostazioni predefinite:
++
+[role="tabbed-block"]
+====
+.MetroCluster
+--
+Per impostazione predefinita, il sistema operativo Solaris non riesce a eseguire le operazioni di I/O dopo *20s* se tutti i percorsi verso una LUN vengono persi.  Questo è controllato dal `fcp_offline_delay` parametro.  Il valore predefinito per `fcp_offline_delay` è appropriato per i cluster ONTAP standard.  Tuttavia, nelle configurazioni MetroCluster , è necessario aumentare il valore di `fcp_offline_delay` a *120s* per garantire che l'I/O non si interrompa prematuramente durante le operazioni, compresi i failover non pianificati.
+
+Per ulteriori informazioni e modifiche consigliate alle impostazioni predefinite per MetroCluster, consultare l'articolo della Knowledge Base https://kb.netapp.com/onprem/ontap/metrocluster/Solaris_host_support_considerations_in_a_MetroCluster_configuration["Considerazioni sul supporto degli host Solaris in una configurazione MetroCluster"^] .
+
+--
+.Virtualizzazione Oracle Solaris
+--
+** Le opzioni di virtualizzazione Solaris includono Solaris Logical Domains (chiamati anche LDOM o Oracle VM Server per SPARC), Solaris Dynamic Domains, Solaris Zones e Solaris Containers.  Queste tecnologie sono anche chiamate "Oracle Virtual Machines".
+** È possibile utilizzare più opzioni contemporaneamente, ad esempio un contenitore Solaris all'interno di un particolare dominio logico Solaris.
+** NetApp supporta l'uso delle tecnologie di virtualizzazione Solaris in cui la configurazione complessiva è supportata da Oracle e qualsiasi partizione con accesso diretto ai LUN è elencata sulink:https://imt.netapp.com/matrix/#welcome["IMT"] in una configurazione supportata.  Ciò include contenitori root, domini I/O LDOM e LDOM che utilizza NPIV per accedere ai LUN.
+** Partizioni o macchine virtuali che utilizzano solo risorse di archiviazione virtualizzate, come ad esempio `vdsk` , non necessitano di qualifiche specifiche perché non hanno accesso diretto alle LUN ONTAP .  È necessario verificare solo che la partizione o la macchina virtuale che ha accesso diretto al LUN sottostante, ad esempio un dominio I/O LDOM, sia elencata sulink:https://imt.netapp.com/matrix/#welcome["IMT"^] .
+
+
+.Fasi
+Quando le LUN vengono utilizzate come dispositivi disco virtuali all'interno di un LDOM, l'origine della LUN viene mascherata dalla virtualizzazione e l'LDOM non rileva correttamente le dimensioni dei blocchi.  Per prevenire questo problema:
+
+.. Correggi il sistema operativo LDOM per _Oracle Bug 15824910_
+.. Crea un `vdc.conf` file che imposta la dimensione del blocco del disco virtuale su `4096` .  Per ulteriori informazioni, vedere Oracle DOC: 2157669.1.
+.. Verificare l'installazione della patch per assicurarsi che le impostazioni consigliate siano state configurate correttamente:
++
+... Crea uno zpool:
++
+[source, cli]
+----
+zpool create zpool_name disk_list
+----
+... Eseguire `zdb -C` contro lo zpool e verificare che il valore di *ashift* sia `12`.
++
+Se il valore di *ashift* non è `12` , rieseguire `zdb -C11` e verificare che sia stata installata la patch corretta e ricontrollare il contenuto di `vdc.conf` .
+
++
+Non procedere finché *ashift* non mostra un valore di `12` .
+
+
+
+
+
+
+NOTE: Sono disponibili patch per il bug Oracle 15824910 su diverse versioni di Solaris.  Contatta Oracle se hai bisogno di assistenza per determinare la migliore patch del kernel.
+
+--
+.Sincronizzazione attiva SnapMirror
+--
+A partire da ONTAP 9.9.1, le configurazioni delle impostazioni di sincronizzazione attiva SnapMirror sono supportate nell'host Solaris.  Per verificare che le applicazioni client Solaris non siano discontinue quando si verifica un passaggio di failover del sito non pianificato in un ambiente di sincronizzazione attiva SnapMirror , è necessario configurare `scsi-vhci-failover-override` impostazione sull'host Solaris.  Questa impostazione sovrascrive il modulo di failover `f_tpgs` per impedire l'esecuzione del percorso di codice che rileva la contraddizione.
+
+.Fasi
+.. Creare il file di configurazione `/etc/driver/drv/scsi_vhci.conf` con una voce simile al seguente esempio per il tipo di storage NetApp connesso all'host:
++
+[listing]
+----
+scsi-vhci-failover-override =
+"NETAPP  LUN","f_tpgs"
+----
+.. Verificare che il parametro override sia stato applicato correttamente:
++
+[source, cli]
+----
+devprop
+----
++
+[source, cli]
+----
+mdb
+----
++
+.Mostra esempi
+[%collapsible]
+=====
+[listing]
+----
+root@host-A:~# devprop -v -n /scsi_vhci scsi-vhci-failover-override      scsi-vhci-failover-override=NETAPP  LUN + f_tpgs
+root@host-A:~# echo "*scsi_vhci_dip::print -x struct dev_info devi_child | ::list struct dev_info devi_sibling| ::print struct dev_info devi_mdi_client| ::print mdi_client_t ct_vprivate| ::print struct scsi_vhci_lun svl_lun_wwn svl_fops_name"| mdb -k
+----
+[listing]
+----
+svl_lun_wwn = 0xa002a1c8960 "600a098038313477543f524539787938"
+svl_fops_name = 0xa00298d69e0 "conf f_tpgs"
+----
+=====
+
+
+
+NOTE: Dopo `scsi-vhci-failover-override` è stato applicato, `conf` viene aggiunto a. `svl_fops_name`. Per ulteriori informazioni e per le modifiche consigliate alle impostazioni predefinite, consultare l'articolo della Knowledge base di NetApp https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Supporto host Solaris impostazioni consigliate nella configurazione di sincronizzazione attiva di SnapMirror"^].
+
+--
+====
+

@@ -1,0 +1,28 @@
+= Passaggio 1: Se lo si desidera, attivare l'avvio SAN
+:allow-uri-read: 
+
+
+
+
+== Passaggio 1: Se lo si desidera, attivare l'avvio SAN
+
+È possibile configurare l'host per utilizzare l'avvio SAN per semplificare la distribuzione e migliorare la scalabilità.  Se la configurazione non supporta l'avvio SAN, è possibile utilizzare un avvio locale.
+
+[role="tabbed-block"]
+====
+.Boot SAN
+--
+L'avvio SAN è il processo di configurazione di un disco collegato a SAN (un LUN) come dispositivo di avvio per un host Solaris.  È possibile configurare un LUN di avvio SAN per funzionare in un ambiente Solaris MPxIO che utilizza il protocollo FC ed esegue Solaris Host Utilities.  Il metodo utilizzato per configurare un LUN di avvio SAN dipende dal gestore dei volumi e dal file system.
+
+.Fasi
+. Utilizzare illink:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^] per verificare che il sistema operativo Solaris, il protocollo e la versione ONTAP supportino l'avvio SAN.
+. Seguire le procedure consigliate per la configurazione di un avvio SAN nella documentazione del fornitore Solaris.
+
+
+--
+.Avvio locale
+--
+Eseguire un avvio locale installando il sistema operativo Solaris sul disco rigido locale, ad esempio installandolo su un SSD, SATA o RAID.
+
+--
+====

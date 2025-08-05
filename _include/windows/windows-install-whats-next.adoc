@@ -1,0 +1,9 @@
+= Cosa succederà adesso?
+:allow-uri-read: 
+
+
+
+
+== Quali sono le prossime novità?
+
+link:hu_wuhu_hba_settings.html["Configurare le impostazioni del registro per Windows Host Utilities"] .

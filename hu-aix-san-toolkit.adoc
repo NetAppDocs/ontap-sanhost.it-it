@@ -1,0 +1,41 @@
+---
+sidebar: sidebar 
+permalink: hu-aix-san-toolkit.html 
+keywords: san, toolkit, command, line, AIX, hot, utilities 
+summary: Il software host AIX Host Utilities fornisce un toolkit da riga di comando sul tuo host IBM AIX. 
+---
+= Scopri di più su AIX SAN Toolkit per l'archiviazione ONTAP
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+AIX Host Utilities è un software host NetApp che fornisce un toolkit da riga di comando sul tuo host IBM AIX.  Il toolkit SAN viene installato quando si installa il pacchetto NetApp Host Utilities.  Il toolkit fornisce il `sanlun` utilità che aiuta a gestire le LUN ONTAP e gli adattatori bus host (HBA).  IL `sanlun` Il comando restituisce informazioni sui LUN ONTAP mappati sull'host, sul multipathing e sulle informazioni necessarie per creare gruppi di iniziatori.
+
+L'output di esempio seguente mostra le informazioni ONTAP LUN restituite per `sanlun lun show` comando:
+
+[listing]
+----
+controller(7mode)/ device host lun
+
+vserver(Cmode) lun-pathname filename adapter protocol size mode
+----------------------------------------------------------------
+data_vserver   /vol/vol1/lun1 hdisk0 fcs0    FCP      60g C
+data_vserver   /vol/vol2/lun2 hdisk0 fcs0    FCP      20g C
+data_vserver   /vol/vol3/lun3 hdisk11 fcs0   FCP      20g C
+data_vserver   /vol/vol4/lun4 hdisk14 fcs0   FCP      20g C
+----
+
+NOTE: SAN Toolkit è comune a tutte le configurazioni host AIX e a tutti i protocolli di trasporto.  Di conseguenza, non tutti i componenti sono validi per ogni configurazione.  I componenti inutilizzati non influiscono sulle prestazioni del sistema.  SAN Toolkit è supportato sulle versioni AIX e PowerVM/VIOS OS.
+
+
+
+== Quali sono le prossime novità?
+
+link:hu-aix-command-reference.html["Scopri come utilizzare lo strumento AIX Host Utilities"] .

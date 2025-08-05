@@ -1,0 +1,47 @@
+---
+sidebar: sidebar 
+permalink: hu-hpux-sanlun-toolkit.html 
+keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
+summary: 'Viene descritto come utilizzare le utilità host HP-UX 6,0 con l"archiviazione ONTAP' 
+---
+= Scopri di più sul SAN Toolkit per l'archiviazione ONTAP
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+HP-UX Host Utilities è un software host NetApp che fornisce un toolkit da riga di comando sul tuo host HP-UX.  Il toolkit viene installato quando si installa il pacchetto NetApp Host Utilities.  Questo kit fornisce il `sanlun` utilità che aiuta a gestire le LUN ONTAP e gli adattatori bus host.  IL `sanlun` Il comando restituisce informazioni sui LUN mappati sull'host, sul multipathing e sulle informazioni necessarie per creare gruppi di iniziatori.
+
+Nell'esempio seguente, il `sanlun lun show` il comando restituisce informazioni ONTAP LUN.
+
+[listing]
+----
+# sanlun lun show all
+
+controller(7mode)/ device host lun
+vserver(Cmode)           lun-pathname                   filename          adapter    protocol   size   mode
+------------------------------------------------------------------------------------------------------------
+sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c34t0d0  fclp1      FCP        150g    C
+sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c23t0d0  fclp1      FCP        150g    C
+sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c12t0d0  fclp0      FCP        150g    C
+sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c81t0d0  fclp0      FCP        150g    C
+
+----
+[NOTE]
+====
+Questo toolkit SAN è comune a tutte le configurazioni e i protocolli di Host Utilities.  Di conseguenza, non tutti i componenti sono validi per ogni configurazione.  I componenti inutilizzati non influiscono sulle prestazioni del sistema.
+
+SAN Toolkit è supportato sulle versioni AIX e PowerVM/VIOS OS.
+
+====
+
+
+== Quali sono le prossime novità?
+
+link:hu_hpux_60_cmd.html["Scopri come utilizzare lo strumento HP-UX Host Utilities"] .

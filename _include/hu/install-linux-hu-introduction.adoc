@@ -1,0 +1,5 @@
+= 
+:allow-uri-read: 
+
+
+Le Linux Host Utilities aiutano a gestire lo storage ONTAP collegato a un host Linux.  NetApp consiglia vivamente di installare Linux Host Utilities, ma non è obbligatorio.  Le utilità migliorano la gestione e aiutano l'assistenza clienti NetApp a raccogliere informazioni sulla configurazione.
