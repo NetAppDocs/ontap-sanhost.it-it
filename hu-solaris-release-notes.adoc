@@ -50,3 +50,9 @@ Il binding del driver FC viene modificato da `ssd(4D)` a. `sd(4D)`. Spostare la 
 * FCP Generale: Visualizza i bug FC e HBA (host Bus Adapter) non associati a un host specifico.
 * FCP - Solaris
 
+
+
+
+== Cosa c'è dopo?
+
+link:hu-solaris-80.html["Informazioni sull'installazione di Solaris Host Utilities"]

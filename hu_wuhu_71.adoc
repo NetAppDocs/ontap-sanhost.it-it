@@ -129,10 +129,8 @@ NOTE: Windows XP o Windows Vista in esecuzione su una macchina virtuale Hyper-V 
 ====
 .Installazione interattiva
 --
-.Fasi
 Installare il pacchetto software Host Utilities in modo interattivo eseguendo il programma di installazione Host Utilities e seguendo le istruzioni.
 
-.Fasi
 . Scaricare il file eseguibile da https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Sito di supporto NetApp"^].
 . Passare alla directory da cui è stato scaricato il file eseguibile.
 . Eseguire `netapp_windows_host_utilities_7.1_x64` archiviare e seguire le istruzioni visualizzate sullo schermo.
@@ -144,7 +142,6 @@ Installare il pacchetto software Host Utilities in modo interattivo eseguendo il
 --
 Eseguire un'installazione non interattiva di Host Utilities utilizzando la riga di comando di Windows.  Il sistema si riavvia automaticamente al termine dell'installazione.
 
-.Fasi
 . Immettere il seguente comando al prompt dei comandi di Windows:
 +
 [source, cli]

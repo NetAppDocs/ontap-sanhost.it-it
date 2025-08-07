@@ -437,4 +437,4 @@ La versione Solaris 11.3 per FCP e iSCSI con storage ONTAP presenta i seguenti p
 
 == Quali sono le prossime novità?
 
-link:hu-solaris-62-cmd.html["Scopri come utilizzare lo strumento Solaris Host Utilities 6.2"] .
+link:hu-solaris-command-reference.html["Scopri come utilizzare lo strumento Solaris Host Utilities"] .

@@ -65,3 +65,9 @@ link:https://mysupport.netapp.com/site/["NetApp Bugs Online"^] fornisce informaz
 * FCP General (Generale FCP): Visualizza i bug FC e HBA non associati a un host specifico.
 * FCP - AIX
 
+
+
+
+== Quali sono le prossime novità?
+
+link:hu-aix-80.html["Scopri come installare AIX Host Utilities"]
