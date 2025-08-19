@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_citrix_82.html 
 keywords: host utilities, citrix, Hypervisor, 8 series, netapp, ontap, san, boot 
-summary: Descrive come utilizzare Citrix Hypervisor 8.2 con ONTAP 
+summary: Configurare Citrix Hypervisor 8.2 per il multipathing e con parametri e impostazioni specifici per le operazioni del protocollo FCP e iSCSI con storage ONTAP . 
 ---
 = Configurare Citrix Hypervisor 8.2 per FCP e iSCSI con storage ONTAP
 :hardbreaks:
@@ -16,8 +16,13 @@ summary: Descrive come utilizzare Citrix Hypervisor 8.2 con ONTAP
 
 
 [role="lead"]
-Il software Linux host Utilities fornisce strumenti di gestione e diagnostica per gli host Linux connessi allo storage ONTAP. Quando si installa Linux Host Utilities su un host Citrix Hypervisor 8.2, è possibile utilizzare Host Utilities per gestire le operazioni del protocollo FCP e iSCSI con LUN ONTAP.
+Configurare Citrix Hypervisor 8.2 per il multipathing e con parametri e impostazioni specifici per le operazioni del protocollo FCP e iSCSI con storage ONTAP .
 
+[NOTE]
+====
+Il pacchetto software Linux Host Utilities non supporta i sistemi operativi Citrix Hypervisor.
+
+====
 
 
 == Passaggio 1: Se lo si desidera, attivare l'avvio SAN
@@ -38,18 +43,7 @@ Per informazioni su come attivare il BIOS HBA, consultare la documentazione spec
 
 
 
-== Fase 2: Installare le utilità host Linux
-
-NetApp consiglia vivamente di installare le utilità host Linux per supportare la gestione LUN di ONTAP e fornire assistenza tecnica nella raccolta dei dati di configurazione.
-
-link:hu_luhu_71.html["Installare le utilità host Linux 7,1"].
-
-
-NOTE: L'installazione di Linux host Utilities non modifica le impostazioni di timeout dell'host sul proprio host Linux.
-
-
-
-== Fase 3: Verificare la configurazione multipath per l'host
+== Passaggio 2: confermare la configurazione multipath per l'host
 
 È possibile utilizzare il multipathing con Citrix Hypervisor 8.2 per gestire le LUN ONTAP.
 
@@ -197,7 +191,7 @@ size=9.0G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_han
 
 
 
-== Passaggio 4: Se si desidera, escludere un dispositivo dal multipathing
+== Passaggio 3: facoltativamente, escludere un dispositivo dal multipathing
 
 Se necessario, è possibile escludere un dispositivo dal multipathing aggiungendo il WWID per il dispositivo indesiderato alla stanza "blacklist" per il `multipath.conf` file.
 
@@ -229,7 +223,7 @@ blacklist {
 
 
 
-== Passaggio 5: Personalizzare i parametri multipath per i LUN ONTAP
+== Passaggio 4: personalizzare i parametri multipath per le LUN ONTAP
 
 Se l'host è connesso a LUN di altri fornitori e le impostazioni dei parametri multipath vengono sovrascritte, è necessario correggerle aggiungendo più avanti nel `multipath.conf` file che si applicano specificamente ai LUN di ONTAP. In caso contrario, i LUN di ONTAP potrebbero non funzionare come previsto.
 
@@ -240,6 +234,9 @@ CAUTION: Non sovrascrivere le impostazioni dei parametri consigliate per i LUN O
 
 Nell'esempio seguente viene illustrato come correggere un valore predefinito sovrascritto. In questo esempio, il `multipath.conf` file definisce i valori per `path_checker` e `no_path_retry` che non sono compatibili con i LUN ONTAP e non è possibile rimuovere questi parametri perché gli array di storage ONTAP sono ancora collegati all'host. È invece possibile correggere i valori per `path_checker` e `no_path_retry` aggiungendo una stanza di dispositivo al `multipath.conf` file che si applica specificamente ai LUN di ONTAP.
 
+.Mostra esempio
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 defaults {
@@ -256,19 +253,9 @@ devices {
    }
 }
 ----
+====
 
 
-== Fase 6: Esaminare i problemi noti
+== Passaggio 5: rivedere i problemi noti
 
 Non ci sono problemi noti.
-
-
-
-== Quali sono le prossime novità?
-
-* link:hu-luhu-command-reference.html["Informazioni sull'utilizzo dello strumento Linux host Utilities"] .
-* Informazioni sul mirroring ASM.
-+
-Il mirroring ASM (Automatic Storage Management) potrebbe richiedere modifiche alle impostazioni del multipath Linux per consentire ad ASM di riconoscere un problema e passare a un gruppo di guasti alternativo. La maggior parte delle configurazioni ASM su ONTAP utilizza la ridondanza esterna, il che significa che la protezione dei dati viene fornita dall'array esterno e ASM non esegue il mirroring dei dati. Alcuni siti utilizzano ASM con ridondanza normale per fornire il mirroring bidirezionale, in genere su siti diversi. Per ulteriori informazioni, vederelink:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["Database Oracle su ONTAP"^].
-
-

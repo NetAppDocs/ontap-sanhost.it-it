@@ -31,7 +31,7 @@ Verificare che la configurazione iSCSI, FC o FCoE sia supportata.  Puoi usare il
 
 .Fasi
 . Accedi al tuo host come root.
-. Scaricare una copia del file compresso contenente le utility host da link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["Sito di supporto NetApp"^] a una directory sull'host.
+. Scaricare una copia del file compresso contenente le Utilità Host dallink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/8.0/downloads["Sito di supporto NetApp"^] in una directory sul tuo host.
 +
 [role="tabbed-block"]
 ====

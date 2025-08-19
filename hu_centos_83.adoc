@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_centos_83.html 
 keywords: host utilities, centos, linux, 8.3, netapp, ontap 
-summary: Descrive come utilizzare CentOS 8.3 con ONTAP 
+summary: Installa Linux Host Utilities su un host CentOS 8.3 per gestire le operazioni del protocollo FCP e iSCSI con LUN ONTAP . 
 ---
 = Configurare CentOS 8.3 per FCP e iSCSI per l'archiviazione ONTAP
 :hardbreaks:
