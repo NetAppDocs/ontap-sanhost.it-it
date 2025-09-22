@@ -20,7 +20,7 @@ Le Linux Host Utilities aiutano a gestire lo storage ONTAP collegato a un host L
 
 Linux Host Utilities 8.0 supporta i seguenti tipi di distribuzione:
 
-* Red Hat Enterprise Linux
+* Red Hat Enterprise Linux (RHEL)
 * SUSE Linux Enterprise Server
 * Oracle Linux
 * Ubuntu
@@ -48,24 +48,45 @@ Fare riferimento alla documentazione del fornitore per verificare che i seguenti
 .Fasi
 . Se è attualmente installata una versione di Linux Host Utilities, rimuoverla:
 +
+[role="tabbed-block"]
+====
+.Host Linux
+--
+Rimuovere Linux Host Utilities da un host RHEL, SUSE Linux Enterprise Server o Oracle Linux:
+
 [source, cli]
 ----
-rpm -e netapp_linux_unified_host_utilities-8-0
+rpm -e netapp_linux_unified_host_utilities-x-x
 ----
+--
+.Ubuntu
+--
+Rimuovere Linux Host Utilities da un host Ubuntu:
+
+[source, cli]
+----
+sudo apt remove netapp_linux_unified_host_utilities-x-x
+----
+--
+====
 +
 Per le versioni precedenti di Linux host Utilities, andare alla directory in cui è installato il software dell'utilità host e immettere il comando di disinstallazione per rimuovere il pacchetto installato.
 
 . Il pacchetto software NetApp Linux Host Utilities è disponibile sul sito di supporto NetApp in un file .rpm a 64 bit. Scarica il file a 64 bit dalink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/8.0/downloads["Sito di supporto NetApp"^] al tuo host.
 . Vai alla directory in cui hai scaricato il pacchetto software e installalo:
 +
+[role="tabbed-block"]
+====
+.Host Linux
+--
+Installare Linux Host Utilities 8.0 su un host RHEL, SUSE Linux Enterprise Server o Oracle Linux:
+
 [source, cli]
 ----
 rpm -ivh netapp_linux_unified_host_utilities-8-0.x86_xx.rpm
 ----
-+
 Dovresti vedere un output simile al seguente esempio:
 
-+
 [listing]
 ----
 rpm -ivh netapp_linux_unified_host_utilities-8-0.x86_64.rpm
@@ -75,15 +96,24 @@ Updating / installing...
    1:netapp_linux_unified_host_utiliti################################# [100%]
 
 ----
+--
+.Ubuntu
+--
+.. Installa Linux Host Utilities 8.0 su un host Ubuntu:
 +
-[NOTE]
-====
-Se si utilizza un sistema operativo host Ubuntu, è necessario collegarlo manualmente alla libreria HBA:
-
+[source, cli]
+----
+sudo apt install /<path_to_file>/netapp_linux_unified_host_utilities-8-0.x86_xx.deb
+----
+.. Collegare manualmente il sistema operativo Ubuntu alla libreria HBA:
++
 [source, cli]
 ----
 cp /opt/QLogic_Corporation/QConvergeConsoleCLI/lib64/libHBAAPI.so.2.0.2 /usr/lib64/libHBAAPI.so
 ----
+
+
+--
 ====
 . Verificare l'installazione:
 +
