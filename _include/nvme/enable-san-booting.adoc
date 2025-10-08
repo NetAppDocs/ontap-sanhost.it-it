@@ -2,16 +2,13 @@
 :allow-uri-read: 
 
 
-È possibile configurare l'host in modo che utilizzi l'avvio SAN per semplificare l'installazione e migliorare la scalabilità.
-
-.Prima di iniziare
-Utilizzare link:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^]per verificare che il sistema operativo Linux, l'HBA (host Bus Adapter), il firmware HBA, il BIOS di avvio HBA e la versione ONTAP supportino l'avvio SAN.
+È possibile configurare l'host per utilizzare l'avvio SAN per semplificare la distribuzione e migliorare la scalabilità. Utilizzare illink:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^] per verificare che il sistema operativo Linux, l'adattatore bus host (HBA), il firmware HBA, il BIOS di avvio HBA e la versione ONTAP supportino l'avvio SAN.
 
 .Fasi
-. https://docs.netapp.com/us-en/ontap/san-admin/create-nvme-namespace-subsystem-task.html["Crea uno spazio dei nomi di avvio SAN e mappalo all'host"^].
+. https://docs.netapp.com/us-en/ontap/san-admin/create-nvme-namespace-subsystem-task.html["Crea uno spazio dei nomi NVMe e mappalo all'host"^] .
 . Abilitare l'avvio SAN nel BIOS del server per le porte su cui è mappato lo spazio dei nomi di avvio SAN.
 +
 Per informazioni su come attivare il BIOS HBA, consultare la documentazione specifica del vendor.
 
-. Verificare che la configurazione sia stata eseguita correttamente riavviando l'host e verificando che il sistema operativo sia attivo e funzionante.
+. Riavviare l'host e verificare che il sistema operativo sia attivo e funzionante.
 

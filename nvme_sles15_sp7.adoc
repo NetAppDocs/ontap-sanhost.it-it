@@ -19,7 +19,7 @@ summary: Viene descritto come configurare NVMe/FC per SUSE Linux Enterprise Serv
 
 
 [role="lead"]
-Le configurazioni host SAN di NetApp supportano il protocollo NVMe over Fabrics (NVMe-of) con l'Asymmetric Namespace Access (ANA). Negli ambienti NVMe-of, ANA equivale al multipathing ALUA (Asymmetric Logical Unit Access) in ambienti iSCSI e FCP. ANA è implementato utilizzando la funzione multipath NVMe nel kernel.
+Gli host Red Hat Enterprise Linux (RHEL) supportano i protocolli NVMe su Fibre Channel (NVMe/FC) e NVMe su TCP (NVMe/TCP) con Asymmetric Namespace Access (ANA).  ANA fornisce funzionalità multipathing equivalenti all'accesso asimmetrico alle unità logiche (ALUA) negli ambienti iSCSI e FCP.
 
 .A proposito di questa attività
 È possibile utilizzare il supporto e le funzionalità seguenti con la configurazione host NVMe-oF per SUSE Linux Enterprise Server 15 SP7 (SLES15 SP7). Prima di avviare il processo di configurazione, è inoltre necessario esaminare le limitazioni note.
@@ -372,7 +372,7 @@ L'uscita prevista è 1.
 
 == Passaggio 4: facoltativamente, abilitare 1 MB I/O
 
-ONTAP riporta un MDTS (MAX Data Transfer Size) di 8 nei dati del controller di identificazione. Ciò significa che le dimensioni massime delle richieste i/o possono essere fino a 1MB MB. Per emettere richieste di i/o di dimensioni pari a 1 MB per un host Broadcom NVMe/FC, è necessario aumentare il `lpfc` valore del `lpfc_sg_seg_cnt` parametro a 256 dal valore predefinito di 64.
+ONTAP segnala una dimensione massima di trasferimento dati (MDTS) pari a 8 nei dati Identify Controller.  Ciò significa che la dimensione massima della richiesta di I/O può arrivare fino a 1 MB.  Per emettere richieste di I/O di dimensione 1 MB per un host Broadcom NVMe/FC, è necessario aumentare il `lpfc` valore del `lpfc_sg_seg_cnt` parametro a 256 dal valore predefinito di 64.
 
 
 NOTE: Questi passaggi non si applicano agli host Qlogic NVMe/FC.
