@@ -29,7 +29,7 @@ Gli host SAN e lo storage ONTAP possono risiedere on-premise, nel cloud o in ent
 
 NOTE: In un ambiente cloud, gli host sono generalmente denominati client. Tutte le informazioni specifiche dell'host contenute in questo contenuto si applicano anche ai client cloud.
 
-Ad esempio, è possibile configurare lo storage ONTAP on-premise per la connessione a host SAN on-premise o client cloud SAN. È inoltre possibile configurare i servizi di storage in esecuzione in un ambiente cloud, come link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] oppure link:https://docs.netapp.com/us-en/bluexp-fsx-ontap/index.html["Amazon FSX per NetApp ONTAP"^] Per connettersi a host SAN on-premise o client cloud SAN.
+Ad esempio, è possibile configurare l'archiviazione ONTAP locale per connettersi agli host SAN locali o ai client cloud SAN.  È anche possibile configurare servizi di archiviazione in esecuzione su un ambiente cloud comelink:https://docs.netapp.com/us-en/cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Olink:https://docs.netapp.com/us-en/storage-management-fsx-ontap/index.html["Amazon FSX per NetApp ONTAP"^] per connettersi agli host SAN locali o ai client cloud SAN.
 
 .Informazioni correlate
 * link:https://docs.netapp.com/us-en/ontap/san-config/index.html["Riferimento alla configurazione SAN ONTAP"^]
