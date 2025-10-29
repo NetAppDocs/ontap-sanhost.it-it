@@ -1,5 +1,0 @@
-= 
-:allow-uri-read: 
-
-
-Le Windows Host Utilities sono un set di programmi software con documentazione che consentono di connettere i computer host ai dischi virtuali (LUN) su una SAN NetApp .  NetApp consiglia di scaricare e installare l'ultimo kit di utilità.  Per informazioni e istruzioni sulla configurazione di Windows Host Utilities, vederelink:https://docs.netapp.com/us-en/ontap-sanhost/hu-wuhu-release-notes.html["Documentazione di Windows host Utilities"] e seleziona la procedura di installazione per la tua versione di Windows Host Utilities.

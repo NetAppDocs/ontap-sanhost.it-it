@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: hu_windows_2016.html 
-keywords: windows, enterprise 
-summary: Utilizzo di Windows Server 2016 con ONTAP 
+keywords: fcp, iscsi, windows, host, utilities, 2016, ontp, luns, configure 
+summary: Installa Windows Host Utilities su un host Windows Server 2016 per gestire le operazioni del protocollo FCP e iSCSI con LUN ONTAP . 
 ---
-= Utilizzare Windows Server 2016 con ONTAP
+= Configurare Windows Server 2016 per FCP e iSCSI con storage ONTAP
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,53 +16,42 @@ summary: Utilizzo di Windows Server 2016 con ONTAP
 
 
 [role="lead"]
-È possibile utilizzare le impostazioni di configurazione dell'host SAN ONTAP per configurare Windows Server 2016 per il funzionamento con lo storage ONTAP.
+Le utilità host Windows consentono di connettere gli host Windows ai dischi virtuali (LUN) su una SAN NetApp .  Installare Windows Host Utilities su un host Windows Server 2016 per gestire le operazioni del protocollo FCP e iSCSI con LUN ONTAP .
 
 
 
-== Avviare il sistema operativo Windows
+== Passaggio 1: Se lo si desidera, attivare l'avvio SAN
 
-È possibile avviare il sistema operativo Windows utilizzando un avvio locale o un avvio SAN. NetApp consiglia di utilizzare un avvio SAN se supportato dalla configurazione in uso.
+È possibile avviare il sistema operativo Windows tramite un avvio locale o un avvio SAN.  NetApp consiglia di utilizzare un avvio SAN per semplificare la distribuzione e migliorare la scalabilità.
 
 [role="tabbed-block"]
 ====
-.Avvio locale
---
-Eseguire un avvio locale installando il sistema operativo Windows sul disco rigido locale (SSD, SATA, RAID e così via).
-
---
 .Boot SAN
 --
 Se si sceglie di utilizzare l'avvio SAN, questo deve essere supportato dalla propria configurazione.
-
-
-NOTE: È possibile utilizzare le impostazioni di configurazione fornite in questa procedura per configurare i client cloud connessi a link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] e link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX per ONTAP"^].
 
 .Prima di iniziare
 Utilizzare https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^] per verificare che il sistema operativo Windows in uso, l'HBA (host Bus Adapter), il firmware HBA, il BIOS di avvio HBA e la versione ONTAP supportino l'avvio SAN.
 
 .Fasi
-. Mappare il LUN di avvio SAN sull'host.
-+
-Vedere link:https://docs.netapp.com/us-en/ontap/san-management/index.html["Gestione dello storage SAN"^].
-
-. Verificare che siano disponibili più percorsi.
-+
-
-NOTE: I percorsi multipli diventano disponibili solo dopo che il sistema operativo host è attivo e in esecuzione sui percorsi.
-
+. link:https://docs.netapp.com/us-en/ontap/san-management/index.html["Crea un LUN di avvio SAN e mappalo all'host"^].
 . Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN.
 +
 Per informazioni su come attivare il BIOS HBA, consultare la documentazione specifica del vendor.
 
-. Riavviare l'host per verificare che l'avvio sia stato eseguito correttamente
+. Verificare che la configurazione sia stata eseguita correttamente riavviando l'host e verificando che il sistema operativo sia attivo e funzionante.
 
+
+--
+.Avvio locale
+--
+Eseguire un avvio locale installando il sistema operativo Windows sul disco rigido locale, ad esempio su un SSD, SATA o RAID.
 
 --
 ====
 
 
-== Installare gli aggiornamenti rapidi di Windows
+== Passaggio 2: installare gli hotfix di Windows
 
 NetApp consiglia di installare l'aggiornamento cumulativo più recente* disponibile nel catalogo di Microsoft Update sul server host.
 
@@ -77,64 +66,34 @@ NOTE: È necessario contattare il supporto Microsoft per le correzioni rapide ch
 
 
 
-TIP: Molte correzioni rapide richiedono il riavvio dell'host Windows. È possibile scegliere di attendere il riavvio dell'host fino a quando _dopo_ non si installano o aggiornano le utilità host.
+TIP: Molti hotfix richiedono il riavvio dell'host Windows.  È possibile attendere di riavviare l'host fino a _dopo_ aver installato o aggiornato le Host Utilities.
 
 
 
-== Installare le utilità host di Windows
+== Passaggio 3: installare le utilità host di Windows
 
-Le Windows Host Utilities sono un set di programmi software con documentazione che consentono di connettere i computer host ai dischi virtuali (LUN) su una SAN NetApp .  NetApp consiglia di scaricare e installare l'ultimo kit di utilità.  Per informazioni e istruzioni sulla configurazione di Windows Host Utilities, vederelink:https://docs.netapp.com/us-en/ontap-sanhost/hu-wuhu-release-notes.html["Documentazione di Windows host Utilities"] e seleziona la procedura di installazione per la tua versione di Windows Host Utilities.
+Le Windows Host Utilities sono un set di programmi software con documentazione che consentono di connettere i computer host ai dischi virtuali (LUN) su una SAN NetApp .  NetApp consiglia di scaricare e installare le ultime Windows Host Utilities per supportare la gestione ONTAP LUN e aiutare il supporto tecnico a raccogliere i dati di configurazione.
+
+Per informazioni sulla configurazione e l'installazione di Windows Host Utilities, vederelink:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Utilità host Windows"] documentazione e seleziona la procedura di installazione per la tua versione di Windows Host Utilities.
 
 
 
-== Multipathing
+== Passaggio 4: confermare la configurazione multipath per l'host
 
-È necessario installare il software Microsoft Multipath i/o (MPIO) e abilitare il multipathing se l'host Windows ha più di un percorso verso il sistema storage. Quando si seleziona il supporto MPIO, le utilità host Windows attivano la funzione MPIO inclusa in Windows Server 2016. Se non si utilizzano le utilità host di Windows, è necessario abilitare il multipathing manualmente.
+Installare il software Microsoft Multipath I/O (MPIO) e abilitare il multipathing se l'host Windows dispone di più di un percorso verso il sistema di archiviazione.
 
-Il software MPIO presenta un singolo disco al sistema operativo Windows per tutti i percorsi, mentre un modulo DSM (Device Specific Module) gestisce il failover del percorso. In un sistema Windows, i due componenti principali di qualsiasi soluzione MPIO sono DSM e Windows MPIO.
+Su un sistema Windows, i due componenti principali di una soluzione MPIO sono il modulo specifico del dispositivo (DSM) e Windows MPIO.  MPIO presenta un disco al sistema operativo Windows per tutti i percorsi e il DSM gestisce i failover dei percorsi.
 
 
 CAUTION: Se non si installa il software MPIO, il sistema operativo Windows potrebbe vedere ciascun percorso come un disco separato. Questo può causare il danneggiamento dei dati.
 
-[NOTE]
-====
-* Per Windows Host Utilities 8.0, la funzionalità MPIO viene abilitata automaticamente quando si seleziona il supporto MPIO.
-* Windows XP o Windows Vista in esecuzione su una macchina virtuale Hyper-V non supportano MPIO.
 
+NOTE: Windows XP o Windows Vista in esecuzione su una macchina virtuale Hyper-V non supporta MPIO.
 
-====
-
-
-== Configurazione SAN
-
-A seconda della configurazione SAN, l'host utilizza tutte le configurazioni ASA (SAN Array) o non ASA per accedere ai LUN ONTAP. Sia nelle configurazioni ASA che non ASA, non è necessario disporre di più di quattro percorsi per accedere a un singolo LUN ONTAP. Se si dispone di più di quattro percorsi, potrebbero verificarsi problemi con i percorsi durante un errore di storage.
-
-
-
-=== Configurazione di tutti gli array SAN
-
-Una configurazione ASA deve avere un gruppo di percorsi attivi/ottimizzati con singole priorità. Ciò significa che i percorsi vengono gestiti dal controller e l'i/o viene inviato su tutti i percorsi attivi.
-
-L'esempio seguente visualizza l'output corretto per una LUN ONTAP con percorsi attivi/ottimizzati.
-
-image::asa.png[Schermata di ONTAP LUN con percorsi attivi/ottimizzati]
-
-
-
-=== Configurazione non ASA
-
-Una configurazione non ASA deve avere due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono attivi/ottimizzati. In altre parole, i percorsi Active/Optimized vengono gestiti dal controller in cui si trova l'aggregato. I percorsi con priorità più basse sono attivi ma non ottimizzati perché sono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
-
-Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati.
-
-image::nonasa.png[Schermata di una LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati]
-
-
-
-== Impostazioni consigliate
-
-Quando si seleziona MPIO sui sistemi che utilizzano FC, il programma di installazione di host Utilities imposta i valori di timeout richiesti per gli HBA FC Emulex e QLogic.
-
+.Fasi
+. Installare il software MPIO e abilitare il multipathing.
+. Quando si seleziona MPIO sui sistemi che utilizzano FC, il programma di installazione di host Utilities imposta i valori di timeout richiesti per gli HBA FC Emulex e QLogic.
++
 [role="tabbed-block"]
 ====
 .Emulex FC
@@ -168,11 +127,41 @@ I valori di timeout per gli HBA FC QLogic:
 |===
 --
 ====
+. Verificare lo stato del percorso per i LUN ONTAP :
++
+A seconda della configurazione SAN, l'host utilizza le configurazioni ASA, AFF o FAS per accedere ai LUN ONTAP .  Queste configurazioni non dovrebbero richiedere più di quattro percorsi per accedere a una singola LUN ONTAP .  Più di quattro percorsi possono causare problemi in caso di guasto dell'archiviazione.
 
-NOTE: Per ulteriori informazioni sulle impostazioni consigliate, vedere link:hu_wuhu_hba_settings.html["Configurare le impostazioni del Registro di sistema per le utilità host di Windows"].
++
+Gli output di esempio seguenti mostrano le impostazioni corrette per i LUN ONTAP per una configurazione ASA, AFF o FAS .
+
++
+[role="tabbed-block"]
+====
+.Configurazione ASA
+--
+Una configurazione ASA dovrebbe avere un gruppo di percorsi attivi/ottimizzati con priorità singole.  Il controller gestisce i percorsi e invia I/O su tutti i percorsi attivi.
+
+image::asa.png[Schermata di ONTAP LUN con percorsi attivi/ottimizzati]
+
+--
+.Configurazione AFF o FAS
+--
+Una configurazione AFF o FAS dovrebbe avere due gruppi di percorsi con priorità diverse.  I percorsi con priorità più elevate sono attivi/ottimizzati e sono gestiti dal controller in cui si trova l'aggregato.  I percorsi con priorità più basse vengono gestiti da un controller diverso.  Sono attivi ma non ottimizzati e vengono utilizzati solo quando non sono disponibili percorsi ottimizzati.
+
+image::nonasa.png[Schermata di una LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati]
+
+--
+====
 
 
 
-== Problemi noti
 
-Non esistono problemi noti per Windows Server 2016 con ONTAP.
+== Passaggio 5: rivedere i problemi noti
+
+Non ci sono problemi noti.
+
+
+
+== Quali sono le prossime novità?
+
+link:hu_wuhu_hba_settings.html["Scopri di più sulle impostazioni del registro per Windows Host Utilities"].

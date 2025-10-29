@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: nvme-windows-2025.html 
 keywords: nvme, windows, enterprise 
-summary: Configurazione host NVMe/FC per Windows Server 2052 con ONTAP 
+summary: Configurazione host NVMe/FC per Windows Server 2025 con ONTAP. 
 ---
 = Configurare Windows Server 2025 con NVMe/FC per ONTAP
 :hardbreaks:

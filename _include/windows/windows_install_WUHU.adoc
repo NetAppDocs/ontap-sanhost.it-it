@@ -1,0 +1,11 @@
+= Passaggio 3: installare le utilità host di Windows
+:allow-uri-read: 
+
+
+
+
+== Passaggio 3: installare le utilità host di Windows
+
+Le Windows Host Utilities sono un set di programmi software con documentazione che consentono di connettere i computer host ai dischi virtuali (LUN) su una SAN NetApp .  NetApp consiglia di scaricare e installare le ultime Windows Host Utilities per supportare la gestione ONTAP LUN e aiutare il supporto tecnico a raccogliere i dati di configurazione.
+
+Per informazioni sulla configurazione e l'installazione di Windows Host Utilities, vederelink:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Utilità host Windows"] documentazione e seleziona la procedura di installazione per la tua versione di Windows Host Utilities.

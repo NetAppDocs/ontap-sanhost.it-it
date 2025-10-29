@@ -127,7 +127,7 @@ NOTE: HKLM è l'abbreviazione di `HKEY_LOCAL_MACHINE`.
 | 60 | Quando viene specificato il supporto MPIO 
 
 
-| Quando non è selezionato alcun supporto MPIO | HKLM/SYSTEM/CurrentControlSet/Services/mpio/Parameters/UseCustomPathRecoveryInterval | 1 
+| HKLM/SYSTEM/CurrentControlSet/Services/mpio/Parameters/UseCustomPathRecoveryInterval | 1 | Quando è specificato il supporto MPIO e il server è Windows Server 2025, 2022, 2019 o 2016 
 |===
 --
 .Parametri NVMe

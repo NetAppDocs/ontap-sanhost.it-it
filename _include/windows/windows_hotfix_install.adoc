@@ -9,4 +9,4 @@ NOTE: È necessario contattare il supporto Microsoft per le correzioni rapide ch
 
 
 
-TIP: Molte correzioni rapide richiedono il riavvio dell'host Windows. È possibile scegliere di attendere il riavvio dell'host fino a quando _dopo_ non si installano o aggiornano le utilità host.
+TIP: Molti hotfix richiedono il riavvio dell'host Windows.  È possibile attendere di riavviare l'host fino a _dopo_ aver installato o aggiornato le Host Utilities.

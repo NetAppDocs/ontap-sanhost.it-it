@@ -1,0 +1,81 @@
+= Passaggio 4: confermare la configurazione multipath per l'host
+:allow-uri-read: 
+
+
+
+
+== Passaggio 4: confermare la configurazione multipath per l'host
+
+Installare il software Microsoft Multipath I/O (MPIO) e abilitare il multipathing se l'host Windows dispone di più di un percorso verso il sistema di archiviazione.
+
+Su un sistema Windows, i due componenti principali di una soluzione MPIO sono il modulo specifico del dispositivo (DSM) e Windows MPIO.  MPIO presenta un disco al sistema operativo Windows per tutti i percorsi e il DSM gestisce i failover dei percorsi.
+
+
+CAUTION: Se non si installa il software MPIO, il sistema operativo Windows potrebbe vedere ciascun percorso come un disco separato. Questo può causare il danneggiamento dei dati.
+
+
+NOTE: Windows XP o Windows Vista in esecuzione su una macchina virtuale Hyper-V non supporta MPIO.
+
+.Fasi
+. Installare il software MPIO e abilitare il multipathing.
+. Quando si seleziona MPIO sui sistemi che utilizzano FC, il programma di installazione di host Utilities imposta i valori di timeout richiesti per gli HBA FC Emulex e QLogic.
++
+[role="tabbed-block"]
+====
+.Emulex FC
+--
+I valori di timeout per gli HBA FC Emulex:
+
+[cols="2*"]
+|===
+| Tipo di proprietà | Valore della proprietà 
+
+
+| LinkTimeOut | 1 
+
+
+| NodeTimeOut | 10 
+|===
+--
+.FC QLogic
+--
+I valori di timeout per gli HBA FC QLogic:
+
+[cols="2*"]
+|===
+| Tipo di proprietà | Valore della proprietà 
+
+
+| LinkDownTimeOut | 1 
+
+
+| PortDownRetryCount | 10 
+|===
+--
+====
+. Verificare lo stato del percorso per i LUN ONTAP :
++
+A seconda della configurazione SAN, l'host utilizza le configurazioni ASA, AFF o FAS per accedere ai LUN ONTAP .  Queste configurazioni non dovrebbero richiedere più di quattro percorsi per accedere a una singola LUN ONTAP .  Più di quattro percorsi possono causare problemi in caso di guasto dell'archiviazione.
+
++
+Gli output di esempio seguenti mostrano le impostazioni corrette per i LUN ONTAP per una configurazione ASA, AFF o FAS .
+
++
+[role="tabbed-block"]
+====
+.Configurazione ASA
+--
+Una configurazione ASA dovrebbe avere un gruppo di percorsi attivi/ottimizzati con priorità singole.  Il controller gestisce i percorsi e invia I/O su tutti i percorsi attivi.
+
+image::asa.png[Schermata di ONTAP LUN con percorsi attivi/ottimizzati]
+
+--
+.Configurazione AFF o FAS
+--
+Una configurazione AFF o FAS dovrebbe avere due gruppi di percorsi con priorità diverse.  I percorsi con priorità più elevate sono attivi/ottimizzati e sono gestiti dal controller in cui si trova l'aggregato.  I percorsi con priorità più basse vengono gestiti da un controller diverso.  Sono attivi ma non ottimizzati e vengono utilizzati solo quando non sono disponibili percorsi ottimizzati.
+
+image::nonasa.png[Schermata di una LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati]
+
+--
+====
+
