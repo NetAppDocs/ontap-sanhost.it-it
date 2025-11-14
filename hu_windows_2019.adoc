@@ -34,7 +34,7 @@ Se si sceglie di utilizzare l'avvio SAN, questo deve essere supportato dalla pro
 Utilizzare https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^] per verificare che il sistema operativo Windows in uso, l'HBA (host Bus Adapter), il firmware HBA, il BIOS di avvio HBA e la versione ONTAP supportino l'avvio SAN.
 
 .Fasi
-. link:https://docs.netapp.com/us-en/ontap/san-management/index.html["Crea un LUN di avvio SAN e mappalo all'host"^].
+. link:https://docs.netapp.com/us-en/ontap/san-admin/provision-storage.html["Crea un LUN di avvio SAN e mappalo all'host"^].
 . Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN.
 +
 Per informazioni su come attivare il BIOS HBA, consultare la documentazione specifica del vendor.
