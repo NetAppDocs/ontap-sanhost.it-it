@@ -1,0 +1,75 @@
+---
+sidebar: sidebar 
+permalink: nvme-rockylinux-supported-features.html 
+keywords: nvme, linux, rocky linux, red hat, enterprise 
+summary: Scopri il supporto e le funzionalità ONTAP per Rocky Linux 
+---
+= Scopri il supporto e le funzionalità ONTAP per Rocky Linux
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Le funzionalità supportate per la configurazione host con NVMe over Fabrics (NVMe-oF) variano in base alla versione di ONTAP e Rocky Linux.
+
+[cols="50,25,25"]
+|===
+| Caratteristica | Versione host Rocky Linux | Versione ONTAP 
+
+
+| L'autenticazione in-band sicura è supportata tramite NVMe/TCP tra un host RHEL e un controller ONTAP  a| 
+9.3 o successivo
+| 9.12.1 o successivo 
+
+
+| NVMe/TCP fornisce spazi dei nomi utilizzando il nativo `nvme-cli` pacchetto  a| 
+8.2 o successivo
+| 9.10.1 o successivo 
+
+
+| NVMe/TCP è una funzionalità aziendale completamente supportata  a| 
+9.0 o successivo
+| 9.10.1 o successivo 
+
+
+| Il traffico NVMe e SCSI è supportato sullo stesso host utilizzando NVMe multipath per gli spazi dei nomi NVMe-oF e dm-multipath per le LUN SCSI  a| 
+8.2 o successivo
+| 9.4 o successivo 
+|===
+ONTAP supporta le seguenti funzionalità host SAN indipendentemente dalla versione ONTAP in esecuzione sulla configurazione del sistema.
+
+[cols="75,25"]
+|===
+| Caratteristica | Versione host Rocky Linux 
+
+
+| Il multipathing NVMe nativo è abilitato per impostazione predefinita  a| 
+10.0 o successivo
+
+
+
+| L'avvio SAN è abilitato tramite il protocollo NVMe/FC  a| 
+9.4 o successivo
+
+
+
+| IL `nvme-cli` il pacchetto include script di connessione automatica che eliminano la necessità di script di terze parti  a| 
+8.2 o successivo
+
+
+
+| La regola nativa udev in `nvme-cli` il pacchetto fornisce il bilanciamento del carico round-robin per NVMe multipath  a| 
+8.2 o successivo
+
+|===
+
+NOTE: Per i dettagli sulle configurazioni supportate, vederelink:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^] .
+
+.Informazioni correlate
+link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["Scopri di più sulla gestione dei protocolli NVMe"]

@@ -1,0 +1,5 @@
+= 
+:allow-uri-read: 
+
+
+Gli host Oracle Linux supportano i protocolli NVMe su Fibre Channel (NVMe/FC) e NVMe su TCP (NVMe/TCP) con Asymmetric Namespace Access (ANA). ANA fornisce funzionalità multipathing equivalenti all'accesso asimmetrico alle unità logiche (ALUA) negli ambienti iSCSI e FCP.

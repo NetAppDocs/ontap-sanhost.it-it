@@ -16,7 +16,7 @@ summary: NVMe-of host Configuration per Oracle Linux 8,10 con ONTAP
 
 
 [role="lead"]
-Gli host Red Hat Enterprise Linux (RHEL) supportano i protocolli NVMe su Fibre Channel (NVMe/FC) e NVMe su TCP (NVMe/TCP) con Asymmetric Namespace Access (ANA).  ANA fornisce funzionalità multipathing equivalenti all'accesso asimmetrico alle unità logiche (ALUA) negli ambienti iSCSI e FCP.
+Gli host Oracle Linux supportano i protocolli NVMe su Fibre Channel (NVMe/FC) e NVMe su TCP (NVMe/TCP) con Asymmetric Namespace Access (ANA). ANA fornisce funzionalità multipathing equivalenti all'accesso asimmetrico alle unità logiche (ALUA) negli ambienti iSCSI e FCP.
 
 .A proposito di questa attività
 È possibile utilizzare il seguente supporto e caratteristiche con la configurazione host NVMe-of per Oracle Linux 8,10. Prima di avviare il processo di configurazione, è inoltre necessario esaminare le limitazioni note.

@@ -2,4 +2,4 @@
 :allow-uri-read: 
 
 
-Verificare che il sistema soddisfi i requisiti software e verificare le installazioni dei pacchetti NVMe e la configurazione dell'host.
+Per configurare l'host per NVMe-oF è necessario installare i pacchetti software host e NVMe, abilitare il multipathing e verificare la configurazione NQN dell'host.
