@@ -156,6 +156,12 @@ image::nonasa.png[Schermata di una LUN ONTAP con due percorsi attivi/ottimizzati
 
 
 
-== Problemi noti
+== Passaggio 5: rivedere i problemi noti
 
-Non esistono problemi noti per Windows Server 2025 con ONTAP.
+Non ci sono problemi noti.
+
+
+
+== Quali sono le prossime novità?
+
+link:hu_wuhu_hba_settings.html["Scopri di più sulle impostazioni del registro per Windows Host Utilities"].

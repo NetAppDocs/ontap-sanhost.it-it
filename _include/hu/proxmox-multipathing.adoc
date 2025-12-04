@@ -1,0 +1,176 @@
+= 
+:allow-uri-read: 
+
+
+Per verificare che il multipathing sia configurato correttamente per l'host, verificare che il `/etc/multipath.conf` file sia definito e che siano configurate le impostazioni consigliate da NetApp per i LUN ONTAP.
+
+.Fasi
+. Verificare che il `/etc/multipath.conf` file venga chiuso. Se il file non esiste, creare un file vuoto a zero byte:
++
+[source, cli]
+----
+touch /etc/multipath.conf
+----
+. La prima volta che `multipath.conf` si crea il file, potrebbe essere necessario attivare e avviare i servizi multipath per caricare le impostazioni consigliate:
++
+[source, cli]
+----
+systemctl enable multipathd
+----
++
+[source, cli]
+----
+systemctl start multipathd
+----
+. Ogni volta che si avvia l'host, il file vuoto `/etc/multipath.conf` con zero byte carica automaticamente i parametri multipath dell'host raccomandati da NetApp come impostazioni predefinite. Non è necessario apportare modifiche al `/etc/multipath.conf` file per l'host perché il sistema operativo è compilato con i parametri multipath che riconoscono e gestiscono correttamente i LUN ONTAP.
++
+La tabella seguente mostra le impostazioni dei parametri multipercorso compilati nativi del sistema operativo Linux per i LUN ONTAP.
+
++
+.Mostra impostazioni parametri
+[%collapsible]
+====
+[cols="2"]
+|===
+| Parametro | Impostazione 
+
+
+| detect_prio | sì 
+
+
+| dev_loss_tmo | "infinito" 
+
+
+| failback | immediato 
+
+
+| fast_io_fail_tmo | 5 
+
+
+| caratteristiche | "2 pg_init_retries 50" 
+
+
+| flush_on_last_del | "Sempre" 
+
+
+| gestore_hardware | "1" 
+
+
+| no_path_retry | coda 
+
+
+| path_checker | "a" 
+
+
+| policy_di_raggruppamento_percorsi | "group_by_prio" 
+
+
+| path_selector | "tempo di servizio 0" 
+
+
+| intervallo_polling | 5 
+
+
+| prio | "ONTAP" 
+
+
+| prodotto | LUN 
+
+
+| retain_attached_hw_handler | sì 
+
+
+| peso_rr | "uniforme" 
+
+
+| user_friendly_names | no 
+
+
+| vendor | NETAPP 
+|===
+====
+. Facoltativamente, sovrascrivere il valore predefinito per `find_multipaths` parametro per garantire che le LUN ONTAP vengano rilevate e gestite correttamente da multipathd:
++
+--
+.. Impostato `find_multipaths` su "no" nella sezione predefinita di `/etc/multipath.conf` :
++
+[source, cli]
+----
+defaults {
+    find_multipaths "no"
+}
+----
+.. Ricarica il servizio multipath:
++
+[source, cli]
+----
+systemctl reload multipathd
+----
+
+
+--
++
+
+NOTE: Per impostazione predefinita, la configurazione multipath nativa del sistema operativo Proxmox imposta `find_multipaths` a "*strict*" con il byte zero vuoto `/etc/multipath.conf` file di configurazione ogni volta che si avvia l'host.  Ciò può impedire all'host di rilevare i LUN ONTAP appena presentati come dispositivi multipath, il che significa che non vengono visualizzati automaticamente sotto il controllo multipath.  Le LUN ONTAP esistenti rimangono scoperte e sotto il controllo multipath dopo ogni riavvio.
+
+. Verificare le impostazioni dei parametri e lo stato del percorso dei LUN ONTAP:
++
+[source, cli]
+----
+multipath -ll
+----
++
+I parametri multipath predefiniti supportano le configurazioni ASA, AFF e FAS. In queste configurazioni, una singola LUN ONTAP non deve richiedere più di quattro percorsi. Se sono presenti più di quattro percorsi, potrebbero verificarsi problemi con i percorsi durante un errore di storage.
+
++
+I seguenti output di esempio mostrano le impostazioni corrette dei parametri e lo stato del percorso per i LUN ONTAP in una configurazione ASA, AFF o FAS.
+
++
+[role="tabbed-block"]
+====
+.Configurazione ASA
+--
+Una configurazione ASA ottimizza tutti i percorsi verso una determinata LUN, mantenendoli attivi. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
+
+.Mostra esempio
+[%collapsible]
+=====
+[listing]
+----
+multipath -ll
+3600a098038315071592b59713261566d dm-38 NETAPP,LUN C-Mode
+size=100G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 8:0:0:7 sdbv 68:144 active ready running
+  |- 9:0:0:7 sdbx 68:176 active ready running
+  |- 6:0:0:7 sdbr 68:80  active ready running
+  `- 7:0:0:7 sdbt 68:112 active ready running
+
+----
+=====
+--
+.Configurazione AFF o FAS
+--
+Una configurazione AFF o FAS deve avere due gruppi di percorsi con priorità maggiore e minore. I percorsi Active/Optimized di priorità più elevata sono serviti dal controller in cui si trova l'aggregato. I percorsi a priorità inferiore sono attivi ma non ottimizzati perché serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando non sono disponibili percorsi ottimizzati.
+
+L'esempio seguente mostra l'output per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:
+
+.Mostra esempio
+[%collapsible]
+=====
+[listing]
+----
+multipath -ll
+3600a0980383149764b5d567257516273 dm-0 NETAPP,LUN C-Mode
+size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 16:0:3:0  sdcg 69:64  active ready running
+| `- 10:0:0:0  sdb  8:16   active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+  |- 10:0:1:0  sdc  8:32   active ready running
+  `- 16:0:2:0  sdcf 69:48  active ready running
+----
+=====
+--
+====
+

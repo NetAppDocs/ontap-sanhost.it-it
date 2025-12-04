@@ -1,0 +1,37 @@
+= Passaggio 3: personalizzare i parametri multipath per le LUN ONTAP
+:allow-uri-read: 
+
+
+
+
+== Passaggio 3: personalizzare i parametri multipath per le LUN ONTAP
+
+Se l'host è connesso a LUN di altri fornitori e le impostazioni dei parametri multipath vengono sovrascritte, è necessario correggerle aggiungendo più avanti nel `multipath.conf` file che si applicano specificamente ai LUN di ONTAP. In caso contrario, i LUN di ONTAP potrebbero non funzionare come previsto.
+
+Controllare il file, in particolare nella sezione dei valori predefiniti, per verificare `/etc/multipath.conf` le impostazioni che potrebbero sovrascrivere <<multipath-parameter-settings,impostazioni predefinite per i parametri multipath>>.
+
+
+CAUTION: Non sovrascrivere le impostazioni dei parametri consigliate per i LUN ONTAP. Queste impostazioni sono necessarie per ottenere prestazioni ottimali della configurazione host. Per ulteriori informazioni, contattare l'assistenza NetApp, il fornitore del sistema operativo o entrambi.
+
+Nell'esempio seguente viene illustrato come correggere un valore predefinito sovrascritto. In questo esempio, il `multipath.conf` file definisce i valori per `path_checker` e `no_path_retry` che non sono compatibili con i LUN ONTAP e non è possibile rimuovere questi parametri perché gli array di storage ONTAP sono ancora collegati all'host. È invece possibile correggere i valori per `path_checker` e `no_path_retry` aggiungendo una stanza di dispositivo al `multipath.conf` file che si applica specificamente ai LUN di ONTAP.
+
+.Mostra esempio
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+defaults {
+   path_checker      *readsector0*
+   no_path_retry     *fail*
+}
+
+devices {
+   device {
+      vendor          "NETAPP"
+      product         "LUN"
+      no_path_retry   *queue*
+      path_checker    *tur*
+   }
+}
+----
+====
