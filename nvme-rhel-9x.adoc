@@ -866,7 +866,6 @@ Imposta l'autenticazione in-band sicura tramite la CLI o un file JSON di configu
 --
 Configurare l'autenticazione in banda protetta utilizzando la CLI.
 
-.Fasi
 . Ottenere l'NQN dell'host:
 +
 [source, cli]
@@ -961,7 +960,6 @@ Quando più sottosistemi NVMe sono disponibili sul controller ONTAP , è possibi
 
 Utilizzare il `-o` opzione per generare il file JSON.  Per ulteriori opzioni di sintassi, fare riferimento alle pagine man di NVMe connect-all.
 
-.Fasi
 . Configurare il file JSON.
 +
 
@@ -1101,5 +1099,5 @@ Ecco i problemi noti:
 | 1503468 | In RHEL 9.1, il `nvme list-subsys` il comando restituisce l'elenco ripetuto del controller nvme per un dato sottosistema | IL `nvme list-subsys` Il comando restituisce un elenco di controller NVMe per un dato sottosistema.  In RHEL 9.1, questo comando mostra i controller con il loro stato ANA per tutti gli spazi dei nomi nel sottosistema.  Poiché lo stato ANA è un attributo per namespace, il comando dovrebbe visualizzare voci univoche del controller con lo stato del percorso per ogni namespace. 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | Gli host RHEL 9.0 NVMe-oF creano controller di rilevamento persistente (PDC) duplicati | Sugli host NVMe-oF, è possibile utilizzare il comando "nvme discover -p" per creare PDC.  Quando si utilizza questo comando, è necessario creare un solo PDC per ogni combinazione iniziatore-destinazione.  Tuttavia, se si esegue ONTAP 9.10.1 e RHEL 9.0 con un host NVMe-oF, viene creato un PDC duplicato ogni volta che viene eseguito "nvme discover -p".  Ciò comporta un utilizzo non necessario delle risorse sia sull'host che sulla destinazione. 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | Gli host RHEL 9.0 NVMe-oF creano controller di rilevamento persistente (PDC) duplicati | Sugli host NVMe-oF, è possibile utilizzare il comando `nvme discover -p`per creare PDC. Quando si utilizza questo comando, è necessario creare un solo PDC per ogni combinazione iniziatore-destinazione. Tuttavia, se si eseguono ONTAP 9.10.1 e RHEL 9.0 con un host NVMe-oF, viene creato un PDC duplicato ogni volta che `nvme discover -p` viene eseguito. Ciò comporta un utilizzo non necessario delle risorse sia sull'host che sulla destinazione. 
 |===

@@ -455,7 +455,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
-== Passaggio 5: convalida NVMe-oF
+== Passaggio 5: verificare la configurazione del multipathing
 
 Verificare che lo stato multipath NVMe in-kernel, lo stato ANA e i namespace ONTAP siano corretti per la configurazione NVMe-of.
 
