@@ -1,0 +1,12 @@
+= Fase 2: Installare le utilità host Linux
+:allow-uri-read: 
+
+
+
+
+== Fase 2: Installare le utilità host Linux
+
+NetApp consiglia vivamente link:hu-luhu-release-notes.html["installazione delle utilità host Linux"] per supportare la gestione ONTAP LUN e assistere il supporto tecnico nella raccolta dei dati di configurazione.
+
+
+NOTE: L'installazione di Linux host Utilities non modifica le impostazioni di timeout dell'host sul proprio host Linux.

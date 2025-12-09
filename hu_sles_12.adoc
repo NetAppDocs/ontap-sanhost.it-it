@@ -158,7 +158,7 @@ La tabella seguente mostra le impostazioni dei parametri multipercorso compilati
 multipath -ll
 ----
 +
-I parametri multipath predefiniti supportano le configurazioni ASA, AFF e FAS. In queste configurazioni, una singola LUN ONTAP non deve richiedere più di quattro percorsi. Se sono presenti più di quattro percorsi, potrebbero verificarsi problemi con i percorsi durante un errore di storage.
+I parametri multipath predefiniti supportano le configurazioni ASA, AFF e FAS . In queste configurazioni, una singola LUN ONTAP non dovrebbe richiedere più di quattro percorsi. Avere più di quattro percorsi può causare problemi in caso di guasto dell'archiviazione.
 
 +
 I seguenti output di esempio mostrano le impostazioni corrette dei parametri e lo stato del percorso per i LUN ONTAP in una configurazione ASA, AFF o FAS.
