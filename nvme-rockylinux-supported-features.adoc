@@ -71,5 +71,22 @@ ONTAP supporta le seguenti funzionalità host SAN indipendentemente dalla versio
 
 NOTE: Per i dettagli sulle configurazioni supportate, vederelink:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^] .
 
+
+
+== Cosa c'è dopo?
+
+[cols="50,50"]
+|===
+| Se la tua versione di Rocky Linux è .. | Scopri di più su .. 
+
+
+| 10 serie | link:nvme-rockylinux-10x.html["Configurazione di NVMe per Rocky Linux 10.x"] 
+
+
+| Serie 9 | link:nvme-rockylinux-9x.html["Configurazione di NVMe per Rocky Linux 9.x"] 
+
+
+| Serie 8 | link:nvme-rockylinux-8x.html["Configurazione di NVMe per Rocky Linux 8.x"] 
+|===
 .Informazioni correlate
 link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["Scopri di più sulla gestione dei protocolli NVMe"]

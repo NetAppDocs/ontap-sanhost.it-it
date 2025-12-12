@@ -44,7 +44,7 @@ L'esempio seguente mostra un  `hostnqn` versione:
 ----
 nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
 ----
-. Verificare che il `hostnqn` la stringa corrisponde a. `hostnqn` Stringa per il sottosistema corrispondente sull'array ONTAP:
+. Sul sistema ONTAP , verificare che `hostnqn` la stringa corrisponde a `hostnqn` stringa per il sottosistema corrispondente nell'array ONTAP :
 +
 [source, cli]
 ----
