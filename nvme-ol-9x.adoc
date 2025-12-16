@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: nvme-ol-9x.html 
-keywords: nvme, oracle linux, 9x, host configuration 
-summary: Configurazione host NVMe-oF per Oracle Linux 9x con ONTAP 
+keywords: nvme, oracle linux, 9.x, host configuration 
+summary: Configurazione host NVMe-oF per Oracle Linux 9.x con ONTAP 
 ---
-= Configurare Oracle Linux 9x con NVMe-oF per l'archiviazione ONTAP
+= Configurare Oracle Linux 9.x con NVMe-oF per l'archiviazione ONTAP
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -18,9 +18,9 @@ summary: Configurazione host NVMe-oF per Oracle Linux 9x con ONTAP
 [role="lead"]
 Gli host Oracle Linux supportano i protocolli NVMe su Fibre Channel (NVMe/FC) e NVMe su TCP (NVMe/TCP) con Asymmetric Namespace Access (ANA). ANA fornisce funzionalità multipathing equivalenti all'accesso asimmetrico alle unità logiche (ALUA) negli ambienti iSCSI e FCP.
 
-Scopri come configurare gli host NVMe over Fabrics (NVMe-oF) per Oracle Linux 9x. Per ulteriori informazioni sul supporto e sulle funzionalità, vedere link:nvme-ol-supported-features.html["Supporto e funzionalità di Oracle Linux ONTAP"].
+Scopri come configurare gli host NVMe over Fabrics (NVMe-oF) per Oracle Linux 9.x. Per ulteriori informazioni sul supporto e sulle funzionalità, vedere link:nvme-ol-supported-features.html["Supporto e funzionalità di Oracle Linux ONTAP"].
 
-NVMe-oF con Oracle Linux 9x presenta le seguenti limitazioni note:
+NVMe-oF con Oracle Linux 9.x presenta le seguenti limitazioni note:
 
 * L'avvio SAN tramite il protocollo NVMe-oF non è supportato.
 * IL `nvme disconnect-all` Il comando disconnette sia il file system root che quello dati e potrebbe causare instabilità del sistema.  Non eseguire questa operazione su sistemi che si avviano da SAN tramite namespace NVMe-TCP o NVMe-FC.
@@ -45,10 +45,10 @@ Per informazioni su come attivare il BIOS HBA, consultare la documentazione spec
 
 == Passaggio 2: installa il software Oracle Linux e NVMe e verifica la configurazione
 
-Utilizzare la seguente procedura per convalidare le versioni minime supportate del software Oracle Linux 9x.
+Utilizzare la seguente procedura per convalidare le versioni minime supportate del software Oracle Linux 9.x.
 
 .Fasi
-. Installare Oracle Linux 9x sul server.  Una volta completata l'installazione, verificare di avere in esecuzione il kernel Oracle Linux 9x specificato.
+. Installare Oracle Linux 9.x sul server. Una volta completata l'installazione, verificare di avere in esecuzione il kernel Oracle Linux 9.x specificato.
 +
 [source, cli]
 ----
@@ -90,7 +90,7 @@ L'esempio seguente mostra un  `libnvme` versione del pacchetto:
 ----
 libnvme-1.9-3.el9.x86_64
 ----
-. Sull'host Oracle Linux 9x, controllare `hostnqn` stringa a `/etc/nvme/hostnqn` :
+. Sull'host Oracle Linux 9.x, controllare `hostnqn` stringa a `/etc/nvme/hostnqn` :
 +
 [source, cli]
 ----
@@ -763,7 +763,7 @@ nvme netapp ontapdevices -o json
 
 == Passaggio 7: impostare l'autenticazione in-band sicura
 
-L'autenticazione in-band sicura è supportata tramite NVMe/TCP tra un host Oracle Linux 9x e un controller ONTAP .
+L'autenticazione in-band sicura è supportata tramite NVMe/TCP tra un host Oracle Linux 9.x e un controller ONTAP .
 
 Per impostare l'autenticazione sicura, ogni host o controller deve essere associato a una chiave DH-HMAC-CHAP.  Una chiave DH-HMAC-CHAP è una combinazione dell'NQN dell'host o del controller NVMe e di un segreto di autenticazione configurato dall'amministratore.  Per autenticare il suo peer, un host o un controller NVMe deve riconoscere la chiave associata al peer.
 

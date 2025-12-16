@@ -78,13 +78,13 @@ NOTE: Per i dettagli sulle configurazioni supportate, vederelink:https://mysuppo
 | Se la tua versione di Oracle Linux è .. | Scopri di più su .. 
 
 
-| Serie 9 | link:nvme-ol-9x.html["Configurazione di NVMe per Oracle Linux 9x"] 
+| Serie 9 | link:nvme-ol-9x.html["Configurazione di NVMe per Oracle Linux 9.x"] 
 
 
-| Serie 8 | link:nvme-ol-8x.html["Configurazione di NVMe per Oracle Linux 8x"] 
+| Serie 8 | link:nvme-ol-8x.html["Configurazione di NVMe per Oracle Linux 8.x"] 
 
 
-| Serie 7 | link:nvme-ol-7x.html["Configurazione di NVMe per Oracle Linux 7x"] 
+| Serie 7 | link:nvme-ol-7x.html["Configurazione di NVMe per Oracle Linux 7.x"] 
 |===
 .Informazioni correlate
 link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["Scopri di più sulla gestione dei protocolli NVMe"^]

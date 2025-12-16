@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu-rockylinux-10.html 
-keywords: host utilities, rocky, linux, 10, netapp, ontap 
-summary: Installare Linux Host Utilities su un host Rocky Linux 10 per gestire le operazioni del protocollo FCP e iSCSI con LUN ONTAP. 
+permalink: hu-rockylinux-10x.html 
+keywords: host utilities, rocky, linux, 10.x, netapp, ontap 
+summary: Installare Linux Host Utilities su un host Rocky Linux 10.x per gestire le operazioni del protocollo FCP e iSCSI con LUN ONTAP . 
 ---
-= Configurare Rocky Linux 10 per FCP e iSCSI con storage ONTAP
+= Configurare Rocky Linux 10.x per FCP e iSCSI con storage ONTAP
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: Installare Linux Host Utilities su un host Rocky Linux 10 per gestire l
 
 
 [role="lead"]
-Il software Linux host Utilities fornisce strumenti di gestione e diagnostica per gli host Linux connessi allo storage ONTAP. Quando si installa Linux Host Utilities su un host Rocky Linux 10, è possibile utilizzare Host Utilities per gestire le operazioni del protocollo FCP e iSCSI con LUN ONTAP.
+Il software Linux Host Utilities fornisce strumenti di gestione e diagnostica per gli host Linux connessi allo storage ONTAP . Quando si installa Linux Host Utilities su un host Rocky Linux 10.x, è possibile utilizzare Host Utilities per gestire le operazioni del protocollo FCP e iSCSI con LUN ONTAP .
 
 
 NOTE: Non è necessario configurare manualmente le impostazioni della macchina virtuale basata sul kernel (KVM) perché le LUN ONTAP vengono automaticamente mappate sull'hypervisor.
@@ -54,7 +54,7 @@ NOTE: L'installazione di Linux host Utilities non modifica le impostazioni di ti
 
 == Fase 3: Verificare la configurazione multipath per l'host
 
-Con Rocky Linux 10 è possibile utilizzare il multipathing per gestire le LUN ONTAP.
+Con Rocky Linux 10.x è possibile utilizzare il multipathing per gestire le LUN ONTAP .
 
 Per verificare che il multipathing sia configurato correttamente per l'host, verificare che il `/etc/multipath.conf` file sia definito e che siano configurate le impostazioni consigliate da NetApp per i LUN ONTAP.
 

@@ -24,7 +24,7 @@ Le funzionalità supportate per la configurazione host con NVMe over Fabrics (NV
 
 
 | Fornisce dettagli ONTAP per gli spazi dei nomi NVMe/FC e NVMe/TCP utilizzando il nativo `nvme-cli` pacchetto.  a| 
-9.0
+8.0
 | 9.10.1 o successivo 
 
 
@@ -34,7 +34,7 @@ Le funzionalità supportate per la configurazione host con NVMe over Fabrics (NV
 
 
 | Il traffico NVMe e SCSI è supportato sullo stesso host utilizzando NVMe multipath per gli spazi dei nomi NVMe-oF e dm-multipath per le LUN SCSI  a| 
-9.0
+8.0
 | 9.4 o successivo 
 |===
 ONTAP supporta le seguenti funzionalità host SAN indipendentemente dalla versione ONTAP in esecuzione sulla configurazione del sistema.
@@ -45,7 +45,7 @@ ONTAP supporta le seguenti funzionalità host SAN indipendentemente dalla versio
 
 
 | Il multipathing NVMe nativo è abilitato per impostazione predefinita  a| 
-9.0
+8.0
 
 
 
@@ -65,7 +65,15 @@ NOTE: Per i dettagli sulle configurazioni supportate, vederelink:https://mysuppo
 
 == Cosa c'è dopo?
 
-link:nvme-proxmox-ve-9x.html["Scopri come configurare Proxmox VE 9.0"]
+[cols="50,50"]
+|===
+| Se la tua versione di Proxmox VE è .. | Scopri di più su .. 
 
+
+| Serie 9 | link:nvme-proxmox-ve-9x.html["Configurazione di NVMe per Proxmox VE 9.x"] 
+
+
+| Serie 8 | link:nvme-proxmox-ve-8x.html["Configurazione di NVMe per Proxmox VE 8.x"] 
+|===
 .Informazioni correlate
 link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["Scopri di più sulla gestione dei protocolli NVMe"^]

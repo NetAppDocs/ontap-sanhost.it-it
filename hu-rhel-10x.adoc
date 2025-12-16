@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu-proxmox-ve-9x.html 
-keywords: proxmox, VE, 9.x, netapp, ontap, iscsi, fcp 
-summary: Installare Linux Host Utilities su un host Proxmox VE 9.x per gestire le operazioni del protocollo FCP e iSCSI con LUN ONTAP . 
+permalink: hu-rhel-10x.html 
+keywords: host utilities, red hat, rhel, linux, 10.x, netapp, ontap, rhel 
+summary: Installare Linux Host Utilities su un host RHEL 10.x per gestire le operazioni del protocollo FCP e iSCSI con LUN ONTAP . 
 ---
-= Configurare Proxmox VE 9.x per FCP e iSCSI con storage ONTAP
+= Configurare RHEL 10.x per FCP e iSCSI con storage ONTAP
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,19 +16,45 @@ summary: Installare Linux Host Utilities su un host Proxmox VE 9.x per gestire l
 
 
 [role="lead"]
-Configurare Proxmox VE 9.x per il multipathing e con parametri e impostazioni specifici per le operazioni del protocollo FCP e iSCSI con storage ONTAP .
+Il software Linux Host Utilities fornisce strumenti di gestione e diagnostica per gli host Linux connessi allo storage ONTAP . Quando si installano le Linux Host Utilities su un host Red Hat Enterprise Linux (RHEL) 10.x, è possibile utilizzare le Host Utilities per gestire le operazioni del protocollo FCP e iSCSI con LUN ONTAP .
 
-FCP e iSCSI con Proxmox VE 9.x presentano le seguenti limitazioni note:
 
-* Linux Host Utilities non supporta i sistemi operativi Proxmox VE 9.x.
-* La configurazione di avvio SAN non è supportata.
+NOTE: Non è necessario configurare manualmente le impostazioni della macchina virtuale basata sul kernel (KVM) perché le LUN ONTAP vengono automaticamente mappate sull'hypervisor.
 
 
 
+== Passaggio 1: Se lo si desidera, attivare l'avvio SAN
 
-== Passaggio 1: confermare la configurazione multipath per l'host
+È possibile configurare l'host in modo che utilizzi l'avvio SAN per semplificare l'installazione e migliorare la scalabilità.
 
-È possibile utilizzare il multipathing con Proxmox VE 9.x per gestire le LUN ONTAP .
+.Prima di iniziare
+Utilizzare link:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^]per verificare che il sistema operativo Linux, l'HBA (host Bus Adapter), il firmware HBA, il BIOS di avvio HBA e la versione ONTAP supportino l'avvio SAN.
+
+.Fasi
+. link:https://docs.netapp.com/us-en/ontap/san-admin/provision-storage.html["Crea un LUN di avvio SAN e mappalo all'host"^].
+. Abilitare l'avvio SAN nel BIOS del server per le porte a cui è mappato il LUN di avvio SAN.
++
+Per informazioni su come attivare il BIOS HBA, consultare la documentazione specifica del vendor.
+
+. Verificare che la configurazione sia stata eseguita correttamente riavviando l'host e verificando che il sistema operativo sia attivo e funzionante.
+
+
+
+
+== Fase 2: Installare le utilità host Linux
+
+NetApp consiglia vivamente di installare le utilità host Linux per supportare la gestione LUN di ONTAP e fornire assistenza tecnica nella raccolta dei dati di configurazione.
+
+link:hu-luhu-80.html["Installa Linux Host Utilities 8.0"] .
+
+
+NOTE: L'installazione di Linux host Utilities non modifica le impostazioni di timeout dell'host sul proprio host Linux.
+
+
+
+== Fase 3: Verificare la configurazione multipath per l'host
+
+È possibile utilizzare il multipathing con RHEL 10.x per gestire le LUN ONTAP .
 
 Per verificare che il multipathing sia configurato correttamente per l'host, verificare che il `/etc/multipath.conf` file sia definito e che siano configurate le impostazioni consigliate da NetApp per i LUN ONTAP.
 
@@ -78,10 +104,10 @@ La tabella seguente mostra le impostazioni dei parametri multipercorso compilati
 | caratteristiche | "2 pg_init_retries 50" 
 
 
-| flush_on_last_del | "Sempre" 
+| flush_on_last_del | "sì" 
 
 
-| gestore_hardware | "1" 
+| gestore_hardware | "0" 
 
 
 | no_path_retry | coda 
@@ -117,30 +143,6 @@ La tabella seguente mostra le impostazioni dei parametri multipercorso compilati
 | vendor | NETAPP 
 |===
 ====
-. Facoltativamente, sovrascrivere il valore predefinito per `find_multipaths` parametro per garantire che le LUN ONTAP vengano rilevate e gestite correttamente da multipathd:
-+
---
-.. Impostato `find_multipaths` su "no" nella sezione predefinita di `/etc/multipath.conf` :
-+
-[source, cli]
-----
-defaults {
-    find_multipaths "no"
-}
-----
-.. Ricarica il servizio multipath:
-+
-[source, cli]
-----
-systemctl reload multipathd
-----
-
-
---
-+
-
-NOTE: Per impostazione predefinita, la configurazione multipath nativa del sistema operativo Proxmox imposta `find_multipaths` a "*strict*" con il byte zero vuoto `/etc/multipath.conf` file di configurazione ogni volta che si avvia l'host.  Ciò può impedire all'host di rilevare i LUN ONTAP appena presentati come dispositivi multipath, il che significa che non vengono visualizzati automaticamente sotto il controllo multipath.  Le LUN ONTAP esistenti rimangono scoperte e sotto il controllo multipath dopo ogni riavvio.
-
 . Verificare le impostazioni dei parametri e lo stato del percorso dei LUN ONTAP:
 +
 [source, cli]
@@ -148,7 +150,7 @@ NOTE: Per impostazione predefinita, la configurazione multipath nativa del siste
 multipath -ll
 ----
 +
-I parametri multipath predefiniti supportano le configurazioni ASA, AFF e FAS. In queste configurazioni, una singola LUN ONTAP non deve richiedere più di quattro percorsi. Se sono presenti più di quattro percorsi, potrebbero verificarsi problemi con i percorsi durante un errore di storage.
+I parametri multipath predefiniti supportano le configurazioni ASA, AFF e FAS . In queste configurazioni, una singola LUN ONTAP non dovrebbe richiedere più di quattro percorsi. Avere più di quattro percorsi può causare problemi in caso di guasto dell'archiviazione.
 
 +
 I seguenti output di esempio mostrano le impostazioni corrette dei parametri e lo stato del percorso per i LUN ONTAP in una configurazione ASA, AFF o FAS.
@@ -160,35 +162,27 @@ I seguenti output di esempio mostrano le impostazioni corrette dei parametri e l
 --
 Una configurazione ASA ottimizza tutti i percorsi verso una determinata LUN, mantenendoli attivi. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
 
-.Mostra esempio
-[%collapsible]
-=====
 [listing]
 ----
-multipath -ll
-3600a098038315071592b59713261566d dm-38 NETAPP,LUN C-Mode
-size=100G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+# multipath -ll
+3600a098038314e535a24584e4b496252 dm-32 NETAPP,LUN C-Mode
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 `-+- policy='service-time 0' prio=50 status=active
-  |- 8:0:0:7 sdbv 68:144 active ready running
-  |- 9:0:0:7 sdbx 68:176 active ready running
-  |- 6:0:0:7 sdbr 68:80  active ready running
-  `- 7:0:0:7 sdbt 68:112 active ready running
-
+  |- 11:0:0:41 sdan 66:112  active ready running
+  |- 11:0:1:41 sdcb 68:240  active ready running
+  |- 14:0:2:41 sdfd 129:240 active ready running
+  `- 14:0:0:41 sddp 71:112  active ready running
 ----
-=====
 --
 .Configurazione AFF o FAS
 --
 Una configurazione AFF o FAS deve avere due gruppi di percorsi con priorità maggiore e minore. I percorsi Active/Optimized di priorità più elevata sono serviti dal controller in cui si trova l'aggregato. I percorsi a priorità inferiore sono attivi ma non ottimizzati perché serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando non sono disponibili percorsi ottimizzati.
 
-L'esempio seguente mostra l'output per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:
+L'esempio seguente visualizza l'output per una LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:
 
-.Mostra esempio
-[%collapsible]
-=====
 [listing]
 ----
-multipath -ll
+# multipath -ll
 3600a0980383149764b5d567257516273 dm-0 NETAPP,LUN C-Mode
 size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
@@ -198,14 +192,13 @@ size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp
   |- 10:0:1:0  sdc  8:32   active ready running
   `- 16:0:2:0  sdcf 69:48  active ready running
 ----
-=====
 --
 ====
 
 
 
 
-== Passaggio 2: facoltativamente, escludere un dispositivo dal multipathing
+== Passaggio 4: Se si desidera, escludere un dispositivo dal multipathing
 
 Se necessario, è possibile escludere un dispositivo dal multipathing aggiungendo il WWID per il dispositivo indesiderato alla stanza "blacklist" per il `multipath.conf` file.
 
@@ -237,7 +230,7 @@ blacklist {
 
 
 
-== Passaggio 3: personalizzare i parametri multipath per le LUN ONTAP
+== Passaggio 5: Personalizzare i parametri multipath per i LUN ONTAP
 
 Se l'host è connesso a LUN di altri fornitori e le impostazioni dei parametri multipath vengono sovrascritte, è necessario correggerle aggiungendo più avanti nel `multipath.conf` file che si applicano specificamente ai LUN di ONTAP. In caso contrario, i LUN di ONTAP potrebbero non funzionare come previsto.
 
@@ -270,6 +263,17 @@ devices {
 ====
 
 
-== Passaggio 4: rivedere i problemi noti
+== Fase 6: Esaminare i problemi noti
 
 Non ci sono problemi noti.
+
+
+
+== Quali sono le prossime novità?
+
+* link:hu-luhu-command-reference.html["Informazioni sull'utilizzo dello strumento Linux host Utilities"] .
+* Informazioni sul mirroring ASM.
++
+Il mirroring ASM (Automatic Storage Management) potrebbe richiedere modifiche alle impostazioni del multipath Linux per consentire ad ASM di riconoscere un problema e passare a un gruppo di guasti alternativo. La maggior parte delle configurazioni ASM su ONTAP utilizza la ridondanza esterna, il che significa che la protezione dei dati viene fornita dall'array esterno e ASM non esegue il mirroring dei dati. Alcuni siti utilizzano ASM con ridondanza normale per fornire il mirroring bidirezionale, in genere su siti diversi. Per ulteriori informazioni, vederelink:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["Database Oracle su ONTAP"^].
+
+
