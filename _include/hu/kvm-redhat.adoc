@@ -1,0 +1,9 @@
+= 
+:allow-uri-read: 
+
+
+* Scopri di più su Red Hat Linux Virtualization (KVM)
++
+Red Hat Linux può fungere da host KVM. Ciò consente di eseguire più macchine virtuali su un singolo server fisico utilizzando la tecnologia Linux Kernel-based Virtual Machine (KVM). L'host KVM non richiede impostazioni di configurazione host esplicite per le LUN ONTAP .
+
+

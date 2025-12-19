@@ -293,7 +293,7 @@ La versione RHEL 7,7 con storage ONTAP presenta i seguenti problemi noti:
 == Quali sono le prossime novità?
 
 * link:hu-luhu-command-reference.html["Informazioni sull'utilizzo dello strumento Linux host Utilities"] .
-* Informazioni sul mirroring ASM.
+* Scopri di più sul mirroring ASM
 +
 Il mirroring ASM (Automatic Storage Management) potrebbe richiedere modifiche alle impostazioni del multipath Linux per consentire ad ASM di riconoscere un problema e passare a un gruppo di guasti alternativo. La maggior parte delle configurazioni ASM su ONTAP utilizza la ridondanza esterna, il che significa che la protezione dei dati viene fornita dall'array esterno e ASM non esegue il mirroring dei dati. Alcuni siti utilizzano ASM con ridondanza normale per fornire il mirroring bidirezionale, in genere su siti diversi. Per ulteriori informazioni, vederelink:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["Database Oracle su ONTAP"^].
 
