@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme_windows_2016.html 
+permalink: nvme-windows-2012r2.html 
 keywords: nvme, windows, enterprise 
-summary: 'È possibile configurare NVMe over Fibre Channel (NVMe/FC) sugli host che eseguono Windows Server 2016 per il funzionamento con le LUN ONTAP.' 
+summary: 'È possibile configurare NVMe over Fibre Channel (NVMe/FC) sugli host che eseguono Windows Server 2012 R2 per il funzionamento con le LUN ONTAP.' 
 ---
-= Configurare Windows Server 2016 con NVMe/FC per ONTAP
+= Configurare Windows Server 2012 R2 con NVMe/FC per ONTAP
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,17 +16,17 @@ summary: 'È possibile configurare NVMe over Fibre Channel (NVMe/FC) sugli host 
 
 
 [role="lead"]
-È possibile configurare NVMe over Fibre Channel (NVMe/FC) sugli host che eseguono Windows Server 2016 per il funzionamento con le LUN ONTAP.
+È possibile configurare NVMe over Fibre Channel (NVMe/FC) sugli host che eseguono Windows Server 2012 R2 per il funzionamento con le LUN ONTAP.
 
 .A proposito di questa attività
-Puoi utilizzare il seguente supporto con la configurazione host NVMe/FC per Windows 2016. Prima di avviare il processo di configurazione, è inoltre necessario esaminare le limitazioni note.
+Puoi utilizzare il seguente supporto con la configurazione host NVMe/FC per Windows 2012 R2. Prima di avviare il processo di configurazione, è inoltre necessario esaminare le limitazioni note.
 
 
 NOTE: È possibile utilizzare le impostazioni di configurazione fornite in questa procedura per configurare i client cloud connessi a link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] e link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX per ONTAP"^].
 
 * Supporto disponibile:
 +
-A partire da ONTAP 9,7, NVMe/FC è supportato per Windows Server 2016.
+A partire da ONTAP 9,7, NVMe/FC è supportato per Windows Server 2012 R2.
 
 +
 Per un elenco degli adattatori e dei controller FC supportati, vedere link:https://hwu.netapp.com/Home/Index["Hardware Universe"^]. Per l'elenco aggiornato delle configurazioni e delle versioni supportate, vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità"^].

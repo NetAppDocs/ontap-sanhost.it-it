@@ -522,6 +522,7 @@ A partire da RHEL 9.4, l'impostazione per NVMe/TCP  `ctrl_loss_tmo timeout` vien
 
 RHEL 9.6 imposta l'iopolicy predefinito per NVMe-oF su `round-robin` .  Se stai utilizzando RHEL 9.6 e vuoi modificare iopolicy in `queue-depth` , modificare il file delle regole udev come segue:
 
+.Fasi
 . Aprire il file delle regole udev in un editor di testo con privilegi di root:
 +
 [source, cli]
