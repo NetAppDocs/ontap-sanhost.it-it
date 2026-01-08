@@ -5,17 +5,14 @@ keywords: host utilities, red hat, rhel, linux, 20.04, netapp, ontap, ubuntu
 summary: Configurare Ubuntu 20.04 per il multipathing e con parametri e impostazioni specifici per le operazioni del protocollo FCP e iSCSI con storage ONTAP . 
 ---
 = Configurare Ubuntu 20.04 per FCP e iSCSI con storage ONTAP
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

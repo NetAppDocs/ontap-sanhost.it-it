@@ -5,17 +5,14 @@ keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp
 summary: 'Le utilità host Windows includono un programma di installazione che imposta i parametri richiesti del Registro di sistema e dell"HBA di Windows in modo che l"host Windows gestisca correttamente i comportamenti del sistema storage per le piattaforme ONTAP ed e-Series.' 
 ---
 = Configurare le impostazioni del registro per Windows Host Utilities con archiviazione ONTAP
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]
