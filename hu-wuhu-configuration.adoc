@@ -1,30 +1,35 @@
 ---
 sidebar: sidebar 
-permalink: hu_wuhu_hba_settings.html 
+permalink: hu-wuhu-configuration.html 
 keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
 summary: 'Le utilità host Windows includono un programma di installazione che imposta i parametri richiesti del Registro di sistema e dell"HBA di Windows in modo che l"host Windows gestisca correttamente i comportamenti del sistema storage per le piattaforme ONTAP ed e-Series.' 
 ---
-= Configurare le impostazioni del registro per Windows Host Utilities con archiviazione ONTAP
+= Esaminare la configurazione di Windows Host Utilities per l'archiviazione ONTAP
+:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
+:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
+:toc-position: content
 
 
 [role="lead"]
-Le utilità host di Windows richiedono determinate impostazioni del registro e dei parametri per verificare che l'host Windows gestisca correttamente il comportamento del sistema di archiviazione.
+Le utilità host di Windows richiedono determinate impostazioni del registro e dei parametri affinché un host Windows gestisca correttamente il comportamento del sistema di archiviazione ONTAP .
 
-Le utilità host di Windows impostano i valori dei parametri che influiscono sul modo in cui l'host Windows risponde a un ritardo o a una perdita di dati.  Questi valori verificano che l'host Windows gestisca correttamente eventi quali il failover di un controller nel sistema di archiviazione sul controller partner.
+Questi valori del registro e dei parametri influiscono sul modo in cui un host Windows risponde a un ritardo o a una perdita di dati, ad esempio gestendo correttamente eventi come un failover di archiviazione.
 
-Alcuni valori non si applicano al modulo specifico del dispositivo (DSM) per SANtricity Storage Manager.  La sovrapposizione tra i valori impostati da Windows Host Utilities e DSM per SANtricity Storage Manager non genera conflitti.
+Alcuni valori del registro e dei parametri non si applicano al modulo specifico del dispositivo (DSM) per SANtricity Storage Manager. La sovrapposizione tra i valori impostati da Windows Host Utilities e DSM per SANtricity Storage Manager non causa conflitti.
 
-È inoltre necessario impostare i parametri FC, NVMe/FC e iSCSI HBA per ottimizzare le prestazioni e gestire correttamente gli eventi del sistema di archiviazione.
+Un host Windows richiede inoltre determinati parametri FC, NVMe/FC e iSCSI HBA per gestire correttamente gli eventi del sistema di archiviazione:
 
-Il programma di installazione di Windows Host Utilities imposta i parametri Windows, FC e NVMe/FC HBA sui valori supportati.  È necessario impostare manualmente i parametri iSCSI HBA.
+* A partire da Windows Host Utilities 7.2, il programma di installazione imposta i parametri Windows, iSCSI, FC e NVMe/FC sui valori supportati.
+* A partire da Windows Host Utilities 7.1, il programma di installazione imposta i parametri Windows, FC e NVMe/FC HBA sui valori supportati. È necessario impostare manualmente i parametri iSCSI HBA.
+
 
 Il programma di installazione imposta valori diversi quando si specifica il supporto Microsoft Multipath I/O (MPIO) durante l'installazione.
 
@@ -37,22 +42,22 @@ Per tutti gli altri parametri e chiavi di registro per Windows Host Utilities 8.
 ====
 
 
-== Valori del registro impostati da Windows Host Utilities 8.0
+== Rivedere le impostazioni di configurazione per Windows Host Utilities 8.0
 
-Il programma di installazione di Windows Host Utilities imposta automaticamente i valori del registro e i parametri NVMe in base alle scelte effettuate durante l'installazione.  È necessario rivedere questi valori e la versione del sistema operativo.
+Il programma di installazione di Windows Host Utilities imposta automaticamente i valori del registro di sistema di Windows e i parametri iSCSI e NVMe HBA in base alle scelte effettuate durante l'installazione. Controllare questi valori e la versione del sistema operativo.
 
 [role="tabbed-block"]
 ====
-.Valori HKLM
+.Valori del registro di Windows
 --
-Il programma di installazione di Windows Host Utilities imposta i seguenti valori del Registro di sistema. Tutti i valori sono in decimali, salvo diversa indicazione.
+Tutti i valori del registro di sistema di Windows sono in formato decimale, salvo diversa indicazione.
 
 
 NOTE: HKLM è l'abbreviazione di `HKEY_LOCAL_MACHINE`.
 
 [cols="20,20,30"]
 |===
-| Chiave di registro | Valore | Quando impostato 
+| Chiave di registro | Valore | Imposta chiave di registro... 
 
 
 | HKLM/SISTEMA/CurrentControlSet/servizi/parametri/DsmMaximumRetryTimeDuringStateTransition | 120 | Quando è specificato il supporto MPIO e il server è Windows Server 2025, 2022, 2019 o 2016 
@@ -64,16 +69,7 @@ NOTE: HKLM è l'abbreviazione di `HKEY_LOCAL_MACHINE`.
 | HKLM/SISTEMA/CurrentControlSet/servizi/parametri/DsmSupportedDeviceList | "NETAPP LUN", "NETAPP LUN C-Mode" "NVMe NetApp ONTAP Con" | Quando viene specificato il supporto MPIO 
 
 
-| HKLM {SYSTEM} CurrentControlSet Control iSCSI_driver_GUID INSTANCE_ID Parameters IPSecConfigTimeout | 60 | Sempre 
-
-
-| HKLM/SYSTEM/CurrentControlSet/Control/Class {iSCSI_driver_GUID} INSTANCE_ID Parameters/LinkDownTime | 10 | Sempre 
-
-
 | HKLM/SYSTEM/CurrentControlSet/Services/ClusDisk/Parameters/ManageDisksOnSystemBuses | 1 | Sempre 
-
-
-| HKLM {SYSTEM} CurrentControlSet Control iSCSI_driver_GUID INSTANCE_ID Parameters MaxRequestHoldTime | 120 | Quando non è selezionato alcun supporto MPIO 
 
 
 | HKLM {SYSTEM} CurrentControlSet Control iSCSI_driver_GUID INSTANCE_ID Parameters MaxRequestHoldTime | 30 | Sempre 
@@ -127,6 +123,27 @@ NOTE: HKLM è l'abbreviazione di `HKEY_LOCAL_MACHINE`.
 | HKLM/SYSTEM/CurrentControlSet/Services/mpio/Parameters/UseCustomPathRecoveryInterval | 1 | Quando è specificato il supporto MPIO e il server è Windows Server 2025, 2022, 2019 o 2016 
 |===
 --
+.Valori HBA iSCSI
+--
+Tutti i valori HBA iSCSI sono in decimali, salvo diversa indicazione.
+
+
+NOTE: HKLM è l'abbreviazione di `HKEY_LOCAL_MACHINE`.
+
+[cols="20,20,30"]
+|===
+| Chiave di registro | Valore | Imposta chiave di registro... 
+
+
+| HKLM {SYSTEM} CurrentControlSet Control iSCSI_driver_GUID INSTANCE_ID Parameters IPSecConfigTimeout | 60 | Sempre 
+
+
+| HKLM/SYSTEM/CurrentControlSet/Control/Class {iSCSI_driver_GUID} INSTANCE_ID Parameters/LinkDownTime | 10 | Sempre 
+
+
+| HKLM {SYSTEM} CurrentControlSet Control iSCSI_driver_GUID INSTANCE_ID Parameters MaxRequestHoldTime | 120 | Quando non è selezionato alcun supporto MPIO 
+|===
+--
 .Parametri NVMe
 --
 Windows Host Utilities 8.0 aggiorna i seguenti parametri del driver NVMe Emulex durante l'installazione:
@@ -139,22 +156,22 @@ Windows Host Utilities 8.0 aggiorna i seguenti parametri del driver NVMe Emulex 
 ====
 
 
-== Valori del Registro di sistema impostati dalle utilità host di Windows 7,2
+== Rivedere le impostazioni di configurazione per Windows Host Utilities 7.2
 
-Il programma di installazione di Windows Host Utilities imposta automaticamente i valori del registro e i parametri NVMe in base alle scelte effettuate durante l'installazione.  È necessario rivedere questi valori e la versione del sistema operativo.
+Il programma di installazione di Windows Host Utilities imposta automaticamente i valori del registro di sistema di Windows e i parametri iSCSI e NVMe HBA in base alle scelte effettuate durante l'installazione. Controllare questi valori e la versione del sistema operativo.
 
 [#nvme_parameter,role="tabbed-block"]
 ====
-.Valori HKLM
+.Valori del registro di Windows
 --
-Il programma di installazione di Windows Host Utilities imposta i seguenti valori del Registro di sistema. Tutti i valori sono in decimali, salvo diversa indicazione.
+Tutti i valori del registro di sistema di Windows sono in formato decimale, salvo diversa indicazione.
 
 
 NOTE: HKLM è l'abbreviazione di `HKEY_LOCAL_MACHINE`.
 
 [cols="20,20,30"]
 |===
-| Chiave di registro | Valore | Quando impostato 
+| Chiave di registro | Valore | Imposta chiave di registro... 
 
 
 | HKLM/SISTEMA/CurrentControlSet/servizi/parametri/DsmMaximumRetryTimeDuringStateTransition | 120 | Quando viene specificato il supporto MPIO e il server è Windows Server 2025, 2022, 2019, 2016 o 2012 R2 
@@ -166,16 +183,7 @@ NOTE: HKLM è l'abbreviazione di `HKEY_LOCAL_MACHINE`.
 | HKLM/SISTEMA/CurrentControlSet/servizi/parametri/DsmSupportedDeviceList | "NETAPP LUN", "NETAPP LUN C-Mode" "NVMe NetApp ONTAP Con" | Quando viene specificato il supporto MPIO 
 
 
-| HKLM {SYSTEM} CurrentControlSet Control iSCSI_driver_GUID INSTANCE_ID Parameters IPSecConfigTimeout | 60 | Sempre 
-
-
-| HKLM/SYSTEM/CurrentControlSet/Control/Class {iSCSI_driver_GUID} INSTANCE_ID Parameters/LinkDownTime | 10 | Sempre 
-
-
 | HKLM/SYSTEM/CurrentControlSet/Services/ClusDisk/Parameters/ManageDisksOnSystemBuses | 1 | Sempre 
-
-
-| HKLM {SYSTEM} CurrentControlSet Control iSCSI_driver_GUID INSTANCE_ID Parameters MaxRequestHoldTime | 120 | Quando non è selezionato alcun supporto MPIO 
 
 
 | HKLM {SYSTEM} CurrentControlSet Control iSCSI_driver_GUID INSTANCE_ID Parameters MaxRequestHoldTime | 30 | Sempre 
@@ -229,15 +237,36 @@ NOTE: HKLM è l'abbreviazione di `HKEY_LOCAL_MACHINE`.
 | HKLM/SYSTEM/CurrentControlSet/Services/mpio/Parameters/UseCustomPathRecoveryInterval | 1 | Quando viene specificato il supporto MPIO e il server è Windows Server 2025, 2022, 2019, 2016 o 2012 R2 
 |===
 --
+.Valori HBA iSCSI
+--
+Tutti i valori HBA iSCSI sono in decimali, salvo diversa indicazione.
+
+
+NOTE: HKLM è l'abbreviazione di `HKEY_LOCAL_MACHINE`.
+
+[cols="20,20,30"]
+|===
+| Chiave di registro | Valore | Imposta chiave di registro... 
+
+
+| HKLM {SYSTEM} CurrentControlSet Control iSCSI_driver_GUID INSTANCE_ID Parameters IPSecConfigTimeout | 60 | Sempre 
+
+
+| HKLM/SYSTEM/CurrentControlSet/Control/Class {iSCSI_driver_GUID} INSTANCE_ID Parameters/LinkDownTime | 10 | Sempre 
+
+
+| HKLM {SYSTEM} CurrentControlSet Control iSCSI_driver_GUID INSTANCE_ID Parameters MaxRequestHoldTime | 120 | Quando non è selezionato alcun supporto MPIO 
+|===
+--
 .Parametri NVMe
 --
-I seguenti parametri del driver NVMe Emulex vengono aggiornati quando si installa Windows Host Utilities 7.2:
+Windows Host Utilities 7.2 aggiorna i seguenti parametri del driver NVMe Emulex durante l'installazione:
 
 * EnableNVMe = 1
 * NVMEMode = 0
 * LimTransferSize=1
 +
-Il parametro LimTransferSize viene impostato automaticamente su "1" quando si installa Windows host Utilities 7,2. Dopo l'installazione, è necessario modificare manualmente il valore LimTransferSize in "0" e riavviare il server.
+Il parametro LimTransferSize viene impostato automaticamente su "1" quando si installa Windows Host Utilities 7.2. Dopo l'installazione, modificare il valore LimTransferSize su "0" e riavviare il server.
 
 
 
@@ -245,18 +274,16 @@ Il parametro LimTransferSize viene impostato automaticamente su "1" quando si in
 ====
 
 
-== Valori del Registro di sistema impostati dalle utilità host di Windows 7,1
+== Rivedere le impostazioni di configurazione per Windows Host Utilities 7.1
 
-Il programma di installazione di Windows Host Utilities imposta automaticamente i valori del registro in base alle scelte effettuate durante l'installazione.  È necessario rivedere questi valori del registro e la versione del sistema operativo.
-
-I seguenti valori vengono impostati dal programma di installazione delle utilità host di Windows. Tutti i valori sono espressi in decimali, se non diversamente specificato.
+Il programma di installazione di Windows Host Utilities imposta automaticamente i valori del registro in base alle scelte effettuate durante l'installazione. Esaminare questi valori del registro e la versione del sistema operativo. Tutti i valori sono in decimali, salvo diversa indicazione.
 
 
 NOTE: `HKLM` è l'abbreviazione di `HKEY_LOCAL_MACHINE`.
 
 [cols="~, 10, ~"]
 |===
-| Chiave di registro | Valore | Quando impostato 
+| Chiave di registro | Valore | Imposta chiave di registro... 
 
 
 | HKLM/SISTEMA/CurrentControlSet/servizi/parametri/DsmMaximumRetryTimeDuringStateTransition | 120 | Quando viene specificato il supporto MPIO e il server è Windows Server 2016, 2012 R2, 2012, 2008 R2 o 2008, a eccezione di quando viene rilevato Data ONTAP DSM 
@@ -355,7 +382,7 @@ Vedere https://docs.microsoft.com/en-us/troubleshoot/windows-server/performance/
 
 
 
-== Valori FC HBA impostati da Windows host Utilities
+== Scopri i valori FC HBA impostati da Windows Host Utilities
 
 Il programma di installazione di Windows Host Utilities imposta i valori di timeout richiesti per gli HBA FC Emulex e QLogic sui sistemi che utilizzano FC.
 
@@ -418,15 +445,13 @@ Il programma di installazione imposta i seguenti parametri per gli HBA QLogic FC
 --
 ====
 
-NOTE: I nomi dei parametri possono variare leggermente a seconda del programma.
-Ad esempio, nel programma QLogic QConvergeConsole, il parametro viene visualizzato come `Link Down Timeout`.
-Le utility host `fcconfig.ini` file visualizza questo parametro come uno dei due `LinkDownTimeOut` oppure `MpioLinkDownTimeOut`, A seconda che sia specificato o meno MPIO. Tuttavia, tutti questi nomi fanno riferimento allo stesso parametro HBA. Vedere https://www.broadcom.com/support/download-search["Emulex"^] oppure https://driverdownloads.qlogic.com/QLogicDriverDownloads_UI/Netapp_search.aspx["QLogic"^] per ulteriori informazioni sui parametri di timeout.
+NOTE: I nomi dei parametri potrebbero variare leggermente a seconda del programma. Ad esempio, nel programma QLogic QConvergeConsole, il parametro viene visualizzato come `Link Down Timeout`. Le utilità host `fcconfig.ini` il file visualizza questo parametro come `LinkDownTimeOut` O `MpioLinkDownTimeOut`, a seconda che sia specificato MPIO. Tuttavia, tutti questi nomi si riferiscono allo stesso parametro HBA. Vedere https://www.broadcom.com/support/download-search["Emulex"^] O https://driverdownloads.qlogic.com/QLogicDriverDownloads_UI/Netapp_search.aspx["QLogic"^] per saperne di più sui parametri di timeout.
 
 
 
 == Scopri le modifiche apportate da Host Utilities alle impostazioni del driver FC HBA
 
-Durante l'installazione dei driver Emulex o QLogic HBA richiesti su un sistema FC, diversi parametri vengono controllati e, in alcuni casi, modificati dalle utilità host di Windows.
+Durante l'installazione dei driver Emulex o QLogic HBA richiesti su un sistema FC, Windows Host Utilities controlla diversi parametri e, in alcuni casi, li modifica.
 
 Se viene rilevato MS DSM per Windows MPIO, Windows Host Utilities imposta i valori per i seguenti parametri:
 

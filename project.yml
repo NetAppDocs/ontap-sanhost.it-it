@@ -83,8 +83,8 @@ sidebar:
           url: "/hu_wuhu_72.html"
         - title: Installare le utilità host Windows 7,1
           url: "/hu_wuhu_71.html"
-      - title: Configurare le impostazioni per Windows Host Utilities
-        url: "/hu_wuhu_hba_settings.html"
+      - title: Esaminare la configurazione di Windows Host Utilities
+        url: "/hu-wuhu-configuration.html"
       - title: Aggiornare le utilità host di Windows
         url: "/hu_wuhu_upgrade.html"
       - title: Riparare e rimuovere le utilità host di Windows
