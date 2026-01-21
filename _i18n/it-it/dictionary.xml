@@ -488,8 +488,6 @@
   <block id="1288c56822a6bb56a7acdc5941948855" category="cell">1306354</block>
   <block id="478829f91ffe1d5a9fcb7ae0a4fa2eda" category="cell">HP-UX LVM Creation invia i/o di dimensioni del blocco superiori a 1 MB</block>
   <block id="51a4a26e6b1bdae133374d340c097526" category="paragraph">Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati.</block>
-  <block id="2844e304c2e162332243113572206ac6" category="inline-link-macro">1308744</block>
-  <block id="939827454c3bb8453033ba1bd60c555e" category="cell"><block ref="c8bdc7961e7fb79cc7e51cf734b247fb" category="inline-link-macro-rx"></block></block>
   <block id="f8f27557fe3d0fcb534e0bcda02971bf" category="summary">Descrive come utilizzare Veritas Infosscale 7.3 per Linux con ONTAP</block>
   <block id="e1059765ab19f25f118520b9942cefe8" category="section-title">Avvio DI hypervisor SAN</block>
   <block id="b8c81b1034d96bceee150be6c06739b8" category="paragraph"><block ref="bffafdbeb65175b415cdfc3e99a5f592" prefix="*" category="inline-code"></block>*</block>
@@ -678,7 +676,6 @@
   <block id="8b6f93f33bce541c7f50f8aff637e2e1" category="sidebar">RHEL</block>
   <block id="1a0d3890b0eb9dc0c7e3f33e1b9f1865" category="sidebar">NVMeoF RHEL</block>
   <block id="796d3a90e43ce105cbf37298c5065f7e" category="sidebar">9.1</block>
-  <block id="1b1e6d45b618db5397c656f0df1d4b85" category="sidebar">15 SP2</block>
   <block id="7ceb3cac51dbf44c807f7e83fabc5016" category="sidebar">15 SP1</block>
   <block id="3a824154b16ed7dab899bf000b80eeee" category="sidebar">2022</block>
   <block id="ea6b2efbdd4255a9f1b3bbc6399b58f4" category="sidebar">2019</block>
@@ -971,8 +968,6 @@ Il binding del driver FC viene modificato da<block ref="b9ca0a083600812be33f42f9
   <block id="f3478c814fd82f33620059d2d7656ea9" category="list-text">Determinare il WWID:</block>
   <block id="48a57465c9050da3e456de11a1bce0f0" category="list-text">Riavviare l'host per verificare che l'avvio sia stato eseguito correttamente.</block>
   <block id="2ba8ced675fff51092484e241860c46e" category="paragraph">Il<block ref="273d5cd3ecc9b9ccde8aa81942ced2f2" prefix=" " category="inline-code"></block> comando produce il seguente tipo di output. L'output nell'esempio seguente è troncato.</block>
-  <block id="1f9090c13a627840d3e8110654671ecd" category="cell">L'avvio iSCSI da SAN non riesce ad avviarsi con una configurazione IP statica dopo aver completato un'installazione del sistema operativo SUSE Linux Enterprise Server 15S P2</block>
-  <block id="74fe7cde6e68f9607ef6c16f62916dd8" category="paragraph">L'avvio del LUN iSCSI con avvio non è riuscito dopo aver completato un'installazione del sistema operativo SUSE Linux Enterprise Server 15 SP2 con una configurazione IP statica. L'errore di boot si verifica ogni volta che si utilizza la configurazione IP statica. Ciò comporta il rifiuto del server di continuare il processo di avvio con il seguente messaggio di errore:</block>
   <block id="adcc6b5e38256f637746539b3d3cb7b3" category="paragraph">Il driver inbox qla2xxx nativo incluso nel kernel Ubuntu 22,04 GA ha le ultime correzioni upstream. Queste correzioni sono essenziali per il supporto di ONTAP.</block>
   <block id="896c6d73b474c57fd4a882830cd2a6de" category="sidebar">SUSE Linux Enterprise Server 15</block>
   <block id="587b796170a9abac4701cd8aa1bb38cb" category="listing-title">Output di esempio</block>
@@ -1898,7 +1893,6 @@ Il binding del driver FC viene modificato da<block ref="b9ca0a083600812be33f42f9
   <block id="c66e8f141f367b0a5a1d201cc49ccc72" category="paragraph">ONTAP segnala una dimensione massima di trasferimento dati (MDTS) pari a 8 nei dati Identify Controller.  Ciò significa che la dimensione massima della richiesta di I/O può arrivare fino a 1 MB.  Per emettere richieste di I/O di dimensione 1 MB per un host Broadcom NVMe/FC, è necessario aumentare il<block ref="0de495b1d3c13e53ae08556231d825b9" prefix=" " category="inline-code"></block> valore del<block ref="63a7cb7a86eb0c84641936943496afaf" prefix=" " category="inline-code"></block> parametro a 256 dal valore predefinito di 64.</block>
   <block id="cfa5b6e557299c1ae7c635f08785f365" category="paragraph">Gli host Red Hat Enterprise Linux (RHEL) supportano i protocolli NVMe su Fibre Channel (NVMe/FC) e NVMe su TCP (NVMe/TCP) con Asymmetric Namespace Access (ANA).  ANA fornisce funzionalità multipathing equivalenti all'accesso asimmetrico alle unità logiche (ALUA) negli ambienti iSCSI e FCP.</block>
   <block id="e8584093909cb01d1e4390beaad82a5f" category="paragraph">IL<block ref="0578ea8f8272d56d0053a8f2cddaf7f4" prefix=" " category="inline-code"></block> E<block ref="fbbb90e94554669f250473b3b15ddd4e" prefix=" " category="inline-code"></block> servizi di avvio inclusi in NVMe/FC<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> i pacchetti vengono abilitati automaticamente all'avvio del sistema.</block>
-  <block id="660bcc8bfdb485b79b7dede726eb2358" category="doc">Scopri come configurare gli host ONTAP SAN con NVMe-OF</block>
   <block id="be1e5922c13f8cd92deb77a78a07375f" category="paragraph">È possibile configurare gli host SAN supportati per utilizzare il protocollo NVMe over Fabrics (NVMe-oF) con ONTAP come destinazione di archiviazione.  NVMe-oF include NVMe su Fibre Channel (NVMe/FC) e NVMe su TCP (NVMe/TCP).  A seconda del sistema operativo host e della versione ONTAP , è possibile configurare e convalidare il protocollo NVMe/FC o NVMe/TCP, oppure entrambi, sull'host.</block>
   <block id="b0e0bd8207ba62457f58c3e06f3f7bec" category="section-title">Supporto e funzionalità ONTAP</block>
   <block id="3b2a75ebc087c7f3c4fa9ac0e2a92ebe" category="cell">Versione ONTAP</block>
@@ -2404,4 +2398,5 @@ Il binding del driver FC viene modificato da<block ref="b9ca0a083600812be33f42f9
   <block id="79c482cb23c057c0d600ecd3434dbb27" category="section-title">Errori comuni di "nvme-cli" e soluzioni alternative</block>
   <block id="c481530fd3180128cebd4b0d3be77c0f" category="paragraph">Se i problemi persistono, raccogli i seguenti file e output dei comandi e contatta <block ref="39332fc74dd50b9d9a8e9919506502c0" category="inline-link-macro-rx"></block> per un ulteriore triage:</block>
   <block id="0669c03dc492faf8d7b9fc2bd8512b73" category="sidebar">Versioni precedenti di Host Utilities</block>
+  <block id="2444d67396b745a440cfa96bf55da9c6" category="doc">Scopri come configurare gli host ONTAP SAN con NVMe-oF</block>
 </blocks>
