@@ -45,3 +45,5 @@ indexpage:
       url: https://docs.netapp.com/us-en/ontap/san-admin/index.html
     - title: Configurazione SAN
       url: https://docs.netapp.com/us-en/ontap/san-config/index.html
+    - title: Versioni precedenti di Host Utilities
+      url: https://mysupport.netapp.com/documentation/productlibrary/index.html?archive=true&language=en&productID=61343

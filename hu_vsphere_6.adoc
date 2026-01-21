@@ -62,14 +62,7 @@ system        tpgs_on         VMW_PSP_MRU       NetApp E-Series arrays with ALUA
 system        tpgs_on          MW_PSP_RR 	      NetApp arrays with ALUA support
 
 ----
-
-
-=== Tutte le configurazioni DEGLI array SAN
-
-Tutte le configurazioni di array SAN (ASA) ottimizzano tutti i percorsi verso una determinata LUN, mantenendoli attivi. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
-
-.Esempio
-Nell'esempio seguente viene visualizzato l'output corretto per un LUN ONTAP.
+Direttiva non risolta in <stdin> - include::_include/hu/reuse_hu_asa_configuration.adoc[]
 
 *`esxcli storage nmp device list -d naa.600a098038304759563f4e7837574453`*
 

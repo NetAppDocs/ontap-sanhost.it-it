@@ -1,6 +1,0 @@
-= 
-:allow-uri-read: 
-
-
-
-NOTE: Un singolo LUN non deve richiedere più di quattro percorsi. La presenza di più di quattro percorsi potrebbe causare problemi di percorso durante gli errori di storage.

@@ -1,5 +1,0 @@
-= 
-:allow-uri-read: 
-
-
-È possibile utilizzare `multipath -ll` Per verificare le impostazioni dei LUN ONTAP.
