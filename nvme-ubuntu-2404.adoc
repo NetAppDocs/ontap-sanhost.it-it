@@ -217,6 +217,7 @@ Il driver inbox qla2xxx nativo incluso nel kernel Ubuntu 24,04 GA ha le ultime c
 
 Configurare NVMe/FC per un adattatore Marvell/QLogic.
 
+.Fasi
 . Verificare che siano in esecuzione le versioni del firmware e del driver dell'adattatore supportate:
 +
 [listing]

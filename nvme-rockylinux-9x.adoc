@@ -77,6 +77,7 @@ Configurare NVMe/FC con adattatori Broadcom/Emulex o Marvell/QLogic oppure confi
 --
 Configurare NVMe/FC per un adattatore Broadcom/Emulex.
 
+.Fasi
 . Verificare di utilizzare il modello di adattatore supportato:
 +
 .. Visualizza i nomi dei modelli:
@@ -259,6 +260,7 @@ FCP CMPL: xb 000035cc Err 000fcfc0
 --
 Configurare NVMe/FC per un adattatore Marvell/QLogic.
 
+.Fasi
 . Verificare di utilizzare le versioni supportate del driver e del firmware dell'adattatore:
 +
 [source, cli]
@@ -290,6 +292,7 @@ L'uscita prevista è 1.
 --
 Il protocollo NVMe/TCP non supporta l'operazione di connessione automatica.  È necessario eseguire manualmente le operazioni di connessione o di connessione completa NVMe/TCP per individuare i sottosistemi e gli spazi dei nomi NVMe/TCP.
 
+.Fasi
 . Verificare che la porta di avvio possa ottenere i dati della pagina del registro di individuazione attraverso i LIF NVMe/TCP supportati:
 +
 [source, cli]
@@ -859,6 +862,7 @@ L'autenticazione in-band sicura è supportata tramite NVMe/TCP tra un host Rocky
 
 Ogni host o controller deve essere associato a un  `DH-HMAC-CHAP` chiave per impostare l'autenticazione sicura. Una  `DH-HMAC-CHAP` La chiave è una combinazione dell'NQN dell'host o del controller NVMe e di un segreto di autenticazione configurato dall'amministratore. Per autenticare il proprio peer, un host o un controller NVMe deve riconoscere la chiave associata al peer.
 
+.Fasi
 Imposta l'autenticazione in-band sicura tramite la CLI o un file JSON di configurazione. Se è necessario specificare chiavi dhchap diverse per sottosistemi diversi, è necessario utilizzare un file di configurazione JSON.
 
 [role="tabbed-block"]
@@ -962,7 +966,6 @@ Quando più sottosistemi NVMe sono disponibili sul controller ONTAP , è possibi
 
 Utilizzare il `-o` opzione per generare il file JSON.  Per ulteriori opzioni di sintassi, fare riferimento alle pagine man di NVMe connect-all.
 
-.Fasi
 . Configurare il file JSON.
 +
 

@@ -848,7 +848,6 @@ Il binding del driver FC viene modificato da<block ref="b9ca0a083600812be33f42f9
   <block id="4b251899b86291ee2ea3a4ec31bd27d2" category="list-text">Creare un PDC per il sottosistema di rilevamento:</block>
   <block id="cc9b331553f2bcc4120c4d935ac45124" category="list-text">Dal controller ONTAP, verificare che il PDC sia stato creato:</block>
   <block id="73fd59b3c9a3572b90f709cc5c917c78" category="paragraph">Per impostare l'autenticazione protetta, ogni host o controller deve essere associato a un<block ref="f4ec72363eeda8a3e6391c779684b2be" prefix=" " category="inline-code"></block> Key, ossia una combinazione del NQN dell'host o controller NVMe e di un segreto di autenticazione configurato dall'amministratore. Per autenticare il proprio peer, un host o un controller NVMe deve riconoscere la chiave associata al peer.</block>
-  <block id="563237c884bab6356a13da886807f1d9" category="paragraph">È possibile impostare un'autenticazione protetta in banda utilizzando il CLI o un file JSON di configurazione. Se è necessario specificare chiavi dhchap diverse per sottosistemi diversi, è necessario utilizzare un file di configurazione JSON.</block>
   <block id="91af5705f16502125e8b2187e64202c0" category="open-title">CLI</block>
   <block id="130ea6273a6f2f8dd4847cd415a8dce1" category="list-text">Ottenere l'NQN dell'host:</block>
   <block id="be970af96a2d347df16aa0902707d220" category="list-text">Sul controller ONTAP, aggiungere l'host e specificare entrambe le chiavi dhchap:</block>
@@ -969,7 +968,6 @@ Il binding del driver FC viene modificato da<block ref="b9ca0a083600812be33f42f9
   <block id="48a57465c9050da3e456de11a1bce0f0" category="list-text">Riavviare l'host per verificare che l'avvio sia stato eseguito correttamente.</block>
   <block id="2ba8ced675fff51092484e241860c46e" category="paragraph">Il<block ref="273d5cd3ecc9b9ccde8aa81942ced2f2" prefix=" " category="inline-code"></block> comando produce il seguente tipo di output. L'output nell'esempio seguente è troncato.</block>
   <block id="adcc6b5e38256f637746539b3d3cb7b3" category="paragraph">Il driver inbox qla2xxx nativo incluso nel kernel Ubuntu 22,04 GA ha le ultime correzioni upstream. Queste correzioni sono essenziali per il supporto di ONTAP.</block>
-  <block id="896c6d73b474c57fd4a882830cd2a6de" category="sidebar">SUSE Linux Enterprise Server 15</block>
   <block id="587b796170a9abac4701cd8aa1bb38cb" category="listing-title">Output di esempio</block>
   <block id="8b6a5845688d81720a1016c10aa9e843" category="list-text">A partire dall'allocazione dello spazio ONTAP 9.16,1 è abilitata per impostazione predefinita per tutti i namespace NVMe appena creati.</block>
   <block id="0c48e7c4bbc87e64bef6a0afca5676b3" category="paragraph">Il valore previsto è 0.</block>
@@ -2038,7 +2036,6 @@ Il binding del driver FC viene modificato da<block ref="b9ca0a083600812be33f42f9
   <block id="5d2e5ee168e90c0595b3cc1eee2ee6dd" category="cell">L'avvio SAN è abilitato tramite il protocollo NVMe/FC</block>
   <block id="9d6d817f456752dac19e4b5c699bd30c" category="cell">IL<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> il pacchetto include script di connessione automatica che eliminano la necessità di script di terze parti</block>
   <block id="1115310dc5d902646a8153a110b7cbc7" category="cell">La regola nativa udev in<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> il pacchetto fornisce il bilanciamento del carico round-robin per NVMe multipath</block>
-  <block id="fc247827714f96cf26c9cbb26911cbf8" category="cell">Se la tua versione RHEL è ..</block>
   <block id="a63480986ae76ec294cfdac303f1cc61" category="cell">Scopri di più su ..</block>
   <block id="62287eeee3056dc397ebc956062f6d92" category="cell">10 serie</block>
   <block id="2ee39f4f778b47b40d3a961eef85042c" category="cell">Serie 9</block>
@@ -2339,7 +2336,6 @@ Il binding del driver FC viene modificato da<block ref="b9ca0a083600812be33f42f9
   <block id="d4ca4de004c509fdca6f6baba9d067b3" category="cell">9.11.1 o successivo</block>
   <block id="0c64d8618ad6cc4fda4a0184e7b3a66d" category="paragraph">15 SP1 o successivo</block>
   <block id="64e18fc6adcf06d504f9f2cb84332a1e" category="paragraph">15 SP7 o successivo</block>
-  <block id="9243641bd6b3c45ba14a34f8161142cb" category="cell">Se la versione di SUSE Linux Enterprise Server è ..</block>
   <block id="3ebf0499b89f1f3b892d2950e4078398" category="cell">Serie 15 SPx</block>
   <block id="9e9b995c5792b061553f6ebe8ec003fb" category="inline-link-macro">Configurazione di NVMe per SUSE Linux Enterprise Server 15 SPx</block>
   <block id="5b9de8ac0ff133e1388277c57b436df3" category="cell"><block ref="5b9de8ac0ff133e1388277c57b436df3" category="inline-link-macro-rx"></block></block>
@@ -2399,4 +2395,35 @@ Il binding del driver FC viene modificato da<block ref="b9ca0a083600812be33f42f9
   <block id="c481530fd3180128cebd4b0d3be77c0f" category="paragraph">Se i problemi persistono, raccogli i seguenti file e output dei comandi e contatta <block ref="39332fc74dd50b9d9a8e9919506502c0" category="inline-link-macro-rx"></block> per un ulteriore triage:</block>
   <block id="0669c03dc492faf8d7b9fc2bd8512b73" category="sidebar">Versioni precedenti di Host Utilities</block>
   <block id="2444d67396b745a440cfa96bf55da9c6" category="doc">Scopri come configurare gli host ONTAP SAN con NVMe-oF</block>
+  <block id="55b4f27e868d94d08cb7b820fb7dcaf4" category="summary">Installare le Linux Host Utilities su un SUSE Linux Enterprise Server 16 per gestire le operazioni dei protocolli FCP e iSCSI con LUN ONTAP.</block>
+  <block id="651119b7fad3ebe0625718e781b85dbd" category="doc">Configurare SUSE Linux Enterprise Server 16 per FCP e iSCSI con storage ONTAP</block>
+  <block id="536673265ab4b1de9fd943164c12494a" category="paragraph">Il software Linux Host Utilities fornisce strumenti di gestione e diagnostica per gli host Linux connessi allo storage ONTAP. Quando si installa Linux Host Utilities su un host SUSE Linux Enterprise Server 16, è possibile utilizzare Host Utilities per gestire le operazioni dei protocolli FCP e iSCSI con le LUN ONTAP.</block>
+  <block id="c79c0bda7187ef54ad53cb84f69b4995" category="paragraph">Direttiva non risolta in &lt;stdin&gt; - include::_include/hu/install-linux-host-utilities.adoc[]</block>
+  <block id="be0724c20eae9509bfecb55613ead45c" category="paragraph">È possibile utilizzare il multipathing con SUSE Linux Enterprise Server 16 per gestire le LUN ONTAP.</block>
+  <block id="40b573003d21aeb3dbe3d1c46c3c87af" category="cell">Se la tua versione RHEL è ...</block>
+  <block id="8637f659452959aafbb4798db09998d6" category="cell">Scopri ...</block>
+  <block id="06314aebedd665e513cf3a7e6c66f84b" category="cell">NVMe/TCP segnala tutti i percorsi ottimizzati per i sistemi ASA r2</block>
+  <block id="c74d97b01eae257e44aa9d5bade97baf" category="paragraph">16</block>
+  <block id="7ffe1b34523b105b2ec68027b4d78799" category="cell">Se la versione di SUSE Linux Enterprise Server è ...</block>
+  <block id="4563b4da24891c746834232492d8a6e9" category="inline-link-macro">Configurazione di NVMe per SUSE Linux Enterprise Server 16</block>
+  <block id="c76bfdc925d748a8cdb6fd0cb4d6001b" category="cell"><block ref="c76bfdc925d748a8cdb6fd0cb4d6001b" category="inline-link-macro-rx"></block></block>
+  <block id="a5b83340c16a9e5f542b8d83b7359698" category="inline-link-macro">Scopri i sistemi ASA r2</block>
+  <block id="6e0022971af6bb297ffb7cf390f69650" category="list-text"><block ref="6e0022971af6bb297ffb7cf390f69650" category="inline-link-macro-rx"></block></block>
+  <block id="72383e72a2e01f82cf39e6b5bef8fa00" category="summary">Descrive come configurare NVMe/FC per SUSE Linux Enterprise Server 16 con ONTAP.</block>
+  <block id="8a9024c9d6e91361d035fbafed58442a" category="doc">Configurare SUSE Linux Enterprise Server 16 per NVMe-oF con storage ONTAP</block>
+  <block id="79e7328d04b11a966a2e4e458cefdac2" category="paragraph">L'host SUSE Linux Enterprise Server 16 supporta i protocolli NVMe over Fibre Channel (NVMe/FC) e NVMe over TCP (NVMe/TCP) con Asymmetric Namespace Access (ANA). ANA fornisce funzionalità di multipathing equivalenti ad Asymmetric Logical Unit Access (ALUA) negli ambienti iSCSI e FCP.</block>
+  <block id="08d9a17a8cc7b0cef8aae20105227cc6" category="paragraph">Scopri come configurare gli host NVMe over Fabrics (NVMe-oF) per SUSE Linux Enterprise Server 16. Per ulteriori informazioni su supporto e funzionalità, vedi <block ref="b48d42b251389d47f80926d5c2a50eea" category="inline-link-macro-rx"></block>.</block>
+  <block id="560f1dd3df1c8e397519688f9f3cdfc7" category="paragraph">NVMe-oF con SUSE Linux Enterprise Server 16 presenta le seguenti limitazioni note:</block>
+  <block id="1190e777006c27e896f1d066cdaa4930" category="list-text">Installare SUSE Linux Enterprise Server 16 sul server. Dopo il completamento dell'installazione, verificare di eseguire il kernel SUSE Linux Enterprise Server 16 specificato:</block>
+  <block id="f1980f113e0881826ff693f4b17d5d0a" category="paragraph">Esempio di versione del kernel di SUSE Linux Enterprise Server:</block>
+  <block id="1533ee126fd8f11e227dc3d689526f3c" category="paragraph">A partire da SUSE Linux Enterprise Server 16, la iopolicy predefinita per NVMe-oF è impostata su<block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>. Se si desidera modificare la iopolicy in<block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>, modificare il file delle regole udev come segue:</block>
+  <block id="f40fa917da76ec269347142ecd26f205" category="list-text">Modifica la regola in modo che <block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block> diventi <block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block>:</block>
+  <block id="922b0cabd672f72127f63daffda5daa8" category="admonition">A partire da ONTAP 9.16.1, NVMe/FC e NVMe/TCP segnalano tutti i percorsi ottimizzati sui sistemi ASA r2.</block>
+  <block id="729803330c2c3ddc5602fa6a32ed6680" category="paragraph">I seguenti output di esempio mostrano uno spazio dei nomi ospitato su un controller ONTAP a due nodi per sistemi AFF, FAS e ASA e su un sistema ASA r2 con NVMe/FC.</block>
+  <block id="457f54f6cefd10b25a3bedd3ee0e4fa3" category="example-title">Mostra l'output di esempio AFF, FAS e ASA</block>
+  <block id="166d9b02aa39fa880a105b2a6f0e64cc" category="example-title">Mostra l'output di esempio di ASA r2</block>
+  <block id="4cbc3c8523dd8f70db284b7defb44454" category="paragraph">I seguenti output di esempio mostrano uno spazio dei nomi ospitato su un controller ONTAP a due nodi per sistemi AFF, FAS e ASA e sistemi ASA r2 con NVMe/TCP.</block>
+  <block id="3f52de62927af66bbbcbf9a67e36d63c" category="paragraph">È possibile creare un controller di individuazione persistente (PDC) per un host SUSE Linux Enterprise Server 16. Un PDC è necessario per rilevare automaticamente un'operazione di aggiunta o rimozione del sottosistema NVMe e le modifiche ai dati della pagina del registro di individuazione.</block>
+  <block id="3c8457e76486b7070b5f16df832bfb55" category="paragraph">L'autenticazione in-band sicura è supportata tramite NVMe/TCP tra un host SUSE Linux Enterprise Server 16 e un controller ONTAP.</block>
+  <block id="60940bf76e8a6f461e5cdf574e9a3897" category="sidebar">SLES-16-FCP</block>
 </blocks>

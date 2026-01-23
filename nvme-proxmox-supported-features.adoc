@@ -23,13 +23,13 @@ Le funzionalità supportate per la configurazione host con NVMe over Fabrics (NV
 | Funzione ONTAP | Versione host Proxmox | Versione ONTAP 
 
 
-| Fornisce dettagli ONTAP per gli spazi dei nomi NVMe/FC e NVMe/TCP utilizzando il nativo `nvme-cli` pacchetto.  a| 
-8.0
+| NVMe/TCP è una funzionalità aziendale completamente supportata  a| 
+9.0
 | 9.10.1 o successivo 
 
 
-| NVMe/TCP è una funzionalità aziendale completamente supportata  a| 
-9.0
+| Fornisce dettagli ONTAP per gli spazi dei nomi NVMe/FC e NVMe/TCP utilizzando il nativo `nvme-cli` pacchetto.  a| 
+8.0
 | 9.10.1 o successivo 
 
 
@@ -44,11 +44,6 @@ ONTAP supporta le seguenti funzionalità host SAN indipendentemente dalla versio
 | Caratteristica | Versione host Proxmox 
 
 
-| Il multipathing NVMe nativo è abilitato per impostazione predefinita  a| 
-8.0
-
-
-
 | IL `nvme-cli` il pacchetto include script di connessione automatica che eliminano la necessità di script di terze parti  a| 
 9.0
 
@@ -56,6 +51,11 @@ ONTAP supporta le seguenti funzionalità host SAN indipendentemente dalla versio
 
 | La regola nativa udev in `nvme-cli` il pacchetto fornisce il bilanciamento del carico round-robin per NVMe multipath  a| 
 9.0
+
+
+
+| Il multipathing NVMe nativo è abilitato per impostazione predefinita  a| 
+8.0
 
 |===
 

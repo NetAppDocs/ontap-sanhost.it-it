@@ -6,6 +6,7 @@ A partire da ONTAP 9.12.1, l'autenticazione in-band sicura è supportata tramite
 
 Ogni host o controller deve essere associato a un  `DH-HMAC-CHAP` chiave per impostare l'autenticazione sicura. Una  `DH-HMAC-CHAP` La chiave è una combinazione dell'NQN dell'host o del controller NVMe e di un segreto di autenticazione configurato dall'amministratore. Per autenticare il proprio peer, un host o un controller NVMe deve riconoscere la chiave associata al peer.
 
+.Fasi
 Imposta l'autenticazione in-band sicura tramite la CLI o un file JSON di configurazione. Se è necessario specificare chiavi dhchap diverse per sottosistemi diversi, è necessario utilizzare un file di configurazione JSON.
 
 [role="tabbed-block"]
@@ -14,7 +15,6 @@ Imposta l'autenticazione in-band sicura tramite la CLI o un file JSON di configu
 --
 Configurare l'autenticazione in banda protetta utilizzando la CLI.
 
-.Fasi
 . Ottenere l'NQN dell'host:
 +
 [source, cli]
@@ -118,7 +118,6 @@ Quando sulla configurazione del controller ONTAP sono disponibili più sottosist
 
 Utilizzare il  `-o` opzione per generare il file JSON. Per ulteriori opzioni di sintassi, consultare le pagine del manuale di NVMe Connect-all.
 
-.Fasi
 . Configurare il file JSON.
 +
 

@@ -130,6 +130,7 @@ Configurare NVMe/FC con adattatori Broadcom/Emulex o Marvell/QLogic oppure confi
 --
 Configurare NVMe/FC per un adattatore Broadcom/Emulex.
 
+.Fasi
 . Verificare di utilizzare il modello di adattatore supportato:
 +
 .. Visualizza i nomi dei modelli:
@@ -303,6 +304,7 @@ L'uscita prevista è 1.
 --
 Il protocollo NVMe/TCP non supporta l'operazione di connessione automatica.  In alternativa, è possibile scoprire i sottosistemi e gli spazi dei nomi NVMe/TCP eseguendo l'NVMe/TCP `connect` O `connect-all` operazioni manualmente.
 
+.Fasi
 . Verificare che la porta di avvio possa ottenere i dati della pagina del registro di individuazione attraverso i LIF NVMe/TCP supportati:
 +
 [source, cli]
