@@ -774,7 +774,6 @@ Imposta l'autenticazione in-band sicura tramite la CLI o un file JSON di configu
 --
 Configurare l'autenticazione in banda protetta utilizzando la CLI.
 
-.Fasi
 . Ottenere l'NQN dell'host:
 +
 [source, cli]

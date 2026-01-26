@@ -49,7 +49,7 @@ ONTAP supporta le seguenti funzionalità host SAN indipendentemente dalla versio
 
 
 
-| La regola nativa udev in `nvme-cli` il pacchetto fornisce il bilanciamento del carico round-robin per NVMe multipath  a| 
+| La regola udev nativa nel  `nvme-cli` pacchetto fornisce bilanciamento del carico round-robin per il multipathing NVMe  a| 
 9.0
 
 

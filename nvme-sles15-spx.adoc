@@ -995,7 +995,6 @@ Imposta l'autenticazione in-band sicura tramite la CLI o un file JSON di configu
 --
 Configurare l'autenticazione in banda protetta utilizzando la CLI.
 
-.Fasi
 . Ottenere l'NQN dell'host:
 +
 [source, cli]
@@ -1088,7 +1087,6 @@ Quando sulla configurazione del controller ONTAP sono disponibili più sottosist
 
 Utilizzare il `-o` opzione per generare il file JSON.  Per ulteriori opzioni di sintassi, fare riferimento alle pagine man di NVMe connect-all.
 
-.Fasi
 . Configurare il file JSON:
 +
 .Mostra output di esempio
