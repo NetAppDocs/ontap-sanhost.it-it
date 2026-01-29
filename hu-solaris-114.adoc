@@ -61,8 +61,6 @@ Con Solaris 11.4 è possibile utilizzare il multipathing per gestire le LUN ONTA
 
 Il multipathing consente di configurare più percorsi di rete tra l'host e i sistemi di archiviazione.  Se un percorso fallisce, il traffico prosegue sui percorsi rimanenti.  Oracle Solaris I/O Multipathing (MPxIO) è abilitato per impostazione predefinita sui sistemi Solaris 11.4 e SPARC.
 
-Per garantire che il multipathing e i parametri di timeout consigliati siano configurati correttamente per l'host, verificare di utilizzare le impostazioni consigliate da NetApp per i LUN ONTAP .
-
 .Fasi
 . Se l'host è configurato per FC, verificare che l'impostazione predefinita in `/kernel/drv/fp.conf` è impostato su `mpxio-disable="no"` .
 . Le Solaris Host Utilities caricano le impostazioni dei parametri consigliate da NetApp per i processori SPARC e x86_64.

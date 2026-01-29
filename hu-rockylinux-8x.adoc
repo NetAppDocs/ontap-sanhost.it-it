@@ -203,7 +203,143 @@ size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp
 
 
 
-== Passaggio 4: Se si desidera, escludere un dispositivo dal multipathing
+== Passaggio 4: conferma la configurazione iSCSI per l'host
+
+Per garantire che il multipathing sia configurato correttamente per il tuo host, imposta il  `timeout` parametro sul tuo host e conferma che il servizio iSCSI sia in esecuzione e si connetta ai target iSCSI.
+
+.Fasi
+. Verificare che il pacchetto iSCSI initiator (iscsi-initiator-utils) sia installato:
++
+[source, cli]
+----
+rpm -qa | grep iscsi-initiator-utils
+----
++
+Dovresti vedere un output simile al seguente esempio:
+
++
+[listing]
+----
+iscsi-initiator-utils-6.2.1.11-0.git4b3e853.el9.x86_64
+----
+. Verificare il nome del nodo iSCSI initiator, che si trova nel file  `/etc/iscsi/initiatorname.iscsi`:
++
+[source, cli]
+----
+InitiatorName=iqn.YYYY-MM.com.<vendor>:<host_name>
+----
+. Configura il parametro di timeout della sessione iSCSI situato nel file  `/etc/iscsi/iscsid.conf`:
++
+[source, cli]
+----
+node.session.timeo.replacement_timeout = 5
+----
++
+Il parametro  `replacement_timeout`iSCSI controlla per quanto tempo il livello iSCSI deve attendere che un percorso o una sessione scaduti si ristabiliscano prima di interrompere qualsiasi comando su di esso. Dovresti impostare il valore di  `replacement_timeout`a 5 nel file di configurazione iSCSI.
+
+. Abilitare il servizio iSCSI:
++
+[source, cli]
+----
+$systemctl enable iscsid
+----
+. Avvia il servizio iSCSI:
++
+[source, cli]
+----
+$systemctl start iscsid
+----
+. Verificare che il servizio iSCSI sia in esecuzione:
++
+[source, cli]
+----
+$systemctl status iscsid
+----
++
+.Mostra esempio
+[%collapsible]
+====
+[listing]
+----
+● iscsid.service - Open-iSCSI
+     Loaded: loaded (/usr/lib/systemd/system/iscsid.service; enabled; preset: disabled)
+     Active: active (running) since Tue 2025-12-02 11:36:21 EST; 2 weeks 1 day ago
+TriggeredBy: ● iscsid.socket
+       Docs: man:iscsid(8)
+             man:iscsiuio(8)
+             man:iscsiadm(8)
+   Main PID: 2263 (iscsid)
+     Status: "Ready to process requests"
+      Tasks: 1 (limit: 816061)
+     Memory: 18.5M
+        CPU: 14.480s
+     CGroup: /system.slice/iscsid.service
+             └─2263 /usr/sbin/iscsid -f -d2
+----
+====
+. Scopri i target iSCSI:
++
+[source, cli]
+----
+$iscsiadm --mode discovery --op update --type sendtargets --portal <target_IP>
+----
++
+.mostra esempio
+[%collapsible]
+====
+[listing]
+----
+iscsiadm --mode discovery --op update --type sendtargets --portal  192.168.30.87
+192.168.30.87:3260,1139 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23
+192.168.31.97:3260,1142 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23
+192.168.31.87:3260,1141 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23
+192.168.30.97:3260,1140 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23
+----
+====
+. Accedi ai target:
++
+[source, cli]
+----
+$iscsiadm --mode node -l all
+----
+. Imposta iSCSI per accedere automaticamente all'avvio dell'host:
++
+[source, cli]
+----
+$iscsiadm --mode node -T <target_name> -p <ip:port> -o update -n node.startup -v automatic
+----
++
+Dovresti vedere un output simile al seguente esempio:
+
++
+[listing]
+----
+iscsiadm --mode node -T iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 -p 192.168.30.87:3260 -o update -n node.startup -v automatic
+----
+. Verificare le sessioni iSCSI:
++
+[source, cli]
+----
+$iscsiadm --mode session
+----
++
+.Mostra esempio
+[%collapsible]
+====
+[listing]
+----
+iscsiadm --mode session
+tcp: [1] 192.168.30.87:3260,1139 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 (non-flash)
+tcp: [2] 192.168.31.97:3260,1142 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 (non-flash)
+tcp: [3] 192.168.31.87:3260,1141 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 (non-flash)
+tcp: [4] 192.168.30.97:3260,1140 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 (non-flash)
+----
+====
+
+
+
+
+== Passaggio 5: facoltativamente, escludi un dispositivo dal multipathing
 
 Se necessario, è possibile escludere un dispositivo dal multipathing aggiungendo il WWID per il dispositivo indesiderato alla stanza "blacklist" per il `multipath.conf` file.
 
@@ -235,7 +371,7 @@ blacklist {
 
 
 
-== Passaggio 5: Personalizzare i parametri multipath per i LUN ONTAP
+== Passaggio 6: personalizzare i parametri multipath per le LUN ONTAP
 
 Se l'host è connesso a LUN di altri fornitori e le impostazioni dei parametri multipath vengono sovrascritte, è necessario correggerle aggiungendo più avanti nel `multipath.conf` file che si applicano specificamente ai LUN di ONTAP. In caso contrario, i LUN di ONTAP potrebbero non funzionare come previsto.
 
@@ -268,7 +404,7 @@ devices {
 ====
 
 
-== Fase 6: Esaminare i problemi noti
+== Passaggio 7: rivedi i problemi noti
 
 Non ci sono problemi noti.
 
