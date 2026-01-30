@@ -167,6 +167,9 @@ I seguenti output di esempio mostrano le impostazioni corrette dei parametri e l
 --
 Una configurazione ASA ottimizza tutti i percorsi verso una determinata LUN, mantenendoli attivi. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
 
+.Mostra esempio
+[%collapsible]
+=====
 [listing]
 ----
 # multipath -ll
@@ -178,6 +181,7 @@ size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
   |- 14:0:8:9   sdjq 65:320  active ready running
   `- 14:0:7:9   sdiw 8:256   active ready running
 ----
+=====
 --
 .Configurazione AFF o FAS
 --
@@ -185,6 +189,9 @@ Una configurazione AFF o FAS deve avere due gruppi di percorsi con priorità mag
 
 L'esempio seguente visualizza l'output per una LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:
 
+.Mostra esempio
+[%collapsible]
+=====
 [listing]
 ----
 # multipath -ll
@@ -197,6 +204,7 @@ size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
   |- 14:0:2:0   sdfk 130:96  active ready running
   `- 14:0:5:0   sdgz 132:240 active ready running
 ----
+=====
 --
 ====
 
@@ -205,7 +213,10 @@ size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
 
 == Passaggio 4: conferma la configurazione iSCSI per l'host
 
-Per garantire che il multipathing sia configurato correttamente per il tuo host, imposta il  `timeout` parametro sul tuo host e conferma che il servizio iSCSI sia in esecuzione e si connetta ai target iSCSI.
+Assicurati che iSCSI sia configurato correttamente per il tuo host.
+
+.A proposito di questa attività
+Eseguire i seguenti passaggi sull'host iSCSI.
 
 .Fasi
 . Verificare che il pacchetto iSCSI initiator (iscsi-initiator-utils) sia installato:
