@@ -38,7 +38,7 @@ NOTE: L'installazione di Linux host Utilities non modifica le impostazioni di ti
 Per verificare che il multipathing sia configurato correttamente per l'host, verificare che il `/etc/multipath.conf` file sia definito e che siano configurate le impostazioni consigliate da NetApp per i LUN ONTAP.
 
 .Fasi
-. Verificare che il `/etc/multipath.conf` file venga chiuso. Se il file non esiste, creare un file vuoto a zero byte:
+. Verifica che il  `/etc/multipath.conf` file esista. Se il file non esiste, crea un file vuoto di zero byte:
 +
 [source, cli]
 ----

@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu-centos-8x.html 
-keywords: host utilities, centos, linux, 8.5, 8.4, 8.3, 8.2, 8.1, 8.0 netapp, ontap 
-summary: Installa Linux Host Utilities su un host CentOS 8.x per gestire le operazioni del protocollo FCP e iSCSI con LUN ONTAP . 
+permalink: hu-ol-10x.html 
+keywords: host utilities, oracle, linux, 10, netapp, ontap 
+summary: Installare le Linux Host Utilities su un host Oracle Linux 10 per gestire le operazioni dei protocolli FCP e iSCSI con LUN ONTAP. 
 ---
-= Configurare CentOS 8.x per FCP e iSCSI per l'archiviazione ONTAP
+= Configurare Oracle Linux 10 per FCP e iSCSI con storage ONTAP
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: Installa Linux Host Utilities su un host CentOS 8.x per gestire le oper
 
 
 [role="lead"]
-Il software Linux Host Utilities fornisce strumenti di gestione e diagnostica per gli host Linux connessi allo storage ONTAP . Quando si installa Linux Host Utilities su un host CentOS 8.x, è possibile utilizzare Host Utilities per gestire le operazioni del protocollo FCP e iSCSI con LUN ONTAP .
+Il software Linux Host Utilities fornisce strumenti di gestione e diagnostica per gli host Linux connessi allo storage ONTAP. Quando si installa Linux Host Utilities su un host Oracle Linux 10, è possibile utilizzare Host Utilities per gestire le operazioni dei protocolli FCP e iSCSI con le LUN ONTAP.
 
 
 
@@ -51,7 +51,7 @@ NOTE: L'installazione di Linux host Utilities non modifica le impostazioni di ti
 
 == Fase 3: Verificare la configurazione multipath per l'host
 
-È possibile utilizzare il multipathing con CentOS 8.x per gestire le LUN ONTAP .
+È possibile utilizzare il multipathing con Oracle Linux 10 per gestire le LUN ONTAP.
 
 Per verificare che il multipathing sia configurato correttamente per l'host, verificare che il `/etc/multipath.conf` file sia definito e che siano configurate le impostazioni consigliate da NetApp per i LUN ONTAP.
 
@@ -66,12 +66,12 @@ touch /etc/multipath.conf
 +
 [source, cli]
 ----
-chkconfig multipathd on
+systemctl enable multipathd
 ----
 +
 [source, cli]
 ----
-/etc/init.d/multipathd start
+systemctl start multipathd
 ----
 . Ogni volta che si avvia l'host, il file vuoto `/etc/multipath.conf` con zero byte carica automaticamente i parametri multipath dell'host raccomandati da NetApp come impostazioni predefinite. Non è necessario apportare modifiche al `/etc/multipath.conf` file per l'host perché il sistema operativo è compilato con i parametri multipath che riconoscono e gestiscono correttamente i LUN ONTAP.
 +
@@ -166,12 +166,12 @@ Una configurazione ASA ottimizza tutti i percorsi verso una determinata LUN, man
 ----
 multipath -ll
 3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
-size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
-`-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:7:1    sdfi   130:64   active ready running
-  |- 11:0:9:1    sdiy  8:288     active ready running
-  |- 11:0:10:1  sdml 69:464   active ready running
-  |- 11:0:11:1  sdpt  131:304  active ready running
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:6   sdbz 68:208  active ready running
+  |- 11:0:11:6  sddn 71:80   active ready running
+  |- 11:0:15:6  sdfb 129:208 active ready running
+  |- 12:0:1:6   sdgp 132:80  active ready running
 ----
 =====
 --
@@ -187,8 +187,8 @@ L'esempio seguente visualizza l'output per una LUN ONTAP con due percorsi attivi
 [listing]
 ----
 multipath -ll
-3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
-size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+3600a0980383036347ffb4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
 | |- 16:0:6:35 sdwb  69:624  active ready running
 | |- 16:0:5:35 sdun  66:752  active ready running
@@ -411,8 +411,6 @@ devices {
 
 Non ci sono problemi noti.
 
-Per i problemi noti del kernel compatibile con CentOS Red Hat, vedere la link:hu-rhel-8x.html#step-7-review-the-known-issues["problemi noti"] per la serie Red Hat Enterprise Linux (RHEL) 8.x.
-
 
 
 == Quali sono le prossime novità?
@@ -422,8 +420,8 @@ Per i problemi noti del kernel compatibile con CentOS Red Hat, vedere la link:hu
 +
 Il mirroring ASM (Automatic Storage Management) potrebbe richiedere modifiche alle impostazioni del multipath Linux per consentire ad ASM di riconoscere un problema e passare a un gruppo di guasti alternativo. La maggior parte delle configurazioni ASM su ONTAP utilizza la ridondanza esterna, il che significa che la protezione dei dati viene fornita dall'array esterno e ASM non esegue il mirroring dei dati. Alcuni siti utilizzano ASM con ridondanza normale per fornire il mirroring bidirezionale, in genere su siti diversi. Per ulteriori informazioni, vederelink:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["Database Oracle su ONTAP"^].
 
-* Scopri di più sulla virtualizzazione CentOS Linux (KVM)
+* Scopri di più su Oracle Linux KVM e la virtualizzazione
 +
-CentOS Linux può fungere da host KVM. Ciò consente di eseguire più macchine virtuali su un singolo server fisico utilizzando la tecnologia Linux Kernel-based Virtual Machine (KVM). L'host KVM non richiede impostazioni di configurazione host esplicite per le LUN ONTAP .
+Oracle Linux può fungere da host KVM. Ciò consente di eseguire più macchine virtuali su un singolo server fisico utilizzando la tecnologia Linux Kernel-based Virtual Machine (KVM). È possibile gestire e supportare più host Oracle Linux KVM utilizzando Oracle Linux Virtualization Manager, basato sul progetto open source oVirt. L'host KVM non richiede impostazioni di configurazione host esplicite per le LUN ONTAP .
 
 
