@@ -8,7 +8,7 @@
 
 NetApp consiglia vivamente di installare le utilità host Linux per supportare la gestione LUN di ONTAP e fornire assistenza tecnica nella raccolta dei dati di configurazione.
 
-link:hu_luhu_71.html["Installare le utilità host Linux 7,1"].
+link:hu_luhu_71.html["Installa Linux Host Utilities 7.1 per l'archiviazione ONTAP"].
 
 
 NOTE: L'installazione di Linux host Utilities non modifica le impostazioni di timeout dell'host sul proprio host Linux.

@@ -320,10 +320,10 @@ $iscsiadm --mode node -l all
 $iscsiadm --mode node -T <target_name> -p <ip:port> -o update -n node.startup -v automatic
 ----
 +
-Dovresti vedere un output simile al seguente esempio:
+Sostituisci  `<target_name>` con il nome del target a cui desideri accedere automaticamente all'avvio dell'host. Sostituisci  `<ip:port>` con l'indirizzo IP e il numero di porta del target. Ad esempio:
 
 +
-[listing]
+[source, cli]
 ----
 iscsiadm --mode node -T iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 -p 192.168.30.87:3260 -o update -n node.startup -v automatic
 ----
