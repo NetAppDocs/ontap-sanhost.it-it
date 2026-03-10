@@ -83,7 +83,7 @@ L'esempio seguente mostra un  `hostnqn` versione:
 +
 [listing]
 ----
-nqn.2014-08.org.nvmexpress:uuid:edd3XXXX-00f7-XXXX-a9dc-4d8XXXXd969a
+nqn.2014-08.org.nvmexpress:uuid:edd3xxxx-00f7-xxxx-a9dc-4d8xxxxd969a
 ----
 . Sul sistema ONTAP , verificare che `hostnqn` la stringa corrisponde a `hostnqn` stringa per il sottosistema corrispondente sul sistema di archiviazione ONTAP :
 +
@@ -101,13 +101,13 @@ Vserver Subsystem Priority  Host NQN
 ------- --------- --------  ------------------------------------------------
 vs_coexistence_LPE36002
         nvme
-                  regular   nqn.2014-08.org.nvmexpress:uuid:edd3XXXX-00f7-XXXX-a9dc-4d8XXXXd969a
+                  regular   nqn.2014-08.org.nvmexpress:uuid:edd3xxxx-00f7-xxxx-a9dc-4d8xxxxd969a
         nvme1
-                  regular   nqn.2014-08.org.nvmexpress:uuid:edd3XXXX-00f7-XXXX-a9dc-4d8XXXXd969a
+                  regular   nqn.2014-08.org.nvmexpress:uuid:edd3xxxx-00f7-xxxx-a9dc-4d8xxxxd969a
         nvme2
-                  regular   nqn.2014-08.org.nvmexpress:uuid:edd3XXXX-00f7-XXXX-a9dc-4d8XXXXd969a
+                  regular   nqn.2014-08.org.nvmexpress:uuid:edd3xxxx-00f7-xxxx-a9dc-4d8xxxxd969a
         nvme3
-                  regular   nqn.2014-08.org.nvmexpress:uuid:edd3XXXX-00f7-XXXX-a9dc-4d8XXXXd969a
+                  regular   nqn.2014-08.org.nvmexpress:uuid:edd3xxxx-00f7-xxxx-a9dc-4d8xxxxd969a
 4 entries were displayed.
 ----
 ====
