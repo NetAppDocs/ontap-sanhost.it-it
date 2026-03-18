@@ -223,7 +223,7 @@ Dovresti vedere un output simile al seguente esempio:
 +
 [listing]
 ----
-iscsi-initiator-utils-6.2.1.11-0.git4b3e853.el9.x86_64
+iscsi-initiator-utils-6.2.1.11-0.git4b3e853.0.1.el10.x86_64
 ----
 . Verificare il nome del nodo iSCSI initiator, che si trova nel file  `/etc/iscsi/initiatorname.iscsi`:
 +
@@ -315,7 +315,7 @@ $iscsiadm --mode node -T <target_name> -p <ip:port> -o update -n node.startup -v
 Sostituisci  `<target_name>` con il nome del target a cui desideri accedere automaticamente all'avvio dell'host. Sostituisci  `<ip:port>` con l'indirizzo IP e il numero di porta del target. Ad esempio:
 
 +
-[source, cli]
+[listing]
 ----
 iscsiadm --mode node -T iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 -p 192.168.30.87:3260 -o update -n node.startup -v automatic
 ----
