@@ -2477,4 +2477,5 @@ Il binding del driver FC viene modificato da<block ref="b9ca0a083600812be33f42f9
   <block id="1b569e78f049cfc0d5612ae09602f392" category="paragraph">I seguenti output di esempio mostrano uno spazio dei nomi ospitato su un controller ONTAP a due nodi per un sistema AFF, FAS, ASA o ASA r2 con NVMe/FC.</block>
   <block id="6d984a3ecdb3a900adb251dd0b78d708" category="paragraph">I seguenti output di esempio mostrano uno spazio dei nomi ospitato su un controller ONTAP a due nodi per sistemi AFF, FAS, ASA o ASA r2 con NVMe/TCP.</block>
   <block id="8e9aa976f7a8a387e926c6bbb8588831" category="paragraph">L'autenticazione sicura in banda è supportata tramite NVMe/TCP tra un host Oracle Linux 10.x e un controller ONTAP.</block>
+  <block id="e7f67da4e95cce9c0568e2b8ad82a925" category="paragraph">Rocky Linux è una distribuzione compatibile con RHEL e non dispone di un pacchetto Linux Host Utilities separato. Utilizzare il pacchetto Linux Host Utilities per la versione di RHEL corrispondente.</block>
 </blocks>
