@@ -348,7 +348,7 @@ VMware vSphere 8.x con ONTAP presenta i seguenti problemi noti:
 | ID bug NetApp | Titolo | Descrizione 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1543660["1543660"^] | L'errore i/o si verifica quando le macchine virtuali Linux che utilizzano gli adattatori vNVMe incontrano una lunga finestra APD (All Paths Down)  a| 
+| link:https://jira.ngage.netapp.com/browse/CONTAPEXT-1126["CONTAPEXT-1126"^] | L'errore i/o si verifica quando le macchine virtuali Linux che utilizzano gli adattatori vNVMe incontrano una lunga finestra APD (All Paths Down)  a| 
 Le macchine virtuali Linux che eseguono vSphere 8.x e versioni successive e che utilizzano adattatori virtuali NVMe (vNVME) riscontrano un errore i/o perché l'operazione di ripetizione vNVMe è disattivata per impostazione predefinita. Per evitare interruzioni sulle macchine virtuali Linux che eseguono kernel meno recenti durante un All Paths Down (APD) o un carico i/o pesante, VMware ha introdotto un "VSCSIDisableNvmeRetry" sintonizzabile per disattivare l'operazione di ripetizione di vNVMe.
 
 |===

@@ -311,11 +311,11 @@ La configurazione dell'host NVMe-of per ESXi 8.x con ONTAP presenta i seguenti p
 | ID bug NetApp | Titolo | Descrizione 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1420654["1420654"^] | Nodo ONTAP non operativo quando il protocollo NVMe/FC viene utilizzato con ONTAP versione 9.9.1 | ONTAP 9.9.1 ha introdotto il supporto per il comando "ABORT" di NVMe. Quando ONTAP riceve il comando "abortire" per interrompere un comando NVMe fuse in attesa del comando partner, si verifica un'interruzione del nodo ONTAP. Il problema si verifica solo con gli host che utilizzano i comandi NVMe fused (ad esempio ESX) e il trasporto Fibre Channel (FC). 
+| link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1420654["1420654"^] | Il nodo ONTAP non è operativo quando si utilizza il protocollo NVMe/FC con la versione di ONTAP 9.9.1 | ONTAP 9.9.1 ha introdotto il supporto per il comando "abort" di NVMe. Quando ONTAP riceve il comando "abort" per interrompere un comando NVMe fuso in attesa del comando partner, si verifica un'interruzione del nodo ONTAP. Il problema si verifica solo con gli host che utilizzano comandi NVMe fusi (ad esempio, ESX) e il trasporto Fibre Channel (FC). 
 
 
-| 1543660 | L'errore i/o si verifica quando le macchine virtuali Linux che utilizzano gli adattatori vNVMe incontrano una lunga finestra APD (All Paths Down)  a| 
-Le macchine virtuali Linux che eseguono vSphere 8.x e versioni successive e che utilizzano adattatori virtuali NVMe (vNVME) riscontrano un errore i/o perché l'operazione di ripetizione vNVMe è disattivata per impostazione predefinita. Per evitare interruzioni sulle macchine virtuali Linux che eseguono kernel meno recenti durante un All Paths Down (APD) o un carico i/o pesante, VMware ha introdotto un "VSCSIDisableNvmeRetry" sintonizzabile per disattivare l'operazione di ripetizione di vNVMe.
+| link:https://jira.ngage.netapp.com/browse/CONTAPEXT-1126["CONTAPEXT-1126"^] | L'errore i/o si verifica quando le macchine virtuali Linux che utilizzano gli adattatori vNVMe incontrano una lunga finestra APD (All Paths Down)  a| 
+Le macchine virtuali Linux che eseguono vSphere 8.x e versioni successive e utilizzano adattatori NVMe virtuali (vNVMe) riscontrano un errore di I/O perché l'operazione di ritentativo vNVMe è disabilitata per impostazione predefinita. Per evitare un'interruzione sulle macchine virtuali Linux che eseguono kernel meno recenti durante un all paths down (APD) o un carico di I/O elevato, VMware ha introdotto un parametro regolabile "VSCSIDisableNvmeRetry" per disabilitare l'operazione di ritentativo vNVMe.
 
 |===
 .Informazioni correlate
