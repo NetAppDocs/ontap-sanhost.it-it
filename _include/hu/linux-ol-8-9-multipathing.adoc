@@ -1,0 +1,208 @@
+= 
+:allow-uri-read: 
+
+
+[role="tabbed-block"]
+====
+.Host Oracle Linux
+--
+Per garantire che il multipathing sia configurato correttamente per il tuo host, verifica che  `/etc/multipath.conf` sia definito e che le impostazioni consigliate da NetApp siano configurate per le tue LUN ONTAP.
+
+.Fasi
+. Verifica che il  `/etc/multipath.conf` file esista. Se il file non esiste, crea un file vuoto di zero byte:
++
+[source, cli]
+----
+touch /etc/multipath.conf
+----
+. La prima volta che `multipath.conf` si crea il file, potrebbe essere necessario attivare e avviare i servizi multipath per caricare le impostazioni consigliate:
++
+[source, cli]
+----
+systemctl enable multipathd
+----
++
+[source, cli]
+----
+systemctl start multipathd
+----
+. Ogni volta che si avvia l'host, il file vuoto `/etc/multipath.conf` con zero byte carica automaticamente i parametri multipath dell'host raccomandati da NetApp come impostazioni predefinite. Non è necessario apportare modifiche al `/etc/multipath.conf` file per l'host perché il sistema operativo è compilato con i parametri multipath che riconoscono e gestiscono correttamente i LUN ONTAP.
++
+La tabella seguente mostra le impostazioni dei parametri multipercorso compilati dal sistema operativo Linux nativo per i LUN ONTAP.
+
++
+.Mostra impostazioni parametri
+[#multipath-parameter-settings%collapsible]
+=====
+[cols="2"]
+|===
+| Parametro | Impostazione 
+
+
+| detect_prio | sì 
+
+
+| dev_loss_tmo | "infinito" 
+
+
+| failback | immediato 
+
+
+| fast_io_fail_tmo | 5 
+
+
+| caratteristiche | "2 pg_init_retries 50" 
+
+
+| flush_on_last_del | "sì" 
+
+
+| gestore_hardware | "0" 
+
+
+| no_path_retry | coda 
+
+
+| path_checker | "a" 
+
+
+| policy_di_raggruppamento_percorsi | "group_by_prio" 
+
+
+| path_selector | "tempo di servizio 0" 
+
+
+| intervallo_polling | 5 
+
+
+| prio | "ONTAP" 
+
+
+| prodotto | LUN 
+
+
+| retain_attached_hw_handler | sì 
+
+
+| peso_rr | "uniforme" 
+
+
+| user_friendly_names | no 
+
+
+| vendor | NETAPP 
+|===
+=====
+. Verificare le impostazioni dei parametri e lo stato del percorso dei LUN ONTAP:
++
+[source, cli]
+----
+multipath -ll
+----
++
+I parametri multipath predefiniti supportano le configurazioni ASA, AFF e FAS . In queste configurazioni, una singola LUN ONTAP non dovrebbe richiedere più di quattro percorsi. Avere più di quattro percorsi può causare problemi in caso di guasto dell'archiviazione.
+
++
+I seguenti output di esempio mostrano le impostazioni corrette dei parametri e lo stato del percorso per i LUN ONTAP in una configurazione ASA, AFF o FAS.
+
++
+*Configurazione ASA*
+
++
+Una configurazione ASA ottimizza tutti i percorsi verso una determinata LUN, mantenendoli attivi. In questo modo, le performance vengono migliorate grazie alle operazioni di i/o in tutti i percorsi contemporaneamente.
+
++
+.Mostra esempio
+[%collapsible]
+=====
+[listing]
+----
+multipath -ll
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:6   sdbz 68:208  active ready running
+  |- 11:0:11:6  sddn 71:80   active ready running
+  |- 11:0:15:6  sdfb 129:208 active ready running
+  |- 12:0:1:6   sdgp 132:80  active ready running
+----
+=====
++
+*Configurazione AFF o FAS*
+
++
+Una configurazione AFF o FAS deve avere due gruppi di percorsi con priorità maggiore e minore. I percorsi Active/Optimized di priorità più elevata sono serviti dal controller in cui si trova l'aggregato. I percorsi a priorità inferiore sono attivi ma non ottimizzati perché serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando non sono disponibili percorsi ottimizzati.
+
++
+L'esempio seguente visualizza l'output per una LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati:
+
++
+.Mostra esempio
+[%collapsible]
+=====
+[listing]
+----
+multipath -ll
+3600a0980383036347ffb4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 16:0:6:35 sdwb  69:624  active ready running
+| |- 16:0:5:35 sdun  66:752  active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+  |- 15:0:0:35 sdaj  66:48   active ready running
+  |- 15:0:1:35 sdbx  68:176  active ready running
+----
+=====
+
+
+--
+.OLVM - ONTAP HA
+--
+In Oracle Linux Virtualization Manager (OLVM), il demone VDSM controlla i parametri multipath predefiniti sull'hypervisor. Non modificare `/etc/multipath.conf` direttamente. Sovrascrivi invece i valori predefiniti utilizzando un file di drop-in per multipath.
+
+Per le configurazioni di alta disponibilità (HA) di ONTAP, NetApp consiglia il seguente file di configurazione per sovrascrivere  `dev_loss_tmo` e  `no_path_retry`. Tutti gli altri parametri multipath devono corrispondere alle impostazioni nella tabella delle impostazioni dei parametri dell'host Oracle Linux.
+
+.Fasi
+. Crea il file di drop-in:
++
+[source, cli]
+----
+cat <<'EOF' > /etc/multipath/conf.d/ontap-ha-mpath-netapp.conf
+# Finite multipath retry window aligned with sanlock io_timeout
+# default sanlock:io_timeout=10s, polling_interval=5s => no_path_retry = (8*10)/5 = 16
+
+devices {
+  device {
+    vendor "NETAPP"
+    product "LUN"
+    no_path_retry 16
+    dev_loss_tmo "infinity"
+  }
+}
+EOF
+----
+. Riavvia il demone multipath:
++
+[source, cli]
+----
+systemctl reload multipathd
+----
+. Verificare la configurazione multipath aggiornata:
++
+[source, cli]
+----
+multipathd -k"show config"
+----
+
+
+--
+.OLVM - ONTAP SnapMirror active sync
+--
+In Oracle Linux Virtualization Manager (OLVM), il demone VDSM controlla i parametri multipath predefiniti sull'hypervisor. Non modificare `/etc/multipath.conf` direttamente. Sovrascrivi invece i valori predefiniti utilizzando un file di drop-in per multipath.
+
+Quando gli host OLVM utilizzano ONTAP SnapMirror active sync, è necessario regolare i parametri di timeout di sanlock e multipath per garantire il corretto comportamento di host e VM durante gli eventi di failover dello storage. I valori di timeout OLVM predefiniti possono causare failover indesiderati di VM ad alta disponibilità durante i failover non pianificati del sito, poiché la finestra di rinnovo del lease potrebbe scadere prima del completamento del ripristino multipath.
+
+Segui i passaggi di configurazione descritti nell'articolo della Knowledge Base di NetApp https://kb.netapp.com/on-prem/ontap/DP/SnapMirror/SnapMirror-KBs/Oracle_Linux_Virtualization_Manager_-_Sanlock_Settings_for_ONTAP_SnapMirror_Active_Sync["Oracle Linux Virtualization Manager - Impostazioni Sanlock per ONTAP SnapMirror Active Sync"] per aggiornare i valori di timeout di sanlock e multipath, in modo che la finestra di rinnovo del lease rimanga sufficiente per il completamento del ripristino multipath durante un evento di failover dello storage.
+
+--
+====
