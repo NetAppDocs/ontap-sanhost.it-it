@@ -1199,7 +1199,6 @@ Il binding del driver FC viene modificato da<block ref="b9ca0a083600812be33f42f9
   <block id="411779633a68ad8ff4bb5f0b84de0e3d" category="doc">Passo 1: Installazione delle utilità host HP-UX</block>
   <block id="7a5a6ee53a3c56e370cff4e4cb600d3a" category="paragraph">NetApp consiglia vivamente di installare le utilità host Linux per supportare la gestione LUN di ONTAP e fornire assistenza tecnica nella raccolta dei dati di configurazione.</block>
   <block id="5d17e83279fd5189b40ec31e6e0efc6c" category="inline-link-macro">Installare le utilità host HP-UX 6,0</block>
-  <block id="7b3d6a6184bc8044fb4eaa2361a0c137" category="paragraph"><block ref="a1822c628e463c7a9fa61c1a4713b4ef" category="inline-link-macro-rx"></block>.</block>
   <block id="cd30444b7075100f9dce64caf41ba2b7" category="doc">Fase 2: Installare le utilità host Linux</block>
   <block id="a9764a4b476a4ae40670f2b10ab9b4aa" category="admonition">L'installazione di Linux host Utilities non modifica le impostazioni di timeout dell'host sul proprio host Linux.</block>
   <block id="0f8e25d5af08d115d6410aa42fa8c1e8" category="doc">Passaggio 5: Personalizzare i parametri multipath per i LUN ONTAP</block>
@@ -2505,4 +2504,5 @@ Il binding del driver FC viene modificato da<block ref="b9ca0a083600812be33f42f9
   <block id="510d8f08b1bcd3d37f5f38838ba87607" category="list-text">A partire da ONTAP 9.19.1, la SnapMirror active sync è supportata nella configurazione Active/Active, consentendo operazioni di SnapMirror active sync non interruttive. Vedere l'articolo della Knowledge Base <block ref="689132335b86d0a731403daf22970080" category="inline-link-macro-rx"></block>.</block>
   <block id="58d09565b9d76aa8df134a3c88f349ef" category="inline-link-macro">Come configurare un host AIX per la SnapMirror active sync in ONTAP 9.11.1 a 9.18.1</block>
   <block id="edef79d6486b82062ad7b8f2b46174e2" category="list-text">Per ONTAP 9.11.1 fino a 9.18.1, la sincronizzazione attiva di SnapMirror è supportata nella configurazione Active/Standby. Vedere l'articolo della Knowledge Base <block ref="170dab56a652357d4fe24ca37b0b9eea" category="inline-link-macro-rx"></block>.</block>
+  <block id="d260773137ad0fe3e74f84c49c4bb99c" category="paragraph"><block ref="d91927ac11d01a60b7823e550f2dd7fb" category="inline-link-macro-rx"></block>.</block>
 </blocks>
