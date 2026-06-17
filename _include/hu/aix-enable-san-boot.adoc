@@ -14,6 +14,9 @@
 --
 L'avvio SAN è il processo di configurazione di un disco collegato a SAN (un LUN) come dispositivo di avvio per un host AIX/PowerVM.  È possibile configurare un LUN di avvio SAN per funzionare in un ambiente AIX Multipath I/O (MPIO) che utilizza il protocollo FC ed esegue AIX Host Utilities con il protocollo FC o FCoE.  Il metodo utilizzato per creare un LUN di avvio SAN e installare una nuova immagine del sistema operativo in un ambiente AIX MPIO dipende dal protocollo utilizzato.
 
+
+NOTE: AIX richiede che sia visibile un solo percorso a un disco di avvio SAN finché MPIO non viene abilitato. L'installazione o la migrazione di un disco di avvio AIX generalmente richiede di limitare temporaneamente la zona FC dell'host per includere un singolo initiator FC e un singolo target FC. Dopo aver installato le Host Utilities, incluso il pacchetto PCM, puoi riavviare il sistema operativo per abilitare completamente MPIO. A quel punto, aggiungi gli initiator FC e i target FC aggiuntivi alla zona. Quindi, esegui  `cfgmgr -v` e  `bosboot -a` per aggiornare la configurazione di avvio in modo da includere tutti i percorsi disponibili.
+
 .Fasi
 . Utilizzare illink:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^] per verificare che il sistema operativo AIX, il protocollo e la versione ONTAP supportino l'avvio SAN.
 . Seguire le best practice per la configurazione di un avvio SAN riportate nella documentazione del fornitore.
