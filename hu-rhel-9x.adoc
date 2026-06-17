@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: hu-rhel-9x.html 
-keywords: host utilities, red hat, rhel, linux, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0, netapp, ontap, rhel 
+keywords: host utilities, red hat, rhel, linux, 9.8, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0, netapp, ontap 
 summary: Installare Linux Host Utilities su un host RHEL 9.x per gestire le operazioni del protocollo FCP e iSCSI con LUN ONTAP . 
 ---
 = Configurare RHEL 9.x per FCP e iSCSI con storage ONTAP
@@ -266,18 +266,18 @@ $systemctl status iscsid
 ----
 ● iscsid.service - Open-iSCSI
      Loaded: loaded (/usr/lib/systemd/system/iscsid.service; enabled; preset: disabled)
-     Active: active (running) since Tue 2025-12-02 11:36:21 EST; 2 weeks 1 day ago
+     Active: active (running) Tue 2026-05-12 06:29:55 EDT; 2 weeks 1 day ago
 TriggeredBy: ● iscsid.socket
        Docs: man:iscsid(8)
              man:iscsiuio(8)
              man:iscsiadm(8)
-   Main PID: 2263 (iscsid)
+   Main PID: 2021 (iscsid)
      Status: "Ready to process requests"
       Tasks: 1 (limit: 816061)
      Memory: 18.5M
         CPU: 14.480s
      CGroup: /system.slice/iscsid.service
-             └─2263 /usr/sbin/iscsid -f -d2
+             └─2021 /usr/sbin/iscsid -f -d2
 ----
 ====
 . Scopri i target iSCSI:
@@ -409,47 +409,8 @@ devices {
 
 == Passaggio 7: rivedi i problemi noti
 
-RHEL 9.x con storage ONTAP presenta i seguenti problemi noti.
+Non ci sono problemi noti.
 
-[role="tabbed-block"]
-====
-.9,3
---
-[cols="20, 20, 50,20"]
-|===
-| ID bug NetApp | Titolo | Descrizione | ID JIRA 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | NetApp Linux host Utilities CLI richiede dipendenze aggiuntive del pacchetto libreria per supportare il rilevamento dell'adattatore HBA (host Bus Adapter) Emulex | In RHEL 9.x, la CLI delle utilità host SAN di NetApp Linux `sanlun fcp show adapter -v` non funziona perché non è possibile trovare le dipendenze del pacchetto della libreria per supportare il rilevamento HBA (host Bus Adapter) Emulex. | Non applicabile 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1593771["1593771"^] | Un host SAN Red Hat Enterprise Linux 9,3 QLogic incontra la perdita di multipercorsi parziali durante le operazioni di mobilità dello storage | Durante l'operazione di takeover dello storage controller ONTAP, si prevede che metà dei multi-path si interrompa o passi a una modalità di failover, per poi ripristinare il percorso completo durante il workflow di giveback. Tuttavia, con un host Red Hat Enterprise Linux (RHEL) 9,3 QLogic, vengono ripristinati solo i multipercorsi parziali dopo un'operazione di giveback del failover dello storage. | RHEL 17811 
-|===
---
-.9.2
---
-[cols="20,40,40"]
-|===
-| ID bug NetApp | Titolo | Descrizione 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | La CLI delle NetApp Linux host Utilities richiede dipendenze aggiuntive dei pacchetti di librerie per supportare il rilevamento dell'adattatore HBA Emulex | In RHEL 9,2, la CLI delle utilità host SAN di NetApp Linux `sanlun fcp show adapter -v` non funziona perché non è possibile trovare le dipendenze del pacchetto della libreria per supportare il rilevamento HBA. 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1537359["1537359"^] | Un host RED Hat Linux 9.2 SAN avviato con Emulex HBA incontra task stallati che portano a un'interruzione del kernel | Durante un'operazione di giveback per il failover dello storage, un host RED Hat Linux 9.2 SAN avviato con un HBA (host bus adapeter) Emulex incontra task in stallo che portano a un'interruzione del kernel. L'interruzione del kernel causa il riavvio del sistema operativo e se `kdump` è configurato, genera `vmcore` file sotto `/var/crash/` directory. Il problema è in fase di verifica con `lpfc` ma non può essere riprodotto in modo coerente. 
-|===
---
-.9.1
---
-[cols="20,40,40"]
-|===
-| ID bug NetApp | Titolo | Descrizione 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | La CLI delle NetApp Linux host Utilities richiede dipendenze aggiuntive dei pacchetti di librerie per supportare il rilevamento dell'adattatore HBA Emulex | In RHEL 9,1, la CLI delle utilità host SAN di NetApp Linux `sanlun fcp show adapter -v` non funziona perché non è possibile trovare le dipendenze del pacchetto della libreria per supportare il rilevamento HBA. 
-|===
---
-====
 
 
 == Quali sono le prossime novità?
