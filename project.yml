@@ -93,7 +93,7 @@ sidebar:
         url: "/hu_wuhu_troubleshoot.html"
   - title: Configurare gli host con FCP e iSCSI
     entries:
-    - title: Panoramica
+    - title: Scopri come configurare gli host con FCP e iSCSI
       url: "/hu_fcp_scsi_index.html"
     - title: AIX e PowerVM/VIOS
       entries:
@@ -214,7 +214,7 @@ sidebar:
         url: "/hu_windows_2012r2.html"
   - title: Configurare gli host con NVMe-of
     entries:
-    - title: Scopri di più sulla configurazione degli host NVMe-oF
+    - title: Scopri come configurare un host con NVMe-oF
       url: "/hu-nvme-index.html"
     - title: AIX
       url: "/nvme-aix.html"
