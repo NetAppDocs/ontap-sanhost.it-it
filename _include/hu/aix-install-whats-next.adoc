@@ -4,6 +4,7 @@
 
 
 
+[[whats-next]]
 == Quali sono le prossime novità?
 
 link:hu-aix-san-toolkit.html["Scopri di più su AIX SAN Toolkit"] .

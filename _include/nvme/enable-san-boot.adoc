@@ -4,6 +4,7 @@
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == Passaggio 1: Se lo si desidera, attivare l'avvio SAN
 
 È possibile configurare l'host in modo che utilizzi l'avvio SAN per semplificare l'installazione e migliorare la scalabilità.

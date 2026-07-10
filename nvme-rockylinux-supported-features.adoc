@@ -73,6 +73,7 @@ NOTE: Per i dettagli sulle configurazioni supportate, vederelink:https://mysuppo
 
 
 
+[[whats-next]]
 == Cosa c'è dopo?
 
 [cols="50,50"]

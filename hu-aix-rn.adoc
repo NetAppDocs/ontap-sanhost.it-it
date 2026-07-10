@@ -22,6 +22,7 @@ Per informazioni specifiche sulle versioni e gli aggiornamenti del sistema opera
 
 
 
+[[whats-new]]
 == Novità
 
 Le versioni delle utilità host AIX contengono le seguenti nuove funzioni e miglioramenti:
@@ -32,6 +33,7 @@ Le versioni delle utilità host AIX contengono le seguenti nuove funzioni e migl
 
 
 
+[[known-problems-and-limitations]]
 == Problemi e limitazioni noti
 
 È necessario conoscere i seguenti problemi e limitazioni noti che potrebbero influire sulle prestazioni dell'host specifico.

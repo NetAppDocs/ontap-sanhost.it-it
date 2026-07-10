@@ -20,6 +20,7 @@ summary: 'È possibile configurare NVMe over Fabrics (NVMe-of) sugli host inizia
 
 
 
+[[supportability]]
 == Supportabilità
 
 * A partire dall'allocazione dello spazio ONTAP 9.16,1 è abilitata per impostazione predefinita per tutti i namespace NVMe appena creati.
@@ -29,6 +30,7 @@ summary: 'È possibile configurare NVMe over Fabrics (NVMe-of) sugli host inizia
 
 
 
+[[features]]
 == Caratteristiche
 
 * Gli host ESXi Initiator possono eseguire traffico NVMe/FC e FCP attraverso le stesse porte della scheda di rete. Vedere link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] Per un elenco di controller e adattatori FC supportati. Vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperabilità NetApp"^] per l'elenco più aggiornato delle configurazioni e delle versioni supportate.
@@ -37,6 +39,7 @@ summary: 'È possibile configurare NVMe over Fabrics (NVMe-of) sugli host inizia
 
 
 
+[[known-limitations]]
 == Limitazioni note
 
 * Mappatura RDM non supportata.
@@ -44,6 +47,7 @@ summary: 'È possibile configurare NVMe over Fabrics (NVMe-of) sugli host inizia
 
 
 
+[[enable-nvmefc]]
 == Abilitare NVMe/FC
 
 NVMe/FC è attivato per impostazione predefinita nelle release di vSphere.
@@ -77,6 +81,7 @@ Se le stringhe NQN host non corrispondono, utilizzare `vserver nvme subsystem ho
 
 
 
+[[configure-broadcomemulex-and-marvellqlogic]]
 == Configurare Broadcom/Emulex e Marvell/Qlogic
 
 Il `lpfc` e a. `qlnativefc` Per impostazione predefinita, i driver di vSphere 8.x dispongono della funzionalità NVMe/FC attivata.
@@ -85,6 +90,7 @@ Vedere link:https://mysupport.netapp.com/matrix/["Tool di matrice di interoperab
 
 
 
+[[validate-nvmefc]]
 == Validare NVMe/FC
 
 Per validare NVMe/FC, è possibile utilizzare la seguente procedura.
@@ -175,12 +181,14 @@ fc.20000024ff7f4a50:21000024ff7f4a50-fc.2004d039ea3ab21f:2007d039ea3ab21f-uuid.d
 
 
 
+[[configure-nvmetcp]]
 == Configurare NVMe/TCP
 
 In ESXi 8.x, i moduli NVMe/TCP richiesti vengono caricati per impostazione predefinita. Per configurare la rete e l'adattatore NVMe/TCP, consultare la documentazione di VMware vSphere.
 
 
 
+[[validate-nvmetcp]]
 == Validare NVMe/TCP
 
 Per convalidare NVMe/TCP, seguire la procedura riportata di seguito.
@@ -271,6 +279,7 @@ tcp.vmnic2:34:80:0d:30:ca:e0-tcp.192.168.100.167:4420-uuid.f4f14337c3ad4a639edf0
 
 
 
+[[nvme-deallocate]]
 == Disallocare NVMe
 
 Il comando NVMe disallocare è supportato per ESXi 8.0u2 e versioni successive con ONTAP 9.16.1 e versioni successive.
@@ -302,6 +311,7 @@ Per ulteriori informazioni su NVMe disallocare in VMware vSphere, fare riferimen
 
 
 
+[[known-issues]]
 == Problemi noti
 
 La configurazione dell'host NVMe-of per ESXi 8.x con ONTAP presenta i seguenti problemi noti:

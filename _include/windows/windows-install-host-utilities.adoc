@@ -4,6 +4,7 @@
 
 
 
+[[step-3-install-the-windows-host-utilities]]
 == Passaggio 3: installare le utilità host di Windows
 
 Il programma di installazione installa il pacchetto Windows Host Utilities e imposta il registro di Windows e le impostazioni HBA.

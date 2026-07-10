@@ -4,6 +4,7 @@
 
 
 
+[[step-4-confirm-the-multipath-configuration-for-your-host]]
 == Passaggio 4: confermare la configurazione multipath per l'host
 
 Installare il software Microsoft Multipath I/O (MPIO) e abilitare il multipathing se l'host Windows dispone di più di un percorso verso il sistema di archiviazione.

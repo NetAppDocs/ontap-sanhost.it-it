@@ -20,6 +20,7 @@ summary: Descrive come utilizzare Solaris Host Utilities 8.0 con ONTAP
 
 
 
+[[list-all-host-initiators-mapped-to-host]]
 == Elenca tutti gli iniziatori host mappati all'host
 
 È possibile recuperare un elenco di tutti gli iniziatori host mappati a un host.
@@ -119,6 +120,7 @@ OS device name:    /dev/cfg/c6
 ====
 
 
+[[list-all-luns-mapped-to-host]]
 == Elenca tutti i LUN mappati all'host
 
 È possibile recuperare un elenco di tutti i LUN mappati a un host.
@@ -170,6 +172,7 @@ ONTAP Path: sanboot_unix:/vol/test1/lun1
 ====
 
 
+[[list-all-luns-mapped-to-host-from-a-given-svm-list-all-attributes-of-a-given-lun-mapped-to-host]]
 == Elenca tutti i LUN mappati all'host da una SVM specifica/ Elenca tutti gli attributi di una LUN specifica mappata all'host
 
 È possibile recuperare un elenco di tutti i LUN mappati su un host da una SVM specifica.
@@ -214,6 +217,7 @@ ONTAP Path: sanboot_unix:/vol/sol_boot/sanboot_lun
 ====
 
 
+[[list-ontap-lun-attributes-by-host-device-filename]]
 == Elencare gli attributi del LUN ONTAP in base al nome del file del dispositivo host
 
 È possibile recuperare un elenco di tutti gli attributi del LUN ONTAP specificando un nome file del dispositivo host.

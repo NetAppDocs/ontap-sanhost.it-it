@@ -30,6 +30,7 @@ NVMe-oF con Oracle Linux 8.x presenta le seguenti limitazioni note:
 
 
 
+[[step-1-install-oracle-linux-and-nvme-software-and-verify-your-configuration]]
 == Passaggio 1: installare il software Oracle Linux e NVMe e verificare la configurazione
 
 Utilizzare la seguente procedura per convalidare le versioni minime supportate del software Oracle Linux 8.x.
@@ -138,6 +139,7 @@ systemctl restart multipathd
 
 
 
+[[step-2-configure-nvmefc-and-nvmetcp]]
 == Passaggio 2: configurare NVMe/FC e NVMe/TCP
 
 Configurare NVMe/FC con adattatori Broadcom/Emulex o Marvell/QLogic oppure configurare NVMe/TCP utilizzando operazioni di rilevamento e connessione manuali.
@@ -451,6 +453,7 @@ NetApp consiglia di impostare il `ctrl-loss-tmo option` A `-1` in modo che l'ini
 ====
 
 
+[[step-3-optionally-enable-1mb-io-for-nvmefc]]
 == Passaggio 3: Facoltativamente, abilitare 1 MB di I/O per NVMe/FC
 
 ONTAP segnala una dimensione massima di trasferimento dati (MDTS) pari a 8 nei dati Identify Controller.  Ciò significa che la dimensione massima della richiesta di I/O può arrivare fino a 1 MB.  Per emettere richieste di I/O di dimensione 1 MB per un host Broadcom NVMe/FC, è necessario aumentare il `lpfc` valore del `lpfc_sg_seg_cnt` parametro a 256 dal valore predefinito di 64.
@@ -484,6 +487,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
+[[step-4-verify-the-multipathing-configuration]]
 == Passaggio 4: verificare la configurazione del multipathing
 
 Verificare che lo stato multipath NVMe in-kernel, lo stato ANA e i namespace ONTAP siano corretti per la configurazione NVMe-of.
@@ -670,6 +674,7 @@ nvme netapp ontapdevices -o json
 
 
 
+[[step-5-optionally-enable-1mb-io-size]]
 == Passaggio 5: Facoltativamente, abilitare la dimensione I/O di 1 MB
 
 ONTAP segnala una dimensione massima di trasferimento dati (MDTS) pari a 8 nei dati Identify Controller.  Ciò significa che la dimensione massima della richiesta di I/O può arrivare fino a 1 MB.  Per emettere richieste di I/O di dimensione 1 MB per un host Broadcom NVMe/FC, è necessario aumentare il `lpfc` valore del `lpfc_sg_seg_cnt` parametro a 256 dal valore predefinito di 64.
@@ -703,6 +708,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
+[[step-6-review-the-known-issues]]
 == Fase 6: Esaminare i problemi noti
 
 Ecco i problemi noti:

@@ -20,6 +20,7 @@ summary: È possibile configurare le impostazioni degli host SAN ONTAP per VMwar
 
 
 
+[[hypervisor-san-booting]]
 == Avvio DI hypervisor SAN
 
 .Prima di iniziare
@@ -41,6 +42,7 @@ Per informazioni su come attivare il BIOS HBA, consultare la documentazione spec
 
 
 
+[[multipathing]]
 == Multipathing
 
 ESXi fornisce un modulo multipathing estensibile denominato Native Multipathing Plug-in (NMP) che gestisce i sub-plug-in, i plug-in di tipo di array di storage (SATP) e i plug-in di selezione del percorso (PSPs). Per impostazione predefinita, queste regole SATP sono disponibili in ESXi.
@@ -67,6 +69,7 @@ tpgs_on        VMW_PSP_RR                   NetApp arrays with ALUA support
 ----
 
 
+[[non-asa-configurations]]
 === Configurazioni non ASA
 
 Per le configurazioni non ASA, devono essere presenti due gruppi di percorsi con priorità diverse. I percorsi con priorità più elevate sono attivi/ottimizzati. Ciò significa che vengono gestite dal controller in cui si trova l'aggregato. I percorsi con priorità più basse sono attivi ma non ottimizzati perché sono serviti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.
@@ -203,6 +206,7 @@ fc.200034800d756a74:210034800d756a74-fc.2018d039ea936319:2016d039ea936319-naa.60
 ----
 
 
+[[vvol]]
 == VVol
 
 I volumi virtuali (vVol) sono un tipo di oggetto VMware che corrisponde a un disco macchina virtuale (VM), alle relative istantanee e ai cloni rapidi.
@@ -230,10 +234,12 @@ Per informazioni dettagliate sul provisioning e la gestione dei vVol, fare rifer
 
 
 
+[[recommended-settings]]
 == Impostazioni consigliate
 
 
 
+[[ats-locking]]
 === Blocco ATS
 
 Il blocco ATS è *obbligatorio* per lo storage compatibile con VAAI e per VMFS5 aggiornato ed è necessario per una corretta interoperabilità e performance i/o dello storage condiviso VMFS ottimali con le LUN ONTAP. Per ulteriori informazioni sull'attivazione del blocco ATS, consultare la documentazione VMware.
@@ -256,6 +262,7 @@ NOTE: Abilitare `Space-alloc` Impostazione per tutti i LUN mappati a VMware vSph
 
 
 
+[[guest-os-timeouts]]
 === Timeout del sistema operativo guest
 
 È possibile configurare manualmente le macchine virtuali con le impostazioni del sistema operativo guest consigliate. Dopo aver ottimizzato gli aggiornamenti, è necessario riavviare il guest per rendere effettive le modifiche.
@@ -277,6 +284,7 @@ NOTE: Abilitare `Space-alloc` Impostazione per tutti i LUN mappati a VMware vSph
 |===
 
 
+[[validate-the-vsphere-tunable]]
 === Validare vSphere tunable
 
 È possibile utilizzare il seguente comando per verificare `HardwareAcceleratedLocking` impostazione.
@@ -298,6 +306,7 @@ NOTE: Abilitare `Space-alloc` Impostazione per tutti i LUN mappati a VMware vSph
 ----
 
 
+[[validate-the-disk-iops-setting]]
 === Convalidare l'impostazione IOP del disco
 
 È possibile utilizzare il seguente comando per verificare l'impostazione degli IOPS.
@@ -318,6 +327,7 @@ naa.600a098038304731783f506670553355
 ----
 
 
+[[validate-the-qfullsamplesize]]
 === Validare QFullSampleSize
 
 È possibile utilizzare il seguente comando per verificare QFullSampleSize.
@@ -339,6 +349,7 @@ naa.600a098038304731783f506670553355
 ----
 
 
+[[known-issues]]
 == Problemi noti
 
 VMware vSphere 8.x con ONTAP presenta i seguenti problemi noti:

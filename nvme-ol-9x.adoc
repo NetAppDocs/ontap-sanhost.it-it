@@ -27,6 +27,7 @@ NVMe-oF con Oracle Linux 9.x presenta la seguente limitazione nota:
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == Passaggio 1: Se lo si desidera, attivare l'avvio SAN
 
 È possibile configurare l'host per utilizzare l'avvio SAN per semplificare la distribuzione e migliorare la scalabilità. Utilizzare illink:https://mysupport.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^] per verificare che il sistema operativo Linux, l'adattatore bus host (HBA), il firmware HBA, il BIOS di avvio HBA e la versione ONTAP supportino l'avvio SAN.
@@ -42,6 +43,7 @@ Per informazioni su come attivare il BIOS HBA, consultare la documentazione spec
 
 
 
+[[step-2-install-oracle-linux-and-nvme-software-and-verify-your-configuration]]
 == Passaggio 2: installa il software Oracle Linux e NVMe e verifica la configurazione
 
 Utilizzare la seguente procedura per convalidare le versioni minime supportate del software Oracle Linux 9.x.
@@ -130,6 +132,7 @@ NOTE: Se le `hostnqn` stringhe non corrispondono, è possibile utilizzare il `vs
 
 
 
+[[step-3-configure-nvmefc-and-nvmetcp]]
 == Passaggio 3: configurare NVMe/FC e NVMe/TCP
 
 Configurare NVMe/FC con adattatori Broadcom/Emulex o Marvell/QLogic oppure configurare NVMe/TCP utilizzando operazioni di rilevamento e connessione manuali.
@@ -489,6 +492,7 @@ A partire da Oracle Linux 9.4, l'impostazione per NVMe/TCP  `ctrl_loss_tmo timeo
 ====
 
 
+[[step-4-optionally-modify-the-iopolicy-in-the-udev-rules]]
 == Passaggio 4: Facoltativamente, modificare iopolicy nelle regole udev
 
 L'host Oracle Linux 9.x imposta l'iopolicy predefinito per NVMe-oF su `round-robin`. A partire da Oracle Linux 9.6, è possibile modificare iopolicy in `queue-depth` modificando il file delle regole udev.
@@ -551,6 +555,7 @@ NOTE: La nuova iopolicy si applica automaticamente ai dispositivi NetApp ONTAP C
 
 
 
+[[step-5-optionally-enable-1mb-io-for-nvmefc]]
 == Passaggio 5: Facoltativamente, abilitare 1 MB di I/O per NVMe/FC
 
 ONTAP segnala una dimensione massima di trasferimento dati (MDTS) pari a 8 nei dati Identify Controller.  Ciò significa che la dimensione massima della richiesta di I/O può arrivare fino a 1 MB.  Per emettere richieste di I/O di dimensione 1 MB per un host Broadcom NVMe/FC, è necessario aumentare il `lpfc` valore del `lpfc_sg_seg_cnt` parametro a 256 dal valore predefinito di 64.
@@ -584,6 +589,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
+[[step-6-verify-nvme-boot-services]]
 == Passaggio 6: verificare i servizi di avvio NVMe
 
 IL `nvmefc-boot-connections.service` E `nvmf-autoconnect.service` servizi di avvio inclusi in NVMe/FC `nvme-cli` i pacchetti vengono abilitati automaticamente all'avvio del sistema.
@@ -641,6 +647,7 @@ Feb 02 09:47:07 sr630-13-169 systemd[1]: Finished Auto-connect to subsystems on 
 
 
 
+[[step-7-verify-the-multipathing-configuration]]
 == Passaggio 7: verificare la configurazione del multipathing
 
 Verificare che lo stato multipath NVMe in-kernel, lo stato ANA e i namespace ONTAP siano corretti per la configurazione NVMe-of.
@@ -844,6 +851,7 @@ nvme netapp ontapdevices -o json
 
 
 
+[[step-8-set-up-secure-in-band-authentication]]
 == Passaggio 8: impostare l'autenticazione in-band sicura
 
 L'autenticazione in-band sicura è supportata tramite NVMe/TCP tra un host Oracle Linux 9.x e un controller ONTAP .
@@ -1029,6 +1037,7 @@ DHHC-1:03:n3F8d+bvxKW/s+lEhqXaOohI2sxrQ9iLutzduuFq49JgdjjaFtTpDSO9kQl/bvZj+Bo3rd
 ====
 
 
+[[step-9-review-the-known-issues]]
 == Fase 9: Esaminare i problemi noti
 
 Non ci sono problemi noti.

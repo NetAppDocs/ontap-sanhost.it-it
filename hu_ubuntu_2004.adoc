@@ -27,6 +27,7 @@ Non è necessario configurare manualmente le impostazioni della macchina virtual
 ====
 
 
+[[step-1-optionally-enable-san-booting]]
 == Passaggio 1: Se lo si desidera, attivare l'avvio SAN
 
 È possibile configurare l'host in modo che utilizzi l'avvio SAN per semplificare l'installazione e migliorare la scalabilità.
@@ -45,6 +46,7 @@ Per informazioni su come attivare il BIOS HBA, consultare la documentazione spec
 
 
 
+[[step-2-confirm-the-multipath-configuration-for-your-host]]
 == Passaggio 2: confermare la configurazione multipath per l'host
 
 Con Ubuntu 20.04 è possibile utilizzare il multipathing per gestire le LUN ONTAP .
@@ -77,6 +79,7 @@ La tabella seguente mostra le impostazioni dei parametri multipercorso compilati
 .Mostra impostazioni parametri
 [%collapsible]
 ====
+[[multipath-parameter-settings]]
 [cols="2"]
 |===
 | Parametro | Impostazione 
@@ -199,6 +202,7 @@ size=160G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp
 
 
 
+[[step-3-confirm-the-iscsi-configuration-for-your-host]]
 == Passaggio 3: conferma la configurazione iSCSI per il tuo host
 
 Assicurati che iSCSI sia configurato correttamente per il tuo host.
@@ -336,6 +340,7 @@ tcp: [4] 192.168.166.70:3260,1042 iqn.1992-08.com.netapp:sn.c770be5d934811f0b624
 
 
 
+[[step-4-optionally-exclude-a-device-from-multipathing]]
 == Passaggio 4: Se si desidera, escludere un dispositivo dal multipathing
 
 Se necessario, è possibile escludere un dispositivo dal multipathing aggiungendo il WWID per il dispositivo indesiderato alla stanza "blacklist" per il `multipath.conf` file.
@@ -368,6 +373,7 @@ blacklist {
 
 
 
+[[step-5-customize-multipath-parameters-for-ontap-luns]]
 == Passaggio 5: Personalizzare i parametri multipath per i LUN ONTAP
 
 Se l'host è connesso a LUN di altri fornitori e le impostazioni dei parametri multipath vengono sovrascritte, è necessario correggerle aggiungendo più avanti nel `multipath.conf` file che si applicano specificamente ai LUN di ONTAP. In caso contrario, i LUN di ONTAP potrebbero non funzionare come previsto.
@@ -401,12 +407,14 @@ devices {
 ====
 
 
+[[step-6-review-the-known-issues]]
 == Fase 6: Esaminare i problemi noti
 
 Non ci sono problemi noti.
 
 
 
+[[whats-next]]
 == Quali sono le prossime novità?
 
 * Scopri di più sulla virtualizzazione Ubuntu Linux (KVM)

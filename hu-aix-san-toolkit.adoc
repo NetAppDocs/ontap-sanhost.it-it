@@ -36,6 +36,7 @@ NOTE: SAN Toolkit è comune a tutte le configurazioni host AIX e a tutti i proto
 
 
 
+[[whats-next]]
 == Quali sono le prossime novità?
 
 link:hu-aix-command-reference.html["Scopri come utilizzare lo strumento AIX Host Utilities"] .

@@ -4,6 +4,7 @@
 
 
 
+[[whats-next]]
 == Quali sono le prossime novità?
 
 * Impostazioni consigliate per i driver con kernel Linux

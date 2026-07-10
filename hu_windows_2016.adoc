@@ -20,6 +20,7 @@ Le utilità host Windows consentono di connettere gli host Windows ai dischi vir
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == Passaggio 1: Se lo si desidera, attivare l'avvio SAN
 
 È possibile avviare il sistema operativo Windows tramite un avvio locale o un avvio SAN.  NetApp consiglia di utilizzare un avvio SAN per semplificare la distribuzione e migliorare la scalabilità.
@@ -51,6 +52,7 @@ Eseguire un avvio locale installando il sistema operativo Windows sul disco rigi
 ====
 
 
+[[step-2-install-windows-hotfixes]]
 == Passaggio 2: installare gli hotfix di Windows
 
 NetApp consiglia di installare l'aggiornamento cumulativo più recente* disponibile nel catalogo di Microsoft Update sul server host.
@@ -70,6 +72,7 @@ TIP: Molti hotfix richiedono il riavvio dell'host Windows.  È possibile attende
 
 
 
+[[step-3-install-the-windows-host-utilities]]
 == Passaggio 3: installare le utilità host di Windows
 
 Le Windows Host Utilities sono un set di programmi software con documentazione che consentono di connettere i computer host ai dischi virtuali (LUN) su una SAN NetApp .  NetApp consiglia di scaricare e installare le ultime Windows Host Utilities per supportare la gestione ONTAP LUN e aiutare il supporto tecnico a raccogliere i dati di configurazione.
@@ -78,6 +81,7 @@ Per informazioni sulla configurazione e l'installazione di Windows Host Utilitie
 
 
 
+[[step-4-confirm-the-multipath-configuration-for-your-host]]
 == Passaggio 4: confermare la configurazione multipath per l'host
 
 Installare il software Microsoft Multipath I/O (MPIO) e abilitare il multipathing se l'host Windows dispone di più di un percorso verso il sistema di archiviazione.
@@ -156,12 +160,14 @@ image::nonasa.png[Schermata di una LUN ONTAP con due percorsi attivi/ottimizzati
 
 
 
+[[step-5-review-the-known-issues]]
 == Passaggio 5: rivedere i problemi noti
 
 Non ci sono problemi noti.
 
 
 
+[[whats-next]]
 == Quali sono le prossime novità?
 
 link:hu-wuhu-configuration.html["Informazioni sulla configurazione di Windows Host Utilities per l'archiviazione ONTAP"]

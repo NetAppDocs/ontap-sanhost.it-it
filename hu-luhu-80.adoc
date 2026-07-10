@@ -133,6 +133,7 @@ sanlun version 8.0.386.1644
 
 
 
+[[whats-next]]
 == Quali sono le prossime novità?
 
 * Impostazioni consigliate per i driver con kernel Linux
