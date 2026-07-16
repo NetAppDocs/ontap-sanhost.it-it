@@ -16,7 +16,7 @@ summary: Descrive come utilizzare Linux Host Utilities 8.0 con ONTAP
 
 
 [role="lead"]
-Le Linux Host Utilities aiutano a gestire lo storage ONTAP collegato a un host Linux.  NetApp consiglia vivamente di installare Linux Host Utilities, ma non è obbligatorio.  Le utilità migliorano la gestione e aiutano l'assistenza clienti NetApp a raccogliere informazioni sulla configurazione.
+Le Linux Host Utilities ti aiutano a gestire lo storage ONTAP collegato a un host Linux. NetApp consiglia vivamente di installare le Linux Host Utilities, ma non è obbligatorio. Le Linux Host Utilities migliorano la gestione e aiutano il supporto clienti NetApp a raccogliere informazioni sulla tua configurazione.
 
 Linux Host Utilities 8.0 supporta i seguenti tipi di distribuzione:
 
@@ -30,7 +30,7 @@ Linux Host Utilities 8.0 supporta i seguenti tipi di distribuzione:
 NOTE: Il software delle utilità host Linux non supporta i protocolli host NVMe over Fibre Channel (NVMe/FC) e NVMe over TCP (NVMe/TCP).
 
 .A proposito di questa attività
-Quando installi Linux Host Utilities, non viene modificata alcuna impostazione sul tuo host Linux.
+Quando installi Linux Host Utilities, non cambia nessuna impostazione o comportamento sul tuo host.
 
 .Prima di iniziare
 * Per un funzionamento affidabile, utilizzare illink:https://imt.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità"^] per verificare che la configurazione iSCSI, FC o FCoE sia supportata.
@@ -41,6 +41,10 @@ Fare riferimento alla documentazione del fornitore per verificare che i seguenti
 +
 ** Marvell QLogic HBA – CLI QConvergeConsole
 ** HBA Broadcom Emulex - CLI dell'applicazione principale di OneCommand Manager
++
+
+NOTE: Linux Host Utilities ha una dipendenza di installazione dalla libreria libHBAAPI.so. Devi installare uno dei pacchetti sopra elencati, anche se un host è destinato a una configurazione solo iSCSI. In alternativa, puoi usare gli strumenti a livello di sistema operativo per la gestione di LUN e percorsi.
+
 
 
 
