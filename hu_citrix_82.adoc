@@ -104,7 +104,7 @@ devices {
 EOF
 ----
 ====
-. La prima volta che configuri il multipath, potresti dover abilitare e avviare i servizi multipath per caricare le impostazioni consigliate:
+. La prima volta che configuri il multipathing, potresti dover abilitare e avviare i servizi multipath per caricare le impostazioni consigliate:
 +
 [source, cli]
 ----
@@ -284,7 +284,7 @@ blacklist {
 [[step-4-customize-multipath-parameters-for-ontap-luns]]
 == Passaggio 4: personalizzare i parametri multipath per le LUN ONTAP
 
-Se il tuo host è connesso a LUN di altri fornitori e una qualsiasi delle impostazioni dei parametri multipath è stata sovrascritta, devi correggerle modificando le sezioni nel file  `/etc/multipath/conf.d/custom.conf` che si applicano specificamente alle LUN ONTAP. Scorri verso il basso nel file per aggiungere queste sezioni. Se non correggi i parametri, le LUN ONTAP potrebbero non funzionare come previsto.
+Se il tuo host è connesso a LUN di altri fornitori e una qualsiasi delle impostazioni dei parametri multipath è stata sovrascritta, devi correggerle modificando una sezione esistente o aggiungendone una nuova nel file  `/etc/multipath/conf.d/custom.conf` che si applica specificamente alle LUN ONTAP. Devi scorrere verso il basso nel file per esaminare le modifiche che si applicano al tuo host. Se non correggi i parametri, le LUN ONTAP potrebbero non funzionare come previsto.
 
 
 CAUTION: Non sovrascrivere le impostazioni dei parametri consigliate per i LUN ONTAP. Queste impostazioni sono necessarie per ottenere prestazioni ottimali della configurazione host. Per ulteriori informazioni, contattare l'assistenza NetApp, il fornitore del sistema operativo o entrambi.
