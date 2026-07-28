@@ -97,7 +97,7 @@ MPIO Disk13: 04 Paths, Round Robin with Subset, Symmetric Access
       TPG_State : Active/Optimized  , TPG_Id: 1000, : 1
 ----
 =====
-.${post_edited_translations.segment}
+.Mostra esempio UI
 [%collapsible]
 =====
 image::asa.png[Schermata di ONTAP LUN con percorsi attivi/ottimizzati]
@@ -132,7 +132,7 @@ MPIO Disk0: 04 Paths, Round Robin with Subset, Implicit Only
       TPG_State : Active/Optimized  , TPG_Id: 1000, : 1
 ----
 =====
-.${post_edited_translations.segment}
+.Mostra esempio UI
 [%collapsible]
 =====
 image::nonasa.png[Schermata di una LUN ONTAP con due percorsi attivi/ottimizzati e due percorsi attivi/non ottimizzati]
