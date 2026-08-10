@@ -15,11 +15,11 @@ indexpage:
     links:
     - title: Informazioni sulle configurazioni degli host SAN
       url: "/overview.html"
-    - title: Note di rilascio DI AIX host Utilities
+    - title: Note sulla versione delle utilità host di AIX
       url: "/hu-aix-release-notes.html"
-    - title: Note sulla versione di HP-UX host Utilities
+    - title: Note sulla versione di HP-UX Host Utilities
       url: "/hu-hpux-release-notes.html"
-    - title: Note sulla versione di Linux host Utilities
+    - title: Note sulla versione di Linux Host Utilities
       url: "/hu-luhu-release-notes.html"
     - title: Note sulla versione di Solaris Host Utilities
       url: "/hu-solaris-release-notes.html"

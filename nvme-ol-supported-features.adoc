@@ -16,11 +16,16 @@ summary: Scopri il supporto e le funzionalità ONTAP per gli host Oracle Linux
 
 
 [role="lead"]
-Le funzionalità supportate per la configurazione host con NVMe over Fabrics (NVMe-oF) variano in base alla versione di ONTAP e Oracle Linux.
+Le funzionalità supportate per la configurazione host con NVMe over Fabrics (NVMe-oF) variano in base alla tua versione di ONTAP e Oracle Linux.
 
 [cols="50,25,25"]
 |===
 | Caratteristica | Versione host Oracle Linux | Versione ONTAP 
+
+
+| NVMe/FC e NVMe/TCP riportano tutti i percorsi ottimizzati sui sistemi ASA r2  a| 
+9.0 o successivo
+| 9.16.1 o successivo 
 
 
 | A partire da Oracle Linux 9.6, nvme supporta la policy di i/o "queue-depth" ed è abilitata come opzione predefinita.  a| 

@@ -98,12 +98,12 @@ libnvme-1.13-1.el9.x86_64
 cat /etc/nvme/hostnqn
 ----
 +
-L'esempio seguente mostra un  `hostnqn` versione:
+L'esempio seguente mostra un `hostnqn` valore:
 
 +
 [listing]
 ----
-nqn.2014-08.org.nvmexpress:uuid:8397cecc-30f0-11e8-850f-7ed30aef0cc7
+nqn.2014-08.org.nvmexpress:uuid:8397xxxx-30f0-xxxx-850f-7ed3xxxf0cc7
 ----
 . Sul sistema ONTAP , verificare che `hostnqn` la stringa corrisponde a `hostnqn` stringa per il sottosistema corrispondente sul sistema di archiviazione ONTAP :
 +
@@ -534,7 +534,7 @@ ACTION=="add", SUBSYSTEM=="nvme-subsystem", ATTR{subsystype}=="nvm", ATTR{model}
 udevadm control --reload
 udevadm trigger --subsystem-match=nvme-subsystem
 ----
-. Verificare l'attuale iopolicy per il sottosistema.  Sostituisci <sottosistema>, ad esempio, `nvme-subsys0` .
+. Verifica la iopolicy corrente per il tuo sottosistema:
 +
 [source, cli]
 ----
