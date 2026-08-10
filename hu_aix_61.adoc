@@ -95,9 +95,5 @@ sanlun version
 ----
 
 
-
-
-[[whats-next]]
-== Quali sono le prossime novità?
-
+.Cosa c'è dopo?
 link:hu-aix-san-toolkit.html["Scopri di più su AIX SAN Toolkit"] .

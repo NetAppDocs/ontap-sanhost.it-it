@@ -149,9 +149,5 @@ NOTE: Per visualizzare le opzioni standard di Microsoft Installer (MSI) per la r
 
 --
 ====
-
-
-[[whats-next]]
-== Quali sono le prossime novità?
-
+.Cosa c'è dopo?
 link:hu-wuhu-configuration.html["Informazioni sulla configurazione di Windows Host Utilities per l'archiviazione ONTAP"]

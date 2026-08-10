@@ -226,9 +226,5 @@ image::nonasa.png[Schermata di una LUN ONTAP con due percorsi attivi/ottimizzati
 
 Non ci sono problemi noti.
 
-
-
-[[whats-next]]
-== Quali sono le prossime novità?
-
+.Cosa c'è dopo?
 link:hu-wuhu-configuration.html["Informazioni sulla configurazione di Windows Host Utilities per l'archiviazione ONTAP"]

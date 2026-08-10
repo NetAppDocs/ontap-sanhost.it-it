@@ -1,12 +1,8 @@
-= Cosa succederà adesso?
+= 
 :allow-uri-read: 
 
 
-
-
-[[whats-next]]
-== Quali sono le prossime novità?
-
+.Cosa c'è dopo?
 * Impostazioni consigliate per i driver con kernel Linux
 +
 Quando si configura un ambiente FC che utilizza driver nativi della posta in arrivo forniti con il kernel Linux, è possibile utilizzare i valori predefiniti per i driver.

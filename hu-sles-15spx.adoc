@@ -451,11 +451,7 @@ SUSE Linux Enterprise Server 15 SPx con storage ONTAP presenta i seguenti proble
 |===
 --
 ====
-
-
-[[whats-next]]
-== Quali sono le prossime novità?
-
+.Cosa c'è dopo?
 * link:hu-luhu-command-reference.html["Informazioni sull'utilizzo dello strumento Linux host Utilities"] .
 * Scopri di più sul mirroring ASM
 +

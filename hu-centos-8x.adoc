@@ -421,11 +421,7 @@ Non ci sono problemi noti.
 
 Per i problemi noti del kernel compatibile con CentOS Red Hat, vedere la link:hu-rhel-8x.html#step-7-review-the-known-issues["problemi noti"] per la serie Red Hat Enterprise Linux (RHEL) 8.x.
 
-
-
-[[whats-next]]
-== Quali sono le prossime novità?
-
+.Cosa c'è dopo?
 * link:hu-luhu-command-reference.html["Informazioni sull'utilizzo dello strumento Linux host Utilities"] .
 * Scopri di più sul mirroring ASM
 +

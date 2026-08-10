@@ -8,7 +8,7 @@
 +
 [source, cli]
 ----
-pkg info entire`
+pkg info entire
 ----
 .. Verificare che l' ONTAP LUN abbia `ostype` come "Solaris", indipendentemente dalla dimensione LUN:
 +
@@ -60,7 +60,7 @@ root@sparc-s7-55-148:~# sanlun lun show -pv
 +
 [source, cli]
 ----
-mpathadm show lu <LUN>`
+mpathadm show lu <LUN>
 ----
 +
 Gli output di esempio seguenti mostrano lo stato del percorso corretto per le LUN ONTAP in una configurazione ASA, AFF o FAS .  Le priorità del percorso vengono visualizzate in base allo "Stato di accesso" per ogni LUN nell'output.

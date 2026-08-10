@@ -396,11 +396,7 @@ devices {
 
 Non ci sono problemi noti.
 
-
-
-[[whats-next]]
-== Quali sono le prossime novità?
-
+.Cosa c'è dopo?
 * link:hu-luhu-command-reference.html["Informazioni sull'utilizzo dello strumento Linux host Utilities"] .
 * Configura gli archivi dati HPE VME sulle LUN ONTAP, quindi configura la macchina virtuale. Consulta la documentazione HPE del fornitore per ulteriori informazioni.
 

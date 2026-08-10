@@ -245,9 +245,5 @@ La versione IBM AIX 7.2 e/o PowerVM (VIOS 3.1) con storage ONTAP presenta i segu
 
 | link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1307653["1307653"^] | I problemi di i/o si verificano su VIOS 3.1.1.10 durante i guasti SFO e i/o diretto | In VIOS 3,1.1, potrebbero verificarsi errori di i/o sui dischi client NPIV supportati da adattatori FC da 16 GB o 32 GB. Inoltre, il `vfchost` driver potrebbe interrompere l'elaborazione delle richieste di i/o dal client. L'applicazione di IBM APAR IJ22290 IBM APAR IJ23222 risolve il problema. | NA 
 |===
-
-
-[[whats-next]]
-== Quali sono le prossime novità?
-
+.Cosa c'è dopo?
 link:hu-aix-command-reference.html["Scopri come utilizzare lo strumento AIX Host Utilities"] .

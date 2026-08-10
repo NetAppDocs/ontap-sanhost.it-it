@@ -40,9 +40,5 @@ Questo toolkit SAN è comune a tutte le configurazioni e i protocolli di Host Ut
 SAN Toolkit è supportato sulle versioni AIX e PowerVM/VIOS OS.
 
 ====
-
-
-[[whats-next]]
-== Quali sono le prossime novità?
-
+.Cosa c'è dopo?
 link:hu_hpux_60_cmd.html["Scopri come utilizzare lo strumento HP-UX Host Utilities"] .
