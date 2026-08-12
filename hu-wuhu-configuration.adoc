@@ -35,7 +35,7 @@ Il programma di installazione imposta valori diversi quando si specifica il supp
 
 [NOTE]
 ====
-Devi modificare il valore del parametro LimTransferSize dopo l'installazione di Windows Host Utilities 7.2. Vedi <<nvme-parameter,Parametri NVME>>.
+Devi modificare il valore del parametro LimTransferSize dopo l'installazione di Windows Host Utilities 7.2. Vedi <<parameter-72,Parametri NVME>>.
 
 Per tutti gli altri parametri e chiavi di registro per Windows Host Utilities 8.0, 7.2 o 7.1, non è necessario modificare i valori, a meno che non venga consigliato dal supporto tecnico.
 
@@ -160,9 +160,9 @@ Windows Host Utilities 8.0 aggiorna i seguenti parametri del driver NVMe Emulex 
 [[review-the-configuration-settings-for-windows-host-utilities-7-2]]
 == Rivedere le impostazioni di configurazione per Windows Host Utilities 7.2
 
-Il programma di installazione di Windows Host Utilities imposta automaticamente i valori del registro di sistema di Windows e i parametri iSCSI e NVMe HBA in base alle scelte effettuate durante l'installazione. Controllare questi valori e la versione del sistema operativo.
+[[parameter-72]]Il programma di installazione di Windows Host Utilities imposta automaticamente i valori del registro di sistema di Windows e i parametri HBA iSCSI e NVMe in base alle scelte che fai durante l'installazione. Controlla questi valori e la versione del sistema operativo.
 
-[#nvme-parameter,role="tabbed-block"]
+[role="tabbed-block"]
 ====
 .Valori del registro di Windows
 --

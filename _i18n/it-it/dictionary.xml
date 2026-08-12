@@ -2521,10 +2521,11 @@ Il binding del driver FC viene modificato da<block ref="b9ca0a083600812be33f42f9
   <block id="ed8e051a49611c288afb480ce73d605d" category="list-text">NetApp supporta l'utilizzo delle tecnologie di virtualizzazione Solaris laddove la configurazione complessiva sia supportata da Oracle e qualsiasi partizione con accesso diretto ai LUN sia elencata <block ref="60b6cb8e2c630f624cf99dafa0404aa7" category="inline-link-macro-rx"></block> in una configurazione supportata. Questo include i container root, i domini I/O LDOM e LDOM che utilizzano NPIV per accedere ai LUN.</block>
   <block id="0048a12413609133ed4f3ca29bf0024a" category="section-title">Novità di Linux Host Utilities 8.0</block>
   <block id="6c9c1ae20d4741183e62db33bcf45d49" category="section-title">Novità di Linux Host Utilities 7.1</block>
-  <block id="4af9cfdb8fa2a5afc040af3eb77660bd" category="paragraph">Devi modificare il valore del parametro LimTransferSize dopo l'installazione di Windows Host Utilities 7.2. Vedi <block ref="dc46e8bfbb9f77d795c66139839b2373" category="inline-xref-macro-rx"></block>.</block>
   <block id="ec931df4ed265dbeb58635743fb2c8a1" category="list-text">Che tu stia utilizzando il software MPIO</block>
   <block id="ccc5200a41ac281136e85915742ee943" category="summary">Installa Linux Host Utilities su un host Ubuntu 22.04 per gestire le operazioni dei protocolli FCP e iSCSI con le LUN ONTAP.</block>
   <block id="9227e9de01a4a3312d8274d2e61e478c" category="list-text">A partire da ONTAP 9.16.1, l'allocazione dello spazio è abilitata per impostazione predefinita per tutti i namespace NVMe appena creati.</block>
   <block id="a75717feaa22af7bffd985baebeb5c22" category="list-text">A partire da ONTAP 9.9.1 P3, il protocollo NVMe/FC è supportato per ESXi 8.</block>
   <block id="f6615e8535f35dd305084ea2894bfa16" category="list-text">A partire da ONTAP 9.10.1, il protocollo NVMe/TCP è supportato per ONTAP.</block>
+  <block id="06980ca83225c81b8134c0b467016286" category="paragraph">Devi modificare il valore del parametro LimTransferSize dopo l'installazione di Windows Host Utilities 7.2. Vedi <block ref="62303d561309e8cf89d2be92987f3150" category="inline-xref-macro-rx"></block>.</block>
+  <block id="6a79af20a523a4fc84d19fee8187b203" category="paragraph">[[parameter-72]]Il programma di installazione di Windows Host Utilities imposta automaticamente i valori del registro di sistema di Windows e i parametri HBA iSCSI e NVMe in base alle scelte che fai durante l'installazione. Controlla questi valori e la versione del sistema operativo.</block>
 </blocks>

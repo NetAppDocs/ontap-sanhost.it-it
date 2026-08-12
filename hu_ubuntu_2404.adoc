@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: hu_ubuntu_2404.html 
-keywords: host utilities, red hat, rhel, linux, 24.04, netapp, ontap, ubuntu 
+keywords: host utilities, linux, 24.04, netapp, ontap, ubuntu 
 summary: Installa Linux Host Utilities su un host Ubuntu 24.04 per gestire le operazioni del protocollo FCP e iSCSI con LUN ONTAP . 
 ---
 = Configurare Ubuntu 24.04 per FCP e iSCSI con storage ONTAP
