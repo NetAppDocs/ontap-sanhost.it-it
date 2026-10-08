@@ -4,7 +4,7 @@ permalink: hu-aix-release-notes.html
 keywords: host utilities, aix, 6.1 netapp, 7.0, ontap, powervm 
 summary: Note di release per le utility host AIX 6.1 
 ---
-= Note sulla versione delle utilità host di AIX
+= Note di rilascio delle utilità host AIX per lo storage ONTAP
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

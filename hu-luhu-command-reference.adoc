@@ -4,7 +4,7 @@ permalink: hu-luhu-command-reference.html
 keywords: host utilities, unified, oracle, linux, 8.0, netapp, ontap 
 summary: 'Descrive come utilizzare Linux Host Utilities con l"archiviazione ONTAP' 
 ---
-= Utilizzare i comandi di Linux Host Utilities per verificare la configurazione dell'archiviazione ONTAP
+= Comandi di Linux Host Utilities per la configurazione dello storage ONTAP
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

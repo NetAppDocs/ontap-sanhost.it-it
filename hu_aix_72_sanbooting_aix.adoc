@@ -4,7 +4,7 @@ permalink: hu_aix_72_sanbooting_aix.html
 keywords: host utilities, aix, netapp, ontap, configure, discover, configuring, discovering 
 summary: Descrive come rilevare e configurare I LUN con AIX 
 ---
-= (AIX MPIO senza PowerVM) rilevare e configurare i LUN con AIX
+= Scopri e configura le LUN ONTAP con AIX MPIO senza PowerVM
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

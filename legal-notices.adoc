@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: legal, notices, copyright, trademarks, patents 
 summary: 'Le note legali forniscono l"accesso a dichiarazioni di copyright, marchi, brevetti e altro ancora.' 
 ---
-= Note legali
+= Note legali per SAN Host Utilities per lo storage ONTAP
 :allow-uri-read: 
 
 

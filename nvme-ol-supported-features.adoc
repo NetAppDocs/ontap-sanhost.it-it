@@ -4,7 +4,7 @@ permalink: nvme-ol-supported-features.html
 keywords: nvme, oracle linux, enterprise 
 summary: Scopri il supporto e le funzionalità ONTAP per gli host Oracle Linux 
 ---
-= Scopri il supporto e le funzionalità ONTAP per gli host Oracle Linux
+= Supporto e funzionalità di ONTAP per host Oracle Linux
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
