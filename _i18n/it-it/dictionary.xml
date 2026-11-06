@@ -2537,4 +2537,9 @@ Il binding del driver FC viene modificato da<block ref="b9ca0a083600812be33f42f9
   <block id="2577436e0a1529b400f7af13bf054dd3" category="sidebar">Scopri come configurare NVMe-oF</block>
   <block id="e00f09f4cda9392c891c49988b80edc8" category="sidebar">SLES-FCP</block>
   <block id="8becbe3ee64db6f436bf244fb25c7f57" category="sidebar">SLES-NVMe</block>
+  <block id="b69bffb1a1f55594751fbc58f7abb114" category="summary">Configura Citrix Xenserver 9.0 per il multipathing con parametri e impostazioni specifici per le operazioni dei protocolli FCP e iSCSI con lo storage ONTAP.</block>
+  <block id="f52d84b92b78c6dad322e059e6943904" category="doc">Configurare Citrix Xenserver 9.0 per FCP e iSCSI con storage ONTAP</block>
+  <block id="aa6f72aa4dad8dc14f65a49c7b60982a" category="paragraph">Puoi utilizzare il multipathing con Citrix Xenserver 9.0 per gestire le LUN ONTAP.</block>
+  <block id="3f6d8773170dd1c73493c97ee36bb40a" category="paragraph">Una configurazione AFF o FAS dovrebbe avere due gruppi di percorsi con priorità più alta e più bassa. I percorsi attivi/ottimizzati a priorità più alta sono gestiti dal controller in cui si trova l'aggregato. I percorsi a priorità più bassa sono attivi ma non ottimizzati perché gestiti da un controller diverso. I percorsi non ottimizzati vengono utilizzati solo quando i percorsi ottimizzati non sono disponibili.</block>
+  <block id="1d5076606adf1177c26a3f206e21498e" category="sidebar">XenServer 9.0</block>
 </blocks>
