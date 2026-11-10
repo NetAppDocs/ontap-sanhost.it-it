@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: hu-citrix-90.html 
-keywords: host utilities, citrix, Xenserver, 9 series, netapp, ontap, san, boot 
-summary: Configura Citrix Xenserver 9.0 per il multipathing con parametri e impostazioni specifici per le operazioni dei protocolli FCP e iSCSI con lo storage ONTAP. 
+keywords: host utilities, citrix, XenServer, 9 series, netapp, ontap, san, boot 
+summary: Configura Citrix XenServer 9.0 per il multipathing e con parametri e impostazioni specifici per le operazioni dei protocolli FCP e iSCSI con lo storage ONTAP. 
 ---
-= Configurare Citrix Xenserver 9.0 per FCP e iSCSI con storage ONTAP
+= Configura Citrix XenServer 9.0 per FCP e iSCSI con storage ONTAP
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,11 +16,11 @@ summary: Configura Citrix Xenserver 9.0 per il multipathing con parametri e impo
 
 
 [role="lead"]
-Configura Citrix Xenserver 9.0 per il multipathing con parametri e impostazioni specifici per le operazioni dei protocolli FCP e iSCSI con lo storage ONTAP.
+Configura Citrix XenServer 9.0 per il multipathing e con parametri e impostazioni specifici per le operazioni dei protocolli FCP e iSCSI con lo storage ONTAP.
 
 [NOTE]
 ====
-Il pacchetto software Linux Host Utilities non supporta i sistemi operativi Citrix Xenserver.
+Il pacchetto software Linux Host Utilities non supporta i sistemi operativi Citrix XenServer.
 
 ====
 
@@ -47,7 +47,7 @@ Per informazioni su come attivare il BIOS HBA, consultare la documentazione spec
 [[step-2-confirm-the-multipath-configuration-for-your-host]]
 == Passaggio 2: confermare la configurazione multipath per l'host
 
-Puoi utilizzare il multipathing con Citrix Xenserver 9.0 per gestire le LUN ONTAP.
+Puoi utilizzare il multipathing con Citrix XenServer 9.0 per gestire le LUN ONTAP.
 
 Per verificare che il multipathing sia configurato correttamente per l'host, verificare che il `/etc/multipath.conf` file sia definito e che siano configurate le impostazioni consigliate da NetApp per i LUN ONTAP.
 

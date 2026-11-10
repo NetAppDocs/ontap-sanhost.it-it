@@ -44,7 +44,7 @@ Per Linux Host Utilities 8.0, l'utilità "sanlun" non è supportata per Citrix X
 --
 .7.1
 --
-Per Linux Host Utilities 7.1, l'utilità "sanlun" non è supportata per Citrix Xenserver, Red Hat Enterprise Virtualization e Proxmox.
+Per Linux Host Utilities 7.1, l'utility "sanlun" non è supportata per Citrix XenServer, Red hat Enterprise Virtualization e Proxmox.
 
 --
 ====

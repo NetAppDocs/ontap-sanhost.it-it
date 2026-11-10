@@ -111,7 +111,7 @@ sidebar:
       entries:
       - title: XenServer 9.0
         url: "/hu-citrix-90.html"
-      - title: Xenserver 8.4
+      - title: XenServer 8.4
         url: "/hu_citrix_84.html"
       - title: Hypervisor 8.2
         url: "/hu_citrix_82.html"
