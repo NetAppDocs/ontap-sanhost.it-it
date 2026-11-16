@@ -4,7 +4,7 @@ permalink: hu_fcp_scsi_index.html
 keywords:  
 summary:  
 ---
-= Scopri la configurazione di FCP e iSCSI per gli host SAN ONTAP
+= Scopri la configurazione di FCP e iSCSI per host SAN con storage ONTAP
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
